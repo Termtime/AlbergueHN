@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AlbergueHN
+namespace AlbergueHN.Source.Forms
 {
-    public partial class Form1 : Form
+    public partial class dialogDespacharArticulo : Form
     {
-        public Form1()
+        public dialogDespacharArticulo()
         {
             InitializeComponent();
         }
 
-        private void TabPage1_Click(object sender, EventArgs e)
+        private void DialogDespacharProductos_Load(object sender, EventArgs e)
         {
 
         }
