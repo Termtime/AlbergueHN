@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AlbergueHN
+namespace AlbergueHN.Source.Forms
 {
-    public partial class Form1 : Form
+    public partial class dialogIngresarPersona : Form
     {
-        public Form1()
+        public dialogIngresarPersona()
         {
             InitializeComponent();
-        }
-
-        private void TabPage1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
