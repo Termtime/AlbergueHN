@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AlbergueHN.Source.Forms;
 using MySql.Data.MySqlClient;
 
 namespace AlbergueHN
@@ -17,8 +18,8 @@ namespace AlbergueHN
         {
             InitializeComponent();
         }
-        string StringConexion = "";
-
+        string StringConexion = "Server=127.0.0.1;Database=unahvs_al;Uid=root;Pwd=1234";
+        //String stringConexion = "Server=127.0.0.1;Database=unahvs_-al;Uid=root;Pwd=1234";
         private void TabPage1_Click(object sender, EventArgs e)
         {
 
@@ -35,7 +36,8 @@ namespace AlbergueHN
         {
             DataTable dtPersonas = new DataTable();
 
-            var stm = "select Identidad, Cuenta,Nombre, Apellido, DateDiff(YY, fechaDeNacimiento, GetDate()) as Edad, Telefono1, Departamento, Municipio from Personas";
+            var stm = "select PersonaID, Cuenta, Nombres, Apellidos, DateDiff(fechaNacimiento, CURDATE()) as Edad, Telefono, Municipio from Persona";
+
 
             using (MySqlConnection con = new MySqlConnection(StringConexion))
             {
@@ -51,7 +53,7 @@ namespace AlbergueHN
         {
             DataTable dtArticulos = new DataTable();
 
-            var stm = "select ArticuloID, Descripcion, tp.Descripcion as Tipo, Talla, Genero, Cantidad as Existencia from articulos a inner join tipoArticulo tp on a.tipoArticulo = tp.tipoArticuloID";
+            var stm = "select suministroID, a.Descripcion, tp.Descripcion as Tipo, Talla, Genero, Existencia from suministro a inner join tiposuministro tp on a.tipoID = tp.tipoID";
 
             using (MySqlConnection con = new MySqlConnection(StringConexion))
             {
@@ -89,6 +91,12 @@ namespace AlbergueHN
             {
 
             }
+        }
+
+        private void ConexionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dialogConectarServidor form = new dialogConectarServidor();
+            form.ShowDialog();
         }
     }
 }

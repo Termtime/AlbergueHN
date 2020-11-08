@@ -19,7 +19,7 @@ namespace AlbergueHN.Source.Forms
 
         private void DialogDespacharProductos_Load(object sender, EventArgs e)
         {
-
+            //Properties.Settings.Default[""]
         }
     }
 }
