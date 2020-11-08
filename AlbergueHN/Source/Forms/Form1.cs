@@ -98,5 +98,11 @@ namespace AlbergueHN
             dialogConectarServidor form = new dialogConectarServidor();
             form.ShowDialog();
         }
+
+        private void DespacharSuministrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dialogDespacharArticulo form = new dialogDespacharArticulo();
+            form.ShowDialog();
+        }
     }
 }

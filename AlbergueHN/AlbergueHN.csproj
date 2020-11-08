@@ -130,7 +130,7 @@
     <Compile Include="Source\Forms\MantProductos.Designer.cs">
       <DependentUpon>MantProductos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Objetos\Objeto.cs" />
+    <Compile Include="Source\Objetos\Suministro.cs" />
     <Compile Include="Source\Forms\dialogIngresarProducto.cs">
       <SubType>Form</SubType>
     </Compile>

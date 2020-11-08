@@ -50,6 +50,10 @@
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.conexionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.despacharSuministrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ingresarSuministrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ingresarPersonaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -257,7 +261,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.archivoToolStripMenuItem});
+            this.archivoToolStripMenuItem,
+            this.accionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
@@ -285,6 +290,35 @@
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salirToolStripMenuItem.Text = "Salir";
+            // 
+            // accionesToolStripMenuItem
+            // 
+            this.accionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.despacharSuministrosToolStripMenuItem,
+            this.ingresarSuministrosToolStripMenuItem,
+            this.ingresarPersonaToolStripMenuItem});
+            this.accionesToolStripMenuItem.Name = "accionesToolStripMenuItem";
+            this.accionesToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.accionesToolStripMenuItem.Text = "Acciones";
+            // 
+            // despacharSuministrosToolStripMenuItem
+            // 
+            this.despacharSuministrosToolStripMenuItem.Name = "despacharSuministrosToolStripMenuItem";
+            this.despacharSuministrosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.despacharSuministrosToolStripMenuItem.Text = "Despachar suministros";
+            this.despacharSuministrosToolStripMenuItem.Click += new System.EventHandler(this.DespacharSuministrosToolStripMenuItem_Click);
+            // 
+            // ingresarSuministrosToolStripMenuItem
+            // 
+            this.ingresarSuministrosToolStripMenuItem.Name = "ingresarSuministrosToolStripMenuItem";
+            this.ingresarSuministrosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.ingresarSuministrosToolStripMenuItem.Text = "Ingresar Suministros";
+            // 
+            // ingresarPersonaToolStripMenuItem
+            // 
+            this.ingresarPersonaToolStripMenuItem.Name = "ingresarPersonaToolStripMenuItem";
+            this.ingresarPersonaToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.ingresarPersonaToolStripMenuItem.Text = "Administrar personas";
             // 
             // Form1
             // 
@@ -336,6 +370,10 @@
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem conexionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem accionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem despacharSuministrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ingresarSuministrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ingresarPersonaToolStripMenuItem;
     }
 }
 
