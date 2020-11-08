@@ -44,27 +44,31 @@
             // btnAgregar
             // 
             this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregar.Location = new System.Drawing.Point(248, 146);
+            this.btnAgregar.Location = new System.Drawing.Point(372, 225);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(112, 35);
             this.btnAgregar.TabIndex = 40;
             this.btnAgregar.Text = "Ingresar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 73);
+            this.label5.Location = new System.Drawing.Point(18, 112);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.Size = new System.Drawing.Size(77, 20);
             this.label5.TabIndex = 39;
             this.label5.Text = "Cantidad:";
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(70, 71);
+            this.numericUpDown1.Location = new System.Drawing.Point(105, 109);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(180, 26);
             this.numericUpDown1.TabIndex = 38;
             // 
             // tipoArticulo
@@ -77,68 +81,76 @@
             "Bebida",
             "Bioseguridad",
             "Otros"});
-            this.tipoArticulo.Location = new System.Drawing.Point(69, 12);
+            this.tipoArticulo.Location = new System.Drawing.Point(104, 18);
+            this.tipoArticulo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tipoArticulo.Name = "tipoArticulo";
-            this.tipoArticulo.Size = new System.Drawing.Size(121, 21);
+            this.tipoArticulo.Size = new System.Drawing.Size(180, 28);
             this.tipoArticulo.TabIndex = 37;
             // 
             // articulo
             // 
             this.articulo.FormattingEnabled = true;
-            this.articulo.Location = new System.Drawing.Point(70, 39);
+            this.articulo.Location = new System.Drawing.Point(105, 60);
+            this.articulo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.articulo.Name = "articulo";
-            this.articulo.Size = new System.Drawing.Size(336, 21);
+            this.articulo.Size = new System.Drawing.Size(502, 28);
             this.articulo.TabIndex = 36;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(32, 15);
+            this.label4.Location = new System.Drawing.Point(48, 23);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.Size = new System.Drawing.Size(43, 20);
             this.label4.TabIndex = 35;
             this.label4.Text = "Tipo:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 42);
+            this.label2.Location = new System.Drawing.Point(28, 65);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.Size = new System.Drawing.Size(66, 20);
             this.label2.TabIndex = 34;
             this.label2.Text = "Articulo:";
             // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(329, 146);
+            this.btnCancelar.Location = new System.Drawing.Point(494, 225);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(112, 35);
             this.btnCancelar.TabIndex = 41;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 107);
+            this.label1.Location = new System.Drawing.Point(18, 165);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.Size = new System.Drawing.Size(75, 20);
             this.label1.TabIndex = 42;
             this.label1.Text = "Donante:";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(70, 104);
+            this.textBox1.Location = new System.Drawing.Point(105, 160);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(331, 20);
+            this.textBox1.Size = new System.Drawing.Size(494, 26);
             this.textBox1.TabIndex = 43;
             // 
             // dialogIngresarProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 182);
+            this.ClientSize = new System.Drawing.Size(620, 280);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
@@ -149,8 +161,10 @@
             this.Controls.Add(this.articulo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "dialogIngresarProducto";
             this.Text = "Ingresar Producto";
+            this.Load += new System.EventHandler(this.dialogIngresarProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
