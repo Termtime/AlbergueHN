@@ -23,12 +23,11 @@ namespace AlbergueHN.Source.Forms
                 string usuario = (string)Properties.Settings.Default["usuarioServer"];
                 string pass = (string) Properties.Settings.Default["serverPass"];
                 string bd = (string) Properties.Settings.Default["bd"];
-
-                if(ip.Length == 0 || usuario.Length == 0 || pass.Length == 0 || bd.Length == 0)
+                string stringConexion = (string)Properties.Settings.Default["stringConexion"];
+                if(ip.Length == 0 || usuario.Length == 0 || pass.Length == 0 || bd.Length == 0 || stringConexion.Length == 0)
                 {
                     return;
                 }
-                string stringConexion = "Server=" + ip + ";Database="+bd+";Uid="+usuario+";Pwd=" + pass;
                 try
                 {
                     MySqlConnection con = new MySqlConnection(stringConexion);
@@ -71,6 +70,7 @@ namespace AlbergueHN.Source.Forms
                 Properties.Settings.Default["serverPass"] = txtPass.Text;
                 Properties.Settings.Default["usuarioServer"] = txtUsuario.Text;
                 Properties.Settings.Default["bd"] = txtBD.Text;
+                Properties.Settings.Default["stringConexion"] = stringConexion;
 
                 Properties.Settings.Default.Save();
                 labelEstado.Text = "Conectado";

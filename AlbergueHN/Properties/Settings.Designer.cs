@@ -70,5 +70,17 @@ namespace AlbergueHN.Properties {
                 this["bd"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string stringConexion {
+            get {
+                return ((string)(this["stringConexion"]));
+            }
+            set {
+                this["stringConexion"] = value;
+            }
+        }
     }
 }

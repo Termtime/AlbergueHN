@@ -78,7 +78,7 @@
             // 
             // btnConectar
             // 
-            this.btnConectar.Location = new System.Drawing.Point(158, 144);
+            this.btnConectar.Location = new System.Drawing.Point(149, 144);
             this.btnConectar.Name = "btnConectar";
             this.btnConectar.Size = new System.Drawing.Size(75, 23);
             this.btnConectar.TabIndex = 4;
@@ -149,7 +149,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(245, 144);
+            this.button1.Location = new System.Drawing.Point(259, 144);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 12;
