@@ -71,8 +71,8 @@
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage2.Size = new System.Drawing.Size(1255, 651);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1255, 624);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Articulos";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -176,7 +176,7 @@
             this.tabPage1.Controls.Add(this.tabla);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1255, 624);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Personas";
@@ -278,6 +278,7 @@
             this.conexionToolStripMenuItem.Name = "conexionToolStripMenuItem";
             this.conexionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.conexionToolStripMenuItem.Text = "Conexion...";
+            this.conexionToolStripMenuItem.Click += new System.EventHandler(this.ConexionToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
