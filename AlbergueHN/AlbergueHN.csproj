@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-   <Compile Include="Source\Forms\dialogDespacharArticulo.cs">	
-      <SubType>Form</SubType>	
-    </Compile>	
-    <Compile Include="Source\Forms\dialogDespacharArticulo.Designer.cs">	
-      <DependentUpon>dialogDespacharArticulo.cs</DependentUpon>	
+    <Compile Include="Source\Forms\dialogDespacharArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\dialogDespacharArticulo.Designer.cs">
+      <DependentUpon>dialogDespacharArticulo.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Forms\Form1.cs">
       <SubType>Form</SubType>
@@ -60,24 +60,36 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\Forms\MantPersonas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\MantPersonas.Designer.cs">
+      <DependentUpon>MantPersonas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\MantProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\MantProductos.Designer.cs">
+      <DependentUpon>MantProductos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\Objetos\Objeto.cs" />
     <Compile Include="Source\Forms\dialogIngresarProducto.cs">
-      <SubType>Form</SubType>	
-    </Compile>	
-    <Compile Include="Source\Forms\dialogIngresarProducto.Designer.cs">	
-      <DependentUpon>dialogIngresarProducto.cs</DependentUpon>	
-    </Compile>	
-    <Compile Include="Source\Forms\dialogIngresarPersona.cs">	
-      <SubType>Form</SubType>	
-    </Compile>	
-    <Compile Include="Source\Forms\dialogIngresarPersona.Designer.cs">	
-      <DependentUpon>dialogIngresarPersona.cs</DependentUpon>	
-    </Compile>	
-    <EmbeddedResource Include="Source\Forms\dialogDespacharArticulo.resx">	
-      <DependentUpon>dialogDespacharArticulo.cs</DependentUpon>	
-    </EmbeddedResource>	
-    <EmbeddedResource Include="Source\Forms\dialogIngresarPersona.resx">	
-      <DependentUpon>dialogIngresarPersona.cs</DependentUpon>	
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\dialogIngresarProducto.Designer.cs">
+      <DependentUpon>dialogIngresarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\dialogIngresarPersona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\dialogIngresarPersona.Designer.cs">
+      <DependentUpon>dialogIngresarPersona.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Source\Forms\dialogDespacharArticulo.resx">
+      <DependentUpon>dialogDespacharArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\dialogIngresarPersona.resx">
+      <DependentUpon>dialogIngresarPersona.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -91,6 +103,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Source\Forms\MantPersonas.resx">
+      <DependentUpon>MantPersonas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\MantProductos.resx">
+      <DependentUpon>MantProductos.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
