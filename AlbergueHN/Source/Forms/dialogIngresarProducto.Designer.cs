@@ -145,6 +145,7 @@
             this.btnIngresar.TabIndex = 57;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
+            this.btnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
             // 
             // txtFiltro
             // 
@@ -226,11 +227,15 @@
             // 
             // tablaIngreso
             // 
+            this.tablaIngreso.AllowUserToAddRows = false;
+            this.tablaIngreso.AllowUserToResizeColumns = false;
+            this.tablaIngreso.AllowUserToResizeRows = false;
             this.tablaIngreso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaIngreso.Location = new System.Drawing.Point(535, 12);
             this.tablaIngreso.Name = "tablaIngreso";
             this.tablaIngreso.Size = new System.Drawing.Size(729, 687);
             this.tablaIngreso.TabIndex = 51;
+            this.tablaIngreso.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.TablaIngreso_CellValidating);
             // 
             // dialogIngresarProducto
             // 

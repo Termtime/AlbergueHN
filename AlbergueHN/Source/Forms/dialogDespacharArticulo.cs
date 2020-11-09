@@ -15,8 +15,10 @@ namespace AlbergueHN.Source.Forms
 
     public partial class dialogDespacharArticulo : Form
     {
-        string[] tallasRopa = { "Todas","XXS", "XS", "S", "M", "L", "XL", "XL", "XXL" };
+        string[] tallasRopa = { "Todas", "XXS", "XS", "S", "M", "L", "XL", "XL", "XXL" };
         string stringConexion = (string)Properties.Settings.Default["stringConexion"];
+        BindingList<Suministro> binding;
+        List<Suministro> suministrosIngresados = new List<Suministro>();
         List<ListViewItem> productos = new List<ListViewItem>();
         public dialogDespacharArticulo()
         {
@@ -26,7 +28,14 @@ namespace AlbergueHN.Source.Forms
         private void DialogDespacharProductos_Load(object sender, EventArgs e)
         {
             llenarDatos();
-            foreach(string item in tallasRopa)
+            binding = new BindingList<Suministro>(suministrosIngresados);
+            tablaDespacho.DataSource = binding;
+            tablaDespacho.Columns[0].ReadOnly = true;
+            tablaDespacho.Columns[1].ReadOnly = true;
+            tablaDespacho.Columns[3].ReadOnly = true;
+            tablaDespacho.Columns[4].ReadOnly = true;
+            tablaDespacho.Columns[5].ReadOnly = true;
+            foreach (string item in tallasRopa)
             {
                 comboTalla.Items.Add(item);
             }
@@ -43,9 +52,9 @@ namespace AlbergueHN.Source.Forms
                 MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                 con.Open();
                 da.Fill(dtSuministro);
-                foreach(DataRow r in dtSuministro.Rows)
+                foreach (DataRow r in dtSuministro.Rows)
                 {
-                    string[] row = { (string)r["Descripcion"], ((int)r["Existencia"]).ToString(), (string)r["Tipo"], (r["Talla"] == System.DBNull.Value? " " : (string)r["Talla"]), (r["Genero"] == System.DBNull.Value? " " : (string)r["Genero"]), ((int)r["SuministroID"]).ToString() };
+                    string[] row = { (string)r["Descripcion"], ((int)r["Existencia"]).ToString(), (string)r["Tipo"], (r["Talla"] == System.DBNull.Value ? " " : (string)r["Talla"]), (r["Genero"] == System.DBNull.Value ? " " : (string)r["Genero"]), ((int)r["SuministroID"]).ToString() };
                     ListViewItem tmp2 = new ListViewItem();
                     tmp2.Text = row[0];
                     tmp2.SubItems.Add(row[1]); //Existencia
@@ -66,7 +75,7 @@ namespace AlbergueHN.Source.Forms
                 dsTipo.Tables.Add(new DataTable("TipoDefault"));
                 dsTipo.Tables["TipoDefault"].Columns.Add("TipoID", typeof(int));
                 dsTipo.Tables["TipoDefault"].Columns.Add("Descripcion", typeof(string));
-                dsTipo.Tables["TipoDefault"].Rows.Add(0,"Todos");
+                dsTipo.Tables["TipoDefault"].Rows.Add(0, "Todos");
                 var stm = "SELECT TipoID, Descripcion FROM tiposuministro";
                 MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                 con.Open();
@@ -96,7 +105,8 @@ namespace AlbergueHN.Source.Forms
             else if (radioFemenino.Checked)
             {
                 genero = "F";
-            }else if (radioCualquiera.Checked)
+            }
+            else if (radioCualquiera.Checked)
             {
                 cualquierGenero = true;
             }
@@ -109,20 +119,21 @@ namespace AlbergueHN.Source.Forms
                 }
 
                 return;
-            }else if(filtroTipo == "Vestimenta")
+            }
+            else if (filtroTipo == "Vestimenta")
             {
-                
+
                 bool cualquierTalla = false;
-                
+
                 string filtroTalla = (string)comboTalla.SelectedItem.ToString();
                 if (filtroTalla == "Todas") cualquierTalla = true;
                 foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text == genero || cualquierGenero) && (item.SubItems[3].Text.Contains(filtroTalla) || cualquierTalla)))
                 {
-                    
+
                     listaProductos.Items.Add(item);
                 }
             }
-            else if(filtroTipo == "Zapatos")
+            else if (filtroTipo == "Zapatos")
             {
                 foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower()) && item.SubItems[4].Text.Contains(genero)))
                 {
@@ -166,6 +177,57 @@ namespace AlbergueHN.Source.Forms
         private void RadioFemenino_CheckedChanged(object sender, EventArgs e)
         {
             filtrar();
+        }
+
+
+        private void ListaProductos_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ListViewItem objetoSeleccionado = listaProductos.SelectedItems[0];
+            if (objetoSeleccionado == null)
+            {
+                return;
+            }
+
+            Console.WriteLine("Doble click");
+            //Si el objeto ya existe en la tabla, salir
+            if (binding.ToList().Where(suministro => suministro.Id == objetoSeleccionado.Tag.ToString()).Count() != 0) return;
+            Suministro tmp = new Suministro();
+            tmp.Id = objetoSeleccionado.Tag.ToString();
+            tmp.Descripcion = objetoSeleccionado.Text;
+            tmp.Tipo = objetoSeleccionado.SubItems[2].Text;
+            tmp.Talla = objetoSeleccionado.SubItems[3].Text;
+            tmp.Genero = objetoSeleccionado.SubItems[4].Text;
+
+            binding.Add(tmp);
+        }
+        private void BtnDespachar_Click(object sender, EventArgs e)
+        {
+            List<int> suministroIDs = new List<int>();
+            List<int> cantidadesSuministro = new List<int>();
+            foreach (Suministro item in binding.ToList())
+            {
+                int id = int.Parse(item.Id);
+                int cant = item.Cantidad;
+
+                suministroIDs.Add(id);
+                cantidadesSuministro.Add(cant);
+            }
+            //JORGE
+            //ejecutar el procedimiento almacenado de despachar
+            //try
+            //{
+            //    using (MySqlConnection con = new MySqlConnection(stringConexion))
+            //    {
+            //        var stm = "EXECUTE procedure";
+            //        MySqlCommand cmd = new MySqlCommand(stm, con);
+            //        cmd.ExecuteNonQuery();
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
     }
 }
