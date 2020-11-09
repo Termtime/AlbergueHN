@@ -281,7 +281,7 @@
             // 
             this.txtDireccion.Location = new System.Drawing.Point(202, 362);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(298, 26);
+            this.txtDireccion.Size = new System.Drawing.Size(533, 26);
             this.txtDireccion.TabIndex = 7;
             // 
             // dialogIngresarPersona
@@ -289,6 +289,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 532);
+            this.ControlBox = false;
             this.Controls.Add(this.txtFamiliares);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboMunicipio);

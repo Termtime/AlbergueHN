@@ -85,7 +85,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage2.Size = new System.Drawing.Size(1886, 1085);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Articulos";
+            this.tabPage2.Text = "Suministros";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.SizeChanged += new System.EventHandler(this.TabPage2_SizeChanged);
             // 
@@ -239,9 +239,9 @@
             this.label8.Location = new System.Drawing.Point(784, 0);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(313, 82);
+            this.label8.Size = new System.Drawing.Size(413, 82);
             this.label8.TabIndex = 12;
-            this.label8.Text = "Articulos";
+            this.label8.Text = "Suministros";
             // 
             // tabPage1
             // 

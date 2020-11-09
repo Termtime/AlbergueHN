@@ -163,6 +163,7 @@ namespace AlbergueHN.Source.Forms
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+            
             dialogIngresarPersona p = new dialogIngresarPersona();
             p.ShowDialog();
             String sql = "";

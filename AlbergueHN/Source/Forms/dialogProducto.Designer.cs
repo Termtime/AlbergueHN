@@ -70,16 +70,17 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(36, 125);
+            this.label5.Location = new System.Drawing.Point(55, 125);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 20);
             this.label5.TabIndex = 49;
             this.label5.Text = "Cantidad:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // numericCantidad
             // 
-            this.numericCantidad.Location = new System.Drawing.Point(123, 122);
+            this.numericCantidad.Location = new System.Drawing.Point(149, 123);
             this.numericCantidad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numericCantidad.Name = "numericCantidad";
             this.numericCantidad.Size = new System.Drawing.Size(180, 26);
@@ -96,7 +97,7 @@
             "Bebida",
             "Bioseguridad",
             "Otros"});
-            this.tipoArticulo.Location = new System.Drawing.Point(122, 29);
+            this.tipoArticulo.Location = new System.Drawing.Point(149, 27);
             this.tipoArticulo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tipoArticulo.Name = "tipoArticulo";
             this.tipoArticulo.Size = new System.Drawing.Size(180, 28);
@@ -105,43 +106,46 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(66, 35);
+            this.label4.Location = new System.Drawing.Point(89, 35);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 20);
             this.label4.TabIndex = 45;
             this.label4.Text = "Tipo:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(46, 77);
+            this.label2.Location = new System.Drawing.Point(36, 77);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 20);
+            this.label2.Size = new System.Drawing.Size(96, 20);
             this.label2.TabIndex = 44;
-            this.label2.Text = "Articulo:";
+            this.label2.Text = "Descripción:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 175);
+            this.label1.Location = new System.Drawing.Point(86, 173);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 20);
             this.label1.TabIndex = 52;
             this.label1.Text = "Talla:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtTalla
             // 
-            this.txtTalla.Location = new System.Drawing.Point(122, 172);
+            this.txtTalla.Location = new System.Drawing.Point(148, 173);
             this.txtTalla.Name = "txtTalla";
             this.txtTalla.Size = new System.Drawing.Size(100, 26);
             this.txtTalla.TabIndex = 3;
             // 
             // txtArticulo
             // 
-            this.txtArticulo.Location = new System.Drawing.Point(118, 74);
+            this.txtArticulo.Location = new System.Drawing.Point(149, 74);
             this.txtArticulo.Name = "txtArticulo";
             this.txtArticulo.Size = new System.Drawing.Size(532, 26);
             this.txtArticulo.TabIndex = 1;
@@ -149,17 +153,18 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 225);
+            this.label3.Location = new System.Drawing.Point(65, 225);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 20);
             this.label3.TabIndex = 55;
             this.label3.Text = "Genero:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // comboGen
             // 
             this.comboGen.FormattingEnabled = true;
-            this.comboGen.Location = new System.Drawing.Point(122, 222);
+            this.comboGen.Location = new System.Drawing.Point(148, 223);
             this.comboGen.Name = "comboGen";
             this.comboGen.Size = new System.Drawing.Size(121, 28);
             this.comboGen.TabIndex = 4;
@@ -169,6 +174,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 352);
+            this.ControlBox = false;
             this.Controls.Add(this.comboGen);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtArticulo);
@@ -183,7 +189,7 @@
             this.Controls.Add(this.label2);
             this.Name = "dialogProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "dialogProducto";
+            this.Text = "Suministros";
             this.Load += new System.EventHandler(this.dialogProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericCantidad)).EndInit();
             this.ResumeLayout(false);

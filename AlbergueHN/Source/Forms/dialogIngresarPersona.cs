@@ -21,6 +21,39 @@ namespace AlbergueHN.Source.Forms
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (txtNombres.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("No ha llenado el campo de Nombres.", "Validación");
+                txtNombres.Focus();
+                return;
+            }
+            if (txtApellidos.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("No ha llenado el campo de Apellidos.", "Validación");
+                txtApellidos.Focus();
+                return;
+            }
+            if (txtCuenta.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("No ha llenado el campo de No de Cuenta.", "Validación");
+                txtCuenta.Focus();
+                return;
+            }
+            if (txtDireccion.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("No ha llenado el campo de Dirección.", "Validación");
+                txtDireccion.Focus();
+                return;
+            }
+            if (txtId.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("No ha llenado el campo de Identidad.", "Validación");
+                txtId.Focus();
+                return;
+            }
+
+
+
             this.Close();
         }
 
