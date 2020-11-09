@@ -139,6 +139,7 @@
             // txtTalla
             // 
             this.txtTalla.Location = new System.Drawing.Point(148, 173);
+            this.txtTalla.MaxLength = 10;
             this.txtTalla.Name = "txtTalla";
             this.txtTalla.Size = new System.Drawing.Size(100, 26);
             this.txtTalla.TabIndex = 3;
@@ -146,6 +147,7 @@
             // txtArticulo
             // 
             this.txtArticulo.Location = new System.Drawing.Point(149, 74);
+            this.txtArticulo.MaxLength = 50;
             this.txtArticulo.Name = "txtArticulo";
             this.txtArticulo.Size = new System.Drawing.Size(532, 26);
             this.txtArticulo.TabIndex = 1;

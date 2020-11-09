@@ -59,6 +59,7 @@
             this.txtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNombres.Location = new System.Drawing.Point(202, 31);
             this.txtNombres.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNombres.MaxLength = 30;
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(205, 26);
             this.txtNombres.TabIndex = 0;
@@ -139,6 +140,7 @@
             // 
             this.txtId.Location = new System.Drawing.Point(202, 80);
             this.txtId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtId.MaxLength = 13;
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(330, 26);
             this.txtId.TabIndex = 2;
@@ -157,6 +159,7 @@
             // 
             this.txtCuenta.Location = new System.Drawing.Point(202, 126);
             this.txtCuenta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCuenta.MaxLength = 15;
             this.txtCuenta.Name = "txtCuenta";
             this.txtCuenta.Size = new System.Drawing.Size(298, 26);
             this.txtCuenta.TabIndex = 3;
@@ -186,6 +189,7 @@
             // 
             this.txtTelefono.Location = new System.Drawing.Point(202, 175);
             this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTelefono.MaxLength = 10;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(298, 26);
             this.txtTelefono.TabIndex = 4;
@@ -217,6 +221,7 @@
             this.txtApellidos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtApellidos.Location = new System.Drawing.Point(530, 34);
             this.txtApellidos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtApellidos.MaxLength = 30;
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(205, 26);
             this.txtApellidos.TabIndex = 1;
