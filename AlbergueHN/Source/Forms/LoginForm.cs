@@ -50,7 +50,7 @@ namespace AlbergueHN.Source.Forms
                 {
                     Form1 pantallaPrincipal = new Form1();
                     pantallaPrincipal.Show();
-                    this.Close();
+                    this.Visible = false;
                 }
             }
         }
@@ -86,10 +86,7 @@ namespace AlbergueHN.Source.Forms
 
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if(e.CloseReason != CloseReason.UserClosing)
-            {
                 Application.Exit();
-            }
         }
 
         private void Button1_Click(object sender, EventArgs e)

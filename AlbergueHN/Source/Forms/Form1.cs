@@ -248,5 +248,11 @@ namespace AlbergueHN
         {
             filtrarSuministros();
         }
+
+        private void IngresarSuministrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dialogIngresarProducto form = new dialogIngresarProducto();
+            form.ShowDialog();
+        }
     }
 }

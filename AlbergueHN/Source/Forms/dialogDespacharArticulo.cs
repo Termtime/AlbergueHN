@@ -35,7 +35,6 @@ namespace AlbergueHN.Source.Forms
 
         private void llenarDatos()
         {
-            Console.WriteLine("LLENANDO DATOS");
 
             using (MySqlConnection con = new MySqlConnection(stringConexion))
             {
@@ -46,7 +45,6 @@ namespace AlbergueHN.Source.Forms
                 da.Fill(dtSuministro);
                 foreach(DataRow r in dtSuministro.Rows)
                 {
-                    Console.WriteLine("item");
                     string[] row = { (string)r["Descripcion"], ((int)r["Existencia"]).ToString(), (string)r["Tipo"], (r["Talla"] == System.DBNull.Value? " " : (string)r["Talla"]), (r["Genero"] == System.DBNull.Value? " " : (string)r["Genero"]), ((int)r["SuministroID"]).ToString() };
                     ListViewItem tmp2 = new ListViewItem();
                     tmp2.Text = row[0];
@@ -118,10 +116,6 @@ namespace AlbergueHN.Source.Forms
                 
                 string filtroTalla = (string)comboTalla.SelectedItem.ToString();
                 if (filtroTalla == "Todas") cualquierTalla = true;
-                Console.WriteLine(filtroTalla);
-                Console.WriteLine(genero == ""? "cualquierGenero: " + cualquierGenero : genero);
-                Console.WriteLine(productos[0].SubItems[4].Text);
-                Console.WriteLine(productos[0].SubItems[3].Text);
                 foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text == genero || cualquierGenero) && (item.SubItems[3].Text.Contains(filtroTalla) || cualquierTalla)))
                 {
                     
@@ -136,8 +130,6 @@ namespace AlbergueHN.Source.Forms
                 }
             }
         }
-
-
 
         private void ComboTipo_SelectedIndexChanged(object sender, EventArgs e)
         {

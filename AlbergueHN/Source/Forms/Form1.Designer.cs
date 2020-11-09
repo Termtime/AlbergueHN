@@ -387,6 +387,7 @@
             this.ingresarSuministrosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
             this.ingresarSuministrosToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.ingresarSuministrosToolStripMenuItem.Text = "Ingresar Suministros";
+            this.ingresarSuministrosToolStripMenuItem.Click += new System.EventHandler(this.IngresarSuministrosToolStripMenuItem_Click);
             // 
             // ingresarPersonaToolStripMenuItem
             // 
