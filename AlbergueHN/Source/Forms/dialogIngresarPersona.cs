@@ -36,7 +36,7 @@ namespace AlbergueHN.Source.Forms
 
         public void cargarMunicipios()
         {
-            string sql = "select MunicipioID, Nombre from municipio order by Nombre DESC";
+            string sql = "select MunicipioID, Nombre from municipio order by Nombre ASC";
             try
             {
                 using (MySqlConnection con = new MySqlConnection(StringConexion))

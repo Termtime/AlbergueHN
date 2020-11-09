@@ -23,7 +23,7 @@ namespace AlbergueHN.Source.Forms
         private void BtnDarDeAlta_Click(object sender, EventArgs e)
         {
             String id = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString();
-            String sql = "call darAlta(@1)";
+            String sql = "call spDarAlta(@1)";
             try
             {
                 using (MySqlConnection con = new MySqlConnection(StringConexion))
@@ -80,7 +80,9 @@ namespace AlbergueHN.Source.Forms
             genero = tablaPersonas.CurrentRow.Cells["Genero"].Value.ToString();
             fecha = tablaPersonas.CurrentRow.Cells["FechaNacimiento"].Value.ToString();
             String identidadOriginal = p.txtId.Text.Trim();
-            //p.fechaNacimiento. = fecha;
+           
+            p.fechaNacimiento.Value = DateTime.Parse(fecha);
+            p.comboMunicipio.SelectedItem = tablaPersonas.CurrentRow.Cells["Municipio"].Value.ToString();
             if (genero == "M")
             {
                 p.radioMasculino.Checked = true;
@@ -96,7 +98,7 @@ namespace AlbergueHN.Source.Forms
 
             if(!p.IsDisposed) //Incompleto
             {
-                String sql = "call update_Persona(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, "+identidadOriginal+")";
+                String sql = "call spUpdatePersona(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, "+identidadOriginal+")";
                 string gen = "";
                 if (p.radioMasculino.Checked == true && p.radioFemenino.Checked == false)
                     gen = "M";
@@ -163,9 +165,15 @@ namespace AlbergueHN.Source.Forms
         {
             dialogIngresarPersona p = new dialogIngresarPersona();
             p.ShowDialog();
-            if (!p.IsDisposed) //Incompleto
+            String sql = "";
+            if (!p.IsDisposed)
             {
-                String sql = "CALL ingresarPersona(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10)";
+                if (!p.checkFamiliar.Checked)
+                {
+                    sql = "CALL spIngresarPersona(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10)";
+                }
+                else
+                    sql = "CALL spIngresarFamiliar(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10)";
                 string gen = "";
                 if (p.radioMasculino.Checked == true && p.radioFemenino.Checked == false)
                     gen = "M";
