@@ -1,6 +1,6 @@
 ﻿namespace AlbergueHN.Source.Forms
 {
-    partial class dialogIngresarProducto
+    partial class dialogIngresarSuministro
     {
         /// <summary>
         /// Required designer variable.
@@ -48,6 +48,8 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tablaIngreso = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtDonante = new System.Windows.Forms.TextBox();
             this.panelControlRopa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaIngreso)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +62,7 @@
             this.panelControlRopa.Controls.Add(this.radioCualquiera);
             this.panelControlRopa.Controls.Add(this.radioFemenino);
             this.panelControlRopa.Controls.Add(this.radioMasculino);
-            this.panelControlRopa.Location = new System.Drawing.Point(319, 126);
+            this.panelControlRopa.Location = new System.Drawing.Point(329, 126);
             this.panelControlRopa.Name = "panelControlRopa";
             this.panelControlRopa.Size = new System.Drawing.Size(200, 56);
             this.panelControlRopa.TabIndex = 59;
@@ -70,10 +72,12 @@
             // 
             this.comboTalla.FormattingEnabled = true;
             this.comboTalla.Location = new System.Drawing.Point(67, 8);
+            this.comboTalla.MaxLength = 5;
             this.comboTalla.Name = "comboTalla";
             this.comboTalla.Size = new System.Drawing.Size(94, 21);
             this.comboTalla.TabIndex = 43;
             this.comboTalla.SelectedIndexChanged += new System.EventHandler(this.ComboTalla_SelectedIndexChanged);
+            this.comboTalla.TextChanged += new System.EventHandler(this.ComboTalla_TextChanged);
             // 
             // label3
             // 
@@ -137,6 +141,7 @@
             this.btnLimpiar.TabIndex = 58;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
             // 
             // btnIngresar
             // 
@@ -151,16 +156,16 @@
             // 
             // txtFiltro
             // 
-            this.txtFiltro.Location = new System.Drawing.Point(52, 159);
+            this.txtFiltro.Location = new System.Drawing.Point(69, 156);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(261, 20);
+            this.txtFiltro.Size = new System.Drawing.Size(232, 20);
             this.txtFiltro.TabIndex = 56;
             this.txtFiltro.TextChanged += new System.EventHandler(this.TxtFiltro_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 162);
+            this.label1.Location = new System.Drawing.Point(12, 160);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 55;
@@ -168,8 +173,9 @@
             // 
             // comboTipo
             // 
+            this.comboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipo.FormattingEnabled = true;
-            this.comboTipo.Location = new System.Drawing.Point(52, 127);
+            this.comboTipo.Location = new System.Drawing.Point(69, 126);
             this.comboTipo.Name = "comboTipo";
             this.comboTipo.Size = new System.Drawing.Size(121, 21);
             this.comboTipo.TabIndex = 54;
@@ -178,7 +184,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 130);
+            this.label4.Location = new System.Drawing.Point(12, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 53;
@@ -244,11 +250,30 @@
             this.tablaIngreso.TabIndex = 51;
             this.tablaIngreso.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.TablaIngreso_CellValidating);
             // 
-            // dialogIngresarProducto
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 60;
+            this.label2.Text = "Donante:";
+            // 
+            // txtDonante
+            // 
+            this.txtDonante.Location = new System.Drawing.Point(69, 100);
+            this.txtDonante.MaxLength = 50;
+            this.txtDonante.Name = "txtDonante";
+            this.txtDonante.Size = new System.Drawing.Size(232, 20);
+            this.txtDonante.TabIndex = 0;
+            // 
+            // dialogIngresarSuministro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1276, 721);
+            this.Controls.Add(this.txtDonante);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.panelControlRopa);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnIngresar);
@@ -258,7 +283,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.listaProductos);
             this.Controls.Add(this.tablaIngreso);
-            this.Name = "dialogIngresarProducto";
+            this.Name = "dialogIngresarSuministro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingresar Producto";
             this.Load += new System.EventHandler(this.dialogIngresarProducto_Load);
@@ -293,5 +318,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.DataGridView tablaIngreso;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtDonante;
     }
 }

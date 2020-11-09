@@ -1,6 +1,6 @@
 ﻿namespace AlbergueHN.Source.Forms
 {
-    partial class dialogDespacharArticulo
+    partial class dialogDespacharSuministro
     {
         /// <summary>
         /// Required designer variable.
@@ -184,6 +184,7 @@
             this.btnLimpiar.TabIndex = 45;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
             // 
             // radioMasculino
             // 
@@ -239,13 +240,13 @@
             this.panelControlRopa.Controls.Add(this.radioCualquiera);
             this.panelControlRopa.Controls.Add(this.radioFemenino);
             this.panelControlRopa.Controls.Add(this.radioMasculino);
-            this.panelControlRopa.Location = new System.Drawing.Point(326, 140);
+            this.panelControlRopa.Location = new System.Drawing.Point(336, 140);
             this.panelControlRopa.Name = "panelControlRopa";
             this.panelControlRopa.Size = new System.Drawing.Size(200, 56);
             this.panelControlRopa.TabIndex = 50;
             this.panelControlRopa.Visible = false;
             // 
-            // dialogDespacharArticulo
+            // dialogDespacharSuministro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -259,7 +260,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.listaProductos);
             this.Controls.Add(this.tablaDespacho);
-            this.Name = "dialogDespacharArticulo";
+            this.Name = "dialogDespacharSuministro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Despachar articulos";
             this.Load += new System.EventHandler(this.DialogDespacharProductos_Load);
