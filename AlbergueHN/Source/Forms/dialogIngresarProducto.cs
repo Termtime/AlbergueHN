@@ -16,10 +16,10 @@ namespace AlbergueHN.Source.Forms
     {
         string[] tallasRopa = { "Todas", "XXS", "XS", "S", "M", "L", "XL", "XL", "XXL" };
         string stringConexion = (string)Properties.Settings.Default["stringConexion"];
+        BindingList<Suministro> binding;
         List<Suministro> suministrosIngresados = new List<Suministro>();
         List<ListViewItem> productos = new List<ListViewItem>();
-        BindingSource source = new BindingSource();
-        
+
         public dialogIngresarProducto()
         {
             InitializeComponent();
@@ -28,8 +28,14 @@ namespace AlbergueHN.Source.Forms
         private void dialogIngresarProducto_Load(object sender, EventArgs e)
         {
             llenarDatos();
-            source.DataSource = suministrosIngresados;
-            tablaIngreso.DataSource = source;
+            binding = new BindingList<Suministro>(suministrosIngresados);
+            tablaIngreso.DataSource = binding;
+            //hacer solo la columna de cantidad editable
+            tablaIngreso.Columns[0].ReadOnly = true;
+            tablaIngreso.Columns[1].ReadOnly = true;
+            tablaIngreso.Columns[3].ReadOnly = true;
+            tablaIngreso.Columns[4].ReadOnly = true;
+            tablaIngreso.Columns[5].ReadOnly = true;
             foreach (string item in tallasRopa)
             {
                 comboTalla.Items.Add(item);
@@ -42,7 +48,7 @@ namespace AlbergueHN.Source.Forms
             using (MySqlConnection con = new MySqlConnection(stringConexion))
             {
                 DataTable dtSuministro = new DataTable();
-                var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM unahvs_al.suministro a inner join unahvs_al.tiposuministro b on a.tipoID = b.tipoID;";
+                var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM suministro a inner join tiposuministro b on a.tipoID = b.tipoID;";
                 MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                 con.Open();
                 da.Fill(dtSuministro);
@@ -174,6 +180,7 @@ namespace AlbergueHN.Source.Forms
 
         private void ListaProductos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            
             ListViewItem objetoSeleccionado = listaProductos.SelectedItems[0];
             if(objetoSeleccionado == null)
             {
@@ -182,14 +189,62 @@ namespace AlbergueHN.Source.Forms
             }
 
             Console.WriteLine("Doble click");
+            if (binding.ToList().Where(suministro => suministro.Id == objetoSeleccionado.Tag.ToString()).Count() != 0) return;
             Suministro tmp = new Suministro();
             tmp.Id = objetoSeleccionado.Tag.ToString();
             tmp.Descripcion = objetoSeleccionado.Text;
+            tmp.Tipo = objetoSeleccionado.SubItems[2].Text;
             tmp.Talla = objetoSeleccionado.SubItems[3].Text;
             tmp.Genero = objetoSeleccionado.SubItems[4].Text;
+            Console.WriteLine(tmp.Id);
+            Console.WriteLine(tmp.Descripcion);
+            Console.WriteLine(tmp.Talla);
+            Console.WriteLine(tmp.Genero);
 
-            suministrosIngresados.Add(tmp);
-            tablaIngreso.Refresh();
+            binding.Add(tmp);
+            Console.WriteLine(suministrosIngresados.Count);
+            
+        }
+
+        private void TablaIngreso_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex == tablaIngreso.Columns["Cantidad"].Index)
+            {
+                tablaIngreso.Rows[e.RowIndex].ErrorText = "";
+                int newInteger;
+
+                if (tablaIngreso.Rows[e.RowIndex].IsNewRow) { return; }
+                if (!int.TryParse(e.FormattedValue.ToString(),
+                    out newInteger) || newInteger <= 0)
+                {
+                    e.Cancel = true;
+                    tablaIngreso.Rows[e.RowIndex].ErrorText = "El valor debe ser un entero positivo distinto de 0.";
+                }
+            }
+        }
+
+        private void BtnIngresar_Click(object sender, EventArgs e)
+        {
+            List<int> suministroIDs = new List<int>();
+            List<int> cantidadesSuministro = new List<int>();
+            foreach(Suministro item in binding.ToList())
+            {
+                int id = int.Parse(item.Id);
+                int cant = item.Cantidad;
+
+                suministroIDs.Add(id);
+                cantidadesSuministro.Add(cant);
+            }
+
+            //JORGE
+            //ejecutar el stored procedure
+            //using (MySqlConnection con = new MySqlConnection(stringConexion))
+            //{
+                
+            //    var stm = "";
+            //    MySqlCommand cmd = new MySqlCommand(stm, con);
+            //    cmd.ExecuteNonQuery();
+            //}
         }
     }
 }

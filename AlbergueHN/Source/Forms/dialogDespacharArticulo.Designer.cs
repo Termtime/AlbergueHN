@@ -30,6 +30,11 @@
         {
             this.tablaDespacho = new System.Windows.Forms.DataGridView();
             this.listaProductos = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.comboTipo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,11 +43,6 @@
             this.comboTalla = new System.Windows.Forms.ComboBox();
             this.btnDespachar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.radioMasculino = new System.Windows.Forms.RadioButton();
             this.radioFemenino = new System.Windows.Forms.RadioButton();
             this.radioCualquiera = new System.Windows.Forms.RadioButton();
@@ -76,6 +76,31 @@
             this.listaProductos.TabIndex = 2;
             this.listaProductos.UseCompatibleStateImageBehavior = false;
             this.listaProductos.View = System.Windows.Forms.View.Details;
+            this.listaProductos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListaProductos_MouseDoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Descripcion";
+            this.columnHeader1.Width = 257;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Existencia";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Tipo";
+            this.columnHeader3.Width = 120;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Talla";
+            this.columnHeader4.Width = 36;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Genero";
+            this.columnHeader5.Width = 47;
             // 
             // comboTipo
             // 
@@ -138,6 +163,7 @@
             this.btnDespachar.TabIndex = 44;
             this.btnDespachar.Text = "Despachar";
             this.btnDespachar.UseVisualStyleBackColor = true;
+            this.btnDespachar.Click += new System.EventHandler(this.BtnDespachar_Click);
             // 
             // btnLimpiar
             // 
@@ -147,30 +173,6 @@
             this.btnLimpiar.TabIndex = 45;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Descripcion";
-            this.columnHeader1.Width = 257;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Existencia";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Tipo";
-            this.columnHeader3.Width = 120;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Talla";
-            this.columnHeader4.Width = 36;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Genero";
-            this.columnHeader5.Width = 47;
             // 
             // radioMasculino
             // 
