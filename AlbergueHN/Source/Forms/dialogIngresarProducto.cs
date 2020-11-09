@@ -17,7 +17,7 @@ namespace AlbergueHN.Source.Forms
         {
             InitializeComponent();
         }
-        String StringConexion="";
+        string StringConexion = (string)Properties.Settings.Default["stringConexion"];
         private void dialogIngresarProducto_Load(object sender, EventArgs e)
         {
             LlenarArticulos();
@@ -25,7 +25,7 @@ namespace AlbergueHN.Source.Forms
         }
         public void LlenarArticulos()
         {
-            string sql = "select ArticuloID, Descripcion from articulo order by Descripcion ASC";
+            string sql = "select ArticuloID, Descripcion from articulo order by Descripcion DESC";
             try
             {
                 using (MySqlConnection con = new MySqlConnection(StringConexion))

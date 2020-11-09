@@ -33,6 +33,7 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnDarDeAlta = new System.Windows.Forms.Button();
             this.tablaPersonas = new System.Windows.Forms.DataGridView();
+            this.btnIngresar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tablaPersonas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(1242, 165);
+            this.btnModificar.Location = new System.Drawing.Point(1242, 329);
             this.btnModificar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(112, 154);
@@ -89,11 +90,23 @@
             this.tablaPersonas.Size = new System.Drawing.Size(1214, 923);
             this.tablaPersonas.TabIndex = 6;
             // 
+            // btnIngresar
+            // 
+            this.btnIngresar.Location = new System.Drawing.Point(1242, 165);
+            this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnIngresar.Name = "btnIngresar";
+            this.btnIngresar.Size = new System.Drawing.Size(112, 154);
+            this.btnIngresar.TabIndex = 12;
+            this.btnIngresar.Text = "Ingresar Persona";
+            this.btnIngresar.UseVisualStyleBackColor = true;
+            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
+            // 
             // MantPersonas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1365, 1097);
+            this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnModificar);
@@ -117,5 +130,6 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnDarDeAlta;
         private System.Windows.Forms.DataGridView tablaPersonas;
+        private System.Windows.Forms.Button btnIngresar;
     }
 }
