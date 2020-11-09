@@ -116,6 +116,16 @@ namespace AlbergueHN
             }
             Console.WriteLine("PREVIO FILTRO");
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.F5))
+            {
+                llenarGridArticulos();
+                llenarGridPersonas();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
         {

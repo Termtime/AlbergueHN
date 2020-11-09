@@ -97,6 +97,15 @@ namespace AlbergueHN.Source.Forms
 
             }
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.F5))
+            {
+                cargarProductos();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
 
         private void btnModificarProducto_Click(object sender, EventArgs e)
         {

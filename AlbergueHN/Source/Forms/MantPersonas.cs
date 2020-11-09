@@ -160,7 +160,15 @@ namespace AlbergueHN.Source.Forms
 
             }
         }
-
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.F5))
+            {
+                cargarPersonas();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             

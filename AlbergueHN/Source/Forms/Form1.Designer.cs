@@ -442,7 +442,7 @@
             this.administrarPersonaToolStripMenuItem.Name = "administrarPersonaToolStripMenuItem";
             this.administrarPersonaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.administrarPersonaToolStripMenuItem.Size = new System.Drawing.Size(357, 34);
-            this.administrarPersonaToolStripMenuItem.Text = "Administrar personas";
+            this.administrarPersonaToolStripMenuItem.Text = "Administrar Personas";
             this.administrarPersonaToolStripMenuItem.Click += new System.EventHandler(this.ingresarPersonaToolStripMenuItem_Click);
             // 
             // administrarSuministrosToolStripMenuItem
