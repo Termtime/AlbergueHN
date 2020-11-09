@@ -22,16 +22,9 @@ namespace AlbergueHN
         public Form1()
         {
             InitializeComponent();
-            llenarComboFiltroTipoArticulo();
-            foreach (string item in tallasRopa)
-            {
-                comboTalla.Items.Add(item);
-            }
-
-            comboTalla.SelectedIndex = 0;
+            
         }
-        string StringConexion = (string)Properties.Settings.Default["stringConexion"];
-        //String stringConexion = "Server=127.0.0.1;Database=unahvs_-al;Uid=root;Pwd=1234";
+        string stringConexion = (string)Properties.Settings.Default["stringConexion"];
         private void TabPage1_Click(object sender, EventArgs e)
         {
 
@@ -41,29 +34,37 @@ namespace AlbergueHN
         {
             llenarGridPersonas();
             llenarGridArticulos();
-            this.Form1_SizeChanged(sender, e);
+            llenarComboFiltroTipoArticulo();
+            foreach (string item in tallasRopa)
+            {
+                comboTalla.Items.Add(item);
+            }
+
+            comboTalla.SelectedIndex = 0;
+            resizearTablaPersonas();
+            resizearTablaSuministros();
         }
 
         public void llenarGridPersonas()
         {
             DataTable dtPersonas = new DataTable();
 
-            var stm = "select PersonaID, Cuenta, Nombres, Apellidos, DateDiff(fechaNacimiento, CURDATE()) as Edad, Telefono, M.Nombre as Municipio from Persona p inner join municipio m on p.municipio = m.municipioid where fechasalida is null";
+            var stm = "select PersonaID, Cuenta, Nombres, Apellidos, DateDiff(fechaNacimiento, CURDATE()) as Edad, Telefono, m.Nombre as Municipio from persona p inner join municipio m on p.municipio = m.municipioid where fechasalida is null";
 
 
-            using (MySqlConnection con = new MySqlConnection(StringConexion))
+            using (MySqlConnection con = new MySqlConnection(stringConexion))
             {
                 MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                 con.Open();
                 da.Fill(dtPersonas);
-                tabla.DataSource = dtPersonas;
+                tablaPersonas.DataSource = dtPersonas;
             }
 
         }
 
         public void llenarComboFiltroTipoArticulo()
         {
-            using (MySqlConnection con = new MySqlConnection(StringConexion))
+            using (MySqlConnection con = new MySqlConnection(stringConexion))
             {
                 DataSet dsTipo = new DataSet();
                 dsTipo.Tables.Add(new DataTable("TipoDefault"));
@@ -86,14 +87,14 @@ namespace AlbergueHN
 
             var stm = "select suministroID, a.Descripcion, tp.Descripcion as Tipo, Talla, Genero, Existencia from suministro a inner join tiposuministro tp on a.tipoID = tp.tipoID";
 
-            using (MySqlConnection con = new MySqlConnection(StringConexion))
+            using (MySqlConnection con = new MySqlConnection(stringConexion))
             {
                 MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                 con.Open();
                 da.Fill(dtArticulos);
-                tablaProductos.DataSource = dtArticulos;
+                tablaSuministros.DataSource = dtArticulos;
             }
-            foreach(DataGridViewRow item in tablaProductos.Rows)
+            foreach(DataGridViewRow item in tablaSuministros.Rows)
             {
                 List<string> fila = new List<string>();
                 fila.Add(item.Cells[0].Value.ToString());
@@ -110,29 +111,7 @@ namespace AlbergueHN
 
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
-            try
-            {
-                tabla.Columns[0].Width = tabla.Width * 10 / 100;
-                tabla.Columns[1].Width = tabla.Width * 10 / 100;
-                tabla.Columns[2].Width = tabla.Width * 20 / 100;
-                tabla.Columns[3].Width = tabla.Width * 20 / 100;
-                tabla.Columns[4].Width = tabla.Width * 10 / 100;
-                tabla.Columns[5].Width = tabla.Width * 10 / 100;
-                tabla.Columns[6].Width = tabla.Width * 20 / 100;
-
-
-                tablaProductos.Columns[0].Width = tablaProductos.Width * 10 / 100;
-                tablaProductos.Columns[1].Width = tablaProductos.Width * 35 / 100;
-                tablaProductos.Columns[2].Width = tablaProductos.Width * 25 / 100;
-                tablaProductos.Columns[3].Width = tablaProductos.Width * 10 / 100;
-                tablaProductos.Columns[4].Width = tablaProductos.Width * 10 / 100;
-                tablaProductos.Columns[5].Width = tablaProductos.Width * 10 / 100;
-
-            }
-            catch (Exception ex)
-            {
-
-            }
+            
         }
 
         private void filtrarSuministros()
@@ -147,7 +126,7 @@ namespace AlbergueHN
             DataRowView row = (DataRowView)comboTipo.SelectedItem;
             string filtroTipo = (string)row.Row.ItemArray[1];
             string filtroTxt = txtFiltro.Text;
-            tablaProductos.Rows.Clear();
+            tablaSuministros.Rows.Clear();
             List<ListViewItem> productosFiltrados = new List<ListViewItem>();
             string genero = "";
             bool cualquierGenero = false;
@@ -184,14 +163,14 @@ namespace AlbergueHN
                 foreach (List<string> item in suministros.Where(item => item[2] == filtroTipo && item[1].ToLower().Contains(filtroTxt.ToLower()) && (item[4] == genero || cualquierGenero) && (item[3].Contains(filtroTalla) || cualquierTalla)))
                 {
 
-                    tablaProductos.Rows.Add(item);
+                    tablaSuministros.Rows.Add(item);
                 }
             }
             else if (filtroTipo == "Zapatos")
             {
                 foreach (List<string> item in suministros.Where(item => item[2] == filtroTipo && item[1].Contains(filtroTxt.ToLower()) && (item[4] == genero || cualquierGenero)))
                 {
-                    tablaProductos.Rows.Add(item);
+                    tablaSuministros.Rows.Add(item);
                 }
             }
         }
@@ -264,6 +243,44 @@ namespace AlbergueHN
         {
             MantProductos productos = new MantProductos();
             productos.Show();
+        }
+
+        private void TabPage1_SizeChanged(object sender, EventArgs e)
+        {
+            resizearTablaPersonas();
+        }
+
+        private void resizearTablaPersonas()
+        {
+            try
+            {
+                tablaPersonas.Columns[0].Width = (tablaPersonas.Width-2) * 10 / 100;
+                tablaPersonas.Columns[1].Width = (tablaPersonas.Width-2) * 10 / 100;
+                tablaPersonas.Columns[2].Width = (tablaPersonas.Width-2) * 20 / 100;
+                tablaPersonas.Columns[3].Width = (tablaPersonas.Width-2) * 20 / 100;
+                tablaPersonas.Columns[4].Width = (tablaPersonas.Width-2) * 10 / 100;
+                tablaPersonas.Columns[5].Width = (tablaPersonas.Width-2) * 10 / 100;
+                tablaPersonas.Columns[6].Width = (tablaPersonas.Width-2) * 20 / 100;
+            }                                                       
+            catch (Exception ex) { }
+        }
+
+        private void resizearTablaSuministros()
+        {
+            try
+            {
+                tablaSuministros.Columns[0].Width = (tablaSuministros.Width-1) * 10 / 100;
+                tablaSuministros.Columns[1].Width = (tablaSuministros.Width-1) * 35 / 100;
+                tablaSuministros.Columns[2].Width = (tablaSuministros.Width-1) * 25 / 100;
+                tablaSuministros.Columns[3].Width = (tablaSuministros.Width-1) * 10 / 100;
+                tablaSuministros.Columns[4].Width = (tablaSuministros.Width-1) * 10 / 100;
+                tablaSuministros.Columns[5].Width = (tablaSuministros.Width-1) * 10 / 100;
+            }
+            catch (Exception ex){}
+        }
+        private void TabPage2_SizeChanged(object sender, EventArgs e)
+        {
+            resizearTablaSuministros();
         }
     }
 }

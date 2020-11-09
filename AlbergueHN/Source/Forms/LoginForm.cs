@@ -23,6 +23,7 @@ namespace AlbergueHN.Source.Forms
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             string pass = txtPass.Text;
             string usuario = txtUsuario.Text;
             using (MySqlConnection con = new MySqlConnection(stringConexion))
@@ -30,19 +31,38 @@ namespace AlbergueHN.Source.Forms
                 try
                 {
                     con.Open();
-                    //simluacion de inicio de sesion
+                    //TODO: DESCOMENTAR CUANDO SE PASE A PRODUCCION
+                    //string query = "SELECT `verificar_login`(@userID, @pass)";
+                    //MySqlCommand cmd = new MySqlCommand();
+                    //cmd.CommandText = query;
+                    //cmd.Connection = con;
 
-                    //TODO: Llamar funcion de login y esperar resultado;
+                    //cmd.Parameters.AddWithValue("@userID", usuario);
+                    //cmd.Parameters.AddWithValue("@pass", pass);
 
-                    //devuelve el ID del usuario loggeado
-                    //TODO: Cambiar esto a codigo verdadero
+                    ////devuelve el ID del usuario loggeado
+                    //try
+                    //{
+                    //    string result = (string)cmd.ExecuteScalar();
+                    //    if (result != null)
+                    //    {
+                    //        UsuarioActual.ID = result;
+                    //        //UsuarioActual.usuario = "Usuario Prueba";
+                    //    }
+                    //}catch(Exception exx)
+                    //{
+                    //    MessageBox.Show("Credenciales invalidas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    con.Close();
+                    //    Cursor.Current = Cursors.Default;
+                    //}
                     UsuarioActual.ID = "test";
-                    UsuarioActual.usuario = "Usuario Prueba";
                 }
                 catch(Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    labelEstado.Text = "Conexión Fallida.";
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close();
+                    Cursor.Current = Cursors.Default;
                 }
 
                 //Si sigue aqui, el login fue correcto, ingresar al sistema
@@ -51,6 +71,8 @@ namespace AlbergueHN.Source.Forms
                     Form1 pantallaPrincipal = new Form1();
                     pantallaPrincipal.Show();
                     this.Visible = false;
+                    Cursor.Current = Cursors.Default;
+                    con.Close();
                 }
             }
         }
