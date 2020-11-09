@@ -118,6 +118,12 @@
     <Compile Include="Source\Forms\dialogConectarServidor.Designer.cs">
       <DependentUpon>dialogConectarServidor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Source\Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\Forms\MantPersonas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,7 +136,7 @@
     <Compile Include="Source\Forms\MantProductos.Designer.cs">
       <DependentUpon>MantProductos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Objetos\Suministro.cs" />
+    <Compile Include="Source\Objetos\UsuarioActual.cs" />
     <Compile Include="Source\Forms\dialogIngresarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     <None Include="packages.config" />
     <EmbeddedResource Include="Source\Forms\dialogConectarServidor.resx">
       <DependentUpon>dialogConectarServidor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\MantPersonas.resx">
       <DependentUpon>MantPersonas.cs</DependentUpon>
