@@ -23,6 +23,7 @@ namespace AlbergueHN.Source.Forms
         private void btnCrearProducto_Click(object sender, EventArgs e)
         {
             dialogProducto p = new dialogProducto();
+            p.ShowDialog();
             if (!p.IsDisposed) //Incompleto
             {
                 String sql = "CALL ingresar_Producto(@1, @2, @3, @4, @5)";             
@@ -36,7 +37,7 @@ namespace AlbergueHN.Source.Forms
                             cmd.Parameters.AddWithValue("@2", p.tipoArticulo.SelectedValue.ToString());
                             cmd.Parameters.AddWithValue("@3", p.txtArticulo.Text.Trim());                            
                             cmd.Parameters.AddWithValue("@4", p.txtTalla.Text.Trim());
-                            cmd.Parameters.AddWithValue("@5", p.comboGen.SelectedValue.ToString());
+                            cmd.Parameters.AddWithValue("@5", p.comboGen.SelectedItem.ToString());
 
                             cmd.Connection.Open();  //abrir conexion
                             cmd.ExecuteNonQuery();  //ejecutar comando
@@ -49,6 +50,7 @@ namespace AlbergueHN.Source.Forms
                     //ocurrio un error
                     MessageBox.Show(ex.Message);
                 }
+                cargarProductos();
             }
         }
 
@@ -61,7 +63,7 @@ namespace AlbergueHN.Source.Forms
         public void cargarProductos()
         {
             dt.Clear();
-            var stm = "select * from suministro";
+            var stm = "select SuministroID, s.Descripcion, t.Descripcion as Tipo, Talla, Genero, Existencia from suministro s inner join tiposuministro t on s.tipoid = t.tipoid";
             using (MySqlConnection con = new MySqlConnection(StringConexion))
             {
                 MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
@@ -75,10 +77,12 @@ namespace AlbergueHN.Source.Forms
         {
             try
             {
-                tablaProductos.Columns[0].Width = tablaProductos.Width * 15 / 100;
-                tablaProductos.Columns[1].Width = tablaProductos.Width * 35 / 100;
-                tablaProductos.Columns[2].Width = tablaProductos.Width * 25 / 100;
-                tablaProductos.Columns[3].Width = tablaProductos.Width * 25 / 100;
+                tablaProductos.Columns[0].Width = tablaProductos.Width * 16 / 100;
+                tablaProductos.Columns[1].Width = tablaProductos.Width * 20 / 100;
+                tablaProductos.Columns[2].Width = tablaProductos.Width * 16 / 100;
+                tablaProductos.Columns[3].Width = tablaProductos.Width * 16 / 100;
+                tablaProductos.Columns[4].Width = tablaProductos.Width * 16 / 100;
+                tablaProductos.Columns[5].Width = tablaProductos.Width * 16 / 100;
 
             }
             catch (Exception ex)
@@ -92,14 +96,14 @@ namespace AlbergueHN.Source.Forms
             dialogProducto p = new dialogProducto();
             p.tipoArticulo.SelectedItem = tablaProductos.CurrentRow.Cells["Tipo"].Value.ToString();
             p.txtArticulo.Text = tablaProductos.CurrentRow.Cells["Descripcion"].Value.ToString();
-            p.numericCantidad.Value = Int32.Parse(tablaProductos.CurrentRow.Cells["Cantidad"].Value.ToString());
+            p.numericCantidad.Value = Int32.Parse(tablaProductos.CurrentRow.Cells["Existencia"].Value.ToString());
             p.txtTalla.Text = tablaProductos.CurrentRow.Cells["Talla"].Value.ToString();
             p.comboGen.SelectedItem = tablaProductos.CurrentRow.Cells["Genero"].Value.ToString();
             int id = Int32.Parse(tablaProductos.CurrentRow.Cells["SuministroID"].Value.ToString());
-
+            p.ShowDialog();
             if (!p.IsDisposed) //Incompleto
             {
-                String sql = "CALL updateProducto(@1, @2, @3, @4, @5)";
+                String sql = "CALL updateProducto(@1, @2, @3, @4, @5, @6)";
                 try
                 {
                     using (MySqlConnection con = new MySqlConnection(StringConexion))
@@ -111,7 +115,7 @@ namespace AlbergueHN.Source.Forms
                             cmd.Parameters.AddWithValue("@3", p.tipoArticulo.SelectedValue.ToString());
                             cmd.Parameters.AddWithValue("@4", p.txtArticulo.Text.Trim());
                             cmd.Parameters.AddWithValue("@5", p.txtTalla.Text.Trim());
-                            cmd.Parameters.AddWithValue("@6", p.comboGen.SelectedValue.ToString());
+                            cmd.Parameters.AddWithValue("@6", p.comboGen.SelectedItem.ToString());
 
                             cmd.Connection.Open();  //abrir conexion
                             cmd.ExecuteNonQuery();  //ejecutar comando
@@ -124,6 +128,7 @@ namespace AlbergueHN.Source.Forms
                     //ocurrio un error
                     MessageBox.Show(ex.Message);
                 }
+                cargarProductos();
             }
         }
     }

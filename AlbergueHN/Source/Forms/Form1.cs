@@ -30,7 +30,7 @@ namespace AlbergueHN
 
             comboTalla.SelectedIndex = 0;
         }
-        string StringConexion = "Server=127.0.0.1;Database=unahvs_al;Uid=root;Pwd=1234";
+        string StringConexion = (string)Properties.Settings.Default["stringConexion"];
         //String stringConexion = "Server=127.0.0.1;Database=unahvs_-al;Uid=root;Pwd=1234";
         private void TabPage1_Click(object sender, EventArgs e)
         {
@@ -48,7 +48,7 @@ namespace AlbergueHN
         {
             DataTable dtPersonas = new DataTable();
 
-            var stm = "select PersonaID, Cuenta, Nombres, Apellidos, DateDiff(fechaNacimiento, CURDATE()) as Edad, Telefono, Municipio from Persona";
+            var stm = "select PersonaID, Cuenta, Nombres, Apellidos, DateDiff(fechaNacimiento, CURDATE()) as Edad, Telefono, M.Nombre as Municipio from Persona p inner join municipio m on p.municipio = m.municipioid where fechasalida is null";
 
 
             using (MySqlConnection con = new MySqlConnection(StringConexion))
@@ -118,8 +118,7 @@ namespace AlbergueHN
                 tabla.Columns[3].Width = tabla.Width * 20 / 100;
                 tabla.Columns[4].Width = tabla.Width * 10 / 100;
                 tabla.Columns[5].Width = tabla.Width * 10 / 100;
-                tabla.Columns[6].Width = tabla.Width * 10 / 100;
-                tabla.Columns[7].Width = tabla.Width * 10 / 100;
+                tabla.Columns[6].Width = tabla.Width * 20 / 100;
 
 
                 tablaProductos.Columns[0].Width = tablaProductos.Width * 10 / 100;
@@ -253,6 +252,18 @@ namespace AlbergueHN
         {
             dialogIngresarProducto form = new dialogIngresarProducto();
             form.ShowDialog();
+        }
+
+        private void ingresarPersonaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MantPersonas personas = new MantPersonas();
+            personas.Show();
+        }
+
+        private void administrarSuministrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MantProductos productos = new MantProductos();
+            productos.Show();
         }
     }
 }

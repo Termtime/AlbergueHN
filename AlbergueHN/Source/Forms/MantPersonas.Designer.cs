@@ -82,11 +82,16 @@
             // 
             // tablaPersonas
             // 
+            this.tablaPersonas.AllowUserToAddRows = false;
+            this.tablaPersonas.AllowUserToDeleteRows = false;
             this.tablaPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaPersonas.Location = new System.Drawing.Point(20, 165);
             this.tablaPersonas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tablaPersonas.Name = "tablaPersonas";
+            this.tablaPersonas.ReadOnly = true;
+            this.tablaPersonas.RowHeadersVisible = false;
             this.tablaPersonas.RowHeadersWidth = 62;
+            this.tablaPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaPersonas.Size = new System.Drawing.Size(1214, 923);
             this.tablaPersonas.TabIndex = 6;
             // 

@@ -53,6 +53,7 @@
             this.btnCancelar.TabIndex = 51;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAgregar
             // 
@@ -64,6 +65,7 @@
             this.btnAgregar.TabIndex = 50;
             this.btnAgregar.Text = "Ingresar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label5
             // 
@@ -85,6 +87,7 @@
             // 
             // tipoArticulo
             // 
+            this.tipoArticulo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoArticulo.FormattingEnabled = true;
             this.tipoArticulo.Items.AddRange(new object[] {
             "Ropa",

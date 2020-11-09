@@ -22,8 +22,8 @@ namespace AlbergueHN.Source.Forms
         string StringConexion = (string)Properties.Settings.Default["stringConexion"];
         private void BtnDarDeAlta_Click(object sender, EventArgs e)
         {
-            String id = tablaPersonas.CurrentRow.Cells["PersonaID"].Value.ToString();
-            String sql = "call dar_alta(@1)";
+            String id = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString();
+            String sql = "call darAlta(@1)";
             try
             {
                 using (MySqlConnection con = new MySqlConnection(StringConexion))
@@ -42,6 +42,7 @@ namespace AlbergueHN.Source.Forms
                 //ocurrio un error
                 MessageBox.Show(ex.Message);
             }
+            cargarPersonas();
         }
 
         private void MantPersonas_Load(object sender, EventArgs e)
@@ -53,8 +54,8 @@ namespace AlbergueHN.Source.Forms
         {
             dt.Clear();
             var stm = "select PersonaID as Identidad, Cuenta, Nombres, Apellidos, FechaNacimiento, Genero, CantidadFamiliares as 'Cantidad de Familiares', "
-                +"Telefono1, Telefono2, d.Nombre as 'Departamento', m.Nombre as 'Municipio', Direccion, FechaEntrada as 'Fecha de Entrada', FechaSalida as 'Fecha de Salida'"+
-                " from persona p inner join departamento d on p.Departamento = d.DepartamentoIDinner join municipio m on d.DepartamentoID = m.Departamento";
+                +"Telefono, m.Nombre as 'Municipio', Direccion, FechaEntrada as 'Fecha de Entrada', FechaSalida as 'Fecha de Salida'"+
+                " from persona p inner join municipio m on p.municipio = m.municipioid";
             using (MySqlConnection con = new MySqlConnection(StringConexion))
             {
                 MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
@@ -73,7 +74,9 @@ namespace AlbergueHN.Source.Forms
             p.txtApellidos.Text = tablaPersonas.CurrentRow.Cells["Apellidos"].Value.ToString();
             p.txtId.Text = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString();
             p.txtCuenta.Text = tablaPersonas.CurrentRow.Cells["Cuenta"].Value.ToString();
-            p.txtTelefono.Text = tablaPersonas.CurrentRow.Cells["Telefono1"].Value.ToString();
+            p.txtTelefono.Text = tablaPersonas.CurrentRow.Cells["Telefono"].Value.ToString();
+            p.txtDireccion.Text = tablaPersonas.CurrentRow.Cells["Direccion"].Value.ToString();
+            p.txtFamiliares.Text = tablaPersonas.CurrentRow.Cells["Cantidad de Familiares"].Value.ToString();
             genero = tablaPersonas.CurrentRow.Cells["Genero"].Value.ToString();
             fecha = tablaPersonas.CurrentRow.Cells["FechaNacimiento"].Value.ToString();
             String identidadOriginal = p.txtId.Text.Trim();
@@ -93,7 +96,7 @@ namespace AlbergueHN.Source.Forms
 
             if(!p.IsDisposed) //Incompleto
             {
-                String sql = "call updatePersona(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, "+identidadOriginal+")";
+                String sql = "call update_Persona(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, "+identidadOriginal+")";
                 string gen = "";
                 if (p.radioMasculino.Checked == true && p.radioFemenino.Checked == false)
                     gen = "M";
@@ -108,26 +111,26 @@ namespace AlbergueHN.Source.Forms
                             cmd.Parameters.AddWithValue("@1", p.txtId.Text.Trim());
                             cmd.Parameters.AddWithValue("@2", p.txtNombres.Text.Trim());
                             cmd.Parameters.AddWithValue("@3", p.txtApellidos.Text.Trim());
-                            cmd.Parameters.AddWithValue("@4", p.fechaNacimiento.Value.ToString("yyyy-mm-dd"));
+                            cmd.Parameters.AddWithValue("@4", p.fechaNacimiento.Value.ToString("yyyy-MM-dd"));
                             cmd.Parameters.AddWithValue("@5", gen);
                             cmd.Parameters.AddWithValue("@6", p.txtDireccion.Text.Trim());
                             cmd.Parameters.AddWithValue("@7", p.txtCuenta.Text.Trim());
                             cmd.Parameters.AddWithValue("@8", p.txtFamiliares.Text.Trim());
                             cmd.Parameters.AddWithValue("@9", p.txtTelefono.Text.Trim());
                             cmd.Parameters.AddWithValue("@10", p.comboMunicipio.SelectedValue.ToString());
-                            cmd.Parameters.AddWithValue("@11", p.comboDepto.SelectedValue.ToString());
 
                             cmd.Connection.Open();  //abrir conexion
                             cmd.ExecuteNonQuery();  //ejecutar comando
                         }
                     }
-
+                    cargarPersonas();
                 }
                 catch (Exception ex)
                 {
                     //ocurrio un error
                     MessageBox.Show(ex.Message);
                 }
+                
             }
         }
 
@@ -135,20 +138,19 @@ namespace AlbergueHN.Source.Forms
         {
             try
             {
-                tablaPersonas.Columns[0].Width = tablaPersonas.Width * 7 / 100;
-                tablaPersonas.Columns[1].Width = tablaPersonas.Width * 8 / 100;
-                tablaPersonas.Columns[2].Width = tablaPersonas.Width * 8 / 100;
-                tablaPersonas.Columns[3].Width = tablaPersonas.Width * 7 / 100;
-                tablaPersonas.Columns[4].Width = tablaPersonas.Width * 7 / 100;
-                tablaPersonas.Columns[5].Width = tablaPersonas.Width * 7 / 100;
-                tablaPersonas.Columns[6].Width = tablaPersonas.Width * 7 / 100;
-                tablaPersonas.Columns[7].Width = tablaPersonas.Width * 7 / 100;
-                tablaPersonas.Columns[8].Width = tablaPersonas.Width * 7 / 100;
-                tablaPersonas.Columns[9].Width = tablaPersonas.Width * 7 / 100;
-                tablaPersonas.Columns[10].Width = tablaPersonas.Width * 7 / 100;
-                tablaPersonas.Columns[11].Width = tablaPersonas.Width * 7 / 100;
-                tablaPersonas.Columns[12].Width = tablaPersonas.Width * 7 / 100;
-                tablaPersonas.Columns[13].Width = tablaPersonas.Width * 7 / 100;
+                tablaPersonas.Columns[0].Width = tablaPersonas.Width * 8 / 100;
+                tablaPersonas.Columns[1].Width = tablaPersonas.Width * 10 / 100;
+                tablaPersonas.Columns[2].Width = tablaPersonas.Width * 10 / 100;
+                tablaPersonas.Columns[3].Width = tablaPersonas.Width * 8 / 100;
+                tablaPersonas.Columns[4].Width = tablaPersonas.Width * 8 / 100;
+                tablaPersonas.Columns[5].Width = tablaPersonas.Width * 8 / 100;
+                tablaPersonas.Columns[6].Width = tablaPersonas.Width * 8 / 100;
+                tablaPersonas.Columns[7].Width = tablaPersonas.Width * 8 / 100;
+                tablaPersonas.Columns[8].Width = tablaPersonas.Width * 8 / 100;
+                tablaPersonas.Columns[9].Width = tablaPersonas.Width * 8 / 100;
+                tablaPersonas.Columns[10].Width = tablaPersonas.Width * 8 / 100;
+                tablaPersonas.Columns[11].Width = tablaPersonas.Width * 8 / 100;
+
 
             }
             catch (Exception ex)
@@ -160,6 +162,7 @@ namespace AlbergueHN.Source.Forms
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             dialogIngresarPersona p = new dialogIngresarPersona();
+            p.ShowDialog();
             if (!p.IsDisposed) //Incompleto
             {
                 String sql = "CALL ingresarPersona(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10)";
@@ -174,27 +177,29 @@ namespace AlbergueHN.Source.Forms
                     {
                         using (MySqlCommand cmd = new MySqlCommand(sql, con))
                         {
-                            cmd.Parameters.AddWithValue("@1", p.txtNombres.Text.Trim());
-                            cmd.Parameters.AddWithValue("@2", p.txtApellidos.Text.Trim());
-                            cmd.Parameters.AddWithValue("@3", p.fechaNacimiento.Value.ToString("yyyy-mm-dd"));
-                            cmd.Parameters.AddWithValue("@4", gen);
-                            cmd.Parameters.AddWithValue("@5", p.txtDireccion.Text.Trim());
-                            cmd.Parameters.AddWithValue("@6", p.txtCuenta.Text.Trim());
-                            cmd.Parameters.AddWithValue("@7", p.txtFamiliares.Text.Trim());
-                            cmd.Parameters.AddWithValue("@8", p.txtTelefono.Text.Trim());
-                            cmd.Parameters.AddWithValue("@9", p.comboMunicipio.SelectedValue.ToString());
-                            cmd.Parameters.AddWithValue("@10", p.comboDepto.SelectedValue.ToString()); 
+                            cmd.Parameters.AddWithValue("@1", p.txtId.Text.Trim());
+                            cmd.Parameters.AddWithValue("@2", p.txtNombres.Text.Trim());
+                            cmd.Parameters.AddWithValue("@3", p.txtApellidos.Text.Trim());
+                            cmd.Parameters.AddWithValue("@4", p.fechaNacimiento.Value.ToString("yyyy-MM-dd"));
+                            cmd.Parameters.AddWithValue("@5", gen);
+                            cmd.Parameters.AddWithValue("@6", p.txtDireccion.Text.Trim());
+                            cmd.Parameters.AddWithValue("@7", p.txtCuenta.Text.Trim());
+                            cmd.Parameters.AddWithValue("@8", p.txtFamiliares.Text.Trim());
+                            cmd.Parameters.AddWithValue("@9", p.txtTelefono.Text.Trim());
+                            cmd.Parameters.AddWithValue("@10", p.comboMunicipio.SelectedValue.ToString());
+
                             cmd.Connection.Open();  //abrir conexion
                             cmd.ExecuteNonQuery();  //ejecutar comando
                         }
                     }
 
                 }
-                catch (Exception ex)
+                catch (MySqlException ex)
                 {
                     //ocurrio un error
                     MessageBox.Show(ex.Message);
                 }
+                cargarPersonas();
             }
         }
     }

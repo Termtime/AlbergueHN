@@ -39,11 +39,16 @@
             // 
             // tablaProductos
             // 
+            this.tablaProductos.AllowUserToAddRows = false;
+            this.tablaProductos.AllowUserToDeleteRows = false;
             this.tablaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaProductos.Location = new System.Drawing.Point(18, 155);
             this.tablaProductos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tablaProductos.Name = "tablaProductos";
+            this.tablaProductos.ReadOnly = true;
+            this.tablaProductos.RowHeadersVisible = false;
             this.tablaProductos.RowHeadersWidth = 62;
+            this.tablaProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaProductos.Size = new System.Drawing.Size(1214, 923);
             this.tablaProductos.TabIndex = 0;
             // 
