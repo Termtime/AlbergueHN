@@ -32,7 +32,6 @@ namespace AlbergueHN.Source.Forms
         private void dialogIngresarPersona_Load(object sender, EventArgs e)
         {
             cargarMunicipios();
-            cargarDepartamentos();
         }
 
         public void cargarMunicipios()
@@ -69,39 +68,7 @@ namespace AlbergueHN.Source.Forms
             }
         }
 
-        public void cargarDepartamentos()
-        {
-            string sql = "select DepartamentoID, Nombre from Departamento order by Nombre DESC";
-            try
-            {
-                using (MySqlConnection con = new MySqlConnection(StringConexion))
-                {
-                    con.Open();
-                    using (MySqlCommand sqlcmd = new MySqlCommand(sql, con))
-                    {
-                        using (MySqlDataReader lector = sqlcmd.ExecuteReader())
-                        {
-                            DataTable dtDepartamentos = new DataTable();
-                            dtDepartamentos.Columns.Add("Nombre", typeof(string));
-                            dtDepartamentos.Load(lector);
-
-                            comboDepto.ValueMember = "DeptoID";
-                            comboDepto.DisplayMember = "Nombre";
-                            comboDepto.DataSource = dtDepartamentos;
-
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            if (comboDepto.Items.Count != 0)
-            {
-                comboDepto.SelectedIndex = 0;
-            }
-        }
+        
     }
 }
 
