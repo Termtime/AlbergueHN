@@ -130,6 +130,7 @@
             // 
             // btnLimpiar
             // 
+            this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLimpiar.Location = new System.Drawing.Point(259, 658);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(151, 41);
@@ -139,6 +140,7 @@
             // 
             // btnIngresar
             // 
+            this.btnIngresar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnIngresar.Location = new System.Drawing.Point(102, 658);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(151, 41);
@@ -184,6 +186,8 @@
             // 
             // listaProductos
             // 
+            this.listaProductos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listaProductos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -230,6 +234,9 @@
             this.tablaIngreso.AllowUserToAddRows = false;
             this.tablaIngreso.AllowUserToResizeColumns = false;
             this.tablaIngreso.AllowUserToResizeRows = false;
+            this.tablaIngreso.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaIngreso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaIngreso.Location = new System.Drawing.Point(535, 12);
             this.tablaIngreso.Name = "tablaIngreso";
@@ -252,8 +259,10 @@
             this.Controls.Add(this.listaProductos);
             this.Controls.Add(this.tablaIngreso);
             this.Name = "dialogIngresarProducto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingresar Producto";
             this.Load += new System.EventHandler(this.dialogIngresarProducto_Load);
+            this.SizeChanged += new System.EventHandler(this.DialogIngresarProducto_SizeChanged);
             this.panelControlRopa.ResumeLayout(false);
             this.panelControlRopa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaIngreso)).EndInit();

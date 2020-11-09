@@ -36,6 +36,7 @@ namespace AlbergueHN.Source.Forms
             tablaIngreso.Columns[3].ReadOnly = true;
             tablaIngreso.Columns[4].ReadOnly = true;
             tablaIngreso.Columns[5].ReadOnly = true;
+            resizearTablaSuministro();
             foreach (string item in tallasRopa)
             {
                 comboTalla.Items.Add(item);
@@ -245,6 +246,25 @@ namespace AlbergueHN.Source.Forms
             //    MySqlCommand cmd = new MySqlCommand(stm, con);
             //    cmd.ExecuteNonQuery();
             //}
+        }
+
+        private void DialogIngresarProducto_SizeChanged(object sender, EventArgs e)
+        {
+            resizearTablaSuministro();
+        }
+
+        private void resizearTablaSuministro()
+        {
+            try
+            {
+                tablaIngreso.Columns[0].Width = (tablaIngreso.Width - 40) * 10 / 100;
+                tablaIngreso.Columns[1].Width = (tablaIngreso.Width - 40) * 40 / 100;
+                tablaIngreso.Columns[2].Width = (tablaIngreso.Width - 40) * 10 / 100;
+                tablaIngreso.Columns[3].Width = (tablaIngreso.Width - 40) * 20 / 100;
+                tablaIngreso.Columns[4].Width = (tablaIngreso.Width - 40) * 10 / 100;
+                tablaIngreso.Columns[5].Width = (tablaIngreso.Width - 40) * 10 / 100;
+            }
+            catch (Exception ex) { }
         }
     }
 }

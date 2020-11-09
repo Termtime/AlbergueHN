@@ -54,14 +54,23 @@
             // 
             // tablaDespacho
             // 
+            this.tablaDespacho.AllowUserToAddRows = false;
+            this.tablaDespacho.AllowUserToResizeColumns = false;
+            this.tablaDespacho.AllowUserToResizeRows = false;
+            this.tablaDespacho.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaDespacho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaDespacho.Location = new System.Drawing.Point(542, 26);
             this.tablaDespacho.Name = "tablaDespacho";
+            this.tablaDespacho.RowHeadersWidth = 40;
             this.tablaDespacho.Size = new System.Drawing.Size(729, 687);
             this.tablaDespacho.TabIndex = 0;
             // 
             // listaProductos
             // 
+            this.listaProductos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listaProductos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -157,6 +166,7 @@
             // 
             // btnDespachar
             // 
+            this.btnDespachar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDespachar.Location = new System.Drawing.Point(109, 672);
             this.btnDespachar.Name = "btnDespachar";
             this.btnDespachar.Size = new System.Drawing.Size(151, 41);
@@ -167,6 +177,7 @@
             // 
             // btnLimpiar
             // 
+            this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLimpiar.Location = new System.Drawing.Point(266, 672);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(151, 41);
@@ -249,8 +260,10 @@
             this.Controls.Add(this.listaProductos);
             this.Controls.Add(this.tablaDespacho);
             this.Name = "dialogDespacharArticulo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Despachar articulos";
             this.Load += new System.EventHandler(this.DialogDespacharProductos_Load);
+            this.SizeChanged += new System.EventHandler(this.DialogDespacharArticulo_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.tablaDespacho)).EndInit();
             this.panelControlRopa.ResumeLayout(false);
             this.panelControlRopa.PerformLayout();

@@ -35,6 +35,7 @@ namespace AlbergueHN.Source.Forms
             tablaDespacho.Columns[3].ReadOnly = true;
             tablaDespacho.Columns[4].ReadOnly = true;
             tablaDespacho.Columns[5].ReadOnly = true;
+            resizearTablaDespacho();
             foreach (string item in tallasRopa)
             {
                 comboTalla.Items.Add(item);
@@ -48,7 +49,7 @@ namespace AlbergueHN.Source.Forms
             using (MySqlConnection con = new MySqlConnection(stringConexion))
             {
                 DataTable dtSuministro = new DataTable();
-                var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM unahvs_al.suministro a inner join unahvs_al.tiposuministro b on a.tipoID = b.tipoID;";
+                var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM suministro a inner join tiposuministro b on a.tipoID = b.tipoID;";
                 MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                 con.Open();
                 da.Fill(dtSuministro);
@@ -228,6 +229,25 @@ namespace AlbergueHN.Source.Forms
             //{
             //    MessageBox.Show(ex.Message);
             //}
+        }
+
+        private void DialogDespacharArticulo_SizeChanged(object sender, EventArgs e)
+        {
+            resizearTablaDespacho();
+        }
+
+        private void resizearTablaDespacho()
+        {
+            try
+            {
+                tablaDespacho.Columns[0].Width = (tablaDespacho.Width - 40) * 10 / 100;
+                tablaDespacho.Columns[1].Width = (tablaDespacho.Width - 40) * 40 / 100;
+                tablaDespacho.Columns[2].Width = (tablaDespacho.Width - 40) * 10 / 100;
+                tablaDespacho.Columns[3].Width = (tablaDespacho.Width - 40) * 20 / 100;
+                tablaDespacho.Columns[4].Width = (tablaDespacho.Width - 40) * 10 / 100;
+                tablaDespacho.Columns[5].Width = (tablaDespacho.Width - 40) * 10 / 100;
+            }
+            catch (Exception ex) { }
         }
     }
 }

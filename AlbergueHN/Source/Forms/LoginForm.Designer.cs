@@ -73,7 +73,7 @@
             this.txtUsuario.Location = new System.Drawing.Point(114, 81);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(197, 20);
-            this.txtUsuario.TabIndex = 3;
+            this.txtUsuario.TabIndex = 0;
             // 
             // txtPass
             // 
@@ -81,7 +81,7 @@
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(197, 20);
-            this.txtPass.TabIndex = 4;
+            this.txtPass.TabIndex = 1;
             // 
             // label4
             // 
@@ -113,10 +113,10 @@
             // btnLogin
             // 
             this.btnLogin.Enabled = false;
-            this.btnLogin.Location = new System.Drawing.Point(152, 138);
+            this.btnLogin.Location = new System.Drawing.Point(138, 138);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(95, 23);
-            this.btnLogin.TabIndex = 8;
+            this.btnLogin.Size = new System.Drawing.Size(124, 42);
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Iniciar Sesión";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.Button2_Click);
