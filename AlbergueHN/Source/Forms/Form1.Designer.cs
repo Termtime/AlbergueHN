@@ -29,13 +29,17 @@
         private void InitializeComponent()
         {
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panelControlRopa = new System.Windows.Forms.Panel();
             this.comboTalla = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelTalla = new System.Windows.Forms.Label();
+            this.radioCualquiera = new System.Windows.Forms.RadioButton();
+            this.radioFemenino = new System.Windows.Forms.RadioButton();
+            this.radioMasculino = new System.Windows.Forms.RadioButton();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.comboTipo = new System.Windows.Forms.ComboBox();
-            this.txtFiltro2 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.tablaProductos = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -49,8 +53,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.conexionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.despacharSuministrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ingresarSuministrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ingresarPersonaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2.SuspendLayout();
+            this.panelControlRopa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabla)).BeginInit();
@@ -60,96 +70,145 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.comboTalla);
+            this.tabPage2.Controls.Add(this.panelControlRopa);
+            this.tabPage2.Controls.Add(this.txtFiltro);
             this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.comboTipo);
-            this.tabPage2.Controls.Add(this.txtFiltro2);
+            this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.tablaProductos);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1255, 624);
+            this.tabPage2.Size = new System.Drawing.Size(1255, 658);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Articulos";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // panelControlRopa
+            // 
+            this.panelControlRopa.Controls.Add(this.comboTalla);
+            this.panelControlRopa.Controls.Add(this.label1);
+            this.panelControlRopa.Controls.Add(this.labelTalla);
+            this.panelControlRopa.Controls.Add(this.radioCualquiera);
+            this.panelControlRopa.Controls.Add(this.radioFemenino);
+            this.panelControlRopa.Controls.Add(this.radioMasculino);
+            this.panelControlRopa.Location = new System.Drawing.Point(1048, 46);
+            this.panelControlRopa.Name = "panelControlRopa";
+            this.panelControlRopa.Size = new System.Drawing.Size(200, 56);
+            this.panelControlRopa.TabIndex = 55;
+            this.panelControlRopa.Visible = false;
+            // 
             // comboTalla
             // 
             this.comboTalla.FormattingEnabled = true;
-            this.comboTalla.Location = new System.Drawing.Point(1072, 72);
+            this.comboTalla.Location = new System.Drawing.Point(67, 8);
             this.comboTalla.Name = "comboTalla";
-            this.comboTalla.Size = new System.Drawing.Size(121, 21);
-            this.comboTalla.TabIndex = 40;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1033, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 13);
-            this.label2.TabIndex = 39;
-            this.label2.Text = "Talla:";
+            this.comboTalla.Size = new System.Drawing.Size(94, 21);
+            this.comboTalla.TabIndex = 43;
+            this.comboTalla.SelectedIndexChanged += new System.EventHandler(this.ComboTalla_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1091, 42);
+            this.label1.Location = new System.Drawing.Point(16, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 38;
-            this.label1.Text = "Otros filtros:";
+            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.TabIndex = 49;
+            this.label1.Text = "Genero:";
             // 
-            // label7
+            // labelTalla
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(211, 55);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 13);
-            this.label7.TabIndex = 37;
-            this.label7.Text = "Buscar:";
+            this.labelTalla.AutoSize = true;
+            this.labelTalla.Location = new System.Drawing.Point(28, 11);
+            this.labelTalla.Name = "labelTalla";
+            this.labelTalla.Size = new System.Drawing.Size(33, 13);
+            this.labelTalla.TabIndex = 42;
+            this.labelTalla.Text = "Talla:";
             // 
-            // label6
+            // radioCualquiera
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 56);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 13);
-            this.label6.TabIndex = 36;
-            this.label6.Text = "Tipo de articulo: ";
+            this.radioCualquiera.AutoSize = true;
+            this.radioCualquiera.Checked = true;
+            this.radioCualquiera.Location = new System.Drawing.Point(67, 30);
+            this.radioCualquiera.Name = "radioCualquiera";
+            this.radioCualquiera.Size = new System.Drawing.Size(45, 17);
+            this.radioCualquiera.TabIndex = 48;
+            this.radioCualquiera.TabStop = true;
+            this.radioCualquiera.Text = "N/A";
+            this.radioCualquiera.UseVisualStyleBackColor = true;
+            this.radioCualquiera.CheckedChanged += new System.EventHandler(this.RadioCualquiera_CheckedChanged);
+            // 
+            // radioFemenino
+            // 
+            this.radioFemenino.AutoSize = true;
+            this.radioFemenino.Location = new System.Drawing.Point(158, 30);
+            this.radioFemenino.Name = "radioFemenino";
+            this.radioFemenino.Size = new System.Drawing.Size(31, 17);
+            this.radioFemenino.TabIndex = 47;
+            this.radioFemenino.Text = "F";
+            this.radioFemenino.UseVisualStyleBackColor = true;
+            this.radioFemenino.CheckedChanged += new System.EventHandler(this.RadioFemenino_CheckedChanged);
+            // 
+            // radioMasculino
+            // 
+            this.radioMasculino.AutoSize = true;
+            this.radioMasculino.Location = new System.Drawing.Point(118, 30);
+            this.radioMasculino.Name = "radioMasculino";
+            this.radioMasculino.Size = new System.Drawing.Size(34, 17);
+            this.radioMasculino.TabIndex = 46;
+            this.radioMasculino.Text = "M";
+            this.radioMasculino.UseVisualStyleBackColor = true;
+            this.radioMasculino.CheckedChanged += new System.EventHandler(this.RadioMasculino_CheckedChanged);
+            // 
+            // txtFiltro
+            // 
+            this.txtFiltro.Location = new System.Drawing.Point(55, 80);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(261, 20);
+            this.txtFiltro.TabIndex = 54;
+            this.txtFiltro.TextChanged += new System.EventHandler(this.TxtFiltro_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 83);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.TabIndex = 53;
+            this.label2.Text = "Buscar:";
             // 
             // comboTipo
             // 
             this.comboTipo.FormattingEnabled = true;
-            this.comboTipo.Items.AddRange(new object[] {
-            "Todo",
-            "Alimento",
-            "Bebida",
-            "Bioseguridad",
-            "Calzado",
-            "Vestimenta",
-            "Víveres",
-            "Otros"});
-            this.comboTipo.Location = new System.Drawing.Point(3, 72);
+            this.comboTipo.Location = new System.Drawing.Point(55, 48);
             this.comboTipo.Name = "comboTipo";
-            this.comboTipo.Size = new System.Drawing.Size(202, 21);
-            this.comboTipo.TabIndex = 35;
+            this.comboTipo.Size = new System.Drawing.Size(121, 21);
+            this.comboTipo.TabIndex = 52;
+            this.comboTipo.SelectedIndexChanged += new System.EventHandler(this.ComboTipo_SelectedIndexChanged);
             // 
-            // txtFiltro2
+            // label6
             // 
-            this.txtFiltro2.Location = new System.Drawing.Point(211, 73);
-            this.txtFiltro2.Name = "txtFiltro2";
-            this.txtFiltro2.Size = new System.Drawing.Size(507, 20);
-            this.txtFiltro2.TabIndex = 34;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 51);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(31, 13);
+            this.label6.TabIndex = 51;
+            this.label6.Text = "Tipo:";
             // 
             // tablaProductos
             // 
+            this.tablaProductos.AllowUserToAddRows = false;
+            this.tablaProductos.AllowUserToDeleteRows = false;
+            this.tablaProductos.AllowUserToResizeColumns = false;
+            this.tablaProductos.AllowUserToResizeRows = false;
+            this.tablaProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaProductos.Location = new System.Drawing.Point(3, 108);
             this.tablaProductos.Name = "tablaProductos";
+            this.tablaProductos.ReadOnly = true;
             this.tablaProductos.RowHeadersWidth = 62;
             this.tablaProductos.Size = new System.Drawing.Size(1252, 543);
             this.tablaProductos.TabIndex = 32;
@@ -177,7 +236,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1255, 624);
+            this.tabPage1.Size = new System.Drawing.Size(1255, 658);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Personas";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -234,9 +293,14 @@
             // 
             // tabla
             // 
+            this.tabla.AllowUserToAddRows = false;
+            this.tabla.AllowUserToDeleteRows = false;
+            this.tabla.AllowUserToResizeColumns = false;
+            this.tabla.AllowUserToResizeRows = false;
             this.tabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabla.Location = new System.Drawing.Point(3, 108);
             this.tabla.Name = "tabla";
+            this.tabla.ReadOnly = true;
             this.tabla.RowHeadersWidth = 62;
             this.tabla.Size = new System.Drawing.Size(1252, 543);
             this.tabla.TabIndex = 0;
@@ -251,13 +315,14 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1263, 650);
+            this.tabControl1.Size = new System.Drawing.Size(1263, 684);
             this.tabControl1.TabIndex = 0;
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.archivoToolStripMenuItem});
+            this.archivoToolStripMenuItem,
+            this.accionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
@@ -268,6 +333,7 @@
             // 
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.conexionToolStripMenuItem,
+            this.cerrarSesiónToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
@@ -276,30 +342,77 @@
             // conexionToolStripMenuItem
             // 
             this.conexionToolStripMenuItem.Name = "conexionToolStripMenuItem";
-            this.conexionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.conexionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.conexionToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.conexionToolStripMenuItem.Text = "Conexion...";
             this.conexionToolStripMenuItem.Click += new System.EventHandler(this.ConexionToolStripMenuItem_Click);
+            // 
+            // cerrarSesiónToolStripMenuItem
+            // 
+            this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
+            this.cerrarSesiónToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.L)));
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salirToolStripMenuItem.ShortcutKeyDisplayString = "";
+            this.salirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.SalirToolStripMenuItem_Click);
+            // 
+            // accionesToolStripMenuItem
+            // 
+            this.accionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.despacharSuministrosToolStripMenuItem,
+            this.ingresarSuministrosToolStripMenuItem,
+            this.ingresarPersonaToolStripMenuItem});
+            this.accionesToolStripMenuItem.Name = "accionesToolStripMenuItem";
+            this.accionesToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.accionesToolStripMenuItem.Text = "Acciones";
+            // 
+            // despacharSuministrosToolStripMenuItem
+            // 
+            this.despacharSuministrosToolStripMenuItem.Name = "despacharSuministrosToolStripMenuItem";
+            this.despacharSuministrosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.despacharSuministrosToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.despacharSuministrosToolStripMenuItem.Text = "Despachar suministros";
+            this.despacharSuministrosToolStripMenuItem.Click += new System.EventHandler(this.DespacharSuministrosToolStripMenuItem_Click);
+            // 
+            // ingresarSuministrosToolStripMenuItem
+            // 
+            this.ingresarSuministrosToolStripMenuItem.Name = "ingresarSuministrosToolStripMenuItem";
+            this.ingresarSuministrosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.ingresarSuministrosToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.ingresarSuministrosToolStripMenuItem.Text = "Ingresar Suministros";
+            this.ingresarSuministrosToolStripMenuItem.Click += new System.EventHandler(this.IngresarSuministrosToolStripMenuItem_Click);
+            // 
+            // ingresarPersonaToolStripMenuItem
+            // 
+            this.ingresarPersonaToolStripMenuItem.Name = "ingresarPersonaToolStripMenuItem";
+            this.ingresarPersonaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
+            this.ingresarPersonaToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.ingresarPersonaToolStripMenuItem.Text = "Administrar personas";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1264, 715);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "AlbergueHN";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.panelControlRopa.ResumeLayout(false);
+            this.panelControlRopa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -316,16 +429,8 @@
 
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView tablaProductos;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboTipo;
-        private System.Windows.Forms.TextBox txtFiltro2;
-        private System.Windows.Forms.ComboBox comboTalla;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView tabla;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -336,6 +441,23 @@
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem conexionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem accionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem despacharSuministrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ingresarSuministrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ingresarPersonaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel panelControlRopa;
+        private System.Windows.Forms.ComboBox comboTalla;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelTalla;
+        private System.Windows.Forms.RadioButton radioCualquiera;
+        private System.Windows.Forms.RadioButton radioFemenino;
+        private System.Windows.Forms.RadioButton radioMasculino;
+        private System.Windows.Forms.TextBox txtFiltro;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboTipo;
+        private System.Windows.Forms.Label label6;
     }
 }
 

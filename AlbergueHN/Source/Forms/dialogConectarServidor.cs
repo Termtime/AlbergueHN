@@ -99,7 +99,7 @@ namespace AlbergueHN.Source.Forms
             Properties.Settings.Default["serverPass"] = "";
             Properties.Settings.Default["usuarioServer"] = "";
             Properties.Settings.Default["bd"] = "";
-
+            Properties.Settings.Default["stringConexion"] = "";
             Properties.Settings.Default.Save();
 
             txtIP.Text = "";
