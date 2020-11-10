@@ -39,6 +39,7 @@ namespace AlbergueHN.Source.Forms
                     labelEstado.ForeColor = Color.Green;
                     Cursor.Current = Cursors.Default;
                     con.Close();
+                    labelHelper.Visible = true;
                 }
                 catch (Exception ex)
                 {
@@ -47,6 +48,7 @@ namespace AlbergueHN.Source.Forms
                     labelEstado.ForeColor = Color.Red;
                     Cursor.Current = Cursors.Default;
                     btnDetalles.Visible = true;
+                    labelHelper.Visible = false;
                     error = ex.ToString();
                 }
 
@@ -62,7 +64,12 @@ namespace AlbergueHN.Source.Forms
 
         private void BtnConectar_Click(object sender, EventArgs e)
         {
-            labelEstado.ForeColor = Color.Black;
+            if(txtBD.Text.Trim().Length == 0 || txtIP.Text.Trim().Length == 0 || txtPass.Text.Trim().Length == 0 || txtUsuario.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("No ha llenado todos los campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+                labelEstado.ForeColor = Color.Black;
             string stringConexion = "Server=" + txtIP.Text + ";Database="+txtBD.Text+";Uid="+txtUsuario.Text+";Pwd=" + txtPass.Text;
 
             MySqlConnection con = new MySqlConnection(stringConexion);
@@ -71,7 +78,7 @@ namespace AlbergueHN.Source.Forms
                 btnDetalles.Visible = false;
                 labelEstado.Text = "Conectando...";
                 Cursor.Current = Cursors.WaitCursor;
-                labelEstado.ForeColor = Color.Yellow;
+                labelEstado.ForeColor = Color.YellowGreen;
                 con.Open();
                 //Se conectó correctamente, guardar conexion
                 Properties.Settings.Default["serverIP"] = txtIP.Text;
@@ -85,6 +92,7 @@ namespace AlbergueHN.Source.Forms
                 labelEstado.ForeColor = Color.Green;
                 Cursor.Current = Cursors.Default;
                 con.Close();
+                labelHelper.Visible = true;
             }
             catch(Exception ex)
             {
@@ -95,6 +103,7 @@ namespace AlbergueHN.Source.Forms
                 btnDetalles.Visible = true;
                 error = ex.ToString();
                 Console.WriteLine(error);
+                labelHelper.Visible = false;
             }
 
             

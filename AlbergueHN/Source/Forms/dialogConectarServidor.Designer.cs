@@ -41,6 +41,7 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.labelHelper = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -90,7 +91,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(302, 30);
+            this.label3.Location = new System.Drawing.Point(347, 30);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 5;
@@ -100,7 +101,7 @@
             // 
             this.labelEstado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelEstado.AutoSize = true;
-            this.labelEstado.Location = new System.Drawing.Point(302, 49);
+            this.labelEstado.Location = new System.Drawing.Point(347, 49);
             this.labelEstado.Name = "labelEstado";
             this.labelEstado.Size = new System.Drawing.Size(58, 13);
             this.labelEstado.TabIndex = 6;
@@ -109,7 +110,7 @@
             // btnDetalles
             // 
             this.btnDetalles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDetalles.Location = new System.Drawing.Point(302, 77);
+            this.btnDetalles.Location = new System.Drawing.Point(333, 98);
             this.btnDetalles.Name = "btnDetalles";
             this.btnDetalles.Size = new System.Drawing.Size(89, 23);
             this.btnDetalles.TabIndex = 7;
@@ -160,11 +161,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
+            // labelHelper
+            // 
+            this.labelHelper.AutoSize = true;
+            this.labelHelper.Location = new System.Drawing.Point(299, 72);
+            this.labelHelper.Name = "labelHelper";
+            this.labelHelper.Size = new System.Drawing.Size(162, 13);
+            this.labelHelper.TabIndex = 13;
+            this.labelHelper.Text = "Ya se puede cerrar esta ventana";
+            this.labelHelper.Visible = false;
+            // 
             // dialogConectarServidor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(403, 174);
+            this.ClientSize = new System.Drawing.Size(472, 174);
+            this.Controls.Add(this.labelHelper);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.label5);
@@ -202,5 +214,6 @@
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelHelper;
     }
 }

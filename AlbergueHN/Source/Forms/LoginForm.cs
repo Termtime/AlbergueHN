@@ -56,24 +56,29 @@ namespace AlbergueHN.Source.Forms
                     //    Cursor.Current = Cursors.Default;
                     //}
                     UsuarioActual.ID = "test";
+                    //Si sigue aqui, el login fue correcto, ingresar al sistema
+                    con.Close();
+                    if (UsuarioActual.ID != null)
+                    {
+                        Form1 pantallaPrincipal = new Form1();
+                        Console.WriteLine("sent to main");
+                        pantallaPrincipal.Show();
+                        pantallaPrincipal.loginRef = this;
+                        this.Hide();
+                        txtPass.Text = "";
+                        txtUsuario.Text = "";
+                        Cursor.Current = Cursors.Default;
+                    }
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine(ex.StackTrace);
                     con.Close();
                     Cursor.Current = Cursors.Default;
                 }
 
-                //Si sigue aqui, el login fue correcto, ingresar al sistema
-                if(UsuarioActual.ID != null)
-                {
-                    Form1 pantallaPrincipal = new Form1();
-                    pantallaPrincipal.Show();
-                    this.Visible = false;
-                    Cursor.Current = Cursors.Default;
-                    con.Close();
-                }
+                
             }
         }
 
@@ -99,11 +104,13 @@ namespace AlbergueHN.Source.Forms
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show(ex.Message, "Error de conexion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine(ex.StackTrace);
                     labelEstado.Text = "Conexión Fallida.";
                     labelEstado.ForeColor = Color.Red;
                     Cursor.Current = Cursors.Default;
                     btnLogin.Enabled = false;
+                    con.Close();
                 }
             }
         }
@@ -126,6 +133,11 @@ namespace AlbergueHN.Source.Forms
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void LoginForm_Shown(object sender, EventArgs e)
         {
             comprobarConexion();
         }

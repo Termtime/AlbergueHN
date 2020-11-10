@@ -46,7 +46,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.btRefrescar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboFiltro = new System.Windows.Forms.ComboBox();
@@ -55,6 +54,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refrescarListadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.conexionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -130,10 +130,12 @@
             // 
             this.comboTalla.FormattingEnabled = true;
             this.comboTalla.Location = new System.Drawing.Point(67, 8);
+            this.comboTalla.MaxLength = 5;
             this.comboTalla.Name = "comboTalla";
             this.comboTalla.Size = new System.Drawing.Size(94, 21);
             this.comboTalla.TabIndex = 43;
             this.comboTalla.SelectedIndexChanged += new System.EventHandler(this.ComboTalla_SelectedIndexChanged);
+            this.comboTalla.TextChanged += new System.EventHandler(this.ComboTalla_TextChanged);
             // 
             // label1
             // 
@@ -207,6 +209,7 @@
             // 
             // comboTipo
             // 
+            this.comboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipo.FormattingEnabled = true;
             this.comboTipo.Location = new System.Drawing.Point(55, 48);
             this.comboTipo.Name = "comboTipo";
@@ -244,7 +247,6 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Controls.Add(this.btRefrescar);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.comboFiltro);
@@ -281,21 +283,10 @@
             this.label3.Text = "Personas";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btRefrescar
-            // 
-            this.btRefrescar.Location = new System.Drawing.Point(744, 69);
-            this.btRefrescar.Margin = new System.Windows.Forms.Padding(2);
-            this.btRefrescar.Name = "btRefrescar";
-            this.btRefrescar.Size = new System.Drawing.Size(96, 26);
-            this.btRefrescar.TabIndex = 42;
-            this.btRefrescar.Text = "Refrescar";
-            this.btRefrescar.UseVisualStyleBackColor = true;
-            this.btRefrescar.Click += new System.EventHandler(this.btRefrescar_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(211, 55);
+            this.label4.Location = new System.Drawing.Point(23, 82);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 41;
@@ -304,7 +295,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 56);
+            this.label5.Location = new System.Drawing.Point(6, 58);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 13);
             this.label5.TabIndex = 40;
@@ -318,7 +309,7 @@
             "Nombre",
             "Identidad",
             "# Estudiante/Empleado"});
-            this.comboFiltro.Location = new System.Drawing.Point(3, 72);
+            this.comboFiltro.Location = new System.Drawing.Point(72, 53);
             this.comboFiltro.Name = "comboFiltro";
             this.comboFiltro.Size = new System.Drawing.Size(202, 21);
             this.comboFiltro.TabIndex = 39;
@@ -326,7 +317,7 @@
             // 
             // txtFiltro1
             // 
-            this.txtFiltro1.Location = new System.Drawing.Point(211, 73);
+            this.txtFiltro1.Location = new System.Drawing.Point(72, 79);
             this.txtFiltro1.Name = "txtFiltro1";
             this.txtFiltro1.Size = new System.Drawing.Size(507, 20);
             this.txtFiltro1.TabIndex = 38;
@@ -379,6 +370,7 @@
             // archivoToolStripMenuItem
             // 
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refrescarListadosToolStripMenuItem,
             this.conexionToolStripMenuItem,
             this.cerrarSesiónToolStripMenuItem,
             this.salirToolStripMenuItem});
@@ -386,27 +378,36 @@
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 22);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
+            // refrescarListadosToolStripMenuItem
+            // 
+            this.refrescarListadosToolStripMenuItem.Name = "refrescarListadosToolStripMenuItem";
+            this.refrescarListadosToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.refrescarListadosToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.refrescarListadosToolStripMenuItem.Text = "Refrescar datos";
+            this.refrescarListadosToolStripMenuItem.Click += new System.EventHandler(this.RefrescarListadosToolStripMenuItem_Click);
+            // 
             // conexionToolStripMenuItem
             // 
             this.conexionToolStripMenuItem.Name = "conexionToolStripMenuItem";
             this.conexionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.conexionToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.conexionToolStripMenuItem.Text = "Conexion...";
+            this.conexionToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.conexionToolStripMenuItem.Text = "Configurar conexión";
             this.conexionToolStripMenuItem.Click += new System.EventHandler(this.ConexionToolStripMenuItem_Click);
             // 
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
             this.cerrarSesiónToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.L)));
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
+            this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.CerrarSesiónToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.ShortcutKeyDisplayString = "";
             this.salirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.SalirToolStripMenuItem_Click);
             // 
@@ -425,31 +426,32 @@
             // 
             this.despacharSuministrosToolStripMenuItem.Name = "despacharSuministrosToolStripMenuItem";
             this.despacharSuministrosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.despacharSuministrosToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.despacharSuministrosToolStripMenuItem.Text = "Despachar suministros";
+            this.despacharSuministrosToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.despacharSuministrosToolStripMenuItem.Text = "Entregar Productos";
             this.despacharSuministrosToolStripMenuItem.Click += new System.EventHandler(this.DespacharSuministrosToolStripMenuItem_Click);
             // 
             // ingresarSuministrosToolStripMenuItem
             // 
             this.ingresarSuministrosToolStripMenuItem.Name = "ingresarSuministrosToolStripMenuItem";
             this.ingresarSuministrosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.ingresarSuministrosToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.ingresarSuministrosToolStripMenuItem.Text = "Ingresar Suministros";
+            this.ingresarSuministrosToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.ingresarSuministrosToolStripMenuItem.Text = "Recibir Productos";
             this.ingresarSuministrosToolStripMenuItem.Click += new System.EventHandler(this.IngresarSuministrosToolStripMenuItem_Click);
             // 
             // administrarPersonaToolStripMenuItem
             // 
             this.administrarPersonaToolStripMenuItem.Name = "administrarPersonaToolStripMenuItem";
             this.administrarPersonaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.administrarPersonaToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.administrarPersonaToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.administrarPersonaToolStripMenuItem.Text = "Administrar Personas";
             this.administrarPersonaToolStripMenuItem.Click += new System.EventHandler(this.ingresarPersonaToolStripMenuItem_Click);
             // 
             // administrarSuministrosToolStripMenuItem
             // 
             this.administrarSuministrosToolStripMenuItem.Name = "administrarSuministrosToolStripMenuItem";
-            this.administrarSuministrosToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.administrarSuministrosToolStripMenuItem.Text = "Administrar Suministros";
+            this.administrarSuministrosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.administrarSuministrosToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.administrarSuministrosToolStripMenuItem.Text = "Administrar Productos";
             this.administrarSuministrosToolStripMenuItem.Click += new System.EventHandler(this.administrarSuministrosToolStripMenuItem_Click);
             // 
             // Form1
@@ -465,6 +467,7 @@
             this.Text = "AlbergueHN";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -518,9 +521,9 @@
         private System.Windows.Forms.ComboBox comboTipo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ToolStripMenuItem administrarSuministrosToolStripMenuItem;
-        private System.Windows.Forms.Button btRefrescar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ToolStripMenuItem refrescarListadosToolStripMenuItem;
     }
 }
 
