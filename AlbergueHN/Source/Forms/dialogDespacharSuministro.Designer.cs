@@ -171,6 +171,7 @@
             this.comboTalla.Size = new System.Drawing.Size(94, 21);
             this.comboTalla.TabIndex = 43;
             this.comboTalla.SelectedIndexChanged += new System.EventHandler(this.ComboTalla_SelectedIndexChanged);
+            this.comboTalla.TextChanged += new System.EventHandler(this.ComboTalla_TextChanged);
             // 
             // btnDespachar
             // 

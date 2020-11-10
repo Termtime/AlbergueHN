@@ -129,7 +129,7 @@ namespace AlbergueHN.Source.Forms
                 string filtroTalla = ((string)comboTalla.SelectedItem) ?? comboTalla.Text;
                 filtroTalla = filtroTalla.ToString();
                 if (filtroTalla == "Todas") cualquierTalla = true;
-                foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.Contains(filtroTalla) || cualquierTalla)))
+                foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Contains(filtroTalla.ToLower()) || cualquierTalla)))
                 {
 
                     listaProductos.Items.Add(item);
@@ -144,8 +144,6 @@ namespace AlbergueHN.Source.Forms
             string filtroTipo = (string)row.Row.ItemArray[1];
             if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
             { panelControlRopa.Visible = true; labelTalla.Visible = true; comboTalla.Visible = true; }
-            //else if (filtroTipo == "Zapatos")
-            //{ panelControlRopa.Visible = true; labelTalla.Visible = false; comboTalla.Visible = false; comboTalla.SelectedIndex = 0; }
             else { panelControlRopa.Visible = false; }
         }
 

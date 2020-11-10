@@ -141,23 +141,16 @@ namespace AlbergueHN.Source.Forms
 
                 return;
             }
-            else if (filtroTipo == "Vestimenta")
+            else if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
             {
 
                 bool cualquierTalla = false;
-
-                string filtroTalla = (string)comboTalla.SelectedItem.ToString();
+                string filtroTalla = ((string)comboTalla.SelectedItem) ?? comboTalla.Text;
+                filtroTalla = filtroTalla.ToString();
                 if (filtroTalla == "Todas") cualquierTalla = true;
-                foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text == genero || cualquierGenero) && (item.SubItems[3].Text.Contains(filtroTalla) || cualquierTalla)))
+                foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Contains(filtroTalla.ToLower()) || cualquierTalla)))
                 {
 
-                    listaProductos.Items.Add(item);
-                }
-            }
-            else if (filtroTipo == "Zapatos")
-            {
-                foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower()) && item.SubItems[4].Text.Contains(genero)))
-                {
                     listaProductos.Items.Add(item);
                 }
             }
@@ -168,10 +161,8 @@ namespace AlbergueHN.Source.Forms
             filtrar();
             DataRowView row = (DataRowView)comboTipo.SelectedItem;
             string filtroTipo = (string)row.Row.ItemArray[1];
-            if (filtroTipo == "Vestimenta")
+            if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
             { panelControlRopa.Visible = true; labelTalla.Visible = true; comboTalla.Visible = true; }
-            else if (filtroTipo == "Zapatos")
-            { panelControlRopa.Visible = true; labelTalla.Visible = false; comboTalla.Visible = false; comboTalla.SelectedIndex = 0; }
             else { panelControlRopa.Visible = false; }
         }
 
@@ -303,6 +294,11 @@ namespace AlbergueHN.Source.Forms
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void ComboTalla_TextChanged(object sender, EventArgs e)
+        {
+            filtrar();
         }
     }
 }
