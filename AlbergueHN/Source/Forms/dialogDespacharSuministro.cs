@@ -18,8 +18,10 @@ namespace AlbergueHN.Source.Forms
         string[] tallasRopa = { "Todas", "XXS", "XS", "S", "M", "L", "XL", "XL", "XXL" };
         string stringConexion = (string)Properties.Settings.Default["stringConexion"];
         BindingList<Suministro> binding;
+        BindingList<Persona> bindingComboPersonas;
         List<Suministro> suministrosIngresados = new List<Suministro>();
         List<ListViewItem> productos = new List<ListViewItem>();
+        List<Persona> personas = new List<Persona>();
         public dialogDespacharSuministro()
         {
             InitializeComponent();
@@ -29,7 +31,10 @@ namespace AlbergueHN.Source.Forms
         {
             llenarDatos();
             binding = new BindingList<Suministro>(suministrosIngresados);
+            bindingComboPersonas = new BindingList<Persona>(personas);
             tablaDespacho.DataSource = binding;
+            comboPersonas.DataSource = bindingComboPersonas;
+
             tablaDespacho.Columns[0].ReadOnly = true;
             tablaDespacho.Columns[1].ReadOnly = true;
             tablaDespacho.Columns[3].ReadOnly = true;
@@ -46,6 +51,7 @@ namespace AlbergueHN.Source.Forms
         private void llenarDatos()
         {
             productos.Clear();
+            personas.Clear();
             listaProductos.Items.Clear();
             using (MySqlConnection con = new MySqlConnection(stringConexion))
             {
@@ -88,7 +94,20 @@ namespace AlbergueHN.Source.Forms
                 comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
             }
 
+            using (MySqlConnection con = new MySqlConnection(stringConexion))
+            {
+                var stm = "SELECT PersonaID, Nombres, Apellidos FROM persona WHERE FechaSalida IS NULL ORDER BY nombres ASC";
+                DataTable dtPersona = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
+                con.Open();
+                da.Fill(dtPersona);
 
+                foreach (DataRow fila in dtPersona.Rows)
+                {
+                    Persona tmp = new Persona(fila[0].ToString(), fila[1].ToString(), fila[2].ToString());
+                    personas.Add(tmp);
+                }
+            }
         }
 
         private void filtrar()
@@ -204,7 +223,7 @@ namespace AlbergueHN.Source.Forms
         }
         private void BtnDespachar_Click(object sender, EventArgs e)
         {
-            int personaRecibe = 1;
+            string idPersonaRecibe = ((Persona)comboPersonas.SelectedItem).identidad;
             //ejecutar el procedimiento almacenado de despachar
                 List<string> inserts = new List<string>();
 
@@ -228,14 +247,12 @@ namespace AlbergueHN.Source.Forms
                     sqlTemp.Append(string.Join(",", inserts));
                     sqlTemp.Append(";");
 
-                    Console.WriteLine(sqlTemp.ToString());
                     MySqlCommand cmdTmp = new MySqlCommand(sqlTemp.ToString(), con);
                     cmdTmp.ExecuteNonQuery();
 
-                    Console.WriteLine("Hora del procedure");
                     var stm = "CALL spDespacharSuministros(@personaRecibe, @uid);";
                     MySqlCommand cmd = new MySqlCommand(stm, con);
-                    cmd.Parameters.AddWithValue("@personaRecibe", personaRecibe);
+                    cmd.Parameters.AddWithValue("@personaRecibe", idPersonaRecibe);
                     cmd.Parameters.AddWithValue("@uid", UsuarioActual.ID);
                     cmd.ExecuteNonQuery();
                     con.Close();

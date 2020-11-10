@@ -315,7 +315,7 @@
             this.comboPersonas.FormattingEnabled = true;
             this.comboPersonas.Location = new System.Drawing.Point(88, 78);
             this.comboPersonas.Name = "comboPersonas";
-            this.comboPersonas.Size = new System.Drawing.Size(305, 21);
+            this.comboPersonas.Size = new System.Drawing.Size(400, 21);
             this.comboPersonas.TabIndex = 71;
             // 
             // dialogDespacharSuministro

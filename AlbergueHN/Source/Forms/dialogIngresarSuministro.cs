@@ -88,6 +88,7 @@ namespace AlbergueHN.Source.Forms
                 comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
             }
 
+            
 
         }
         private void filtrar()
