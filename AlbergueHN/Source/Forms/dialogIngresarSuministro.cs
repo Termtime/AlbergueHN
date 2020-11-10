@@ -24,7 +24,7 @@ namespace AlbergueHN.Source.Forms
         {
             InitializeComponent();
         }
-        
+
         private void dialogIngresarProducto_Load(object sender, EventArgs e)
         {
             llenarDatos();
@@ -43,7 +43,7 @@ namespace AlbergueHN.Source.Forms
             }
             comboTalla.SelectedIndex = 0;
         }
-        
+
         private void ComboTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             filtrar();
@@ -131,7 +131,8 @@ namespace AlbergueHN.Source.Forms
                     comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
                 }
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -201,15 +202,21 @@ namespace AlbergueHN.Source.Forms
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            ingresarSuministros();
+            if (tablaIngreso.RowCount == 0)
+            {
+                MessageBox.Show("Aún no ha agregado ningún suministro a la lista, seleccione un suministro y agréguelo haciendo doble clic sobre él", "Notificación - UNAH - VS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                ingresarSuministros();
+            }
         }
 
         private void DialogIngresarProducto_SizeChanged(object sender, EventArgs e)
         {
             resizearTablaSuministro();
         }
-
-        
 
         private void ComboTalla_TextChanged(object sender, EventArgs e)
         {
@@ -308,15 +315,21 @@ namespace AlbergueHN.Source.Forms
                 llenarDatos();
                 filtrar();
                 return true;
-            }else if(keyData == (Keys.Enter))
+            }
+            else if (keyData == (Keys.Enter))
             {
                 agregarSuministroTabla();
             }
-            else if(keyData == (Keys.Enter | Keys.Control))
+            else if (keyData == (Keys.Enter | Keys.Control))
             {
                 ingresarSuministros();
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void dialogIngresarSuministro_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
         }
     }
 }
