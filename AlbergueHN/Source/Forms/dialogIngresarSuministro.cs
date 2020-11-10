@@ -43,53 +43,98 @@ namespace AlbergueHN.Source.Forms
             }
             comboTalla.SelectedIndex = 0;
         }
+        
+        private void ComboTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filtrar();
+            DataRowView row = (DataRowView)comboTipo.SelectedItem;
+            string filtroTipo = (string)row.Row.ItemArray[1];
+            if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
+            { panelControlRopa.Visible = true; labelTalla.Visible = true; comboTalla.Visible = true; }
+            else { panelControlRopa.Visible = false; }
+        }
+
+        private void TxtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            filtrar();
+        }
+
+        private void ComboTalla_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filtrar();
+        }
+
+        private void RadioCualquiera_CheckedChanged(object sender, EventArgs e)
+        {
+            filtrar();
+        }
+
+        private void RadioMasculino_CheckedChanged(object sender, EventArgs e)
+        {
+            filtrar();
+        }
+
+        private void RadioFemenino_CheckedChanged(object sender, EventArgs e)
+        {
+            filtrar();
+        }
+
+        private void ListaProductos_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            agregarSuministroTabla();
+        }
+
         private void llenarDatos()
         {
-            productos.Clear();
-            listaProductos.Items.Clear();
-            using (MySqlConnection con = new MySqlConnection(stringConexion))
+            try
             {
-                DataTable dtSuministro = new DataTable();
-                var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM suministro a inner join tiposuministro b on a.tipoID = b.tipoID;";
-                MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
-                con.Open();
-                da.Fill(dtSuministro);
-                foreach (DataRow r in dtSuministro.Rows)
+                productos.Clear();
+                listaProductos.Items.Clear();
+                using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
-                    string[] row = { (string)r["Descripcion"], ((int)r["Existencia"]).ToString(), (string)r["Tipo"], (r["Talla"] == System.DBNull.Value ? " " : (string)r["Talla"]), (r["Genero"] == System.DBNull.Value ? " " : (string)r["Genero"]), ((int)r["SuministroID"]).ToString() };
-                    ListViewItem tmp2 = new ListViewItem();
-                    tmp2.Text = row[0];
-                    tmp2.SubItems.Add(row[1]); //Existencia
-                    tmp2.SubItems.Add(row[2]); //Tipo
-                    tmp2.SubItems.Add(row[3]); //Talla
-                    tmp2.SubItems.Add(row[4]); //Genero
-                    tmp2.Tag = row[5]; //ID
-                    listaProductos.Items.Add(tmp2);
+                    DataTable dtSuministro = new DataTable();
+                    var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM suministro a inner join tiposuministro b on a.tipoID = b.tipoID;";
+                    MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
+                    con.Open();
+                    da.Fill(dtSuministro);
+                    foreach (DataRow r in dtSuministro.Rows)
+                    {
+                        string[] row = { (string)r["Descripcion"], ((int)r["Existencia"]).ToString(), (string)r["Tipo"], (r["Talla"] == System.DBNull.Value ? " " : (string)r["Talla"]), (r["Genero"] == System.DBNull.Value ? " " : (string)r["Genero"]), ((int)r["SuministroID"]).ToString() };
+                        ListViewItem tmp2 = new ListViewItem();
+                        tmp2.Text = row[0];
+                        tmp2.SubItems.Add(row[1]); //Existencia
+                        tmp2.SubItems.Add(row[2]); //Tipo
+                        tmp2.SubItems.Add(row[3]); //Talla
+                        tmp2.SubItems.Add(row[4]); //Genero
+                        tmp2.Tag = row[5]; //ID
+                        listaProductos.Items.Add(tmp2);
 
-                    productos.Add(tmp2);
+                        productos.Add(tmp2);
+                    }
+
                 }
 
-            }
+                using (MySqlConnection con = new MySqlConnection(stringConexion))
+                {
+                    var stm = "SELECT TipoID, Descripcion FROM tiposuministro";
+                    DataSet dsTipo = new DataSet();
+                    dsTipo.Tables.Add(new DataTable("TipoDefault"));
+                    dsTipo.Tables["TipoDefault"].Columns.Add("TipoID", typeof(int));
+                    dsTipo.Tables["TipoDefault"].Columns.Add("Descripcion", typeof(string));
+                    dsTipo.Tables["TipoDefault"].Rows.Add(0, "Todos");
+                    MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
+                    con.Open();
+                    da.Fill(dsTipo, "Tipos");
+                    comboTipo.DisplayMember = "Descripcion";
+                    comboTipo.ValueMember = "TipoID";
+                    dsTipo.Tables["TipoDefault"].Merge(dsTipo.Tables["Tipos"]);
+                    comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
+                }
 
-            using (MySqlConnection con = new MySqlConnection(stringConexion))
+            }catch(Exception ex)
             {
-                var stm = "SELECT TipoID, Descripcion FROM tiposuministro";
-                DataSet dsTipo = new DataSet();
-                dsTipo.Tables.Add(new DataTable("TipoDefault"));
-                dsTipo.Tables["TipoDefault"].Columns.Add("TipoID", typeof(int));
-                dsTipo.Tables["TipoDefault"].Columns.Add("Descripcion", typeof(string));
-                dsTipo.Tables["TipoDefault"].Rows.Add(0, "Todos");
-                MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
-                con.Open();
-                da.Fill(dsTipo, "Tipos");
-                comboTipo.DisplayMember = "Descripcion";
-                comboTipo.ValueMember = "TipoID";
-                dsTipo.Tables["TipoDefault"].Merge(dsTipo.Tables["Tipos"]);
-                comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
+                MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            
-
         }
         private void filtrar()
         {
@@ -137,69 +182,6 @@ namespace AlbergueHN.Source.Forms
             }
         }
 
-        private void ComboTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            filtrar();
-            DataRowView row = (DataRowView)comboTipo.SelectedItem;
-            string filtroTipo = (string)row.Row.ItemArray[1];
-            if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
-            { panelControlRopa.Visible = true; labelTalla.Visible = true; comboTalla.Visible = true; }
-            else { panelControlRopa.Visible = false; }
-        }
-
-        private void TxtFiltro_TextChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void ComboTalla_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void RadioCualquiera_CheckedChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void RadioMasculino_CheckedChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void RadioFemenino_CheckedChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void ListaProductos_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            
-            ListViewItem objetoSeleccionado = listaProductos.SelectedItems[0];
-            if(objetoSeleccionado == null)
-            {
-                Console.WriteLine("returned");
-                return;
-            }
-
-            Console.WriteLine("Doble click");
-            if (binding.ToList().Where(suministro => suministro.Id == objetoSeleccionado.Tag.ToString()).Count() != 0) return;
-            Suministro tmp = new Suministro();
-            tmp.Id = objetoSeleccionado.Tag.ToString();
-            tmp.Descripcion = objetoSeleccionado.Text;
-            tmp.Tipo = objetoSeleccionado.SubItems[2].Text;
-            tmp.Talla = objetoSeleccionado.SubItems[3].Text;
-            tmp.Genero = objetoSeleccionado.SubItems[4].Text;
-            Console.WriteLine(tmp.Id);
-            Console.WriteLine(tmp.Descripcion);
-            Console.WriteLine(tmp.Talla);
-            Console.WriteLine(tmp.Genero);
-
-            binding.Add(tmp);
-            Console.WriteLine(suministrosIngresados.Count);
-            
-        }
-
         private void TablaIngreso_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             if (e.ColumnIndex == tablaIngreso.Columns["Cantidad"].Index)
@@ -219,10 +201,50 @@ namespace AlbergueHN.Source.Forms
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
+            ingresarSuministros();
+        }
+
+        private void DialogIngresarProducto_SizeChanged(object sender, EventArgs e)
+        {
+            resizearTablaSuministro();
+        }
+
+        
+
+        private void ComboTalla_TextChanged(object sender, EventArgs e)
+        {
+            filtrar();
+        }
+
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            binding.Clear();
+        }
+        private void agregarSuministroTabla()
+        {
+            ListViewItem objetoSeleccionado = listaProductos.SelectedItems[0];
+            if (objetoSeleccionado == null)
+            {
+                return;
+            }
+
+            if (binding.ToList().Where(suministro => suministro.Id == objetoSeleccionado.Tag.ToString()).Count() != 0) return;
+            Suministro tmp = new Suministro();
+            tmp.Id = objetoSeleccionado.Tag.ToString();
+            tmp.Descripcion = objetoSeleccionado.Text;
+            tmp.Tipo = objetoSeleccionado.SubItems[2].Text;
+            tmp.Talla = objetoSeleccionado.SubItems[3].Text;
+            tmp.Genero = objetoSeleccionado.SubItems[4].Text;
+
+            binding.Add(tmp);
+        }
+
+        private void ingresarSuministros()
+        {
             string donante = txtDonante.Text.Trim().Length == 0 ? "Anonimo" : txtDonante.Text.Trim();
 
             //ejecutar el stored procedure
-                List<string> inserts = new List<string>();
+            List<string> inserts = new List<string>();
 
             using (MySqlConnection con = new MySqlConnection(stringConexion))
             {
@@ -239,16 +261,13 @@ namespace AlbergueHN.Source.Forms
                         int cant = item.Cantidad;
 
                         inserts.Add(string.Format("({0},{1})", id, cant));
-                        Console.WriteLine(string.Format("({0},{1})", id, cant));
                     }
                     sqlTemp.Append(string.Join(",", inserts));
                     sqlTemp.Append(";");
 
-                    Console.WriteLine(sqlTemp.ToString());
                     MySqlCommand cmdTmp = new MySqlCommand(sqlTemp.ToString(), con);
                     cmdTmp.ExecuteNonQuery();
 
-                    Console.WriteLine("Hora del procedure");
                     var stm = "CALL spIngresarSuministro(@donante, @uid);";
                     MySqlCommand cmd = new MySqlCommand(stm, con);
                     cmd.Parameters.AddWithValue("@donante", donante);
@@ -268,12 +287,6 @@ namespace AlbergueHN.Source.Forms
                 }
             }
         }
-
-        private void DialogIngresarProducto_SizeChanged(object sender, EventArgs e)
-        {
-            resizearTablaSuministro();
-        }
-
         private void resizearTablaSuministro()
         {
             try
@@ -288,16 +301,6 @@ namespace AlbergueHN.Source.Forms
             catch (Exception ex) { }
         }
 
-        private void ComboTalla_TextChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void BtnLimpiar_Click(object sender, EventArgs e)
-        {
-            binding.Clear();
-        }
-
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == (Keys.F5))
@@ -305,6 +308,13 @@ namespace AlbergueHN.Source.Forms
                 llenarDatos();
                 filtrar();
                 return true;
+            }else if(keyData == (Keys.Enter))
+            {
+                agregarSuministroTabla();
+            }
+            else if(keyData == (Keys.Enter | Keys.Control))
+            {
+                ingresarSuministros();
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }

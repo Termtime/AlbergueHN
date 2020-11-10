@@ -18,7 +18,7 @@ namespace AlbergueHN.Source.Forms
         public LoginForm()
         {
             InitializeComponent();
-            comprobarConexion();
+            
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -82,21 +82,27 @@ namespace AlbergueHN.Source.Forms
             if(stringConexion.Length == 0)
             {
                 labelEstado.Text = "No configurado";
+                labelEstado.ForeColor = Color.Black;
                 btnLogin.Enabled = false;
                 return;
             }
+            Cursor.Current = Cursors.WaitCursor;
             using (MySqlConnection con = new MySqlConnection(stringConexion))
             {
                 try
                 {
                     con.Open();
-                    labelEstado.Text = "En linea";
+                    labelEstado.Text = "En línea";
+                    Cursor.Current = Cursors.Default;
+                    labelEstado.ForeColor = Color.Green;
                     btnLogin.Enabled = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEstado.Text = "Conexión Fallida.";
+                    labelEstado.ForeColor = Color.Red;
+                    Cursor.Current = Cursors.Default;
                     btnLogin.Enabled = false;
                 }
             }
@@ -116,6 +122,11 @@ namespace AlbergueHN.Source.Forms
             dialogConectarServidor form = new dialogConectarServidor();
             form.ShowDialog();
             stringConexion = (string)Properties.Settings.Default["stringConexion"];
+            comprobarConexion();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
             comprobarConexion();
         }
     }

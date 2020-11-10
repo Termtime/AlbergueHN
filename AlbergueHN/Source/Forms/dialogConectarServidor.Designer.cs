@@ -46,11 +46,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(68, 23);
+            this.label1.Location = new System.Drawing.Point(14, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 13);
+            this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "IP:";
+            this.label1.Text = "IP o dirección:";
             // 
             // label2
             // 
@@ -65,7 +65,7 @@
             // 
             this.txtIP.Location = new System.Drawing.Point(95, 23);
             this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(129, 20);
+            this.txtIP.Size = new System.Drawing.Size(193, 20);
             this.txtIP.TabIndex = 2;
             // 
             // txtPass
@@ -73,12 +73,12 @@
             this.txtPass.Location = new System.Drawing.Point(95, 82);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
-            this.txtPass.Size = new System.Drawing.Size(129, 20);
+            this.txtPass.Size = new System.Drawing.Size(193, 20);
             this.txtPass.TabIndex = 3;
             // 
             // btnConectar
             // 
-            this.btnConectar.Location = new System.Drawing.Point(149, 144);
+            this.btnConectar.Location = new System.Drawing.Point(95, 144);
             this.btnConectar.Name = "btnConectar";
             this.btnConectar.Size = new System.Drawing.Size(75, 23);
             this.btnConectar.TabIndex = 4;
@@ -88,8 +88,9 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(245, 30);
+            this.label3.Location = new System.Drawing.Point(302, 30);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 5;
@@ -97,8 +98,9 @@
             // 
             // labelEstado
             // 
+            this.labelEstado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelEstado.AutoSize = true;
-            this.labelEstado.Location = new System.Drawing.Point(245, 49);
+            this.labelEstado.Location = new System.Drawing.Point(302, 49);
             this.labelEstado.Name = "labelEstado";
             this.labelEstado.Size = new System.Drawing.Size(58, 13);
             this.labelEstado.TabIndex = 6;
@@ -106,7 +108,8 @@
             // 
             // btnDetalles
             // 
-            this.btnDetalles.Location = new System.Drawing.Point(245, 77);
+            this.btnDetalles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDetalles.Location = new System.Drawing.Point(302, 77);
             this.btnDetalles.Name = "btnDetalles";
             this.btnDetalles.Size = new System.Drawing.Size(89, 23);
             this.btnDetalles.TabIndex = 7;
@@ -119,7 +122,7 @@
             // 
             this.txtBD.Location = new System.Drawing.Point(95, 118);
             this.txtBD.Name = "txtBD";
-            this.txtBD.Size = new System.Drawing.Size(129, 20);
+            this.txtBD.Size = new System.Drawing.Size(193, 20);
             this.txtBD.TabIndex = 9;
             // 
             // label4
@@ -135,7 +138,7 @@
             // 
             this.txtUsuario.Location = new System.Drawing.Point(95, 52);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(129, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(193, 20);
             this.txtUsuario.TabIndex = 11;
             // 
             // label5
@@ -149,11 +152,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(259, 144);
+            this.button1.Location = new System.Drawing.Point(302, 144);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(88, 23);
             this.button1.TabIndex = 12;
-            this.button1.Text = "Limpiar";
+            this.button1.Text = "Limpiar Config.";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
@@ -161,7 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(346, 174);
+            this.ClientSize = new System.Drawing.Size(403, 174);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.label5);
@@ -175,6 +178,7 @@
             this.Controls.Add(this.txtIP);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "dialogConectarServidor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Conectar al servidor";

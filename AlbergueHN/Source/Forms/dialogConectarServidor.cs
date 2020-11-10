@@ -33,14 +33,19 @@ namespace AlbergueHN.Source.Forms
                     MySqlConnection con = new MySqlConnection(stringConexion);
                     btnDetalles.Visible = false;
                     labelEstado.Text = "Conectando...";
+                    Cursor.Current = Cursors.WaitCursor;
                     con.Open();
                     labelEstado.Text = "Conectado";
+                    labelEstado.ForeColor = Color.Green;
+                    Cursor.Current = Cursors.Default;
                     con.Close();
                 }
                 catch (Exception ex)
                 {
                     //La conexion fallo, indicarle al usuario
                     labelEstado.Text = "Conexion Fallida";
+                    labelEstado.ForeColor = Color.Red;
+                    Cursor.Current = Cursors.Default;
                     btnDetalles.Visible = true;
                     error = ex.ToString();
                 }
@@ -57,6 +62,7 @@ namespace AlbergueHN.Source.Forms
 
         private void BtnConectar_Click(object sender, EventArgs e)
         {
+            labelEstado.ForeColor = Color.Black;
             string stringConexion = "Server=" + txtIP.Text + ";Database="+txtBD.Text+";Uid="+txtUsuario.Text+";Pwd=" + txtPass.Text;
 
             MySqlConnection con = new MySqlConnection(stringConexion);
@@ -64,6 +70,8 @@ namespace AlbergueHN.Source.Forms
             {
                 btnDetalles.Visible = false;
                 labelEstado.Text = "Conectando...";
+                Cursor.Current = Cursors.WaitCursor;
+                labelEstado.ForeColor = Color.Yellow;
                 con.Open();
                 //Se conectó correctamente, guardar conexion
                 Properties.Settings.Default["serverIP"] = txtIP.Text;
@@ -74,12 +82,16 @@ namespace AlbergueHN.Source.Forms
 
                 Properties.Settings.Default.Save();
                 labelEstado.Text = "Conectado";
+                labelEstado.ForeColor = Color.Green;
+                Cursor.Current = Cursors.Default;
                 con.Close();
             }
             catch(Exception ex)
             {
                 //La conexion fallo, indicarle al usuario
                 labelEstado.Text = "Conexion Fallida";
+                labelEstado.ForeColor = Color.Red;
+                Cursor.Current = Cursors.Default;
                 btnDetalles.Visible = true;
                 error = ex.ToString();
                 Console.WriteLine(error);
@@ -106,6 +118,9 @@ namespace AlbergueHN.Source.Forms
             txtUsuario.Text = "";
             txtPass.Text = "";
             txtBD.Text = "";
+
+            labelEstado.Text = "Esperando...";
+            labelEstado.ForeColor = Color.Black;
         }
     }
 }

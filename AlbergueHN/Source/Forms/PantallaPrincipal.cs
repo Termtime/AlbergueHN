@@ -55,66 +55,82 @@ namespace AlbergueHN
 
         public void llenarGridPersonas()
         {
-
-            dtPersonas.Clear();
-            var stm = "select PersonaID, Cuenta, Nombres, Apellidos, year(curdate()) - year(fechanacimiento) as Edad, Telefono, m.Nombre as Municipio from persona p inner join municipio m on p.municipio = m.municipioid where fechasalida is null";
-
-
-            using (MySqlConnection con = new MySqlConnection(stringConexion))
+            try
             {
-                MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
-                con.Open();
-                da.Fill(dtPersonas);
-                tablaPersonas.DataSource = dtPersonas;
+                dtPersonas.Clear();
+                var stm = "select PersonaID, Cuenta, Nombres, Apellidos, year(curdate()) - year(fechanacimiento) as Edad, Telefono, m.Nombre as Municipio from persona p inner join municipio m on p.municipio = m.municipioid where fechasalida is null";
+
+
+                using (MySqlConnection con = new MySqlConnection(stringConexion))
+                {
+                    MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
+                    con.Open();
+                    da.Fill(dtPersonas);
+                    tablaPersonas.DataSource = dtPersonas;
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
         public void llenarComboFiltroTipoArticulo()
         {
-            using (MySqlConnection con = new MySqlConnection(stringConexion))
+            try
             {
-                DataSet dsTipo = new DataSet();
-                dsTipo.Tables.Add(new DataTable("TipoDefault"));
-                dsTipo.Tables["TipoDefault"].Columns.Add("TipoID", typeof(int));
-                dsTipo.Tables["TipoDefault"].Columns.Add("Descripcion", typeof(string));
-                dsTipo.Tables["TipoDefault"].Rows.Add(0, "Todos");
-                var stm = "SELECT TipoID, Descripcion FROM tiposuministro";
-                MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
-                con.Open();
-                da.Fill(dsTipo, "Tipos");
-                comboTipo.DisplayMember = "Descripcion";
-                comboTipo.ValueMember = "TipoID";
-                dsTipo.Tables["TipoDefault"].Merge(dsTipo.Tables["Tipos"]);
-                comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
+                using (MySqlConnection con = new MySqlConnection(stringConexion))
+                {
+                    DataSet dsTipo = new DataSet();
+                    dsTipo.Tables.Add(new DataTable("TipoDefault"));
+                    dsTipo.Tables["TipoDefault"].Columns.Add("TipoID", typeof(int));
+                    dsTipo.Tables["TipoDefault"].Columns.Add("Descripcion", typeof(string));
+                    dsTipo.Tables["TipoDefault"].Rows.Add(0, "Todos");
+                    var stm = "SELECT TipoID, Descripcion FROM tiposuministro";
+                    MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
+                    con.Open();
+                    da.Fill(dsTipo, "Tipos");
+                    comboTipo.DisplayMember = "Descripcion";
+                    comboTipo.ValueMember = "TipoID";
+                    dsTipo.Tables["TipoDefault"].Merge(dsTipo.Tables["Tipos"]);
+                    comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
+                }
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public void llenarGridArticulos()
         {
-
-            dtArticulos.Clear();
-            var stm = "select suministroID, a.Descripcion, tp.Descripcion as Tipo, Talla, Genero, Existencia from suministro a inner join tiposuministro tp on a.tipoID = tp.tipoID";
-
-            using (MySqlConnection con = new MySqlConnection(stringConexion))
+            try
             {
-                MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
-                con.Open();
-                da.Fill(dtArticulos);
-                tablaSuministros.DataSource = dtArticulos;
-            }
-            foreach(DataGridViewRow item in tablaSuministros.Rows)
-            {
-                List<string> fila = new List<string>();
-                fila.Add(item.Cells[0].Value.ToString());
-                fila.Add(item.Cells[1].Value.ToString());
-                fila.Add(item.Cells[2].Value.ToString());
-                fila.Add(item.Cells[3].Value.ToString());
-                fila.Add(item.Cells[4].Value.ToString());
-                fila.Add(item.Cells[5].Value.ToString());
+                dtArticulos.Clear();
+                var stm = "select suministroID, a.Descripcion, tp.Descripcion as Tipo, Talla, Genero, Existencia from suministro a inner join tiposuministro tp on a.tipoID = tp.tipoID";
 
-                suministros.Add(fila);
+                using (MySqlConnection con = new MySqlConnection(stringConexion))
+                {
+                    MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
+                    con.Open();
+                    da.Fill(dtArticulos);
+                    tablaSuministros.DataSource = dtArticulos;
+                }
+                foreach(DataGridViewRow item in tablaSuministros.Rows)
+                {
+                    List<string> fila = new List<string>();
+                    fila.Add(item.Cells[0].Value.ToString());
+                    fila.Add(item.Cells[1].Value.ToString());
+                    fila.Add(item.Cells[2].Value.ToString());
+                    fila.Add(item.Cells[3].Value.ToString());
+                    fila.Add(item.Cells[4].Value.ToString());
+                    fila.Add(item.Cells[5].Value.ToString());
+
+                    suministros.Add(fila);
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            Console.WriteLine("PREVIO FILTRO");
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
