@@ -29,7 +29,9 @@ namespace AlbergueHN.Source.Forms
 
         private void DialogDespacharProductos_Load(object sender, EventArgs e)
         {
+            usuarioID.Text = UsuarioActual.ID.ToString();
             llenarDatos();
+            
             binding = new BindingList<Suministro>(suministrosIngresados);
             bindingComboPersonas = new BindingList<Persona>(personas);
             tablaDespacho.DataSource = binding;
@@ -46,6 +48,7 @@ namespace AlbergueHN.Source.Forms
                 comboTalla.Items.Add(item);
             }
             comboTalla.SelectedIndex = 0;
+           
         }
 
         
@@ -92,7 +95,21 @@ namespace AlbergueHN.Source.Forms
         }
         private void BtnDespachar_Click(object sender, EventArgs e)
         {
-            despacharProductos();
+            if (tablaDespacho.Rows.Count == 0)
+            {
+                MessageBox.Show("No se han agregado suministros para despachar",
+                                   "Advertencia", MessageBoxButtons.OK,
+                                   MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                despacharProductos();
+                Cursor.Current = Cursors.Default;
+
+            }
+
+               
         }
 
         private void DialogDespacharArticulo_SizeChanged(object sender, EventArgs e)
@@ -218,7 +235,19 @@ namespace AlbergueHN.Source.Forms
 
                     listaProductos.Items.Add(item);
                 }
+                
+
             }
+            else
+                    if (filtroTipo == "Medicina" || filtroTipo == "Bebida")
+                    {
+                        
+                foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower())))
+                        {
+
+                            listaProductos.Items.Add(item);
+                        }
+                    }
         }
 
         private void agregarSuministroTabla()
@@ -230,7 +259,13 @@ namespace AlbergueHN.Source.Forms
             }
 
             //Si el objeto ya existe en la tabla, salir
-            if (binding.ToList().Where(suministro => suministro.Id == objetoSeleccionado.Tag.ToString()).Count() != 0) return;
+            if (binding.ToList().Where(suministro => suministro.Id == objetoSeleccionado.Tag.ToString()).Count() != 0)
+            {
+                MessageBox.Show("Este objeto ya fue agregado a la tabla",
+                                   "Advertencia", MessageBoxButtons.OK,
+                                   MessageBoxIcon.Warning);
+                return;
+             }
             Suministro tmp = new Suministro();
             tmp.Id = objetoSeleccionado.Tag.ToString();
             tmp.Descripcion = objetoSeleccionado.Text;
@@ -315,6 +350,21 @@ namespace AlbergueHN.Source.Forms
         private void ComboTalla_TextChanged(object sender, EventArgs e)
         {
             filtrar();
+        }
+
+        private void listaProductos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Presionar ENTER para agregar a la tabla
+           if(e.KeyChar == '\r')
+
+            {
+                agregarSuministroTabla();
+            }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

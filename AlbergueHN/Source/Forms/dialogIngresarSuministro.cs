@@ -49,7 +49,7 @@ namespace AlbergueHN.Source.Forms
             filtrar();
             DataRowView row = (DataRowView)comboTipo.SelectedItem;
             string filtroTipo = (string)row.Row.ItemArray[1];
-            if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
+            if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos" || filtroTipo == "Bebida" || filtroTipo == "Medicina")
             { panelControlRopa.Visible = true; labelTalla.Visible = true; comboTalla.Visible = true; }
             else { panelControlRopa.Visible = false; }
         }
