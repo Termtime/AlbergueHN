@@ -152,5 +152,38 @@ namespace AlbergueHN.Source.Forms
                 cargarProductos();
             }
         }
+
+        private void btnEliminarProducto_Click(object sender, EventArgs e)
+        {
+            if (tablaProductos.RowCount == 0)
+                return;
+            DialogResult opcion;
+            opcion = MessageBox.Show(this, "¿Desea eliminar este registro?", "Eliminar", MessageBoxButtons.YesNo);
+
+            //se ha contestado que Si, entonces eliminamos
+            if (opcion == DialogResult.Yes)
+            {
+                String sql = "call spDeshabilitarProducto(@1)";
+                try
+                {
+                    using (MySqlConnection con = new MySqlConnection(StringConexion))
+                    {
+                        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                        {
+                            cmd.Parameters.AddWithValue("@1", tablaProductos.CurrentRow.Cells["SuministroID"].Value);
+                            cmd.Connection.Open();
+                            cmd.ExecuteNonQuery();
+                            //refrescar el grid, si llego hasta aqui, eliminar la fila del grid
+                            tablaProductos.Rows.RemoveAt(tablaProductos.CurrentRow.Index);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No fue posible eliminar");
+                }
+            }
+
+        }
     }
 }
