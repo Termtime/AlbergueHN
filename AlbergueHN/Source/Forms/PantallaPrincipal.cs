@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AlbergueHN.Source.Forms;
@@ -17,16 +18,17 @@ namespace AlbergueHN
 {
     public partial class Form1 : Form
     {
-        List<List<string>> suministros = new List<List<string>>();
-        DataGridViewRowCollection personas;
         string[] tallasRopa = { "Todas", "XXS", "XS", "S", "M", "L", "XL", "XL", "XXL" };
         string loggedUserID = UsuarioActual.ID;
         DataTable dtPersonas = new DataTable();
         DataTable dtArticulos = new DataTable();
+        public LoginForm loginRef;
+        bool estaCargandoDatos = false;
         public Form1()
         {
             InitializeComponent();
-            
+            tablaSuministros.DataSource = null;
+            tablaPersonas.DataSource = null;
         }
         string stringConexion = (string)Properties.Settings.Default["stringConexion"];
         private void TabPage1_Click(object sender, EventArgs e)
@@ -41,44 +43,42 @@ namespace AlbergueHN
             {
                 comboTalla.Items.Add(item);
             }
-            comboTalla.SelectedIndex = 0;                    
-            llenarGridPersonas();
-            llenarGridArticulos();
-            llenarComboFiltroTipoArticulo();
+            comboTalla.SelectedIndex = 0;
+            callCargaDatos();
             comboFiltro.SelectedIndex = 0;
-            
-
-            
             resizearTablaPersonas();
             resizearTablaSuministros();
         }
 
-        public void llenarGridPersonas()
+        public void callCargaDatos()
         {
+            if (estaCargandoDatos) return;
+            Thread t = new Thread(new ThreadStart(cargaDatos));
+            t.IsBackground = true;
+            t.Name = "cargaDatos";
+            t.Start();
+        }
+
+        public void cargaDatos()
+        {
+            estaCargandoDatos = true;
             try
             {
-                dtPersonas.Clear();
-                var stm = "select PersonaID, Cuenta, Nombres, Apellidos, year(curdate()) - year(fechanacimiento) as Edad, Telefono, m.Nombre as Municipio from persona p inner join municipio m on p.municipio = m.municipioid where fechasalida is null";
-
 
                 using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
+                    var stm = "SELECT * FROM vistaPersonasPantallaPrincipal";
                     MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                     con.Open();
-                    da.Fill(dtPersonas);
-                    tablaPersonas.DataSource = dtPersonas;
+                    Invoke(new Action(() =>
+                    {
+                        dtPersonas.Clear();
+                        da.Fill(dtPersonas);
+                        tablaPersonas.DataSource = dtPersonas;
+                        resizearTablaPersonas();
+                    }));
                 }
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
-        }
-
-        public void llenarComboFiltroTipoArticulo()
-        {
-            try
-            {
                 using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
                     DataSet dsTipo = new DataSet();
@@ -90,54 +90,43 @@ namespace AlbergueHN
                     MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                     con.Open();
                     da.Fill(dsTipo, "Tipos");
-                    comboTipo.DisplayMember = "Descripcion";
-                    comboTipo.ValueMember = "TipoID";
                     dsTipo.Tables["TipoDefault"].Merge(dsTipo.Tables["Tipos"]);
-                    comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
+                    Invoke(new Action(() =>
+                    {
+                        comboTipo.DisplayMember = "Descripcion";
+                        comboTipo.ValueMember = "TipoID";
+                        comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
+                    }));
                 }
-
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        public void llenarGridArticulos()
-        {
-            try
-            {
-                dtArticulos.Clear();
-                var stm = "select suministroID, a.Descripcion, tp.Descripcion as Tipo, Talla, Genero, Existencia from suministro a inner join tiposuministro tp on a.tipoID = tp.tipoID";
 
                 using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
+                    var stm = "SELECT suministroID, a.Descripcion, tp.Descripcion as Tipo, Talla, Genero, Existencia FROM suministro a INNER JOIN tiposuministro tp on a.tipoID = tp.tipoID";
                     MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                     con.Open();
-                    da.Fill(dtArticulos);
-                    tablaSuministros.DataSource = dtArticulos;
+                    Invoke(new Action(() =>
+                    {
+                        dtArticulos.Clear();
+                        da.Fill(dtArticulos);
+                        tablaSuministros.DataSource = dtArticulos;
+                        resizearTablaSuministros();
+                    }));
                 }
-                foreach(DataGridViewRow item in tablaSuministros.Rows)
-                {
-                    List<string> fila = new List<string>();
-                    fila.Add(item.Cells[0].Value.ToString());
-                    fila.Add(item.Cells[1].Value.ToString());
-                    fila.Add(item.Cells[2].Value.ToString());
-                    fila.Add(item.Cells[3].Value.ToString());
-                    fila.Add(item.Cells[4].Value.ToString());
-                    fila.Add(item.Cells[5].Value.ToString());
-
-                    suministros.Add(fila);
-                }
-            }catch(Exception ex)
+                estaCargandoDatos = false;
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.StackTrace);
+                estaCargandoDatos = false;
             }
         }
+        
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == (Keys.F5))
             {
-                llenarGridArticulos();
-                llenarGridPersonas();
+                callCargaDatos();
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
@@ -150,19 +139,12 @@ namespace AlbergueHN
 
         private void filtrarSuministros()
         {
-            //QUITAR ESTO CUANDO SE ARREGLE LA FUNCION
-            //!!!!!!
-            if (suministros.Count == 0)
-            {
-                return;
-            }
+            if (tablaSuministros.DataSource == null) return;
             DataRowView row = (DataRowView)comboTipo.SelectedItem;
             string filtroTipo = (string)row.Row.ItemArray[1];
             string filtroTxt = txtFiltro.Text;
-            //tablaSuministros.Rows.Clear();
-            //List<ListViewItem> productosFiltrados = new List<ListViewItem>();
             string genero = "";
-            string filtroTalla = comboTalla.SelectedItem.ToString() ?? comboTalla.Text;
+            string filtroTalla = (string)(comboTalla.SelectedItem ?? comboTalla.Text);
             String buscar = txtFiltro.Text;
             bool cualquierGenero = false;
             if (radioMasculino.Checked)
@@ -178,48 +160,56 @@ namespace AlbergueHN
                 cualquierGenero = true;
             }
             
-            if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
+            if(filtroTipo == "Todos")
+            {
+                try
+                {
+                    dtArticulos.DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%'";
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.StackTrace);
+                    MessageBox.Show(e.Message, "Error Filtrando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
             {
                 panelControlRopa.Visible = true;
                 bool cualquierTalla = false;
                 
-                filtroTalla = (string)comboTalla.SelectedItem.ToString() ?? comboTalla.Text;
+                filtroTalla = (string)(comboTalla.SelectedItem ?? comboTalla.Text);
            
                 if (filtroTalla == "Todas") cualquierTalla = true;
                 try
                 {
-                    dtArticulos.DefaultView.RowFilter = "descripcion LIKE '%"+buscar+"%' and tipo = '" + filtroTipo+"' And (talla = '" + filtroTalla + "' or "+ cualquierTalla+")  And (genero = '" + genero+"' or "+cualquierGenero+")";
+                    dtArticulos.DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%' and tipo = '{filtroTipo}' And (talla LIKE '%{filtroTalla}%' or {cualquierTalla})  And (genero = '{genero}' or {cualquierGenero})";
                 }
                 catch(Exception e)
                 {
-                    MessageBox.Show(e.Message);
+                    Console.WriteLine(e.StackTrace);
+                    MessageBox.Show(e.Message, "Error Filtrando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else 
             {
-                dtArticulos.DefaultView.RowFilter = "descripcion LIKE '%"+buscar+"%'";  
+                dtArticulos.DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%' and tipo = '{filtroTipo}'";  
             }
-
-           
-
         }
         private void filtrarPersonas()
         {
+            if (tablaPersonas.DataSource == null) return;
             String filtrar = txtFiltro1.Text;
             if (comboFiltro.SelectedIndex == 0)
             {
                 dtPersonas.DefaultView.RowFilter = "nombres LIKE '%"+filtrar+"%'";
-                
             }
             if (comboFiltro.SelectedIndex == 1)
             {
                 dtPersonas.DefaultView.RowFilter = "personaID LIKE '%" + filtrar + "%'";
-
             }
             if (comboFiltro.SelectedIndex == 2)
             {
                 dtPersonas.DefaultView.RowFilter = "cuenta LIKE '%" + filtrar + "%'";
-
             }
         }
 
@@ -248,6 +238,11 @@ namespace AlbergueHN
         private void ComboTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             filtrarSuministros();
+            DataRowView row = (DataRowView)comboTipo.SelectedItem;
+            string filtroTipo = (string)row.Row.ItemArray[1];
+            if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
+            { panelControlRopa.Visible = true; labelTalla.Visible = true; comboTalla.Visible = true; }
+            else { panelControlRopa.Visible = false; }
         }
 
         private void TxtFiltro_TextChanged(object sender, EventArgs e)
@@ -277,20 +272,22 @@ namespace AlbergueHN
 
         private void IngresarSuministrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dialogIngresarSuministro form = new dialogIngresarSuministro();
+            dialogDespacharSuministro form = new dialogDespacharSuministro();
             form.ShowDialog();
         }
 
         private void ingresarPersonaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MantPersonas personas = new MantPersonas();
-            personas.Show();
+            personas.ShowDialog();
+            callCargaDatos();
         }
 
         private void administrarSuministrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MantProductos productos = new MantProductos();
-            productos.Show();
+            productos.ShowDialog();
+            callCargaDatos();
         }
 
         private void TabPage1_SizeChanged(object sender, EventArgs e)
@@ -331,12 +328,6 @@ namespace AlbergueHN
             resizearTablaSuministros();
         }
 
-        private void btRefrescar_Click(object sender, EventArgs e)
-        {
-            llenarGridArticulos();
-            llenarGridPersonas();
-        }
-
         private void comboFiltro_SelectedIndexChanged(object sender, EventArgs e)
         {
             filtrarPersonas();
@@ -345,6 +336,32 @@ namespace AlbergueHN
         private void txtFiltro1_TextChanged(object sender, EventArgs e)
         {
             filtrarPersonas();
+        }
+
+        private void CerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("¿Desea cerrar sesión?","Confirmar acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes))
+            {
+                this.Hide();
+                loginRef.Show();
+            }
+                
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+        }
+
+        private void ComboTalla_TextChanged(object sender, EventArgs e)
+        {
+            filtrarSuministros();
+        }
+
+        private void RefrescarListadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            callCargaDatos();
+            filtrarPersonas();
+            filtrarSuministros();
         }
     }
 }
