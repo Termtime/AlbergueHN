@@ -98,6 +98,7 @@
             this.tablaPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaPersonas.Size = new System.Drawing.Size(809, 600);
             this.tablaPersonas.TabIndex = 6;
+            this.tablaPersonas.SelectionChanged += new System.EventHandler(this.TablaPersonas_SelectionChanged);
             // 
             // btnIngresar
             // 

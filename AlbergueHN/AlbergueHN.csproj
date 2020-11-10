@@ -104,6 +104,12 @@
     <Compile Include="Source\Forms\dialogDespacharSuministro.Designer.cs">
       <DependentUpon>dialogDespacharSuministro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Source\Forms\dialogModificarPersona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\dialogModificarPersona.Designer.cs">
+      <DependentUpon>dialogModificarPersona.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\Forms\dialogModificarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\dialogCrearProducto.resx">
       <DependentUpon>dialogCrearProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\dialogModificarPersona.resx">
+      <DependentUpon>dialogModificarPersona.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\dialogModificarProducto.resx">
       <DependentUpon>dialogModificarProducto.cs</DependentUpon>

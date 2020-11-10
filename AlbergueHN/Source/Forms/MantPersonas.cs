@@ -19,14 +19,14 @@ namespace AlbergueHN.Source.Forms
             InitializeComponent();
         }
         DataTable dt = new DataTable();
-        string StringConexion = (string)Properties.Settings.Default["stringConexion"];
+        string stringConexion = (string)Properties.Settings.Default["stringConexion"];
         private void BtnDarDeAlta_Click(object sender, EventArgs e)
         {
             String id = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString();
             String sql = "call spDarAlta(@1)";
             try
             {
-                using (MySqlConnection con = new MySqlConnection(StringConexion))
+                using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
                     using (MySqlCommand cmd = new MySqlCommand(sql, con))
                     {
@@ -58,7 +58,7 @@ namespace AlbergueHN.Source.Forms
                 var stm = "select PersonaID as Identidad, Cuenta, Nombres, Apellidos, FechaNacimiento, Genero, CantidadFamiliares as 'Cantidad de Familiares', "
                     +"Telefono, m.Nombre as 'Municipio', Direccion, FechaEntrada as 'Fecha de Entrada', FechaSalida as 'Fecha de Salida'"+
                     " from persona p inner join municipio m on p.municipio = m.municipioid";
-                using (MySqlConnection con = new MySqlConnection(StringConexion))
+                using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
                     MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                     con.Open();
@@ -76,17 +76,27 @@ namespace AlbergueHN.Source.Forms
         {
             String genero;
             String fecha;
-            dialogIngresarPersona p = new dialogIngresarPersona();
-            p.txtNombres.Text = tablaPersonas.CurrentRow.Cells["Nombres"].Value.ToString();
-            p.txtApellidos.Text = tablaPersonas.CurrentRow.Cells["Apellidos"].Value.ToString();
-            p.txtId.Text = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString();
+            dialogModificarPersona p = new dialogModificarPersona();
+            p.txtNombre.Text = tablaPersonas.CurrentRow.Cells["Nombres"].Value.ToString();
+            p.txtApellido.Text = tablaPersonas.CurrentRow.Cells["Apellidos"].Value.ToString();
+            string id1 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString().Substring(0,3);
+            string id2 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString().Substring(4,7);
+            string id3 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString();
+
+            p.txtID1.Text = id1;
+            p.txtID2.Text = id2;
+            p.txtID3.Text = id3;
+
+            p.txtID1.Enabled = false;
+            p.txtID2.Enabled = false;
+            p.txtID3.Enabled = false;
+
             p.txtCuenta.Text = tablaPersonas.CurrentRow.Cells["Cuenta"].Value.ToString();
             p.txtTelefono.Text = tablaPersonas.CurrentRow.Cells["Telefono"].Value.ToString();
             p.txtDireccion.Text = tablaPersonas.CurrentRow.Cells["Direccion"].Value.ToString();
-            p.txtFamiliares.Text = tablaPersonas.CurrentRow.Cells["Cantidad de Familiares"].Value.ToString();
+            p.spinnerFamiliares.Value = (int) tablaPersonas.CurrentRow.Cells["Cantidad de Familiares"].Value;
             genero = tablaPersonas.CurrentRow.Cells["Genero"].Value.ToString();
             fecha = tablaPersonas.CurrentRow.Cells["FechaNacimiento"].Value.ToString();
-            String identidadOriginal = p.txtId.Text.Trim();
            
             p.fechaNacimiento.Value = DateTime.Parse(fecha);
             p.comboMunicipio.SelectedItem = tablaPersonas.CurrentRow.Cells["Municipio"].Value.ToString();
@@ -102,45 +112,7 @@ namespace AlbergueHN.Source.Forms
             }
                 
             p.ShowDialog();
-
-            if(!p.IsDisposed) //Incompleto
-            {
-                String sql = "call spUpdatePersona(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, "+identidadOriginal+")";
-                string gen = "";
-                if (p.radioMasculino.Checked == true && p.radioFemenino.Checked == false)
-                    gen = "M";
-                else
-                    gen = "F";
-                try
-                {
-                    using (MySqlConnection con = new MySqlConnection(StringConexion))
-                    {
-                        using (MySqlCommand cmd = new MySqlCommand(sql, con))
-                        {
-                            cmd.Parameters.AddWithValue("@1", p.txtId.Text.Trim());
-                            cmd.Parameters.AddWithValue("@2", p.txtNombres.Text.Trim());
-                            cmd.Parameters.AddWithValue("@3", p.txtApellidos.Text.Trim());
-                            cmd.Parameters.AddWithValue("@4", p.fechaNacimiento.Value.ToString("yyyy-MM-dd"));
-                            cmd.Parameters.AddWithValue("@5", gen);
-                            cmd.Parameters.AddWithValue("@6", p.txtDireccion.Text.Trim());
-                            cmd.Parameters.AddWithValue("@7", p.txtCuenta.Text.Trim());
-                            cmd.Parameters.AddWithValue("@8", p.txtFamiliares.Text.Trim());
-                            cmd.Parameters.AddWithValue("@9", p.txtTelefono.Text.Trim());
-                            cmd.Parameters.AddWithValue("@10", p.comboMunicipio.SelectedValue.ToString());
-
-                            cmd.Connection.Open();  //abrir conexion
-                            cmd.ExecuteNonQuery();  //ejecutar comando
-                        }
-                    }
-                    cargarPersonas();
-                }
-                catch (Exception ex)
-                {
-                    //ocurrio un error
-                    MessageBox.Show(ex.Message);
-                }
                 
-            }
         }
 
         private void MantPersonas_SizeChanged(object sender, EventArgs e)
@@ -181,50 +153,69 @@ namespace AlbergueHN.Source.Forms
             
             dialogIngresarPersona p = new dialogIngresarPersona();
             p.ShowDialog();
-            String sql = "";
-            if (!p.IsDisposed)
+            cargarPersonas();
+                ////MOVER A DIALOGOINGRESARPERSONA
+                //if (!p.checkFamiliar.Checked)
+                //{
+                //    sql = "CALL spIngresarPersona(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10)";
+                //}
+                //else
+                //    sql = "CALL spIngresarFamiliar(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10)";
+                //string gen = "";
+                //if (p.radioMasculino.Checked == true && p.radioFemenino.Checked == false)
+                //    gen = "M";
+                //else
+                //    gen = "F";
+                //try
+                //{
+                //    using (MySqlConnection con = new MySqlConnection(StringConexion))
+                //    {
+                //        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                //        {
+                //            cmd.Parameters.AddWithValue("@1", p.txtId.Text.Trim());
+                //            cmd.Parameters.AddWithValue("@2", p.txtNombre.Text.Trim());
+                //            cmd.Parameters.AddWithValue("@3", p.txtApellido.Text.Trim());
+                //            cmd.Parameters.AddWithValue("@4", p.fechaNacimiento.Value.ToString("yyyy-MM-dd"));
+                //            cmd.Parameters.AddWithValue("@5", gen);
+                //            cmd.Parameters.AddWithValue("@6", p.txtDireccion.Text.Trim());
+                //            cmd.Parameters.AddWithValue("@7", p.txtCuenta.Text.Trim());
+                //            cmd.Parameters.AddWithValue("@8", p.spinnerFamiliares.Text.Trim());
+                //            cmd.Parameters.AddWithValue("@9", p.txtTelefono.Text.Trim());
+                //            cmd.Parameters.AddWithValue("@10", p.comboMunicipio.SelectedValue.ToString());
+
+                //            cmd.Connection.Open();  //abrir conexion
+                //            cmd.ExecuteNonQuery();  //ejecutar comando
+                //        }
+                //    }
+
+                //}
+                //catch (MySqlException ex)
+                //{
+                //    //ocurrio un error
+                //    MessageBox.Show(ex.Message);
+                //}
+        }
+
+        private void TablaPersonas_SelectionChanged(object sender, EventArgs e)
+        {
+            try
             {
-                if (!p.checkFamiliar.Checked)
+                if(tablaPersonas.SelectedRows[0] != null)
                 {
-                    sql = "CALL spIngresarPersona(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10)";
-                }
-                else
-                    sql = "CALL spIngresarFamiliar(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10)";
-                string gen = "";
-                if (p.radioMasculino.Checked == true && p.radioFemenino.Checked == false)
-                    gen = "M";
-                else
-                    gen = "F";
-                try
-                {
-                    using (MySqlConnection con = new MySqlConnection(StringConexion))
+                    if(tablaPersonas.SelectedRows[0].Cells["FechaSalida"].Value.ToString().Trim().Length > 0)
                     {
-                        using (MySqlCommand cmd = new MySqlCommand(sql, con))
-                        {
-                            cmd.Parameters.AddWithValue("@1", p.txtId.Text.Trim());
-                            cmd.Parameters.AddWithValue("@2", p.txtNombres.Text.Trim());
-                            cmd.Parameters.AddWithValue("@3", p.txtApellidos.Text.Trim());
-                            cmd.Parameters.AddWithValue("@4", p.fechaNacimiento.Value.ToString("yyyy-MM-dd"));
-                            cmd.Parameters.AddWithValue("@5", gen);
-                            cmd.Parameters.AddWithValue("@6", p.txtDireccion.Text.Trim());
-                            cmd.Parameters.AddWithValue("@7", p.txtCuenta.Text.Trim());
-                            cmd.Parameters.AddWithValue("@8", p.txtFamiliares.Text.Trim());
-                            cmd.Parameters.AddWithValue("@9", p.txtTelefono.Text.Trim());
-                            cmd.Parameters.AddWithValue("@10", p.comboMunicipio.SelectedValue.ToString());
-
-                            cmd.Connection.Open();  //abrir conexion
-                            cmd.ExecuteNonQuery();  //ejecutar comando
-                        }
+                        btnDarDeAlta.Enabled = false;
+                        btnModificar.Enabled = false;
                     }
-
+                    else
+                    {
+                        btnDarDeAlta.Enabled = true;
+                        btnModificar.Enabled = true;
+                    }
                 }
-                catch (MySqlException ex)
-                {
-                    //ocurrio un error
-                    MessageBox.Show(ex.Message);
-                }
-                cargarPersonas();
-
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
             }
         }
     }

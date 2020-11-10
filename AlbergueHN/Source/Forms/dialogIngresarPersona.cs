@@ -21,16 +21,16 @@ namespace AlbergueHN.Source.Forms
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (txtNombres.Text.Trim().Length == 0)
+            if (txtNombre.Text.Trim().Length == 0)
             {
                 MessageBox.Show("No ha llenado el campo de Nombres.", "Validación");
-                txtNombres.Focus();
+                txtNombre.Focus();
                 return;
             }
-            if (txtApellidos.Text.Trim().Length == 0)
+            if (txtApellido.Text.Trim().Length == 0)
             {
                 MessageBox.Show("No ha llenado el campo de Apellidos.", "Validación");
-                txtApellidos.Focus();
+                txtApellido.Focus();
                 return;
             }
             if (txtCuenta.Text.Trim().Length == 0)
@@ -45,13 +45,53 @@ namespace AlbergueHN.Source.Forms
                 txtDireccion.Focus();
                 return;
             }
-            if (txtId.Text.Trim().Length == 0)
+            if (txtID1.Text.Trim().Length == 0 || txtID2.Text.Trim().Length == 0 || txtID3.Text.Trim().Length == 0)
             {
                 MessageBox.Show("No ha llenado el campo de Identidad.", "Validación");
-                txtId.Focus();
                 return;
             }
 
+            string sql = "";
+            //MOVER A DIALOGOINGRESARPERSONA
+            if (!checkFamiliar.Checked)
+            {
+                sql = "CALL spIngresarPersona(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10)";
+            }
+            else
+                sql = "CALL spIngresarFamiliar(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10)";
+            string gen = "";
+            if (radioMasculino.Checked == true && radioFemenino.Checked == false)
+                gen = "M";
+            else
+                gen = "F";
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(StringConexion))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@1", p.txtId.Text.Trim());
+                        cmd.Parameters.AddWithValue("@2", p.txtNombre.Text.Trim());
+                        cmd.Parameters.AddWithValue("@3", p.txtApellido.Text.Trim());
+                        cmd.Parameters.AddWithValue("@4", p.fechaNacimiento.Value.ToString("yyyy-MM-dd"));
+                        cmd.Parameters.AddWithValue("@5", gen);
+                        cmd.Parameters.AddWithValue("@6", p.txtDireccion.Text.Trim());
+                        cmd.Parameters.AddWithValue("@7", p.txtCuenta.Text.Trim());
+                        cmd.Parameters.AddWithValue("@8", p.spinnerFamiliares.Text.Trim());
+                        cmd.Parameters.AddWithValue("@9", p.txtTelefono.Text.Trim());
+                        cmd.Parameters.AddWithValue("@10", p.comboMunicipio.SelectedValue.ToString());
+
+                        cmd.Connection.Open();  //abrir conexion
+                        cmd.ExecuteNonQuery();  //ejecutar comando
+                    }
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                //ocurrio un error
+                MessageBox.Show(ex.Message);
+            }
 
 
             this.Close();
@@ -65,6 +105,7 @@ namespace AlbergueHN.Source.Forms
         private void dialogIngresarPersona_Load(object sender, EventArgs e)
         {
             cargarMunicipios();
+            fechaNacimiento.MaxDate = DateTime.Today;
         }
 
         public void cargarMunicipios()
