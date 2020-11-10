@@ -20,15 +20,22 @@ namespace AlbergueHN.Source.Forms
 
         DataTable dt = new DataTable();
         string StringConexion = (string)Properties.Settings.Default["stringConexion"];
+        string talla = "";
+        string genero = "";
         private void btnCrearProducto_Click(object sender, EventArgs e)
         {
             dialogProducto p = new dialogProducto();
             p.ShowDialog();
-            if (!p.IsDisposed) //Incompleto
+            if (!p.IsDisposed)
             {
-                String sql = "CALL ingresar_Producto(@1, @2, @3, @4, @5)";             
+                String sql = "CALL spIngresarProducto(@1, @2, @3, @4, @5)";             
                 try
                 {
+                    if (p.tipoArticulo.Text ==  "Vestimenta"  || p.tipoArticulo.Text == "Zapatos")
+                    {
+                        genero = p.comboGen.SelectedItem.ToString();
+                        talla = p.txtTalla.Text.Trim();
+                    }
                     using (MySqlConnection con = new MySqlConnection(StringConexion))
                     {
                         using (MySqlCommand cmd = new MySqlCommand(sql, con))
@@ -36,8 +43,8 @@ namespace AlbergueHN.Source.Forms
                             cmd.Parameters.AddWithValue("@1", p.numericCantidad.Value.ToString());
                             cmd.Parameters.AddWithValue("@2", p.tipoArticulo.SelectedValue.ToString());
                             cmd.Parameters.AddWithValue("@3", p.txtArticulo.Text.Trim());                            
-                            cmd.Parameters.AddWithValue("@4", p.txtTalla.Text.Trim());
-                            cmd.Parameters.AddWithValue("@5", p.comboGen.SelectedItem.ToString());
+                            cmd.Parameters.AddWithValue("@4", talla);
+                            cmd.Parameters.AddWithValue("@5", genero);
 
                             cmd.Connection.Open();  //abrir conexion
                             cmd.ExecuteNonQuery();  //ejecutar comando
@@ -90,6 +97,15 @@ namespace AlbergueHN.Source.Forms
 
             }
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.F5))
+            {
+                cargarProductos();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
 
         private void btnModificarProducto_Click(object sender, EventArgs e)
         {
@@ -103,9 +119,14 @@ namespace AlbergueHN.Source.Forms
             p.ShowDialog();
             if (!p.IsDisposed) //Incompleto
             {
-                String sql = "CALL updateProducto(@1, @2, @3, @4, @5, @6)";
+                String sql = "CALL spUpdateProducto(@1, @2, @3, @4, @5, @6)";
                 try
                 {
+                    if (p.tipoArticulo.Text == "Vestimenta" || p.tipoArticulo.Text == "Zapatos")
+                    {
+                        genero = p.comboGen.SelectedItem.ToString();
+                        talla = p.txtTalla.Text.Trim();
+                    }
                     using (MySqlConnection con = new MySqlConnection(StringConexion))
                     {
                         using (MySqlCommand cmd = new MySqlCommand(sql, con))

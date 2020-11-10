@@ -46,9 +46,10 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(343, 177);
+            this.btnCancelar.Location = new System.Drawing.Point(514, 272);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(112, 35);
             this.btnCancelar.TabIndex = 51;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -57,9 +58,10 @@
             // btnAgregar
             // 
             this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregar.Location = new System.Drawing.Point(262, 177);
+            this.btnAgregar.Location = new System.Drawing.Point(393, 272);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(112, 35);
             this.btnAgregar.TabIndex = 50;
             this.btnAgregar.Text = "Ingresar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -68,18 +70,21 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 81);
+            this.label5.Location = new System.Drawing.Point(55, 125);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.Size = new System.Drawing.Size(77, 20);
             this.label5.TabIndex = 49;
             this.label5.Text = "Cantidad:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // numericCantidad
             // 
-            this.numericCantidad.Location = new System.Drawing.Point(82, 79);
+            this.numericCantidad.Location = new System.Drawing.Point(149, 123);
+            this.numericCantidad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numericCantidad.Name = "numericCantidad";
-            this.numericCantidad.Size = new System.Drawing.Size(120, 20);
-            this.numericCantidad.TabIndex = 48;
+            this.numericCantidad.Size = new System.Drawing.Size(180, 26);
+            this.numericCantidad.TabIndex = 2;
             // 
             // tipoArticulo
             // 
@@ -92,77 +97,86 @@
             "Bebida",
             "Bioseguridad",
             "Otros"});
-            this.tipoArticulo.Location = new System.Drawing.Point(81, 19);
+            this.tipoArticulo.Location = new System.Drawing.Point(149, 27);
+            this.tipoArticulo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tipoArticulo.Name = "tipoArticulo";
-            this.tipoArticulo.Size = new System.Drawing.Size(121, 21);
-            this.tipoArticulo.TabIndex = 47;
+            this.tipoArticulo.Size = new System.Drawing.Size(180, 28);
+            this.tipoArticulo.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(44, 23);
+            this.label4.Location = new System.Drawing.Point(89, 35);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.Size = new System.Drawing.Size(43, 20);
             this.label4.TabIndex = 45;
             this.label4.Text = "Tipo:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 50);
+            this.label2.Location = new System.Drawing.Point(36, 77);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.Size = new System.Drawing.Size(96, 20);
             this.label2.TabIndex = 44;
-            this.label2.Text = "Articulo:";
+            this.label2.Text = "Descripción:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 114);
+            this.label1.Location = new System.Drawing.Point(86, 173);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.Size = new System.Drawing.Size(46, 20);
             this.label1.TabIndex = 52;
             this.label1.Text = "Talla:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtTalla
             // 
-            this.txtTalla.Location = new System.Drawing.Point(81, 112);
-            this.txtTalla.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTalla.Location = new System.Drawing.Point(148, 173);
+            this.txtTalla.MaxLength = 10;
             this.txtTalla.Name = "txtTalla";
-            this.txtTalla.Size = new System.Drawing.Size(68, 20);
-            this.txtTalla.TabIndex = 53;
+            this.txtTalla.Size = new System.Drawing.Size(100, 26);
+            this.txtTalla.TabIndex = 3;
             // 
             // txtArticulo
             // 
-            this.txtArticulo.Location = new System.Drawing.Point(79, 48);
-            this.txtArticulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtArticulo.Location = new System.Drawing.Point(149, 74);
+            this.txtArticulo.MaxLength = 50;
             this.txtArticulo.Name = "txtArticulo";
-            this.txtArticulo.Size = new System.Drawing.Size(356, 20);
-            this.txtArticulo.TabIndex = 54;
+            this.txtArticulo.Size = new System.Drawing.Size(532, 26);
+            this.txtArticulo.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 146);
+            this.label3.Location = new System.Drawing.Point(65, 225);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.Size = new System.Drawing.Size(67, 20);
             this.label3.TabIndex = 55;
             this.label3.Text = "Genero:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // comboGen
             // 
             this.comboGen.FormattingEnabled = true;
-            this.comboGen.Location = new System.Drawing.Point(81, 144);
-            this.comboGen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboGen.Location = new System.Drawing.Point(148, 223);
             this.comboGen.Name = "comboGen";
-            this.comboGen.Size = new System.Drawing.Size(82, 21);
-            this.comboGen.TabIndex = 56;
+            this.comboGen.Size = new System.Drawing.Size(121, 28);
+            this.comboGen.TabIndex = 4;
             // 
             // dialogProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 229);
+            this.ClientSize = new System.Drawing.Size(800, 352);
+            this.ControlBox = false;
             this.Controls.Add(this.comboGen);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtArticulo);
@@ -175,10 +189,9 @@
             this.Controls.Add(this.tipoArticulo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "dialogProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "dialogProducto";
+            this.Text = "Suministros";
             this.Load += new System.EventHandler(this.dialogProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericCantidad)).EndInit();
             this.ResumeLayout(false);

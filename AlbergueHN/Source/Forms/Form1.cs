@@ -1,8 +1,10 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +21,8 @@ namespace AlbergueHN
         DataGridViewRowCollection personas;
         string[] tallasRopa = { "Todas", "XXS", "XS", "S", "M", "L", "XL", "XL", "XXL" };
         string loggedUserID = UsuarioActual.ID;
+        DataTable dtPersonas = new DataTable();
+        DataTable dtArticulos = new DataTable();
         public Form1()
         {
             InitializeComponent();
@@ -32,24 +36,28 @@ namespace AlbergueHN
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            llenarGridPersonas();
-            llenarGridArticulos();
-            llenarComboFiltroTipoArticulo();
+
             foreach (string item in tallasRopa)
             {
                 comboTalla.Items.Add(item);
             }
+            comboTalla.SelectedIndex = 0;                    
+            llenarGridPersonas();
+            llenarGridArticulos();
+            llenarComboFiltroTipoArticulo();
+            comboFiltro.SelectedIndex = 0;
+            
 
-            comboTalla.SelectedIndex = 0;
+            
             resizearTablaPersonas();
             resizearTablaSuministros();
         }
 
         public void llenarGridPersonas()
         {
-            DataTable dtPersonas = new DataTable();
 
-            var stm = "select PersonaID, Cuenta, Nombres, Apellidos, DateDiff(fechaNacimiento, CURDATE()) as Edad, Telefono, m.Nombre as Municipio from persona p inner join municipio m on p.municipio = m.municipioid where fechasalida is null";
+            dtPersonas.Clear();
+            var stm = "select PersonaID, Cuenta, Nombres, Apellidos, year(curdate()) - year(fechanacimiento) as Edad, Telefono, m.Nombre as Municipio from persona p inner join municipio m on p.municipio = m.municipioid where fechasalida is null";
 
 
             using (MySqlConnection con = new MySqlConnection(stringConexion))
@@ -83,8 +91,8 @@ namespace AlbergueHN
         }
         public void llenarGridArticulos()
         {
-            DataTable dtArticulos = new DataTable();
 
+            dtArticulos.Clear();
             var stm = "select suministroID, a.Descripcion, tp.Descripcion as Tipo, Talla, Genero, Existencia from suministro a inner join tiposuministro tp on a.tipoID = tp.tipoID";
 
             using (MySqlConnection con = new MySqlConnection(stringConexion))
@@ -108,6 +116,16 @@ namespace AlbergueHN
             }
             Console.WriteLine("PREVIO FILTRO");
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.F5))
+            {
+                llenarGridArticulos();
+                llenarGridPersonas();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
@@ -117,7 +135,6 @@ namespace AlbergueHN
         private void filtrarSuministros()
         {
             //QUITAR ESTO CUANDO SE ARREGLE LA FUNCION
-            return;
             //!!!!!!
             if (suministros.Count == 0)
             {
@@ -126,9 +143,11 @@ namespace AlbergueHN
             DataRowView row = (DataRowView)comboTipo.SelectedItem;
             string filtroTipo = (string)row.Row.ItemArray[1];
             string filtroTxt = txtFiltro.Text;
-            tablaSuministros.Rows.Clear();
-            List<ListViewItem> productosFiltrados = new List<ListViewItem>();
+            //tablaSuministros.Rows.Clear();
+            //List<ListViewItem> productosFiltrados = new List<ListViewItem>();
             string genero = "";
+            string filtroTalla = comboTalla.SelectedItem.ToString() ?? comboTalla.Text;
+            String buscar = txtFiltro.Text;
             bool cualquierGenero = false;
             if (radioMasculino.Checked)
             {
@@ -142,36 +161,49 @@ namespace AlbergueHN
             {
                 cualquierGenero = true;
             }
-
-            if (filtroTipo == "Todos")
+            
+            if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
             {
-                Console.WriteLine("FILTRO TODOS");
-                foreach (List<string> item in suministros.Where(item => item[1].ToLower().Contains(filtroTxt.ToLower())))
-                {
-                    
-                }
-
-                return;
-            }
-            else if (filtroTipo == "Vestimenta")
-            {
-
+                panelControlRopa.Visible = true;
                 bool cualquierTalla = false;
-
-                string filtroTalla = (string)comboTalla.SelectedItem.ToString();
+                
+                filtroTalla = (string)comboTalla.SelectedItem.ToString() ?? comboTalla.Text;
+           
                 if (filtroTalla == "Todas") cualquierTalla = true;
-                foreach (List<string> item in suministros.Where(item => item[2] == filtroTipo && item[1].ToLower().Contains(filtroTxt.ToLower()) && (item[4] == genero || cualquierGenero) && (item[3].Contains(filtroTalla) || cualquierTalla)))
+                try
                 {
-
-                    tablaSuministros.Rows.Add(item);
+                    dtArticulos.DefaultView.RowFilter = "descripcion LIKE '%"+buscar+"%' and tipo = '" + filtroTipo+"' And (talla = '" + filtroTalla + "' or "+ cualquierTalla+")  And (genero = '" + genero+"' or "+cualquierGenero+")";
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show(e.Message);
                 }
             }
-            else if (filtroTipo == "Zapatos")
+            else 
             {
-                foreach (List<string> item in suministros.Where(item => item[2] == filtroTipo && item[1].Contains(filtroTxt.ToLower()) && (item[4] == genero || cualquierGenero)))
-                {
-                    tablaSuministros.Rows.Add(item);
-                }
+                dtArticulos.DefaultView.RowFilter = "descripcion LIKE '%"+buscar+"%'";  
+            }
+
+           
+
+        }
+        private void filtrarPersonas()
+        {
+            String filtrar = txtFiltro1.Text;
+            if (comboFiltro.SelectedIndex == 0)
+            {
+                dtPersonas.DefaultView.RowFilter = "nombres LIKE '%"+filtrar+"%'";
+                
+            }
+            if (comboFiltro.SelectedIndex == 1)
+            {
+                dtPersonas.DefaultView.RowFilter = "personaID LIKE '%" + filtrar + "%'";
+
+            }
+            if (comboFiltro.SelectedIndex == 2)
+            {
+                dtPersonas.DefaultView.RowFilter = "cuenta LIKE '%" + filtrar + "%'";
+
             }
         }
 
@@ -281,6 +313,22 @@ namespace AlbergueHN
         private void TabPage2_SizeChanged(object sender, EventArgs e)
         {
             resizearTablaSuministros();
+        }
+
+        private void btRefrescar_Click(object sender, EventArgs e)
+        {
+            llenarGridArticulos();
+            llenarGridPersonas();
+        }
+
+        private void comboFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filtrarPersonas();
+        }
+
+        private void txtFiltro1_TextChanged(object sender, EventArgs e)
+        {
+            filtrarPersonas();
         }
     }
 }

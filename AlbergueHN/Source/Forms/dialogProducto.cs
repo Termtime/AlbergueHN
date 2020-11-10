@@ -60,12 +60,51 @@ namespace AlbergueHN.Source.Forms
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            if (txtArticulo.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("No ha llenado el campo de Descripción de Articulo.", "Validación");
+                txtArticulo.Focus();
+                return;
+            }
+            float num;
+            if (!float.TryParse(numericCantidad.Text.Trim(), out num))
+            {
+                MessageBox.Show("La cantidad no es valida.", "Validación");
+                numericCantidad.Focus();
+                return;
+            }
+
             this.Close();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

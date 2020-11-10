@@ -60,36 +60,40 @@
             this.panelControlRopa.Controls.Add(this.radioCualquiera);
             this.panelControlRopa.Controls.Add(this.radioFemenino);
             this.panelControlRopa.Controls.Add(this.radioMasculino);
-            this.panelControlRopa.Location = new System.Drawing.Point(319, 126);
+            this.panelControlRopa.Location = new System.Drawing.Point(478, 194);
+            this.panelControlRopa.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelControlRopa.Name = "panelControlRopa";
-            this.panelControlRopa.Size = new System.Drawing.Size(200, 56);
+            this.panelControlRopa.Size = new System.Drawing.Size(300, 86);
             this.panelControlRopa.TabIndex = 59;
             this.panelControlRopa.Visible = false;
             // 
             // comboTalla
             // 
             this.comboTalla.FormattingEnabled = true;
-            this.comboTalla.Location = new System.Drawing.Point(67, 8);
+            this.comboTalla.Location = new System.Drawing.Point(100, 12);
+            this.comboTalla.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboTalla.Name = "comboTalla";
-            this.comboTalla.Size = new System.Drawing.Size(94, 21);
+            this.comboTalla.Size = new System.Drawing.Size(139, 28);
             this.comboTalla.TabIndex = 43;
             this.comboTalla.SelectedIndexChanged += new System.EventHandler(this.ComboTalla_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 30);
+            this.label3.Location = new System.Drawing.Point(24, 46);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.Size = new System.Drawing.Size(67, 20);
             this.label3.TabIndex = 49;
             this.label3.Text = "Genero:";
             // 
             // labelTalla
             // 
             this.labelTalla.AutoSize = true;
-            this.labelTalla.Location = new System.Drawing.Point(28, 11);
+            this.labelTalla.Location = new System.Drawing.Point(42, 17);
+            this.labelTalla.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTalla.Name = "labelTalla";
-            this.labelTalla.Size = new System.Drawing.Size(33, 13);
+            this.labelTalla.Size = new System.Drawing.Size(46, 20);
             this.labelTalla.TabIndex = 42;
             this.labelTalla.Text = "Talla:";
             // 
@@ -97,9 +101,10 @@
             // 
             this.radioCualquiera.AutoSize = true;
             this.radioCualquiera.Checked = true;
-            this.radioCualquiera.Location = new System.Drawing.Point(67, 30);
+            this.radioCualquiera.Location = new System.Drawing.Point(100, 46);
+            this.radioCualquiera.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioCualquiera.Name = "radioCualquiera";
-            this.radioCualquiera.Size = new System.Drawing.Size(45, 17);
+            this.radioCualquiera.Size = new System.Drawing.Size(60, 24);
             this.radioCualquiera.TabIndex = 48;
             this.radioCualquiera.TabStop = true;
             this.radioCualquiera.Text = "N/A";
@@ -109,9 +114,10 @@
             // radioFemenino
             // 
             this.radioFemenino.AutoSize = true;
-            this.radioFemenino.Location = new System.Drawing.Point(158, 30);
+            this.radioFemenino.Location = new System.Drawing.Point(237, 46);
+            this.radioFemenino.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioFemenino.Name = "radioFemenino";
-            this.radioFemenino.Size = new System.Drawing.Size(31, 17);
+            this.radioFemenino.Size = new System.Drawing.Size(44, 24);
             this.radioFemenino.TabIndex = 47;
             this.radioFemenino.Text = "F";
             this.radioFemenino.UseVisualStyleBackColor = true;
@@ -120,9 +126,10 @@
             // radioMasculino
             // 
             this.radioMasculino.AutoSize = true;
-            this.radioMasculino.Location = new System.Drawing.Point(118, 30);
+            this.radioMasculino.Location = new System.Drawing.Point(177, 46);
+            this.radioMasculino.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioMasculino.Name = "radioMasculino";
-            this.radioMasculino.Size = new System.Drawing.Size(34, 17);
+            this.radioMasculino.Size = new System.Drawing.Size(47, 24);
             this.radioMasculino.TabIndex = 46;
             this.radioMasculino.Text = "M";
             this.radioMasculino.UseVisualStyleBackColor = true;
@@ -131,9 +138,10 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnLimpiar.Location = new System.Drawing.Point(259, 658);
+            this.btnLimpiar.Location = new System.Drawing.Point(388, 1012);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(151, 41);
+            this.btnLimpiar.Size = new System.Drawing.Size(226, 63);
             this.btnLimpiar.TabIndex = 58;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -141,9 +149,10 @@
             // btnIngresar
             // 
             this.btnIngresar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnIngresar.Location = new System.Drawing.Point(102, 658);
+            this.btnIngresar.Location = new System.Drawing.Point(153, 1012);
+            this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(151, 41);
+            this.btnIngresar.Size = new System.Drawing.Size(226, 63);
             this.btnIngresar.TabIndex = 57;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
@@ -151,36 +160,40 @@
             // 
             // txtFiltro
             // 
-            this.txtFiltro.Location = new System.Drawing.Point(52, 159);
+            this.txtFiltro.Location = new System.Drawing.Point(78, 245);
+            this.txtFiltro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(261, 20);
+            this.txtFiltro.Size = new System.Drawing.Size(390, 26);
             this.txtFiltro.TabIndex = 56;
             this.txtFiltro.TextChanged += new System.EventHandler(this.TxtFiltro_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 162);
+            this.label1.Location = new System.Drawing.Point(8, 249);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(63, 20);
             this.label1.TabIndex = 55;
             this.label1.Text = "Buscar:";
             // 
             // comboTipo
             // 
             this.comboTipo.FormattingEnabled = true;
-            this.comboTipo.Location = new System.Drawing.Point(52, 127);
+            this.comboTipo.Location = new System.Drawing.Point(78, 195);
+            this.comboTipo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboTipo.Name = "comboTipo";
-            this.comboTipo.Size = new System.Drawing.Size(121, 21);
+            this.comboTipo.Size = new System.Drawing.Size(180, 28);
             this.comboTipo.TabIndex = 54;
             this.comboTipo.SelectedIndexChanged += new System.EventHandler(this.ComboTipo_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 130);
+            this.label4.Location = new System.Drawing.Point(8, 200);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.Size = new System.Drawing.Size(43, 20);
             this.label4.TabIndex = 53;
             this.label4.Text = "Tipo:";
             // 
@@ -196,10 +209,11 @@
             this.columnHeader5});
             this.listaProductos.FullRowSelect = true;
             this.listaProductos.HideSelection = false;
-            this.listaProductos.Location = new System.Drawing.Point(5, 188);
+            this.listaProductos.Location = new System.Drawing.Point(8, 289);
+            this.listaProductos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listaProductos.MultiSelect = false;
             this.listaProductos.Name = "listaProductos";
-            this.listaProductos.Size = new System.Drawing.Size(524, 464);
+            this.listaProductos.Size = new System.Drawing.Size(784, 712);
             this.listaProductos.TabIndex = 52;
             this.listaProductos.UseCompatibleStateImageBehavior = false;
             this.listaProductos.View = System.Windows.Forms.View.Details;
@@ -238,17 +252,20 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaIngreso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaIngreso.Location = new System.Drawing.Point(535, 12);
+            this.tablaIngreso.Location = new System.Drawing.Point(802, 18);
+            this.tablaIngreso.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tablaIngreso.Name = "tablaIngreso";
-            this.tablaIngreso.Size = new System.Drawing.Size(729, 687);
+            this.tablaIngreso.RowHeadersWidth = 62;
+            this.tablaIngreso.Size = new System.Drawing.Size(1094, 1057);
             this.tablaIngreso.TabIndex = 51;
             this.tablaIngreso.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.TablaIngreso_CellValidating);
             // 
             // dialogIngresarProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1276, 721);
+            this.ClientSize = new System.Drawing.Size(1914, 1109);
+            this.ControlBox = false;
             this.Controls.Add(this.panelControlRopa);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnIngresar);
@@ -258,9 +275,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.listaProductos);
             this.Controls.Add(this.tablaIngreso);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "dialogIngresarProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ingresar Producto";
+            this.Text = "Ingresar Suministros";
             this.Load += new System.EventHandler(this.dialogIngresarProducto_Load);
             this.SizeChanged += new System.EventHandler(this.DialogIngresarProducto_SizeChanged);
             this.panelControlRopa.ResumeLayout(false);
