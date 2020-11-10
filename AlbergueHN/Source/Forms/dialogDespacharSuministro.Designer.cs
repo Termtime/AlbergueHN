@@ -49,12 +49,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panelControlRopa = new System.Windows.Forms.Panel();
             this.labelUsuario = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboPersonas = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.usuarioID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tablaDespacho)).BeginInit();
             this.panelControlRopa.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -87,12 +88,13 @@
             this.columnHeader5});
             this.listaProductos.FullRowSelect = true;
             this.listaProductos.HideSelection = false;
-            this.listaProductos.Location = new System.Drawing.Point(12, 196);
+            this.listaProductos.Location = new System.Drawing.Point(14, 202);
             this.listaProductos.Name = "listaProductos";
             this.listaProductos.Size = new System.Drawing.Size(524, 460);
             this.listaProductos.TabIndex = 2;
             this.listaProductos.UseCompatibleStateImageBehavior = false;
             this.listaProductos.View = System.Windows.Forms.View.Details;
+            this.listaProductos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listaProductos_KeyPress);
             this.listaProductos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListaProductos_MouseDoubleClick);
             // 
             // columnHeader1
@@ -121,6 +123,7 @@
             // 
             // comboTipo
             // 
+            this.comboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipo.FormattingEnabled = true;
             this.comboTipo.Location = new System.Drawing.Point(58, 131);
             this.comboTipo.Name = "comboTipo";
@@ -176,7 +179,7 @@
             // btnDespachar
             // 
             this.btnDespachar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDespachar.Location = new System.Drawing.Point(109, 662);
+            this.btnDespachar.Location = new System.Drawing.Point(109, 668);
             this.btnDespachar.Name = "btnDespachar";
             this.btnDespachar.Size = new System.Drawing.Size(151, 41);
             this.btnDespachar.TabIndex = 44;
@@ -187,7 +190,7 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnLimpiar.Location = new System.Drawing.Point(266, 662);
+            this.btnLimpiar.Location = new System.Drawing.Point(266, 668);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(151, 41);
             this.btnLimpiar.TabIndex = 45;
@@ -264,16 +267,6 @@
             this.labelUsuario.Size = new System.Drawing.Size(0, 13);
             this.labelUsuario.TabIndex = 67;
             // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1057, 706);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 13);
-            this.label7.TabIndex = 66;
-            this.label7.Text = "Usuario:";
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label6);
@@ -296,7 +289,7 @@
             // label5
             // 
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label5.Location = new System.Drawing.Point(15, 111);
+            this.label5.Location = new System.Drawing.Point(12, 126);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(524, 2);
             this.label5.TabIndex = 69;
@@ -304,7 +297,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 81);
+            this.label2.Location = new System.Drawing.Point(12, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 13);
             this.label2.TabIndex = 70;
@@ -314,22 +307,44 @@
             // 
             this.comboPersonas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboPersonas.FormattingEnabled = true;
-            this.comboPersonas.Location = new System.Drawing.Point(88, 78);
+            this.comboPersonas.Location = new System.Drawing.Point(88, 99);
             this.comboPersonas.Name = "comboPersonas";
             this.comboPersonas.Size = new System.Drawing.Size(400, 21);
             this.comboPersonas.TabIndex = 71;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(350, 74);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 16);
+            this.label7.TabIndex = 72;
+            this.label7.Text = "Usuario:";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // usuarioID
+            // 
+            this.usuarioID.AutoSize = true;
+            this.usuarioID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usuarioID.Location = new System.Drawing.Point(414, 74);
+            this.usuarioID.Name = "usuarioID";
+            this.usuarioID.Size = new System.Drawing.Size(0, 16);
+            this.usuarioID.TabIndex = 73;
             // 
             // dialogDespacharSuministro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1276, 721);
+            this.Controls.Add(this.usuarioID);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.comboPersonas);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelUsuario);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.panelControlRopa);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnDespachar);
@@ -341,7 +356,7 @@
             this.Controls.Add(this.tablaDespacho);
             this.Name = "dialogDespacharSuministro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Despachar articulos";
+            this.Text = "Despachar Suministros";
             this.Load += new System.EventHandler(this.DialogDespacharProductos_Load);
             this.SizeChanged += new System.EventHandler(this.DialogDespacharArticulo_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.tablaDespacho)).EndInit();
@@ -376,11 +391,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panelControlRopa;
         private System.Windows.Forms.Label labelUsuario;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboPersonas;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label usuarioID;
     }
 }

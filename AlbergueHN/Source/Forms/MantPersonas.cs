@@ -224,6 +224,7 @@ namespace AlbergueHN.Source.Forms
                     MessageBox.Show(ex.Message);
                 }
                 cargarPersonas();
+
             }
         }
     }

@@ -182,6 +182,7 @@
             this.Name = "dialogConectarServidor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Conectar al servidor";
+            this.Load += new System.EventHandler(this.dialogConectarServidor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

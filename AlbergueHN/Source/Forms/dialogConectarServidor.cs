@@ -71,7 +71,7 @@ namespace AlbergueHN.Source.Forms
                 btnDetalles.Visible = false;
                 labelEstado.Text = "Conectando...";
                 Cursor.Current = Cursors.WaitCursor;
-                labelEstado.ForeColor = Color.Yellow;
+                labelEstado.ForeColor = Color.Blue;
                 con.Open();
                 //Se conectó correctamente, guardar conexion
                 Properties.Settings.Default["serverIP"] = txtIP.Text;
@@ -121,6 +121,11 @@ namespace AlbergueHN.Source.Forms
 
             labelEstado.Text = "Esperando...";
             labelEstado.ForeColor = Color.Black;
+        }
+
+        private void dialogConectarServidor_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
