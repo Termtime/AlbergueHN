@@ -92,7 +92,15 @@ namespace AlbergueHN.Source.Forms
         }
         private void BtnDespachar_Click(object sender, EventArgs e)
         {
-            despacharProductos();
+            if (tablaDespacho.RowCount == 0)
+            {
+                MessageBox.Show("Aún no ha agregado ningún suministro a la lista, seleccione un suministro y agréguelo haciendo doble clic sobre él", "Notificación - UNAH - VS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                despacharProductos();
+            }            
         }
 
         private void DialogDespacharArticulo_SizeChanged(object sender, EventArgs e)
