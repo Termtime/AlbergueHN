@@ -91,7 +91,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(347, 30);
+            this.label3.Location = new System.Drawing.Point(299, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 5;
@@ -101,7 +101,7 @@
             // 
             this.labelEstado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelEstado.AutoSize = true;
-            this.labelEstado.Location = new System.Drawing.Point(347, 49);
+            this.labelEstado.Location = new System.Drawing.Point(299, 45);
             this.labelEstado.Name = "labelEstado";
             this.labelEstado.Size = new System.Drawing.Size(58, 13);
             this.labelEstado.TabIndex = 6;
@@ -110,7 +110,7 @@
             // btnDetalles
             // 
             this.btnDetalles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDetalles.Location = new System.Drawing.Point(333, 98);
+            this.btnDetalles.Location = new System.Drawing.Point(302, 98);
             this.btnDetalles.Name = "btnDetalles";
             this.btnDetalles.Size = new System.Drawing.Size(89, 23);
             this.btnDetalles.TabIndex = 7;
@@ -153,7 +153,8 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(302, 144);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(373, 144);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 23);
             this.button1.TabIndex = 12;
@@ -194,7 +195,7 @@
             this.Name = "dialogConectarServidor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Conectar al servidor";
-            this.Load += new System.EventHandler(this.dialogConectarServidor_Load);
+            this.Load += new System.EventHandler(this.DialogConectarServidor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

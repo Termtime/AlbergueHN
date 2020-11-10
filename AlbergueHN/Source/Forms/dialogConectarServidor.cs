@@ -17,49 +17,6 @@ namespace AlbergueHN.Source.Forms
         public dialogConectarServidor()
         {
             InitializeComponent();
-            try
-            {
-                string ip = (string) Properties.Settings.Default["serverIP"];
-                string usuario = (string)Properties.Settings.Default["usuarioServer"];
-                string pass = (string) Properties.Settings.Default["serverPass"];
-                string bd = (string) Properties.Settings.Default["bd"];
-                string stringConexion = (string)Properties.Settings.Default["stringConexion"];
-                if(ip.Length == 0 || usuario.Length == 0 || pass.Length == 0 || bd.Length == 0 || stringConexion.Length == 0)
-                {
-                    return;
-                }
-                try
-                {
-                    MySqlConnection con = new MySqlConnection(stringConexion);
-                    btnDetalles.Visible = false;
-                    labelEstado.Text = "Conectando...";
-                    Cursor.Current = Cursors.WaitCursor;
-                    con.Open();
-                    labelEstado.Text = "Conectado";
-                    labelEstado.ForeColor = Color.Green;
-                    Cursor.Current = Cursors.Default;
-                    con.Close();
-                    labelHelper.Visible = true;
-                }
-                catch (Exception ex)
-                {
-                    //La conexion fallo, indicarle al usuario
-                    labelEstado.Text = "Conexion Fallida";
-                    labelEstado.ForeColor = Color.Red;
-                    Cursor.Current = Cursors.Default;
-                    btnDetalles.Visible = true;
-                    labelHelper.Visible = false;
-                    error = ex.ToString();
-                }
-
-                txtIP.Text = ip;
-                txtUsuario.Text = usuario;
-                txtPass.Text = pass;
-                txtBD.Text = bd;
-            }
-            catch(Exception e){}
-
-
         }
 
         private void BtnConectar_Click(object sender, EventArgs e)
@@ -130,6 +87,51 @@ namespace AlbergueHN.Source.Forms
 
             labelEstado.Text = "Esperando...";
             labelEstado.ForeColor = Color.Black;
+        }
+
+        private void DialogConectarServidor_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                string ip = (string)Properties.Settings.Default["serverIP"];
+                string usuario = (string)Properties.Settings.Default["usuarioServer"];
+                string pass = (string)Properties.Settings.Default["serverPass"];
+                string bd = (string)Properties.Settings.Default["bd"];
+                string stringConexion = (string)Properties.Settings.Default["stringConexion"];
+                if (ip.Length == 0 || usuario.Length == 0 || pass.Length == 0 || bd.Length == 0 || stringConexion.Length == 0)
+                {
+                    return;
+                }
+                try
+                {
+                    MySqlConnection con = new MySqlConnection(stringConexion);
+                    btnDetalles.Visible = false;
+                    labelEstado.Text = "Conectando...";
+                    Cursor.Current = Cursors.WaitCursor;
+                    con.Open();
+                    labelEstado.Text = "Conectado";
+                    labelEstado.ForeColor = Color.Green;
+                    Cursor.Current = Cursors.Default;
+                    con.Close();
+                    labelHelper.Visible = true;
+                }
+                catch (Exception ex)
+                {
+                    //La conexion fallo, indicarle al usuario
+                    labelEstado.Text = "Conexion Fallida";
+                    labelEstado.ForeColor = Color.Red;
+                    Cursor.Current = Cursors.Default;
+                    btnDetalles.Visible = true;
+                    labelHelper.Visible = false;
+                    error = ex.ToString();
+                }
+
+                txtIP.Text = ip;
+                txtUsuario.Text = usuario;
+                txtPass.Text = pass;
+                txtBD.Text = bd;
+            }
+            catch (Exception ex) { }
         }
     }
 }
