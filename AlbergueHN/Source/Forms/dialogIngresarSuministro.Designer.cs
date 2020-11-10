@@ -50,8 +50,14 @@
             this.tablaIngreso = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDonante = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labelUsuario = new System.Windows.Forms.Label();
             this.panelControlRopa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaIngreso)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelControlRopa
@@ -62,7 +68,7 @@
             this.panelControlRopa.Controls.Add(this.radioCualquiera);
             this.panelControlRopa.Controls.Add(this.radioFemenino);
             this.panelControlRopa.Controls.Add(this.radioMasculino);
-            this.panelControlRopa.Location = new System.Drawing.Point(329, 126);
+            this.panelControlRopa.Location = new System.Drawing.Point(336, 130);
             this.panelControlRopa.Name = "panelControlRopa";
             this.panelControlRopa.Size = new System.Drawing.Size(200, 56);
             this.panelControlRopa.TabIndex = 59;
@@ -135,7 +141,7 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnLimpiar.Location = new System.Drawing.Point(259, 658);
+            this.btnLimpiar.Location = new System.Drawing.Point(274, 668);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(151, 41);
             this.btnLimpiar.TabIndex = 58;
@@ -146,7 +152,7 @@
             // btnIngresar
             // 
             this.btnIngresar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnIngresar.Location = new System.Drawing.Point(102, 658);
+            this.btnIngresar.Location = new System.Drawing.Point(117, 668);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(151, 41);
             this.btnIngresar.TabIndex = 57;
@@ -156,7 +162,7 @@
             // 
             // txtFiltro
             // 
-            this.txtFiltro.Location = new System.Drawing.Point(69, 156);
+            this.txtFiltro.Location = new System.Drawing.Point(69, 160);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(232, 20);
             this.txtFiltro.TabIndex = 56;
@@ -165,7 +171,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 160);
+            this.label1.Location = new System.Drawing.Point(12, 164);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 55;
@@ -175,7 +181,7 @@
             // 
             this.comboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipo.FormattingEnabled = true;
-            this.comboTipo.Location = new System.Drawing.Point(69, 126);
+            this.comboTipo.Location = new System.Drawing.Point(69, 130);
             this.comboTipo.Name = "comboTipo";
             this.comboTipo.Size = new System.Drawing.Size(121, 21);
             this.comboTipo.TabIndex = 54;
@@ -184,7 +190,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 130);
+            this.label4.Location = new System.Drawing.Point(12, 134);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 53;
@@ -202,7 +208,7 @@
             this.columnHeader5});
             this.listaProductos.FullRowSelect = true;
             this.listaProductos.HideSelection = false;
-            this.listaProductos.Location = new System.Drawing.Point(5, 188);
+            this.listaProductos.Location = new System.Drawing.Point(12, 196);
             this.listaProductos.MultiSelect = false;
             this.listaProductos.Name = "listaProductos";
             this.listaProductos.Size = new System.Drawing.Size(524, 464);
@@ -244,16 +250,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaIngreso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaIngreso.Location = new System.Drawing.Point(535, 12);
+            this.tablaIngreso.Location = new System.Drawing.Point(542, 20);
             this.tablaIngreso.Name = "tablaIngreso";
-            this.tablaIngreso.Size = new System.Drawing.Size(729, 687);
+            this.tablaIngreso.Size = new System.Drawing.Size(722, 683);
             this.tablaIngreso.TabIndex = 51;
             this.tablaIngreso.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.TablaIngreso_CellValidating);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 103);
+            this.label2.Location = new System.Drawing.Point(12, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 60;
@@ -261,17 +267,67 @@
             // 
             // txtDonante
             // 
-            this.txtDonante.Location = new System.Drawing.Point(69, 100);
+            this.txtDonante.Location = new System.Drawing.Point(69, 78);
             this.txtDonante.MaxLength = 50;
             this.txtDonante.Name = "txtDonante";
             this.txtDonante.Size = new System.Drawing.Size(232, 20);
             this.txtDonante.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label5.Location = new System.Drawing.Point(15, 111);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(522, 2);
+            this.label5.TabIndex = 61;
+            // 
+            // label6
+            // 
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(524, 51);
+            this.label6.TabIndex = 62;
+            this.label6.Text = "Ingreso de Donaciones";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Location = new System.Drawing.Point(12, 20);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(524, 51);
+            this.panel1.TabIndex = 63;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1046, 704);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 13);
+            this.label7.TabIndex = 64;
+            this.label7.Text = "Usuario:";
+            // 
+            // labelUsuario
+            // 
+            this.labelUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelUsuario.AutoSize = true;
+            this.labelUsuario.Location = new System.Drawing.Point(1099, 704);
+            this.labelUsuario.Name = "labelUsuario";
+            this.labelUsuario.Size = new System.Drawing.Size(0, 13);
+            this.labelUsuario.TabIndex = 65;
             // 
             // dialogIngresarSuministro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1276, 721);
+            this.Controls.Add(this.labelUsuario);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtDonante);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panelControlRopa);
@@ -285,12 +341,13 @@
             this.Controls.Add(this.tablaIngreso);
             this.Name = "dialogIngresarSuministro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ingresar Producto";
+            this.Text = "Ingresar Donaciones";
             this.Load += new System.EventHandler(this.dialogIngresarProducto_Load);
             this.SizeChanged += new System.EventHandler(this.DialogIngresarProducto_SizeChanged);
             this.panelControlRopa.ResumeLayout(false);
             this.panelControlRopa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaIngreso)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,5 +377,10 @@
         private System.Windows.Forms.DataGridView tablaIngreso;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDonante;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelUsuario;
     }
 }
