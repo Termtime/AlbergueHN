@@ -45,7 +45,8 @@ namespace AlbergueHN.Source.Forms
 
         private void llenarDatos()
         {
-
+            productos.Clear();
+            listaProductos.Items.Clear();
             using (MySqlConnection con = new MySqlConnection(stringConexion))
             {
                 DataTable dtSuministro = new DataTable();
@@ -203,32 +204,53 @@ namespace AlbergueHN.Source.Forms
         }
         private void BtnDespachar_Click(object sender, EventArgs e)
         {
-            List<int> suministroIDs = new List<int>();
-            List<int> cantidadesSuministro = new List<int>();
-            foreach (Suministro item in binding.ToList())
-            {
-                int id = int.Parse(item.Id);
-                int cant = item.Cantidad;
-
-                suministroIDs.Add(id);
-                cantidadesSuministro.Add(cant);
-            }
-            //JORGE
+            int personaRecibe = 1;
             //ejecutar el procedimiento almacenado de despachar
-            //try
-            //{
-            //    using (MySqlConnection con = new MySqlConnection(stringConexion))
-            //    {
-            //        var stm = "EXECUTE procedure";
-            //        MySqlCommand cmd = new MySqlCommand(stm, con);
-            //        cmd.ExecuteNonQuery();
-            //    }
+                List<string> inserts = new List<string>();
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            using (MySqlConnection con = new MySqlConnection(stringConexion))
+            {
+                try
+                {
+                    con.Open();
+                    StringBuilder sqlTemp = new StringBuilder("DROP TEMPORARY TABLE IF EXISTS Datos;" +
+                        "CREATE TEMPORARY TABLE Datos (artID int, cant int);" +
+                                     "INSERT INTO Datos (artID, cant) VALUES");
+
+                    foreach (Suministro item in binding.ToList())
+                    {
+                        int id = int.Parse(item.Id);
+                        int cant = item.Cantidad;
+
+                        inserts.Add(string.Format("({0},{1})", id, cant));
+                        Console.WriteLine(string.Format("({0},{1})", id, cant));
+                    }
+                    sqlTemp.Append(string.Join(",", inserts));
+                    sqlTemp.Append(";");
+
+                    Console.WriteLine(sqlTemp.ToString());
+                    MySqlCommand cmdTmp = new MySqlCommand(sqlTemp.ToString(), con);
+                    cmdTmp.ExecuteNonQuery();
+
+                    Console.WriteLine("Hora del procedure");
+                    var stm = "CALL spDespacharSuministros(@personaRecibe, @uid);";
+                    MySqlCommand cmd = new MySqlCommand(stm, con);
+                    cmd.Parameters.AddWithValue("@personaRecibe", personaRecibe);
+                    cmd.Parameters.AddWithValue("@uid", UsuarioActual.ID);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
+                    llenarDatos();
+                    binding.Clear();
+                    MessageBox.Show("Ingresado con éxito.", "Operación Completa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    filtrar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close();
+                }
+            }
         }
 
         private void DialogDespacharArticulo_SizeChanged(object sender, EventArgs e)
@@ -253,6 +275,17 @@ namespace AlbergueHN.Source.Forms
         private void BtnLimpiar_Click(object sender, EventArgs e)
         {
             binding.Clear();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.F5))
+            {
+                llenarDatos();
+                filtrar();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
