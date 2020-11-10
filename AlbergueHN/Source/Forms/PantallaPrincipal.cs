@@ -363,5 +363,23 @@ namespace AlbergueHN
             filtrarPersonas();
             filtrarSuministros();
         }
+
+        private void VersiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(INFORMACION.VERSION, "Acerca de: AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+    }
+
+    public static class INFORMACION
+    {
+        public const string VERSION = "1.0.0";
+        public static readonly string[] DEVELOPERS = {
+            "MARIO FERNANDO MEJÍA INESTROZA",
+            "JORGE ALEJANDRO ARITA MARTHEL ",
+            "BRÉNEDIN GOMEZ",
+            "MARIA FERNANDA BARAHONA DUARTE",
+            "CARLOS ADONAY MENJIVAR ALEMAN",
+            "RAUL EDGARDO CRUZ MENDOZA"
+        };
     }
 }

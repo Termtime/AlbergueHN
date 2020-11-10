@@ -63,6 +63,8 @@
             this.ingresarSuministrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarPersonaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarSuministrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.versiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelControlRopa.SuspendLayout();
@@ -359,7 +361,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
-            this.accionesToolStripMenuItem});
+            this.accionesToolStripMenuItem,
+            this.acercaDeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
@@ -454,6 +457,21 @@
             this.administrarSuministrosToolStripMenuItem.Text = "Administrar Productos";
             this.administrarSuministrosToolStripMenuItem.Click += new System.EventHandler(this.administrarSuministrosToolStripMenuItem_Click);
             // 
+            // acercaDeToolStripMenuItem
+            // 
+            this.acercaDeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.versiónToolStripMenuItem});
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(71, 22);
+            this.acercaDeToolStripMenuItem.Text = "Acerca de";
+            // 
+            // versiónToolStripMenuItem
+            // 
+            this.versiónToolStripMenuItem.Name = "versiónToolStripMenuItem";
+            this.versiónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.versiónToolStripMenuItem.Text = "Versión";
+            this.versiónToolStripMenuItem.Click += new System.EventHandler(this.VersiónToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -524,6 +542,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolStripMenuItem refrescarListadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem versiónToolStripMenuItem;
     }
 }
 
