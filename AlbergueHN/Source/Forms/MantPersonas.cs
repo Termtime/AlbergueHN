@@ -52,16 +52,23 @@ namespace AlbergueHN.Source.Forms
         }
         public void cargarPersonas()
         {
-            dt.Clear();
-            var stm = "select PersonaID as Identidad, Cuenta, Nombres, Apellidos, FechaNacimiento, Genero, CantidadFamiliares as 'Cantidad de Familiares', "
-                +"Telefono, m.Nombre as 'Municipio', Direccion, FechaEntrada as 'Fecha de Entrada', FechaSalida as 'Fecha de Salida'"+
-                " from persona p inner join municipio m on p.municipio = m.municipioid";
-            using (MySqlConnection con = new MySqlConnection(StringConexion))
+            try
             {
-                MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
-                con.Open();
-                da.Fill(dt);
-                tablaPersonas.DataSource = dt;
+                dt.Clear();
+                var stm = "select PersonaID as Identidad, Cuenta, Nombres, Apellidos, FechaNacimiento, Genero, CantidadFamiliares as 'Cantidad de Familiares', "
+                    +"Telefono, m.Nombre as 'Municipio', Direccion, FechaEntrada as 'Fecha de Entrada', FechaSalida as 'Fecha de Salida'"+
+                    " from persona p inner join municipio m on p.municipio = m.municipioid";
+                using (MySqlConnection con = new MySqlConnection(StringConexion))
+                {
+                    MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
+                    con.Open();
+                    da.Fill(dt);
+                    tablaPersonas.DataSource = dt;
+                }
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

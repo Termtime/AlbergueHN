@@ -93,7 +93,7 @@ namespace AlbergueHN.Source.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             if (comboMunicipio.Items.Count != 0)
             {

@@ -110,11 +110,11 @@
     <Compile Include="Source\Forms\dialogProducto.Designer.cs">
       <DependentUpon>dialogProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\Form1.cs">
+    <Compile Include="Source\Forms\PantallaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Source\Forms\PantallaPrincipal.Designer.cs">
+      <DependentUpon>PantallaPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -169,8 +169,8 @@
     <EmbeddedResource Include="Source\Forms\dialogProducto.resx">
       <DependentUpon>dialogProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Source\Forms\PantallaPrincipal.resx">
+      <DependentUpon>PantallaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
