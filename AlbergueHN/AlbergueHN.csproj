@@ -104,11 +104,17 @@
     <Compile Include="Source\Forms\dialogDespacharSuministro.Designer.cs">
       <DependentUpon>dialogDespacharSuministro.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\dialogProducto.cs">
+    <Compile Include="Source\Forms\dialogModificarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\dialogProducto.Designer.cs">
-      <DependentUpon>dialogProducto.cs</DependentUpon>
+    <Compile Include="Source\Forms\dialogModificarProducto.Designer.cs">
+      <DependentUpon>dialogModificarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\dialogCrearProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\dialogCrearProducto.Designer.cs">
+      <DependentUpon>dialogCrearProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Forms\PantallaPrincipal.cs">
       <SubType>Form</SubType>
@@ -166,8 +172,11 @@
     <EmbeddedResource Include="Source\Forms\dialogIngresarSuministro.resx">
       <DependentUpon>dialogIngresarSuministro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\dialogProducto.resx">
-      <DependentUpon>dialogProducto.cs</DependentUpon>
+    <EmbeddedResource Include="Source\Forms\dialogCrearProducto.resx">
+      <DependentUpon>dialogCrearProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\dialogModificarProducto.resx">
+      <DependentUpon>dialogModificarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\PantallaPrincipal.resx">
       <DependentUpon>PantallaPrincipal.cs</DependentUpon>
