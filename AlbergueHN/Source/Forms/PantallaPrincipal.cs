@@ -101,7 +101,7 @@ namespace AlbergueHN
 
                 using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
-                    var stm = "SELECT suministroID, a.Descripcion, tp.Descripcion as Tipo, Talla, Genero, Existencia FROM suministro a INNER JOIN tiposuministro tp on a.tipoID = tp.tipoID";
+                    var stm = "SELECT suministroID, a.Descripcion, tp.Descripcion as Tipo, a.Talla, Genero, Existencia FROM suministro a INNER JOIN tiposuministro tp on a.tipoID = tp.tipoID";
                     MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                     con.Open();
                     Invoke(new Action(() =>
