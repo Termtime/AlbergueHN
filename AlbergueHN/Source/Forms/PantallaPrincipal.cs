@@ -221,7 +221,7 @@ namespace AlbergueHN
 
         private void DespacharSuministrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dialogDespacharSuministro form = new dialogDespacharSuministro();
+            dialogEntregarProductos form = new dialogEntregarProductos();
             form.ShowDialog();
         }
 
@@ -272,7 +272,7 @@ namespace AlbergueHN
 
         private void IngresarSuministrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dialogDespacharSuministro form = new dialogDespacharSuministro();
+            dialogIngresarSuministro form = new dialogIngresarSuministro();
             form.ShowDialog();
         }
 
