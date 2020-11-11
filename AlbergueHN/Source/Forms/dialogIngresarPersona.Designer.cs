@@ -148,10 +148,11 @@
             // txtCuenta
             // 
             this.txtCuenta.Location = new System.Drawing.Point(135, 132);
-            this.txtCuenta.MaxLength = 15;
+            this.txtCuenta.MaxLength = 11;
             this.txtCuenta.Name = "txtCuenta";
             this.txtCuenta.Size = new System.Drawing.Size(200, 20);
             this.txtCuenta.TabIndex = 3;
+            this.txtCuenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCuenta_KeyPress);
             // 
             // checkFamiliar
             // 

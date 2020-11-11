@@ -177,7 +177,8 @@ namespace AlbergueHN.Source.Forms
             {
                 if(tablaProductos.SelectedRows[0] != null)
                 {
-                    if(tablaProductos.SelectedRows[0].Cells["¿Está Activo?"].Value.ToString() == "Si")
+                    btnModificarProducto.Enabled = true;
+                    if (tablaProductos.SelectedRows[0].Cells["¿Está Activo?"].Value.ToString() == "Si")
                     {
                         btnHabilitarProducto.Enabled = false;
                         btnEliminarProducto.Enabled = true;
@@ -187,6 +188,10 @@ namespace AlbergueHN.Source.Forms
                         btnHabilitarProducto.Enabled = true;
                         btnEliminarProducto.Enabled = false;
                     }
+                }
+                else
+                {
+                    btnModificarProducto.Enabled = false;
                 }
             }catch(Exception ex)
             {

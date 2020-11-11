@@ -236,6 +236,7 @@
             // checkFamiliar
             // 
             this.checkFamiliar.AutoSize = true;
+            this.checkFamiliar.Enabled = false;
             this.checkFamiliar.Location = new System.Drawing.Point(341, 133);
             this.checkFamiliar.Name = "checkFamiliar";
             this.checkFamiliar.Size = new System.Drawing.Size(88, 17);
@@ -247,10 +248,11 @@
             // 
             this.txtCuenta.Enabled = false;
             this.txtCuenta.Location = new System.Drawing.Point(135, 132);
-            this.txtCuenta.MaxLength = 15;
+            this.txtCuenta.MaxLength = 11;
             this.txtCuenta.Name = "txtCuenta";
             this.txtCuenta.Size = new System.Drawing.Size(200, 20);
             this.txtCuenta.TabIndex = 72;
+            this.txtCuenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCuenta_KeyPress);
             // 
             // label5
             // 
@@ -373,6 +375,7 @@
             this.Controls.Add(this.label10);
             this.Name = "dialogModificarPersona";
             this.Text = "Modificar Persona";
+            this.Load += new System.EventHandler(this.DialogModificarPersona_Load);
             ((System.ComponentModel.ISupportInitialize)(this.spinnerFamiliares)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

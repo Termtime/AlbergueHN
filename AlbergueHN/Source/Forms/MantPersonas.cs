@@ -40,7 +40,8 @@ namespace AlbergueHN.Source.Forms
             catch (Exception ex)
             {
                 //ocurrio un error
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error dando de alta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.Message);
             }
             cargarPersonas();
         }
@@ -69,6 +70,7 @@ namespace AlbergueHN.Source.Forms
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -77,11 +79,15 @@ namespace AlbergueHN.Source.Forms
             String genero;
             String fecha;
             dialogModificarPersona p = new dialogModificarPersona();
+            if(tablaPersonas.CurrentRow.Cells["Cuenta"].Value.ToString().Contains("Fam:"))
+            {
+
+            }
             p.txtNombre.Text = tablaPersonas.CurrentRow.Cells["Nombres"].Value.ToString();
             p.txtApellido.Text = tablaPersonas.CurrentRow.Cells["Apellidos"].Value.ToString();
-            string id1 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString().Substring(0,3);
+            string id1 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString().Substring(0,4);
             string id2 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString().Substring(4,7);
-            string id3 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString();
+            string id3 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString().Substring(8);
 
             p.txtID1.Text = id1;
             p.txtID2.Text = id2;
@@ -91,7 +97,7 @@ namespace AlbergueHN.Source.Forms
             p.txtID2.Enabled = false;
             p.txtID3.Enabled = false;
 
-            p.txtCuenta.Text = tablaPersonas.CurrentRow.Cells["Cuenta"].Value.ToString();
+            p.txtCuenta.Text = tablaPersonas.CurrentRow.Cells["Cuenta"].Value.ToString().Replace("Fam:", "");
             p.txtTelefono.Text = tablaPersonas.CurrentRow.Cells["Telefono"].Value.ToString();
             p.txtDireccion.Text = tablaPersonas.CurrentRow.Cells["Direccion"].Value.ToString();
             p.spinnerFamiliares.Value = (int) tablaPersonas.CurrentRow.Cells["Cantidad de Familiares"].Value;
@@ -99,7 +105,7 @@ namespace AlbergueHN.Source.Forms
             fecha = tablaPersonas.CurrentRow.Cells["FechaNacimiento"].Value.ToString();
            
             p.fechaNacimiento.Value = DateTime.Parse(fecha);
-            p.comboMunicipio.SelectedItem = tablaPersonas.CurrentRow.Cells["Municipio"].Value.ToString();
+            p.municipio = tablaPersonas.CurrentRow.Cells["Municipio"].Value.ToString();
             if (genero == "M")
             {
                 p.radioMasculino.Checked = true;
@@ -131,8 +137,6 @@ namespace AlbergueHN.Source.Forms
                 tablaPersonas.Columns[9].Width = tablaPersonas.Width * 8 / 100;
                 tablaPersonas.Columns[10].Width = tablaPersonas.Width * 8 / 100;
                 tablaPersonas.Columns[11].Width = tablaPersonas.Width * 8 / 100;
-
-
             }
             catch (Exception ex)
             {
@@ -154,46 +158,6 @@ namespace AlbergueHN.Source.Forms
             dialogIngresarPersona p = new dialogIngresarPersona();
             p.ShowDialog();
             cargarPersonas();
-                ////MOVER A DIALOGOINGRESARPERSONA
-                //if (!p.checkFamiliar.Checked)
-                //{
-                //    sql = "CALL spIngresarPersona(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10)";
-                //}
-                //else
-                //    sql = "CALL spIngresarFamiliar(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10)";
-                //string gen = "";
-                //if (p.radioMasculino.Checked == true && p.radioFemenino.Checked == false)
-                //    gen = "M";
-                //else
-                //    gen = "F";
-                //try
-                //{
-                //    using (MySqlConnection con = new MySqlConnection(StringConexion))
-                //    {
-                //        using (MySqlCommand cmd = new MySqlCommand(sql, con))
-                //        {
-                //            cmd.Parameters.AddWithValue("@1", p.txtId.Text.Trim());
-                //            cmd.Parameters.AddWithValue("@2", p.txtNombre.Text.Trim());
-                //            cmd.Parameters.AddWithValue("@3", p.txtApellido.Text.Trim());
-                //            cmd.Parameters.AddWithValue("@4", p.fechaNacimiento.Value.ToString("yyyy-MM-dd"));
-                //            cmd.Parameters.AddWithValue("@5", gen);
-                //            cmd.Parameters.AddWithValue("@6", p.txtDireccion.Text.Trim());
-                //            cmd.Parameters.AddWithValue("@7", p.txtCuenta.Text.Trim());
-                //            cmd.Parameters.AddWithValue("@8", p.spinnerFamiliares.Text.Trim());
-                //            cmd.Parameters.AddWithValue("@9", p.txtTelefono.Text.Trim());
-                //            cmd.Parameters.AddWithValue("@10", p.comboMunicipio.SelectedValue.ToString());
-
-                //            cmd.Connection.Open();  //abrir conexion
-                //            cmd.ExecuteNonQuery();  //ejecutar comando
-                //        }
-                //    }
-
-                //}
-                //catch (MySqlException ex)
-                //{
-                //    //ocurrio un error
-                //    MessageBox.Show(ex.Message);
-                //}
         }
 
         private void TablaPersonas_SelectionChanged(object sender, EventArgs e)
@@ -202,7 +166,8 @@ namespace AlbergueHN.Source.Forms
             {
                 if(tablaPersonas.SelectedRows[0] != null)
                 {
-                    if(tablaPersonas.SelectedRows[0].Cells["FechaSalida"].Value.ToString().Trim().Length > 0)
+                    btnModificar.Enabled = true;
+                    if (tablaPersonas.SelectedRows[0].Cells["Fecha de Salida"].Value.ToString().Trim().Length > 0)
                     {
                         btnDarDeAlta.Enabled = false;
                         btnModificar.Enabled = false;
@@ -212,6 +177,10 @@ namespace AlbergueHN.Source.Forms
                         btnDarDeAlta.Enabled = true;
                         btnModificar.Enabled = true;
                     }
+                }
+                else
+                {
+                    btnModificar.Enabled = false;
                 }
             }catch(Exception ex)
             {

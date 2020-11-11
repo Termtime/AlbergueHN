@@ -14,6 +14,7 @@ namespace AlbergueHN.Source.Forms
     public partial class dialogModificarPersona : Form
     {
         string stringConexion = (string)Properties.Settings.Default["stringConexion"];
+        public string municipio = "";
         public dialogModificarPersona()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace AlbergueHN.Source.Forms
             }
             if (txtDireccion.Text.Trim().Length == 0)
             {
-                MessageBox.Show("No ha llenado el campo de Dirección.", "Validación");
+                MessageBox.Show("No ha llenado el campo de Dirección.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtDireccion.Focus();
                 return;
             }
@@ -51,7 +52,7 @@ namespace AlbergueHN.Source.Forms
             }
 
             //MOVER ESTO A VENTANA DE MODIFICARPERSONA
-            string sql = "call spUpdatePersona(@1 @2, @3, @4, @5, @6, @7, @8, @9)";
+            string sql = "call spUpdatePersona(@1, @2, @3, @4, @5, @6, @7, @8, @9)";
 
             string gen = "";
             string id1 = txtID1.Text.Trim();
@@ -97,6 +98,51 @@ namespace AlbergueHN.Source.Forms
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void TxtCuenta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public void cargarMunicipios()
+        {
+            string sql = "select MunicipioID, Nombre from municipio order by Nombre ASC";
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(stringConexion))
+                {
+                    con.Open();
+                    using (MySqlCommand sqlcmd = new MySqlCommand(sql, con))
+                    {
+                        using (MySqlDataReader lector = sqlcmd.ExecuteReader())
+                        {
+                            DataTable dtMunicipios = new DataTable();
+                            dtMunicipios.Columns.Add("Nombre", typeof(string));
+                            dtMunicipios.Load(lector);
+
+                            comboMunicipio.ValueMember = "MunicipioID";
+                            comboMunicipio.DisplayMember = "Nombre";
+                            comboMunicipio.DataSource = dtMunicipios;
+                            comboMunicipio.SelectedIndex = comboMunicipio.FindString(municipio);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void DialogModificarPersona_Load(object sender, EventArgs e)
+        {
+            cargarMunicipios();
+            fechaNacimiento.MaxDate = DateTime.Today.AddDays(-1);
         }
     }
 }

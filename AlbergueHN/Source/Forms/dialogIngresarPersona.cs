@@ -23,25 +23,25 @@ namespace AlbergueHN.Source.Forms
         {
             if (txtNombre.Text.Trim().Length == 0)
             {
-                MessageBox.Show("No ha llenado el campo de Nombres.", "Validación");
+                MessageBox.Show("No ha llenado el campo de Nombres.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtNombre.Focus();
                 return;
             }
             if (txtApellido.Text.Trim().Length == 0)
             {
-                MessageBox.Show("No ha llenado el campo de Apellidos.", "Validación");
+                MessageBox.Show("No ha llenado el campo de Apellidos.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtApellido.Focus();
                 return;
             }
             if (txtCuenta.Text.Trim().Length == 0)
             {
-                MessageBox.Show("No ha llenado el campo de No de Cuenta.", "Validación");
+                MessageBox.Show("No ha llenado el campo de No de Cuenta.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCuenta.Focus();
                 return;
             }
             if (txtDireccion.Text.Trim().Length == 0)
             {
-                MessageBox.Show("No ha llenado el campo de Dirección.", "Validación");
+                MessageBox.Show("No ha llenado el campo de Dirección.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtDireccion.Focus();
                 return;
             }
@@ -60,6 +60,10 @@ namespace AlbergueHN.Source.Forms
             else
                 sql = "CALL spIngresarFamiliar(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10)";
             string gen = "";
+            string id1 = txtID1.Text.Trim();
+            string id2 = txtID2.Text.Trim();
+            string id3 = txtID3.Text.Trim();
+            string idCompleto = id1 + id2 + id3;
             if (radioMasculino.Checked == true && radioFemenino.Checked == false)
                 gen = "M";
             else
@@ -70,16 +74,16 @@ namespace AlbergueHN.Source.Forms
                 {
                     using (MySqlCommand cmd = new MySqlCommand(sql, con))
                     {
-                        cmd.Parameters.AddWithValue("@1", p.txtId.Text.Trim());
-                        cmd.Parameters.AddWithValue("@2", p.txtNombre.Text.Trim());
-                        cmd.Parameters.AddWithValue("@3", p.txtApellido.Text.Trim());
-                        cmd.Parameters.AddWithValue("@4", p.fechaNacimiento.Value.ToString("yyyy-MM-dd"));
+                        cmd.Parameters.AddWithValue("@1", idCompleto);
+                        cmd.Parameters.AddWithValue("@2", txtNombre.Text.Trim());
+                        cmd.Parameters.AddWithValue("@3", txtApellido.Text.Trim());
+                        cmd.Parameters.AddWithValue("@4", fechaNacimiento.Value.ToString("yyyy-MM-dd"));
                         cmd.Parameters.AddWithValue("@5", gen);
-                        cmd.Parameters.AddWithValue("@6", p.txtDireccion.Text.Trim());
-                        cmd.Parameters.AddWithValue("@7", p.txtCuenta.Text.Trim());
-                        cmd.Parameters.AddWithValue("@8", p.spinnerFamiliares.Text.Trim());
-                        cmd.Parameters.AddWithValue("@9", p.txtTelefono.Text.Trim());
-                        cmd.Parameters.AddWithValue("@10", p.comboMunicipio.SelectedValue.ToString());
+                        cmd.Parameters.AddWithValue("@6", txtDireccion.Text.Trim());
+                        cmd.Parameters.AddWithValue("@7", txtCuenta.Text.Trim());
+                        cmd.Parameters.AddWithValue("@8", spinnerFamiliares.Text.Trim());
+                        cmd.Parameters.AddWithValue("@9", txtTelefono.Text.Trim());
+                        cmd.Parameters.AddWithValue("@10",comboMunicipio.SelectedValue.ToString());
 
                         cmd.Connection.Open();  //abrir conexion
                         cmd.ExecuteNonQuery();  //ejecutar comando
@@ -90,7 +94,8 @@ namespace AlbergueHN.Source.Forms
             catch (MySqlException ex)
             {
                 //ocurrio un error
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message , "Error ingresando persona", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.Message);
             }
 
 
@@ -105,7 +110,7 @@ namespace AlbergueHN.Source.Forms
         private void dialogIngresarPersona_Load(object sender, EventArgs e)
         {
             cargarMunicipios();
-            fechaNacimiento.MaxDate = DateTime.Today;
+            fechaNacimiento.MaxDate = DateTime.Today.AddDays(-1);
         }
 
         public void cargarMunicipios()
@@ -135,6 +140,7 @@ namespace AlbergueHN.Source.Forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.Message);
             }
             if (comboMunicipio.Items.Count != 0)
             {
@@ -142,7 +148,13 @@ namespace AlbergueHN.Source.Forms
             }
         }
 
-        
+        private void TxtCuenta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
 

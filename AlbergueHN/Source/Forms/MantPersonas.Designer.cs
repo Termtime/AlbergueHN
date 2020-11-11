@@ -91,6 +91,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaPersonas.Location = new System.Drawing.Point(13, 107);
+            this.tablaPersonas.MultiSelect = false;
             this.tablaPersonas.Name = "tablaPersonas";
             this.tablaPersonas.ReadOnly = true;
             this.tablaPersonas.RowHeadersVisible = false;
