@@ -331,5 +331,12 @@ namespace AlbergueHN.Source.Forms
         {
             
         }
+
+        private void nuevo_Click(object sender, EventArgs e)
+        {
+            dialogCrearProducto p = new dialogCrearProducto();
+            p.ShowDialog();
+            llenarDatos();
+        }
     }
 }
