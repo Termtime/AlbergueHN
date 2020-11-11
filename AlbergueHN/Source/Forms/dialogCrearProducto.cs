@@ -26,8 +26,8 @@ namespace AlbergueHN.Source.Forms
             comboTalla.Items.AddRange(tallasRopa);
             comboGen.Items.Add("M");
             comboGen.Items.Add("F");
-            comboGen.SelectedIndex = 0;
-            comboTalla.SelectedIndex = 0;
+            comboGen.Text = "";
+            comboTalla.Text = "";
         }
         public void cargarTipos()
         {
@@ -74,20 +74,54 @@ namespace AlbergueHN.Source.Forms
 
             try
             {
-                String sql = "CALL spCrearProducto(@1, @2, @3, @4)";
-                if (comboTipo.Text == "Vestimenta" || comboTipo.Text == "Zapatos")
+                string descripcion = txtArticulo.Text.Trim();
+                String sql = "CALL spCrearProducto(@1, @2, @3, @4, @5, @6)";
+                if (checkUsaTalla.Checked)
                 {
-                    genero = comboGen.SelectedItem.ToString();
                     talla = (string) (comboTalla.SelectedItem ?? comboTalla.Text);
+                }else { talla = null; }
+                if (checkUsaGenero.Checked)
+                {
+                    genero = comboGen.Text;
+                }else { genero = null; }
+
+                if (radioAdulto.Checked)
+                {
+                    descripcion += " - Adulto";
+                }
+                else if (radioInfante.Checked)
+                {
+                    descripcion += " - Infante";
+                }
+                //Quitar todas las instancias de Adulto e Infante de la descripcion
+                if (txtArticulo.Text.Trim().Contains(" - Infante"))
+                {
+                    bool aunContiene = true;
+                    while (aunContiene)
+                    {
+                        txtArticulo.Text = txtArticulo.Text.Trim().Replace(" - Infante", "");
+                        aunContiene = txtArticulo.Text.Trim().Contains(" - Infante");
+                    }
+                }
+                if (txtArticulo.Text.Trim().Contains(" - Adulto"))
+                {
+                    bool aunContiene = true;
+                    while (aunContiene)
+                    {
+                        txtArticulo.Text = txtArticulo.Text.Trim().Replace(" - Adulto", "");
+                        aunContiene = txtArticulo.Text.Trim().Contains(" - Adulto");
+                    }
                 }
                 using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
                     using (MySqlCommand cmd = new MySqlCommand(sql, con))
                     {
                         cmd.Parameters.AddWithValue("@1", comboTipo.SelectedValue.ToString());
-                        cmd.Parameters.AddWithValue("@2", txtArticulo.Text.Trim());
+                        cmd.Parameters.AddWithValue("@2", descripcion);
                         cmd.Parameters.AddWithValue("@3", talla);
                         cmd.Parameters.AddWithValue("@4", genero);
+                        cmd.Parameters.AddWithValue("@5", checkUsaTalla.Checked);
+                        cmd.Parameters.AddWithValue("@6", checkUsaGenero.Checked);
 
                         cmd.Connection.Open();  //abrir conexion
                         cmd.ExecuteNonQuery();  //ejecutar comando
@@ -112,16 +146,34 @@ namespace AlbergueHN.Source.Forms
 
         private void TipoArticulo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboTipo.Text == "Vestimenta" || comboTipo.Text == "Zapatos")
+        }
+
+        private void CheckUsaTalla_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkUsaTalla.Checked)
             {
                 comboTalla.Enabled = true;
-                comboGen.Enabled = true;
+                comboTalla.SelectedIndex = 0;
             }
             else
             {
                 comboTalla.Enabled = false;
-                comboGen.Enabled = false;
+                comboTalla.Text = "";
                 talla = null;
+            }
+        }
+
+        private void CheckUsaGenero_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkUsaGenero.Checked)
+            {
+                comboGen.Enabled = true;
+                comboGen.SelectedIndex = 0;
+            }
+            else
+            {
+                comboGen.Enabled = false;
+                comboGen.SelectedIndex = -1;
                 genero = null;
             }
         }

@@ -12,7 +12,7 @@ using MySql.Data.MySqlClient;
 
 namespace AlbergueHN.Source.Forms
 {
-    public partial class dialogIngresarSuministro : Form
+    public partial class dialogIngresarProductos : Form
     {
         string[] tallasRopa = { "Todas", "XXS", "XS", "S", "M", "L", "XL", "XL", "XXL" };
         string stringConexion = (string)Properties.Settings.Default["stringConexion"];
@@ -20,7 +20,7 @@ namespace AlbergueHN.Source.Forms
         List<Suministro> suministrosIngresados = new List<Suministro>();
         List<ListViewItem> productos = new List<ListViewItem>();
 
-        public dialogIngresarSuministro()
+        public dialogIngresarProductos()
         {
             InitializeComponent();
         }
@@ -47,11 +47,6 @@ namespace AlbergueHN.Source.Forms
         private void ComboTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             filtrar();
-            DataRowView row = (DataRowView)comboTipo.SelectedItem;
-            string filtroTipo = (string)row.Row.ItemArray[1];
-            if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos" || filtroTipo == "Todos" )
-            { panelControlRopa.Visible = true; labelTalla.Visible = true; comboTalla.Visible = true; }
-            else { panelControlRopa.Visible = false; }
         }
 
         private void TxtFiltro_TextChanged(object sender, EventArgs e)
@@ -146,6 +141,11 @@ namespace AlbergueHN.Source.Forms
             List<ListViewItem> productosFiltrados = new List<ListViewItem>();
             string genero = "";
             bool cualquierGenero = false;
+            bool cualquierTalla = false;
+            string filtroTalla = ((string)comboTalla.SelectedItem) ?? comboTalla.Text;
+            filtroTalla = filtroTalla.ToString();
+            if (filtroTalla == "Todas") cualquierTalla = true;
+
             if (radioMasculino.Checked)
             {
                 genero = "M";
@@ -161,25 +161,18 @@ namespace AlbergueHN.Source.Forms
 
             if (filtroTipo == "Todos")
             {
-                foreach (ListViewItem item in productos.Where(item => item.Text.ToLower().Contains(filtroTxt.ToLower())))
+                foreach (ListViewItem item in productos.Where(item => item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Equals(filtroTalla.ToLower()) || cualquierTalla)))
                 {
                     listaProductos.Items.Add(item);
                 }
-
-                return;
             }
-            else if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
+            else
             {
-
-                bool cualquierTalla = false;
-                string filtroTalla = ((string)comboTalla.SelectedItem) ?? comboTalla.Text;
-                filtroTalla = filtroTalla.ToString();
-                if (filtroTalla == "Todas") cualquierTalla = true;
-                foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Contains(filtroTalla.ToLower()) || cualquierTalla)))
+                foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Equals(filtroTalla.ToLower()) || cualquierTalla)))
                 {
-
                     listaProductos.Items.Add(item);
                 }
+
             }
         }
 

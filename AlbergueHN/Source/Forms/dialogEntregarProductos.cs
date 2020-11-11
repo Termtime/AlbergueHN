@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -43,7 +44,15 @@ namespace AlbergueHN.Source.Forms
             tablaDespacho.Columns[3].ReadOnly = true;
             tablaDespacho.Columns[4].ReadOnly = true;
             tablaDespacho.Columns[5].ReadOnly = true;
-            resizearTablaDespacho();
+
+            tablaDespacho.Columns[0].Width = 40;
+            tablaDespacho.Columns[1].FillWeight = 40;
+            tablaDespacho.Columns[2].FillWeight = 10;
+            tablaDespacho.Columns[3].FillWeight = 30;
+            tablaDespacho.Columns[4].FillWeight = 10;
+            tablaDespacho.Columns[5].FillWeight = 10;
+
+            resizearTablaDespacho(); 
             foreach (string item in tallasRopa)
             {
                 comboTalla.Items.Add(item);
@@ -59,9 +68,6 @@ namespace AlbergueHN.Source.Forms
             filtrar();
             DataRowView row = (DataRowView)comboTipo.SelectedItem;
             string filtroTipo = (string)row.Row.ItemArray[1];
-            if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
-            { panelControlRopa.Visible = true; labelTalla.Visible = true; comboTalla.Visible = true; }
-            else { panelControlRopa.Visible = false; }
         }
 
         private void TxtFiltro_TextChanged(object sender, EventArgs e)
@@ -209,6 +215,11 @@ namespace AlbergueHN.Source.Forms
             List<ListViewItem> productosFiltrados = new List<ListViewItem>();
             string genero = "";
             bool cualquierGenero = false;
+            bool cualquierTalla = false;
+            string filtroTalla = ((string)comboTalla.SelectedItem) ?? comboTalla.Text;
+            filtroTalla = filtroTalla.ToString();
+            if (filtroTalla == "Todas") cualquierTalla = true;
+
             if (radioMasculino.Checked)
             {
                 genero = "M";
@@ -224,38 +235,19 @@ namespace AlbergueHN.Source.Forms
 
             if (filtroTipo == "Todos")
             {
-                foreach (ListViewItem item in productos.Where(item => item.Text.ToLower().Contains(filtroTxt.ToLower())))
+                foreach (ListViewItem item in productos.Where(item => item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Equals(filtroTalla.ToLower()) || cualquierTalla)))
                 {
                     listaProductos.Items.Add(item);
                 }
-
-                return;
             }
-            else if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
+            else
             {
-
-                bool cualquierTalla = false;
-                string filtroTalla = ((string)comboTalla.SelectedItem) ?? comboTalla.Text;
-                filtroTalla = filtroTalla.ToString();
-                if (filtroTalla == "Todas") cualquierTalla = true;
                 foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Equals(filtroTalla.ToLower()) || cualquierTalla)))
                 {
-
                     listaProductos.Items.Add(item);
                 }
                 
-
-            }
-            else
-                    if (filtroTipo == "Medicina" || filtroTipo == "Bebida")
-                    {
-                        
-                foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower())))
-                        {
-
-                            listaProductos.Items.Add(item);
-                        }
-                    }
+            }                   
         }
 
         private void agregarSuministroTabla()
@@ -338,16 +330,16 @@ namespace AlbergueHN.Source.Forms
 
         private void resizearTablaDespacho()
         {
-            try
-            {
-                tablaDespacho.Columns[0].Width = (tablaDespacho.Width - 40) * 10 / 100;
-                tablaDespacho.Columns[1].Width = (tablaDespacho.Width - 40) * 40 / 100;
-                tablaDespacho.Columns[2].Width = (tablaDespacho.Width - 40) * 10 / 100;
-                tablaDespacho.Columns[3].Width = (tablaDespacho.Width - 40) * 20 / 100;
-                tablaDespacho.Columns[4].Width = (tablaDespacho.Width - 40) * 10 / 100;
-                tablaDespacho.Columns[5].Width = (tablaDespacho.Width - 40) * 10 / 100;
-            }
-            catch (Exception ex) { }
+            //try
+            //{
+            //    tablaDespacho.Columns[0].Width = (tablaDespacho.Width - 40) * 10 / 100;
+            //    tablaDespacho.Columns[1].Width = (tablaDespacho.Width - 40) * 40 / 100;
+            //    tablaDespacho.Columns[2].Width = (tablaDespacho.Width - 40) * 10 / 100;
+            //    tablaDespacho.Columns[3].Width = (tablaDespacho.Width - 40) * 20 / 100;
+            //    tablaDespacho.Columns[4].Width = (tablaDespacho.Width - 40) * 10 / 100;
+            //    tablaDespacho.Columns[5].Width = (tablaDespacho.Width - 40) * 10 / 100;
+            //}
+            //catch (Exception ex) { }
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -370,12 +362,6 @@ namespace AlbergueHN.Source.Forms
 
         private void listaProductos_KeyPress(object sender, KeyPressEventArgs e)
         {
-           // //Presionar ENTER para agregar a la tabla
-           //if(e.KeyChar == '\r')
-
-           // {
-                
-           // }
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -388,13 +374,43 @@ namespace AlbergueHN.Source.Forms
 
         }
 
+        //public void flashCellColor(DataGridViewCellValidatingEventArgs e)
+        //{
+        //    Console.WriteLine("threadstart");
+        //    DataGridViewCell celda = tablaDespacho.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+        //    DataGridViewCellStyle original = celda.Style;
+
+        //    DataGridViewCellStyle flash = new DataGridViewCellStyle();
+        //    flash.BackColor = Color.FromArgb(0, 173, 239);
+        //    flash.ForeColor = Color.Black;
+
+        //    int i = 0;
+
+        //    while(i < 4)
+        //    {
+        //        celda.Style = flash;
+        //        Thread.Sleep(100);
+        //        celda.Style = original;
+        //        i++;
+        //    }
+
+        //    Console.WriteLine("threadstop");
+        //}
         private void tablaDespacho_CellValidating_1(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            float num;
-            if (!float.TryParse(tablaDespacho.CurrentCell.Value.ToString(), out num))
+            if (e.ColumnIndex == tablaDespacho.Columns["Cantidad"].Index)
             {
-                MessageBox.Show("La cantidad no es valida.", "Validación");
-                return;
+                tablaDespacho.Rows[e.RowIndex].ErrorText = "";
+                int newInteger;
+
+                if (tablaDespacho.Rows[e.RowIndex].IsNewRow) { return; }
+                if (!int.TryParse(e.FormattedValue.ToString(),
+                    out newInteger) || newInteger <= 0)
+                {
+                    e.Cancel = true;
+                    tablaDespacho.Rows[e.RowIndex].ErrorText = "El valor debe ser un entero positivo distinto de 0.";
+                }
             }
         }
     }

@@ -60,7 +60,10 @@ namespace AlbergueHN.Source.Forms
                     dt.Clear();
                     da.Fill(dt);
                     tablaProductos.DataSource = dt;
+                    tablaProductos.Columns["usaTalla"].Visible = false;
+                    tablaProductos.Columns["usaGenero"].Visible = false;
                     resizearTabla();
+
                 }));
             }
             estaCargando = false;
@@ -102,8 +105,18 @@ namespace AlbergueHN.Source.Forms
             dialogModificarProducto p = new dialogModificarProducto();
             p.tipoItem = tablaProductos.CurrentRow.Cells["Tipo"].Value.ToString();
             p.txtArticulo.Text = tablaProductos.CurrentRow.Cells["Descripcion"].Value.ToString();
-            p.comboTalla.Text = tablaProductos.CurrentRow.Cells["Talla"].Value.ToString();
-            p.comboGen.SelectedItem = tablaProductos.CurrentRow.Cells["Genero"].Value.ToString();
+            p.talla = tablaProductos.CurrentRow.Cells["Talla"].Value.ToString().Trim() == "" ? null : tablaProductos.CurrentRow.Cells["Talla"].Value.ToString().Trim();
+            p.genero = tablaProductos.CurrentRow.Cells["Genero"].Value.ToString().Trim() == "" ? null : tablaProductos.CurrentRow.Cells["Genero"].Value.ToString().Trim();
+            
+            if(tablaProductos.CurrentRow.Cells["usaTalla"].Value.ToString() == "Si")
+            {
+                p.checkUsaTalla.Checked = true;
+            }
+            if(tablaProductos.CurrentRow.Cells["usaGenero"].Value.ToString() == "Si")
+            {
+                p.checkUsaGenero.Checked = true;
+            }
+
             int id = Int32.Parse(tablaProductos.CurrentRow.Cells["SuministroID"].Value.ToString());
             p.id = id;
             p.ShowDialog();

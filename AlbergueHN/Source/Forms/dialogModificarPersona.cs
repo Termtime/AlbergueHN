@@ -144,5 +144,45 @@ namespace AlbergueHN.Source.Forms
             cargarMunicipios();
             fechaNacimiento.MaxDate = DateTime.Today.AddDays(-1);
         }
+
+        private void MaskedTextBox1_Enter(object sender, EventArgs e)
+        {
+            this.BeginInvoke((MethodInvoker)delegate ()
+            {
+                txtID1.Select(0, 0);
+            });
+        }
+
+        private void TxtCuenta_Enter(object sender, EventArgs e)
+        {
+            this.BeginInvoke((MethodInvoker)delegate ()
+            {
+                txtCuenta.Select(0, 0);
+            });
+        }
+
+        private void TxtID2_Enter(object sender, EventArgs e)
+        {
+            this.BeginInvoke((MethodInvoker)delegate ()
+            {
+                txtID3.Select(0, 0);
+            });
+        }
+
+        private void TxtID3_Enter(object sender, EventArgs e)
+        {
+            this.BeginInvoke((MethodInvoker)delegate ()
+            {
+                txtID3.Select(0, 0);
+            });
+        }
+
+        private void TxtTelefono_Enter(object sender, EventArgs e)
+        {
+            this.BeginInvoke((MethodInvoker)delegate ()
+            {
+                txtTelefono.Select(0, 0);
+            });
+        }
     }
 }

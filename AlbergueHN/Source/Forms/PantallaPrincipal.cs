@@ -136,7 +136,6 @@ namespace AlbergueHN
         {
             
         }
-
         private void filtrarSuministros()
         {
             if (tablaSuministros.DataSource == null) return;
@@ -147,6 +146,10 @@ namespace AlbergueHN
             string filtroTalla = (string)(comboTalla.SelectedItem ?? comboTalla.Text);
             String buscar = txtFiltro.Text;
             bool cualquierGenero = false;
+            bool cualquierTalla = false;
+
+            if (filtroTalla == "Todas") cualquierTalla = true;
+
             if (radioMasculino.Checked)
             {
                 genero = "M";
@@ -159,42 +162,87 @@ namespace AlbergueHN
             {
                 cualquierGenero = true;
             }
-            
-            if(filtroTipo == "Todos")
+
+            if (filtroTipo == "Todos")
             {
                 try
                 {
-                    dtArticulos.DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%'";
-                }
-                catch (Exception e)
-                {
+                    dtArticulos.DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%' And (talla LIKE '%{filtroTalla}%' or {cualquierTalla})  And (genero = '{genero}' or {cualquierGenero})";
+                }catch(Exception e){
                     Console.WriteLine(e.StackTrace);
                     MessageBox.Show(e.Message, "Error Filtrando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
+            else
             {
-                panelControlRopa.Visible = true;
-                bool cualquierTalla = false;
-                
-                filtroTalla = (string)(comboTalla.SelectedItem ?? comboTalla.Text);
-           
-                if (filtroTalla == "Todas") cualquierTalla = true;
-                try
-                {
+                try {
                     dtArticulos.DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%' and tipo = '{filtroTipo}' And (talla LIKE '%{filtroTalla}%' or {cualquierTalla})  And (genero = '{genero}' or {cualquierGenero})";
-                }
-                catch(Exception e)
-                {
+                } catch(Exception e) {
                     Console.WriteLine(e.StackTrace);
                     MessageBox.Show(e.Message, "Error Filtrando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            else 
-            {
-                dtArticulos.DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%' and tipo = '{filtroTipo}'";  
+
             }
         }
+        //private void filtrarSuministros()
+        //{
+        //    if (tablaSuministros.DataSource == null) return;
+        //    DataRowView row = (DataRowView)comboTipo.SelectedItem;
+        //    string filtroTipo = (string)row.Row.ItemArray[1];
+        //    string filtroTxt = txtFiltro.Text;
+        //    string genero = "";
+        //    string filtroTalla = (string)(comboTalla.SelectedItem ?? comboTalla.Text);
+        //    String buscar = txtFiltro.Text;
+        //    bool cualquierGenero = false;
+
+        //    if (radioMasculino.Checked)
+        //    {
+        //        genero = "M";
+        //    }
+        //    else if (radioFemenino.Checked)
+        //    {
+        //        genero = "F";
+        //    }
+        //    else if (radioCualquiera.Checked)
+        //    {
+        //        cualquierGenero = true;
+        //    }
+            
+        //    if(filtroTipo == "Todos")
+        //    {
+        //        try
+        //        {
+        //            dtArticulos.DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%'";
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            Console.WriteLine(e.StackTrace);
+        //            MessageBox.Show(e.Message, "Error Filtrando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //    else if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
+        //    {
+        //        panelControlRopa.Visible = true;
+        //        bool cualquierTalla = false;
+                
+        //        filtroTalla = (string)(comboTalla.SelectedItem ?? comboTalla.Text);
+           
+        //        if (filtroTalla == "Todas") cualquierTalla = true;
+        //        try
+        //        {
+        //            dtArticulos.DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%' and tipo = '{filtroTipo}' And (talla LIKE '%{filtroTalla}%' or {cualquierTalla})  And (genero = '{genero}' or {cualquierGenero})";
+        //        }
+        //        catch(Exception e)
+        //        {
+        //            Console.WriteLine(e.StackTrace);
+        //            MessageBox.Show(e.Message, "Error Filtrando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //    else 
+        //    {
+        //        dtArticulos.DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%' and tipo = '{filtroTipo}'";  
+        //    }
+        //}
         private void filtrarPersonas()
         {
             if (tablaPersonas.DataSource == null) return;
@@ -232,7 +280,7 @@ namespace AlbergueHN
 
         private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void ComboTipo_SelectedIndexChanged(object sender, EventArgs e)
@@ -272,7 +320,7 @@ namespace AlbergueHN
 
         private void IngresarSuministrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dialogIngresarSuministro form = new dialogIngresarSuministro();
+            dialogIngresarProductos form = new dialogIngresarProductos();
             form.ShowDialog();
         }
 
@@ -368,6 +416,29 @@ namespace AlbergueHN
         private void VersiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(INFORMACION.VERSION, "Acerca de: AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        bool quiereSalir = false;
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+            if (!quiereSalir)
+            {
+                if(MessageBox.Show("¿Desea salir del programa?", "Confirmar accion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    e.Cancel = true;
+                    quiereSalir = false;
+                }
+                else
+                {
+                    quiereSalir = true;
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+                quiereSalir = true;
+            }
         }
     }
 

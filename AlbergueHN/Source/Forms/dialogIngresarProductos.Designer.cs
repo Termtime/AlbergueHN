@@ -1,6 +1,6 @@
 ﻿namespace AlbergueHN.Source.Forms
 {
-    partial class dialogIngresarSuministro
+    partial class dialogIngresarProductos
     {
         /// <summary>
         /// Required designer variable.
@@ -73,11 +73,9 @@
             this.panelControlRopa.Name = "panelControlRopa";
             this.panelControlRopa.Size = new System.Drawing.Size(200, 56);
             this.panelControlRopa.TabIndex = 59;
-            this.panelControlRopa.Visible = false;
             // 
             // comboTalla
             // 
-            this.comboTalla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTalla.FormattingEnabled = true;
             this.comboTalla.Location = new System.Drawing.Point(67, 8);
             this.comboTalla.MaxLength = 5;
@@ -144,7 +142,7 @@
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(284, 643);
+            this.btnLimpiar.Location = new System.Drawing.Point(299, 643);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(151, 41);
             this.btnLimpiar.TabIndex = 58;
@@ -282,7 +280,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(524, 51);
             this.label6.TabIndex = 62;
-            this.label6.Text = "Ingreso de Productos";
+            this.label6.Text = "Ingreso de productos";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
@@ -316,26 +314,26 @@
             // 
             this.btnIngresar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIngresar.Location = new System.Drawing.Point(127, 643);
+            this.btnIngresar.Location = new System.Drawing.Point(84, 643);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(151, 41);
+            this.btnIngresar.Size = new System.Drawing.Size(209, 41);
             this.btnIngresar.TabIndex = 57;
-            this.btnIngresar.Text = "Ingresar";
+            this.btnIngresar.Text = "Terminar e ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
             this.btnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
             // 
             // nuevo
             // 
-            this.nuevo.Location = new System.Drawing.Point(336, 73);
-            this.nuevo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nuevo.Location = new System.Drawing.Point(336, 78);
+            this.nuevo.Margin = new System.Windows.Forms.Padding(2);
             this.nuevo.Name = "nuevo";
-            this.nuevo.Size = new System.Drawing.Size(99, 23);
+            this.nuevo.Size = new System.Drawing.Size(112, 23);
             this.nuevo.TabIndex = 66;
-            this.nuevo.Text = "Nuevo artículo";
+            this.nuevo.Text = "Crear nuevo artículo";
             this.nuevo.UseVisualStyleBackColor = true;
             this.nuevo.Click += new System.EventHandler(this.nuevo_Click);
             // 
-            // dialogIngresarSuministro
+            // dialogIngresarProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -356,7 +354,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.listaProductos);
             this.Controls.Add(this.tablaIngreso);
-            this.Name = "dialogIngresarSuministro";
+            this.Name = "dialogIngresarProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingresar Productos";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.dialogIngresarSuministro_FormClosed);

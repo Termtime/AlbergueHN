@@ -69,6 +69,7 @@
             this.tablaDespacho.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tablaDespacho.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaDespacho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaDespacho.Location = new System.Drawing.Point(542, 20);
             this.tablaDespacho.Name = "tablaDespacho";
@@ -169,7 +170,6 @@
             // 
             // comboTalla
             // 
-            this.comboTalla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTalla.FormattingEnabled = true;
             this.comboTalla.Location = new System.Drawing.Point(67, 8);
             this.comboTalla.Name = "comboTalla";
@@ -182,11 +182,11 @@
             // 
             this.btnDespachar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDespachar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDespachar.Location = new System.Drawing.Point(118, 637);
+            this.btnDespachar.Location = new System.Drawing.Point(75, 637);
             this.btnDespachar.Name = "btnDespachar";
-            this.btnDespachar.Size = new System.Drawing.Size(151, 41);
+            this.btnDespachar.Size = new System.Drawing.Size(232, 41);
             this.btnDespachar.TabIndex = 44;
-            this.btnDespachar.Text = "Entregar";
+            this.btnDespachar.Text = "Terminar y despachar";
             this.btnDespachar.UseVisualStyleBackColor = true;
             this.btnDespachar.Click += new System.EventHandler(this.BtnDespachar_Click);
             // 
@@ -194,7 +194,7 @@
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(275, 637);
+            this.btnLimpiar.Location = new System.Drawing.Point(313, 637);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(151, 41);
             this.btnLimpiar.TabIndex = 45;
@@ -260,7 +260,6 @@
             this.panelControlRopa.Name = "panelControlRopa";
             this.panelControlRopa.Size = new System.Drawing.Size(200, 56);
             this.panelControlRopa.TabIndex = 50;
-            this.panelControlRopa.Visible = false;
             // 
             // labelUsuario
             // 
@@ -287,7 +286,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(524, 51);
             this.label6.TabIndex = 62;
-            this.label6.Text = "Entregar Productos";
+            this.label6.Text = "Despachar Productos";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
@@ -358,7 +357,7 @@
             this.Controls.Add(this.tablaDespacho);
             this.Name = "dialogEntregarProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Etnregar Productos";
+            this.Text = "Despachar Productos";
             this.Load += new System.EventHandler(this.DialogDespacharProductos_Load);
             this.SizeChanged += new System.EventHandler(this.DialogDespacharArticulo_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.tablaDespacho)).EndInit();
