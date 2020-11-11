@@ -89,17 +89,20 @@ namespace AlbergueHN.Source.Forms
                         cmd.ExecuteNonQuery();  //ejecutar comando
                     }
                 }
-
+                this.Close();
             }
             catch (MySqlException ex)
             {
                 //ocurrio un error
+                if (ex.Number == 2627)
+                    MessageBox.Show("Número de Identidad repetido.");
                 MessageBox.Show(ex.Message , "Error ingresando persona", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(ex.Message);
+
             }
 
 
-            this.Close();
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

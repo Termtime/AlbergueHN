@@ -70,15 +70,15 @@ namespace AlbergueHN.Source.Forms
                         cmd.ExecuteNonQuery();  //ejecutar comando
                     }
                 }
-
+                this.Close();
             }
             catch (Exception ex)
             {
                 //ocurrio un error
                 MessageBox.Show(ex.Message, "Error actualizando informacion del producto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(ex.StackTrace);
+                
             }
-            this.Close();
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
