@@ -56,9 +56,7 @@ namespace AlbergueHN.Source.Forms
             try
             {
                 dt.Clear();
-                var stm = "select PersonaID as Identidad, Cuenta, Nombres, Apellidos, FechaNacimiento, Genero, CantidadFamiliares as 'Cantidad de Familiares', "
-                    +"Telefono, m.Nombre as 'Municipio', Direccion, FechaEntrada as 'Fecha de Entrada', FechaSalida as 'Fecha de Salida'"+
-                    " from persona p inner join municipio m on p.municipio = m.municipioid";
+                var stm = "select * from vistaPersonas";
                 using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
                     MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
@@ -79,14 +77,14 @@ namespace AlbergueHN.Source.Forms
             String genero;
             String fecha;
             dialogModificarPersona p = new dialogModificarPersona();
-            if(tablaPersonas.CurrentRow.Cells["Cuenta"].Value.ToString().Contains("Fam:"))
+            if(tablaPersonas.CurrentRow.Cells["No. Empleado/Estudiante"].Value.ToString().Contains("Fam:"))
             {
-
+                p.checkFamiliar.Checked = true;
             }
             p.txtNombre.Text = tablaPersonas.CurrentRow.Cells["Nombres"].Value.ToString();
             p.txtApellido.Text = tablaPersonas.CurrentRow.Cells["Apellidos"].Value.ToString();
             string id1 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString().Substring(0,4);
-            string id2 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString().Substring(5,4);
+            string id2 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString().Substring(4,4);
             string id3 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString().Substring(8,5);
 
             p.txtID1.Text = id1;
@@ -97,7 +95,7 @@ namespace AlbergueHN.Source.Forms
             p.txtID2.Enabled = false;
             p.txtID3.Enabled = false;
 
-            p.txtCuenta.Text = tablaPersonas.CurrentRow.Cells["Cuenta"].Value.ToString().Replace("Fam:", "");
+            p.txtCuenta.Text = tablaPersonas.CurrentRow.Cells["No. Empleado/Estudiante"].Value.ToString().Replace("Fam:", "");
             p.txtTelefono.Text = tablaPersonas.CurrentRow.Cells["Telefono"].Value.ToString();
             p.txtDireccion.Text = tablaPersonas.CurrentRow.Cells["Direccion"].Value.ToString();
             p.spinnerFamiliares.Value = (int) tablaPersonas.CurrentRow.Cells["Cantidad de Familiares"].Value;
