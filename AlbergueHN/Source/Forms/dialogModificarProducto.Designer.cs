@@ -34,7 +34,7 @@
             this.txtArticulo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.comboTipo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,120 +43,117 @@
             // comboTalla
             // 
             this.comboTalla.FormattingEnabled = true;
-            this.comboTalla.Location = new System.Drawing.Point(164, 122);
-            this.comboTalla.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboTalla.Location = new System.Drawing.Point(91, 70);
+            this.comboTalla.MaxLength = 5;
             this.comboTalla.Name = "comboTalla";
-            this.comboTalla.Size = new System.Drawing.Size(180, 28);
-            this.comboTalla.TabIndex = 66;
+            this.comboTalla.Size = new System.Drawing.Size(121, 21);
+            this.comboTalla.TabIndex = 68;
             // 
             // comboGen
             // 
             this.comboGen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboGen.FormattingEnabled = true;
-            this.comboGen.Location = new System.Drawing.Point(164, 162);
+            this.comboGen.Location = new System.Drawing.Point(91, 96);
+            this.comboGen.Margin = new System.Windows.Forms.Padding(2);
             this.comboGen.Name = "comboGen";
-            this.comboGen.Size = new System.Drawing.Size(121, 28);
-            this.comboGen.TabIndex = 59;
+            this.comboGen.Size = new System.Drawing.Size(82, 21);
+            this.comboGen.TabIndex = 60;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(90, 168);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(41, 100);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 20);
-            this.label3.TabIndex = 65;
+            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.TabIndex = 67;
             this.label3.Text = "Genero:";
             // 
             // txtArticulo
             // 
-            this.txtArticulo.Location = new System.Drawing.Point(164, 84);
+            this.txtArticulo.Location = new System.Drawing.Point(91, 45);
+            this.txtArticulo.Margin = new System.Windows.Forms.Padding(2);
             this.txtArticulo.MaxLength = 50;
             this.txtArticulo.Name = "txtArticulo";
-            this.txtArticulo.Size = new System.Drawing.Size(532, 26);
+            this.txtArticulo.Size = new System.Drawing.Size(356, 20);
             this.txtArticulo.TabIndex = 58;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(108, 128);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(53, 74);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 20);
-            this.label1.TabIndex = 64;
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 66;
             this.label1.Text = "Talla:";
             // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(622, 222);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCancelar.Location = new System.Drawing.Point(377, 130);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(112, 35);
-            this.btnCancelar.TabIndex = 63;
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 65;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
-            // btnAgregar
+            // btnModificar
             // 
-            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregar.Location = new System.Drawing.Point(478, 222);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(112, 35);
-            this.btnAgregar.TabIndex = 62;
-            this.btnAgregar.Text = "Ingresar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
+            this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnModificar.Location = new System.Drawing.Point(296, 130);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.TabIndex = 64;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // comboTipo
             // 
             this.comboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipo.FormattingEnabled = true;
-            this.comboTipo.Location = new System.Drawing.Point(164, 38);
-            this.comboTipo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboTipo.Location = new System.Drawing.Point(91, 15);
             this.comboTipo.Name = "comboTipo";
-            this.comboTipo.Size = new System.Drawing.Size(180, 28);
+            this.comboTipo.Size = new System.Drawing.Size(121, 21);
             this.comboTipo.TabIndex = 57;
+            this.comboTipo.SelectedIndexChanged += new System.EventHandler(this.ComboTipo_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(110, 42);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(55, 18);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 20);
-            this.label4.TabIndex = 61;
+            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.TabIndex = 62;
             this.label4.Text = "Tipo:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(58, 88);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(20, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 20);
-            this.label2.TabIndex = 60;
+            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.TabIndex = 61;
             this.label2.Text = "Descripción:";
             // 
             // dialogModificarProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 285);
+            this.ClientSize = new System.Drawing.Size(472, 168);
             this.Controls.Add(this.comboTalla);
             this.Controls.Add(this.comboGen);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtArticulo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.comboTipo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Name = "dialogModificarProducto";
-            this.Text = "dialogModificarProducto";
+            this.Text = "Modificar Producto";
+            this.Load += new System.EventHandler(this.DialogModificarProducto_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,7 +165,7 @@
         public System.Windows.Forms.TextBox txtArticulo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnModificar;
         public System.Windows.Forms.ComboBox comboTipo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
