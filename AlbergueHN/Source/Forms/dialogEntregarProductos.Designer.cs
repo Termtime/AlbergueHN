@@ -181,7 +181,7 @@
             // 
             this.btnDespachar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDespachar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDespachar.Location = new System.Drawing.Point(109, 662);
+            this.btnDespachar.Location = new System.Drawing.Point(119, 668);
             this.btnDespachar.Name = "btnDespachar";
             this.btnDespachar.Size = new System.Drawing.Size(151, 41);
             this.btnDespachar.TabIndex = 44;
@@ -193,7 +193,7 @@
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(266, 662);
+            this.btnLimpiar.Location = new System.Drawing.Point(276, 668);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(151, 41);
             this.btnLimpiar.TabIndex = 45;
@@ -336,7 +336,7 @@
             this.usuarioID.Size = new System.Drawing.Size(0, 16);
             this.usuarioID.TabIndex = 73;
             // 
-            // dialogDespacharSuministro
+            // dialogEntregarProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -357,7 +357,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.listaProductos);
             this.Controls.Add(this.tablaDespacho);
-            this.Name = "dialogDespacharSuministro";
+            this.Name = "dialogEntregarProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Etnregar Productos";
             this.Load += new System.EventHandler(this.DialogDespacharProductos_Load);

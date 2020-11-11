@@ -151,7 +151,9 @@
             this.Controls.Add(this.comboTipo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "dialogModificarProducto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar Producto";
             this.Load += new System.EventHandler(this.DialogModificarProducto_Load);
             this.ResumeLayout(false);
