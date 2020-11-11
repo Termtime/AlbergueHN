@@ -49,6 +49,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaProductos.Location = new System.Drawing.Point(12, 101);
+            this.tablaProductos.MultiSelect = false;
             this.tablaProductos.Name = "tablaProductos";
             this.tablaProductos.ReadOnly = true;
             this.tablaProductos.RowHeadersVisible = false;

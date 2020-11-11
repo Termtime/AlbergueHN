@@ -91,6 +91,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaPersonas.Location = new System.Drawing.Point(13, 107);
+            this.tablaPersonas.MultiSelect = false;
             this.tablaPersonas.Name = "tablaPersonas";
             this.tablaPersonas.ReadOnly = true;
             this.tablaPersonas.RowHeadersVisible = false;
@@ -98,6 +99,7 @@
             this.tablaPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaPersonas.Size = new System.Drawing.Size(809, 600);
             this.tablaPersonas.TabIndex = 6;
+            this.tablaPersonas.SelectionChanged += new System.EventHandler(this.TablaPersonas_SelectionChanged);
             // 
             // btnIngresar
             // 

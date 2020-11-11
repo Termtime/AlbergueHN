@@ -1,6 +1,6 @@
 ﻿namespace AlbergueHN.Source.Forms
 {
-    partial class dialogDespacharSuministro
+    partial class dialogEntregarProductos
     {
         /// <summary>
         /// Required designer variable.
@@ -283,7 +283,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(524, 51);
             this.label6.TabIndex = 62;
-            this.label6.Text = "Despachar Suministros";
+            this.label6.Text = "Entregar Productos";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
@@ -317,18 +317,18 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(350, 74);
+            this.label7.Location = new System.Drawing.Point(12, 74);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 16);
+            this.label7.Size = new System.Drawing.Size(97, 16);
             this.label7.TabIndex = 72;
-            this.label7.Text = "Usuario:";
+            this.label7.Text = "Usuario actual:";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // usuarioID
             // 
             this.usuarioID.AutoSize = true;
             this.usuarioID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usuarioID.Location = new System.Drawing.Point(414, 74);
+            this.usuarioID.Location = new System.Drawing.Point(115, 74);
             this.usuarioID.Name = "usuarioID";
             this.usuarioID.Size = new System.Drawing.Size(0, 16);
             this.usuarioID.TabIndex = 73;
@@ -356,7 +356,7 @@
             this.Controls.Add(this.tablaDespacho);
             this.Name = "dialogDespacharSuministro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Despachar Suministros";
+            this.Text = "Etnregar Productos";
             this.Load += new System.EventHandler(this.DialogDespacharProductos_Load);
             this.SizeChanged += new System.EventHandler(this.DialogDespacharArticulo_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.tablaDespacho)).EndInit();

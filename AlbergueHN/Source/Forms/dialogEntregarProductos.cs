@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace AlbergueHN.Source.Forms
 {
 
-    public partial class dialogDespacharSuministro : Form
+    public partial class dialogEntregarProductos : Form
     {
         string[] tallasRopa = { "Todas", "XXS", "XS", "S", "M", "L", "XL", "XL", "XXL" };
         string stringConexion = (string)Properties.Settings.Default["stringConexion"];
@@ -22,7 +22,8 @@ namespace AlbergueHN.Source.Forms
         List<Suministro> suministrosIngresados = new List<Suministro>();
         List<ListViewItem> productos = new List<ListViewItem>();
         List<Persona> personas = new List<Persona>();
-        public dialogDespacharSuministro()
+        bool estaCargando = false;
+        public dialogEntregarProductos()
         {
             InitializeComponent();
         }
@@ -125,8 +126,10 @@ namespace AlbergueHN.Source.Forms
         }
         private void llenarDatos()
         {
+            if (estaCargando) return;
             try
             {
+                estaCargando = true;
                 productos.Clear();
                 personas.Clear();
                 listaProductos.Items.Clear();
@@ -185,10 +188,13 @@ namespace AlbergueHN.Source.Forms
                         personas.Add(tmp);
                     }
                 }
-
-            }catch(Exception ex)
+                estaCargando = false;
+            }
+            catch(Exception ex)
             {
+                estaCargando = false;
                 MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.StackTrace);
             }
         }
 
@@ -252,6 +258,7 @@ namespace AlbergueHN.Source.Forms
 
         private void agregarSuministroTabla()
         {
+            if (listaProductos.SelectedItems.Count == 0) return;
             ListViewItem objetoSeleccionado = listaProductos.SelectedItems[0];
             if (objetoSeleccionado == null)
             {
@@ -343,6 +350,9 @@ namespace AlbergueHN.Source.Forms
                 llenarDatos();
                 filtrar();
                 return true;
+            }else if (keyData == (Keys.Enter))
+            {
+                agregarSuministroTabla();
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
@@ -354,12 +364,12 @@ namespace AlbergueHN.Source.Forms
 
         private void listaProductos_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Presionar ENTER para agregar a la tabla
-           if(e.KeyChar == '\r')
+           // //Presionar ENTER para agregar a la tabla
+           //if(e.KeyChar == '\r')
 
-            {
-                agregarSuministroTabla();
-            }
+           // {
+                
+           // }
         }
 
         private void label7_Click(object sender, EventArgs e)
