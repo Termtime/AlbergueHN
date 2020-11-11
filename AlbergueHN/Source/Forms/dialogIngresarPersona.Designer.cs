@@ -63,6 +63,7 @@
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(208, 20);
             this.txtNombres.TabIndex = 0;
+            this.txtNombres.Layout += new System.Windows.Forms.LayoutEventHandler(this.txtNombres_Layout);
             // 
             // label3
             // 
@@ -136,6 +137,7 @@
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(208, 20);
             this.txtId.TabIndex = 2;
+            this.txtId.Leave += new System.EventHandler(this.txtId_Leave);
             // 
             // label5
             // 
@@ -153,6 +155,7 @@
             this.txtCuenta.Name = "txtCuenta";
             this.txtCuenta.Size = new System.Drawing.Size(208, 20);
             this.txtCuenta.TabIndex = 3;
+            this.txtCuenta.Leave += new System.EventHandler(this.txtCuenta_Leave);
             // 
             // checkFamiliar
             // 
@@ -180,6 +183,7 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(208, 20);
             this.txtTelefono.TabIndex = 4;
+            this.txtTelefono.Leave += new System.EventHandler(this.txtTelefono_Leave);
             // 
             // btnAceptar
             // 
@@ -211,6 +215,7 @@
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(208, 20);
             this.txtApellidos.TabIndex = 1;
+            this.txtApellidos.Leave += new System.EventHandler(this.txtApellidos_Leave);
             // 
             // label7
             // 
@@ -235,18 +240,20 @@
             this.comboMunicipio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboMunicipio.FormattingEnabled = true;
             this.comboMunicipio.Location = new System.Drawing.Point(133, 154);
-            this.comboMunicipio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboMunicipio.Margin = new System.Windows.Forms.Padding(2);
             this.comboMunicipio.Name = "comboMunicipio";
             this.comboMunicipio.Size = new System.Drawing.Size(208, 21);
             this.comboMunicipio.TabIndex = 6;
+            this.comboMunicipio.Leave += new System.EventHandler(this.comboMunicipio_Leave);
             // 
             // txtFamiliares
             // 
             this.txtFamiliares.Location = new System.Drawing.Point(519, 144);
-            this.txtFamiliares.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFamiliares.Margin = new System.Windows.Forms.Padding(2);
             this.txtFamiliares.Name = "txtFamiliares";
             this.txtFamiliares.Size = new System.Drawing.Size(208, 20);
             this.txtFamiliares.TabIndex = 8;
+            this.txtFamiliares.Leave += new System.EventHandler(this.txtFamiliares_Leave);
             // 
             // label2
             // 
@@ -269,11 +276,12 @@
             // txtDireccion
             // 
             this.txtDireccion.Location = new System.Drawing.Point(133, 189);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(2);
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(208, 42);
             this.txtDireccion.TabIndex = 7;
+            this.txtDireccion.Leave += new System.EventHandler(this.txtDireccion_Leave);
             // 
             // label11
             // 

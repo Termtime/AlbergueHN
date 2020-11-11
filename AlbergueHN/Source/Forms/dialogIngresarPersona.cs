@@ -105,6 +105,46 @@ namespace AlbergueHN.Source.Forms
         {
 
         }
+
+        private void txtNombres_Layout(object sender, LayoutEventArgs e)
+        {
+            txtApellidos.Focus();
+        }
+
+        private void txtApellidos_Leave(object sender, EventArgs e)
+        {
+            fechaNacimiento.Focus();
+        }
+
+        private void comboMunicipio_Leave(object sender, EventArgs e)
+        {
+            txtDireccion.Focus();
+        }
+
+        private void txtDireccion_Leave(object sender, EventArgs e)
+        {
+            txtId.Focus();
+        }
+
+        private void txtId_Leave(object sender, EventArgs e)
+        {
+            txtCuenta.Focus();
+        }
+
+        private void txtCuenta_Leave(object sender, EventArgs e)
+        {
+            txtTelefono.Focus();
+        }
+
+        private void txtTelefono_Leave(object sender, EventArgs e)
+        {
+            txtFamiliares.Focus();
+        }
+
+        private void txtFamiliares_Leave(object sender, EventArgs e)
+        {
+            btnAceptar.Focus();
+        }
     }
 }
 
