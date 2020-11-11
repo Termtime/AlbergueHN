@@ -23,31 +23,31 @@ namespace AlbergueHN.Source.Forms
         {
             if (txtNombres.Text.Trim().Length == 0)
             {
-                MessageBox.Show("No ha llenado el campo de Nombres.", "Validación");
+                MessageBox.Show("No ha llenado el campo de Nombres.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtNombres.Focus();
                 return;
             }
             if (txtApellidos.Text.Trim().Length == 0)
             {
-                MessageBox.Show("No ha llenado el campo de Apellidos.", "Validación");
+                MessageBox.Show("No ha llenado el campo de Apellidos.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtApellidos.Focus();
                 return;
             }
             if (txtCuenta.Text.Trim().Length == 0)
             {
-                MessageBox.Show("No ha llenado el campo de No de Cuenta.", "Validación");
+                MessageBox.Show("No ha llenado el campo de No de Cuenta.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtCuenta.Focus();
                 return;
             }
             if (txtDireccion.Text.Trim().Length == 0)
             {
-                MessageBox.Show("No ha llenado el campo de Dirección.", "Validación");
+                MessageBox.Show("No ha llenado el campo de Dirección.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDireccion.Focus();
                 return;
             }
             if (txtId.Text.Trim().Length == 0)
             {
-                MessageBox.Show("No ha llenado el campo de Identidad.", "Validación");
+                MessageBox.Show("No ha llenado el campo de Identidad.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtId.Focus();
                 return;
             }
@@ -101,7 +101,10 @@ namespace AlbergueHN.Source.Forms
             }
         }
 
-        
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
