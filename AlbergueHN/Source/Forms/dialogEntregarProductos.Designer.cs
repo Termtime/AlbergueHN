@@ -168,10 +168,11 @@
             // 
             // comboTalla
             // 
+            this.comboTalla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTalla.FormattingEnabled = true;
             this.comboTalla.Location = new System.Drawing.Point(67, 8);
             this.comboTalla.Name = "comboTalla";
-            this.comboTalla.Size = new System.Drawing.Size(94, 21);
+            this.comboTalla.Size = new System.Drawing.Size(122, 21);
             this.comboTalla.TabIndex = 43;
             this.comboTalla.SelectedIndexChanged += new System.EventHandler(this.ComboTalla_SelectedIndexChanged);
             this.comboTalla.TextChanged += new System.EventHandler(this.ComboTalla_TextChanged);
@@ -179,7 +180,8 @@
             // btnDespachar
             // 
             this.btnDespachar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDespachar.Location = new System.Drawing.Point(109, 668);
+            this.btnDespachar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDespachar.Location = new System.Drawing.Point(109, 662);
             this.btnDespachar.Name = "btnDespachar";
             this.btnDespachar.Size = new System.Drawing.Size(151, 41);
             this.btnDespachar.TabIndex = 44;
@@ -190,7 +192,8 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnLimpiar.Location = new System.Drawing.Point(266, 668);
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Location = new System.Drawing.Point(266, 662);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(151, 41);
             this.btnLimpiar.TabIndex = 45;

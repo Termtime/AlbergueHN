@@ -36,7 +36,6 @@
             this.radioFemenino = new System.Windows.Forms.RadioButton();
             this.radioMasculino = new System.Windows.Forms.RadioButton();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.btnIngresar = new System.Windows.Forms.Button();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboTipo = new System.Windows.Forms.ComboBox();
@@ -55,6 +54,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.labelUsuario = new System.Windows.Forms.Label();
+            this.btnIngresar = new System.Windows.Forms.Button();
             this.panelControlRopa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaIngreso)).BeginInit();
             this.panel1.SuspendLayout();
@@ -76,11 +76,12 @@
             // 
             // comboTalla
             // 
+            this.comboTalla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTalla.FormattingEnabled = true;
             this.comboTalla.Location = new System.Drawing.Point(67, 8);
             this.comboTalla.MaxLength = 5;
             this.comboTalla.Name = "comboTalla";
-            this.comboTalla.Size = new System.Drawing.Size(94, 21);
+            this.comboTalla.Size = new System.Drawing.Size(122, 21);
             this.comboTalla.TabIndex = 43;
             this.comboTalla.SelectedIndexChanged += new System.EventHandler(this.ComboTalla_SelectedIndexChanged);
             this.comboTalla.TextChanged += new System.EventHandler(this.ComboTalla_TextChanged);
@@ -141,6 +142,7 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.Location = new System.Drawing.Point(274, 668);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(151, 41);
@@ -148,17 +150,6 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
-            // 
-            // btnIngresar
-            // 
-            this.btnIngresar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnIngresar.Location = new System.Drawing.Point(117, 668);
-            this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(151, 41);
-            this.btnIngresar.TabIndex = 57;
-            this.btnIngresar.Text = "Ingresar";
-            this.btnIngresar.UseVisualStyleBackColor = true;
-            this.btnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
             // 
             // txtFiltro
             // 
@@ -319,6 +310,18 @@
             this.labelUsuario.Size = new System.Drawing.Size(0, 13);
             this.labelUsuario.TabIndex = 65;
             // 
+            // btnIngresar
+            // 
+            this.btnIngresar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresar.Location = new System.Drawing.Point(117, 668);
+            this.btnIngresar.Name = "btnIngresar";
+            this.btnIngresar.Size = new System.Drawing.Size(151, 41);
+            this.btnIngresar.TabIndex = 57;
+            this.btnIngresar.Text = "Ingresar";
+            this.btnIngresar.UseVisualStyleBackColor = true;
+            this.btnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
+            // 
             // dialogIngresarSuministro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,6 +345,7 @@
             this.Name = "dialogIngresarSuministro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingresar Donaciones";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.dialogIngresarSuministro_FormClosed);
             this.Load += new System.EventHandler(this.dialogIngresarProducto_Load);
             this.SizeChanged += new System.EventHandler(this.DialogIngresarProducto_SizeChanged);
             this.panelControlRopa.ResumeLayout(false);
