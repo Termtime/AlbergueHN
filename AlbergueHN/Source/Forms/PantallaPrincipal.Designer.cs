@@ -85,21 +85,23 @@
             this.tabPage2.Controls.Add(this.comboTipo);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.tablaSuministros);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1255, 625);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage2.Size = new System.Drawing.Size(1886, 969);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Suministros";
+            this.tabPage2.Text = "Productos";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.SizeChanged += new System.EventHandler(this.TabPage2_SizeChanged);
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(6, 0);
+            this.panel2.Location = new System.Drawing.Point(9, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1246, 48);
+            this.panel2.Size = new System.Drawing.Size(1869, 74);
             this.panel2.TabIndex = 56;
             // 
             // label8
@@ -107,10 +109,11 @@
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(0, 0);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(1246, 48);
+            this.label8.Size = new System.Drawing.Size(1869, 74);
             this.label8.TabIndex = 12;
-            this.label8.Text = "Suministros";
+            this.label8.Text = "Productos";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelControlRopa
@@ -122,19 +125,21 @@
             this.panelControlRopa.Controls.Add(this.radioCualquiera);
             this.panelControlRopa.Controls.Add(this.radioFemenino);
             this.panelControlRopa.Controls.Add(this.radioMasculino);
-            this.panelControlRopa.Location = new System.Drawing.Point(1048, 46);
+            this.panelControlRopa.Location = new System.Drawing.Point(1572, 71);
+            this.panelControlRopa.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelControlRopa.Name = "panelControlRopa";
-            this.panelControlRopa.Size = new System.Drawing.Size(200, 56);
+            this.panelControlRopa.Size = new System.Drawing.Size(300, 86);
             this.panelControlRopa.TabIndex = 55;
             this.panelControlRopa.Visible = false;
             // 
             // comboTalla
             // 
             this.comboTalla.FormattingEnabled = true;
-            this.comboTalla.Location = new System.Drawing.Point(67, 8);
+            this.comboTalla.Location = new System.Drawing.Point(100, 12);
+            this.comboTalla.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboTalla.MaxLength = 5;
             this.comboTalla.Name = "comboTalla";
-            this.comboTalla.Size = new System.Drawing.Size(94, 21);
+            this.comboTalla.Size = new System.Drawing.Size(139, 28);
             this.comboTalla.TabIndex = 43;
             this.comboTalla.SelectedIndexChanged += new System.EventHandler(this.ComboTalla_SelectedIndexChanged);
             this.comboTalla.TextChanged += new System.EventHandler(this.ComboTalla_TextChanged);
@@ -142,18 +147,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 30);
+            this.label1.Location = new System.Drawing.Point(24, 46);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.Size = new System.Drawing.Size(67, 20);
             this.label1.TabIndex = 49;
             this.label1.Text = "Genero:";
             // 
             // labelTalla
             // 
             this.labelTalla.AutoSize = true;
-            this.labelTalla.Location = new System.Drawing.Point(28, 11);
+            this.labelTalla.Location = new System.Drawing.Point(42, 17);
+            this.labelTalla.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTalla.Name = "labelTalla";
-            this.labelTalla.Size = new System.Drawing.Size(33, 13);
+            this.labelTalla.Size = new System.Drawing.Size(46, 20);
             this.labelTalla.TabIndex = 42;
             this.labelTalla.Text = "Talla:";
             // 
@@ -161,9 +168,10 @@
             // 
             this.radioCualquiera.AutoSize = true;
             this.radioCualquiera.Checked = true;
-            this.radioCualquiera.Location = new System.Drawing.Point(67, 30);
+            this.radioCualquiera.Location = new System.Drawing.Point(100, 46);
+            this.radioCualquiera.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioCualquiera.Name = "radioCualquiera";
-            this.radioCualquiera.Size = new System.Drawing.Size(45, 17);
+            this.radioCualquiera.Size = new System.Drawing.Size(60, 24);
             this.radioCualquiera.TabIndex = 48;
             this.radioCualquiera.TabStop = true;
             this.radioCualquiera.Text = "N/A";
@@ -173,9 +181,10 @@
             // radioFemenino
             // 
             this.radioFemenino.AutoSize = true;
-            this.radioFemenino.Location = new System.Drawing.Point(158, 30);
+            this.radioFemenino.Location = new System.Drawing.Point(237, 46);
+            this.radioFemenino.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioFemenino.Name = "radioFemenino";
-            this.radioFemenino.Size = new System.Drawing.Size(31, 17);
+            this.radioFemenino.Size = new System.Drawing.Size(44, 24);
             this.radioFemenino.TabIndex = 47;
             this.radioFemenino.Text = "F";
             this.radioFemenino.UseVisualStyleBackColor = true;
@@ -184,9 +193,10 @@
             // radioMasculino
             // 
             this.radioMasculino.AutoSize = true;
-            this.radioMasculino.Location = new System.Drawing.Point(118, 30);
+            this.radioMasculino.Location = new System.Drawing.Point(177, 46);
+            this.radioMasculino.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioMasculino.Name = "radioMasculino";
-            this.radioMasculino.Size = new System.Drawing.Size(34, 17);
+            this.radioMasculino.Size = new System.Drawing.Size(47, 24);
             this.radioMasculino.TabIndex = 46;
             this.radioMasculino.Text = "M";
             this.radioMasculino.UseVisualStyleBackColor = true;
@@ -194,18 +204,20 @@
             // 
             // txtFiltro
             // 
-            this.txtFiltro.Location = new System.Drawing.Point(55, 80);
+            this.txtFiltro.Location = new System.Drawing.Point(82, 123);
+            this.txtFiltro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(261, 20);
+            this.txtFiltro.Size = new System.Drawing.Size(390, 26);
             this.txtFiltro.TabIndex = 54;
             this.txtFiltro.TextChanged += new System.EventHandler(this.TxtFiltro_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 83);
+            this.label2.Location = new System.Drawing.Point(12, 128);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.Size = new System.Drawing.Size(63, 20);
             this.label2.TabIndex = 53;
             this.label2.Text = "Buscar:";
             // 
@@ -213,18 +225,20 @@
             // 
             this.comboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipo.FormattingEnabled = true;
-            this.comboTipo.Location = new System.Drawing.Point(55, 48);
+            this.comboTipo.Location = new System.Drawing.Point(82, 74);
+            this.comboTipo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboTipo.Name = "comboTipo";
-            this.comboTipo.Size = new System.Drawing.Size(121, 21);
+            this.comboTipo.Size = new System.Drawing.Size(180, 28);
             this.comboTipo.TabIndex = 52;
             this.comboTipo.SelectedIndexChanged += new System.EventHandler(this.ComboTipo_SelectedIndexChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 51);
+            this.label6.Location = new System.Drawing.Point(12, 78);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 13);
+            this.label6.Size = new System.Drawing.Size(43, 20);
             this.label6.TabIndex = 51;
             this.label6.Text = "Tipo:";
             // 
@@ -238,12 +252,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaSuministros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaSuministros.Location = new System.Drawing.Point(3, 108);
+            this.tablaSuministros.Location = new System.Drawing.Point(4, 166);
+            this.tablaSuministros.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tablaSuministros.Name = "tablaSuministros";
             this.tablaSuministros.ReadOnly = true;
             this.tablaSuministros.RowHeadersVisible = false;
             this.tablaSuministros.RowHeadersWidth = 62;
-            this.tablaSuministros.Size = new System.Drawing.Size(1252, 514);
+            this.tablaSuministros.Size = new System.Drawing.Size(1878, 791);
             this.tablaSuministros.TabIndex = 32;
             // 
             // tabPage1
@@ -254,10 +269,11 @@
             this.tabPage1.Controls.Add(this.comboFiltro);
             this.tabPage1.Controls.Add(this.txtFiltro1);
             this.tabPage1.Controls.Add(this.tablaPersonas);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1255, 625);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage1.Size = new System.Drawing.Size(1886, 969);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Personas";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -269,9 +285,10 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(8, 0);
+            this.panel1.Location = new System.Drawing.Point(12, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1244, 50);
+            this.panel1.Size = new System.Drawing.Size(1866, 77);
             this.panel1.TabIndex = 43;
             // 
             // label3
@@ -279,8 +296,9 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1244, 50);
+            this.label3.Size = new System.Drawing.Size(1866, 77);
             this.label3.TabIndex = 13;
             this.label3.Text = "Personas";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -288,18 +306,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 82);
+            this.label4.Location = new System.Drawing.Point(34, 126);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.Size = new System.Drawing.Size(63, 20);
             this.label4.TabIndex = 41;
             this.label4.Text = "Buscar:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 58);
+            this.label5.Location = new System.Drawing.Point(9, 89);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.Size = new System.Drawing.Size(94, 20);
             this.label5.TabIndex = 40;
             this.label5.Text = "Buscar por: ";
             // 
@@ -311,17 +331,19 @@
             "Nombre",
             "Identidad",
             "# Estudiante/Empleado"});
-            this.comboFiltro.Location = new System.Drawing.Point(72, 53);
+            this.comboFiltro.Location = new System.Drawing.Point(108, 82);
+            this.comboFiltro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboFiltro.Name = "comboFiltro";
-            this.comboFiltro.Size = new System.Drawing.Size(202, 21);
+            this.comboFiltro.Size = new System.Drawing.Size(301, 28);
             this.comboFiltro.TabIndex = 39;
             this.comboFiltro.SelectedIndexChanged += new System.EventHandler(this.comboFiltro_SelectedIndexChanged);
             // 
             // txtFiltro1
             // 
-            this.txtFiltro1.Location = new System.Drawing.Point(72, 79);
+            this.txtFiltro1.Location = new System.Drawing.Point(108, 122);
+            this.txtFiltro1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFiltro1.Name = "txtFiltro1";
-            this.txtFiltro1.Size = new System.Drawing.Size(507, 20);
+            this.txtFiltro1.Size = new System.Drawing.Size(758, 26);
             this.txtFiltro1.TabIndex = 38;
             this.txtFiltro1.TextChanged += new System.EventHandler(this.txtFiltro1_TextChanged);
             // 
@@ -335,12 +357,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaPersonas.Location = new System.Drawing.Point(3, 108);
+            this.tablaPersonas.Location = new System.Drawing.Point(4, 166);
+            this.tablaPersonas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tablaPersonas.Name = "tablaPersonas";
             this.tablaPersonas.ReadOnly = true;
             this.tablaPersonas.RowHeadersVisible = false;
             this.tablaPersonas.RowHeadersWidth = 62;
-            this.tablaPersonas.Size = new System.Drawing.Size(1252, 510);
+            this.tablaPersonas.Size = new System.Drawing.Size(1878, 785);
             this.tablaPersonas.TabIndex = 0;
             // 
             // tabControl1
@@ -350,14 +373,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(0, 27);
+            this.tabControl1.Location = new System.Drawing.Point(0, 42);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1263, 651);
+            this.tabControl1.Size = new System.Drawing.Size(1894, 1002);
             this.tabControl1.TabIndex = 0;
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
@@ -365,8 +390,8 @@
             this.acercaDeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1896, 33);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -378,14 +403,14 @@
             this.cerrarSesiónToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 22);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(88, 29);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // refrescarListadosToolStripMenuItem
             // 
             this.refrescarListadosToolStripMenuItem.Name = "refrescarListadosToolStripMenuItem";
             this.refrescarListadosToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.refrescarListadosToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.refrescarListadosToolStripMenuItem.Size = new System.Drawing.Size(339, 34);
             this.refrescarListadosToolStripMenuItem.Text = "Refrescar datos";
             this.refrescarListadosToolStripMenuItem.Click += new System.EventHandler(this.RefrescarListadosToolStripMenuItem_Click);
             // 
@@ -393,7 +418,7 @@
             // 
             this.conexionToolStripMenuItem.Name = "conexionToolStripMenuItem";
             this.conexionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.conexionToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.conexionToolStripMenuItem.Size = new System.Drawing.Size(339, 34);
             this.conexionToolStripMenuItem.Text = "Configurar conexión";
             this.conexionToolStripMenuItem.Click += new System.EventHandler(this.ConexionToolStripMenuItem_Click);
             // 
@@ -401,7 +426,7 @@
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
             this.cerrarSesiónToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.L)));
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(339, 34);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
             this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.CerrarSesiónToolStripMenuItem_Click);
             // 
@@ -410,7 +435,7 @@
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.ShortcutKeyDisplayString = "";
             this.salirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(339, 34);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.SalirToolStripMenuItem_Click);
             // 
@@ -422,30 +447,30 @@
             this.administrarPersonaToolStripMenuItem,
             this.administrarSuministrosToolStripMenuItem});
             this.accionesToolStripMenuItem.Name = "accionesToolStripMenuItem";
-            this.accionesToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
+            this.accionesToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
             this.accionesToolStripMenuItem.Text = "Acciones";
             // 
             // despacharSuministrosToolStripMenuItem
             // 
             this.despacharSuministrosToolStripMenuItem.Name = "despacharSuministrosToolStripMenuItem";
             this.despacharSuministrosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.despacharSuministrosToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.despacharSuministrosToolStripMenuItem.Text = "Entregar Productos";
+            this.despacharSuministrosToolStripMenuItem.Size = new System.Drawing.Size(368, 34);
+            this.despacharSuministrosToolStripMenuItem.Text = "Entrega de Donaciones";
             this.despacharSuministrosToolStripMenuItem.Click += new System.EventHandler(this.DespacharSuministrosToolStripMenuItem_Click);
             // 
             // ingresarSuministrosToolStripMenuItem
             // 
             this.ingresarSuministrosToolStripMenuItem.Name = "ingresarSuministrosToolStripMenuItem";
             this.ingresarSuministrosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.ingresarSuministrosToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.ingresarSuministrosToolStripMenuItem.Text = "Recibir Productos";
+            this.ingresarSuministrosToolStripMenuItem.Size = new System.Drawing.Size(368, 34);
+            this.ingresarSuministrosToolStripMenuItem.Text = "Ingreso de Donaciones";
             this.ingresarSuministrosToolStripMenuItem.Click += new System.EventHandler(this.IngresarSuministrosToolStripMenuItem_Click);
             // 
             // administrarPersonaToolStripMenuItem
             // 
             this.administrarPersonaToolStripMenuItem.Name = "administrarPersonaToolStripMenuItem";
             this.administrarPersonaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.administrarPersonaToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.administrarPersonaToolStripMenuItem.Size = new System.Drawing.Size(368, 34);
             this.administrarPersonaToolStripMenuItem.Text = "Administrar Personas";
             this.administrarPersonaToolStripMenuItem.Click += new System.EventHandler(this.ingresarPersonaToolStripMenuItem_Click);
             // 
@@ -453,8 +478,8 @@
             // 
             this.administrarSuministrosToolStripMenuItem.Name = "administrarSuministrosToolStripMenuItem";
             this.administrarSuministrosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.administrarSuministrosToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.administrarSuministrosToolStripMenuItem.Text = "Administrar Productos";
+            this.administrarSuministrosToolStripMenuItem.Size = new System.Drawing.Size(368, 34);
+            this.administrarSuministrosToolStripMenuItem.Text = "Administrar Suministros";
             this.administrarSuministrosToolStripMenuItem.Click += new System.EventHandler(this.administrarSuministrosToolStripMenuItem_Click);
             // 
             // acercaDeToolStripMenuItem
@@ -462,24 +487,25 @@
             this.acercaDeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.versiónToolStripMenuItem});
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(71, 22);
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
             // 
             // versiónToolStripMenuItem
             // 
             this.versiónToolStripMenuItem.Name = "versiónToolStripMenuItem";
-            this.versiónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.versiónToolStripMenuItem.Size = new System.Drawing.Size(172, 34);
             this.versiónToolStripMenuItem.Text = "Versión";
             this.versiónToolStripMenuItem.Click += new System.EventHandler(this.VersiónToolStripMenuItem_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 690);
+            this.ClientSize = new System.Drawing.Size(1896, 1062);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AlbergueHN";

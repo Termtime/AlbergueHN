@@ -86,8 +86,8 @@ namespace AlbergueHN.Source.Forms
             p.txtNombre.Text = tablaPersonas.CurrentRow.Cells["Nombres"].Value.ToString();
             p.txtApellido.Text = tablaPersonas.CurrentRow.Cells["Apellidos"].Value.ToString();
             string id1 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString().Substring(0,4);
-            string id2 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString().Substring(4,7);
-            string id3 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString().Substring(8);
+            string id2 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString().Substring(5,4);
+            string id3 = tablaPersonas.CurrentRow.Cells["Identidad"].Value.ToString().Substring(8,5);
 
             p.txtID1.Text = id1;
             p.txtID2.Text = id2;
@@ -118,7 +118,7 @@ namespace AlbergueHN.Source.Forms
             }
                 
             p.ShowDialog();
-                
+            cargarPersonas();  
         }
 
         private void MantPersonas_SizeChanged(object sender, EventArgs e)

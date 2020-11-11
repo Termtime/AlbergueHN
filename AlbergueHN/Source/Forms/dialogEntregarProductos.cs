@@ -96,6 +96,8 @@ namespace AlbergueHN.Source.Forms
         }
         private void BtnDespachar_Click(object sender, EventArgs e)
         {
+            
+
             if (tablaDespacho.Rows.Count == 0)
             {
                 MessageBox.Show("No se han agregado suministros para despachar",
@@ -236,7 +238,7 @@ namespace AlbergueHN.Source.Forms
                 string filtroTalla = ((string)comboTalla.SelectedItem) ?? comboTalla.Text;
                 filtroTalla = filtroTalla.ToString();
                 if (filtroTalla == "Todas") cualquierTalla = true;
-                foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Contains(filtroTalla.ToLower()) || cualquierTalla)))
+                foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Equals(filtroTalla.ToLower()) || cualquierTalla)))
                 {
 
                     listaProductos.Items.Add(item);
@@ -322,9 +324,13 @@ namespace AlbergueHN.Source.Forms
                     MessageBox.Show("Ingresado con éxito.", "Operación Completa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     filtrar();
                 }
-                catch (Exception ex)
+                catch (MySqlException ex)
                 {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    if (ex.Message.Equals("Check constraint 'CH_UNAHAL_SUMINISTROEX' is violated."))
+                        MessageBox.Show("Existencia insuficiente en el inventario.");
+                    if (ex.Message.Equals("Check constraint 'chkCantidad' is violated."))
+                        MessageBox.Show("La cantidad no puede ser negativa.");
                     con.Close();
                 }
             }
@@ -376,5 +382,20 @@ namespace AlbergueHN.Source.Forms
         {
 
         }
+
+        private void tablaDespacho_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+
+        }
+
+        private void tablaDespacho_CellValidating_1(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            float num;
+            if (!float.TryParse(tablaDespacho.CurrentCell.Value.ToString(), out num))
+            {
+                MessageBox.Show("La cantidad no es valida.", "Validación");
+                return;
+            }
+        }
     }
-}
+    }

@@ -209,7 +209,7 @@ namespace AlbergueHN
             }
             if (comboFiltro.SelectedIndex == 2)
             {
-                dtPersonas.DefaultView.RowFilter = "cuenta LIKE '%" + filtrar + "%'";
+                dtPersonas.DefaultView.RowFilter = "[No.Empleado/Estudiante] LIKE '%" + filtrar + "%'";
             }
         }
 

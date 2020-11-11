@@ -101,6 +101,7 @@ namespace AlbergueHN.Source.Forms
                 //ocurrio un error
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(ex.StackTrace);
+ 
             }
         }
 
