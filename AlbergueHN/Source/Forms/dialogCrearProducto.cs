@@ -94,6 +94,7 @@ namespace AlbergueHN.Source.Forms
                     }
                 }
 
+                this.Close();
             }
             catch (Exception ex)
             {
