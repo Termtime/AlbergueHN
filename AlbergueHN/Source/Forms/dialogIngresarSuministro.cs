@@ -235,6 +235,15 @@ namespace AlbergueHN.Source.Forms
                 return;
             }
 
+            //Si el objeto ya existe en la tabla, salir
+            if (binding.ToList().Where(suministro => suministro.Id == objetoSeleccionado.Tag.ToString()).Count() != 0)
+            {
+                MessageBox.Show("Este objeto ya fue agregado a la tabla",
+                                   "Advertencia", MessageBoxButtons.OK,
+                                   MessageBoxIcon.Warning);
+                return;
+            }
+
             if (binding.ToList().Where(suministro => suministro.Id == objetoSeleccionado.Tag.ToString()).Count() != 0) return;
             Suministro tmp = new Suministro();
             tmp.Id = objetoSeleccionado.Tag.ToString();

@@ -344,6 +344,7 @@ namespace AlbergueHN
             {
                 this.Hide();
                 loginRef.Show();
+                UsuarioActual.ID = null;
             }
                 
         }
