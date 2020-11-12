@@ -191,6 +191,14 @@ namespace AlbergueHN.Source.Forms
 
         private void agregarSuministroTabla()
         {
+            if (listaProductos.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("No se ha seleccionado un producto.",
+                                   "Advertencia", MessageBoxButtons.OK,
+                                   MessageBoxIcon.Warning);
+                return;
+            }
+
             ListViewItem objetoSeleccionado = listaProductos.SelectedItems[0];
             if (objetoSeleccionado == null)
             {
@@ -338,6 +346,11 @@ namespace AlbergueHN.Source.Forms
         }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            filtrar();
+        }
+
+        private void ComboTalla_TextChanged_1(object sender, EventArgs e)
         {
             filtrar();
         }

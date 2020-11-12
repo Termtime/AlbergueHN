@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MantProductos));
             this.tablaProductos = new System.Windows.Forms.DataGridView();
             this.btnEliminarProducto = new System.Windows.Forms.Button();
             this.btnCrearProducto = new System.Windows.Forms.Button();
@@ -138,6 +139,7 @@
             this.Controls.Add(this.btnCrearProducto);
             this.Controls.Add(this.btnEliminarProducto);
             this.Controls.Add(this.tablaProductos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MantProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrar Productos";

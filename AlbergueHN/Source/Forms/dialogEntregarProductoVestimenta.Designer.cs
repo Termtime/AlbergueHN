@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dialogEntregarProductoVestimenta));
             this.tablaDespacho = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -52,8 +53,10 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.tablaDespacho)).BeginInit();
             this.panelControlRopa.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tablaDespacho
@@ -61,6 +64,9 @@
             this.tablaDespacho.AllowUserToAddRows = false;
             this.tablaDespacho.AllowUserToResizeColumns = false;
             this.tablaDespacho.AllowUserToResizeRows = false;
+            this.tablaDespacho.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaDespacho.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaDespacho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaDespacho.Location = new System.Drawing.Point(544, 12);
@@ -73,7 +79,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(66, 12);
+            this.label1.Location = new System.Drawing.Point(92, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(396, 42);
             this.label1.TabIndex = 1;
@@ -146,6 +152,7 @@
             this.comboTalla.Size = new System.Drawing.Size(122, 21);
             this.comboTalla.TabIndex = 43;
             this.comboTalla.SelectedIndexChanged += new System.EventHandler(this.comboTalla_SelectedIndexChanged);
+            this.comboTalla.TextChanged += new System.EventHandler(this.ComboTalla_TextChanged_1);
             // 
             // label4
             // 
@@ -237,7 +244,7 @@
             // usuarioID
             // 
             this.usuarioID.AutoSize = true;
-            this.usuarioID.Location = new System.Drawing.Point(115, 74);
+            this.usuarioID.Location = new System.Drawing.Point(115, 76);
             this.usuarioID.Name = "usuarioID";
             this.usuarioID.Size = new System.Drawing.Size(35, 13);
             this.usuarioID.TabIndex = 86;
@@ -245,12 +252,15 @@
             // 
             // listaProductos
             // 
+            this.listaProductos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listaProductos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.listaProductos.FullRowSelect = true;
             this.listaProductos.HideSelection = false;
             this.listaProductos.Location = new System.Drawing.Point(14, 202);
             this.listaProductos.Name = "listaProductos";
@@ -282,11 +292,22 @@
             // 
             this.columnHeader5.Text = "Genero";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::AlbergueHN.Properties.Resources.blouse;
+            this.pictureBox1.Location = new System.Drawing.Point(19, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(67, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 87;
+            this.pictureBox1.TabStop = false;
+            // 
             // dialogEntregarProductoVestimenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1276, 690);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.listaProductos);
             this.Controls.Add(this.usuarioID);
             this.Controls.Add(this.label5);
@@ -300,12 +321,15 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tablaDespacho);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "dialogEntregarProductoVestimenta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Despachar Vestimenta";
             this.Load += new System.EventHandler(this.dialogEntregarProductoVestimenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tablaDespacho)).EndInit();
             this.panelControlRopa.ResumeLayout(false);
             this.panelControlRopa.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,5 +361,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

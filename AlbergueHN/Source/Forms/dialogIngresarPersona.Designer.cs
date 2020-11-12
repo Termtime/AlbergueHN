@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dialogIngresarPersona));
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.fechaNacimiento = new System.Windows.Forms.DateTimePicker();
@@ -218,7 +219,7 @@
             this.comboMunicipio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboMunicipio.FormattingEnabled = true;
             this.comboMunicipio.Location = new System.Drawing.Point(135, 250);
-            this.comboMunicipio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboMunicipio.Margin = new System.Windows.Forms.Padding(2);
             this.comboMunicipio.Name = "comboMunicipio";
             this.comboMunicipio.Size = new System.Drawing.Size(192, 21);
             this.comboMunicipio.TabIndex = 10;
@@ -244,7 +245,7 @@
             // txtDireccion
             // 
             this.txtDireccion.Location = new System.Drawing.Point(135, 285);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(2);
             this.txtDireccion.MaxLength = 45;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(357, 20);
@@ -372,6 +373,7 @@
             this.Controls.Add(this.radioMasculino);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "dialogIngresarPersona";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingresar Persona";

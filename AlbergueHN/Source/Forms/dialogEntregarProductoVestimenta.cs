@@ -164,16 +164,10 @@ namespace AlbergueHN.Source.Forms
                 cualquierGenero = true;
             }
 
-            
-                foreach (ListViewItem item in productos.Where(item => item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Equals(filtroTalla.ToLower()) || cualquierTalla)))
-                {
-                    listaProductos.Items.Add(item);
-                }
-            
-            
-       
-
-            
+            foreach (ListViewItem item in productos.Where(item => item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Equals(filtroTalla.ToLower()) || cualquierTalla)))
+            {
+                listaProductos.Items.Add(item);
+            }
         }
 
         private void agregarSuministroTabla()
@@ -353,6 +347,11 @@ namespace AlbergueHN.Source.Forms
                     tablaDespacho.Rows[e.RowIndex].ErrorText = "El valor debe ser un entero positivo distinto de 0.";
                 }
             }
+        }
+
+        private void ComboTalla_TextChanged_1(object sender, EventArgs e)
+        {
+            filtrar();
         }
     }
 }

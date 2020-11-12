@@ -31,33 +31,33 @@ namespace AlbergueHN.Source.Forms
                 try
                 {
                     con.Open();
-                    ////TODO: DESCOMENTAR CUANDO SE PASE A PRODUCCION
-                    //string query = "SELECT `verificar_login`(@userID, @pass)";
-                    //MySqlCommand cmd = new MySqlCommand();
-                    //cmd.CommandText = query;
-                    //cmd.Connection = con;
+                    //TODO: DESCOMENTAR CUANDO SE PASE A PRODUCCION
+                    string query = "SELECT `verificar_login`(@userID, @pass)";
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.CommandText = query;
+                    cmd.Connection = con;
 
-                    //cmd.Parameters.AddWithValue("@userID", usuario);
-                    //cmd.Parameters.AddWithValue("@pass", pass);
+                    cmd.Parameters.AddWithValue("@userID", usuario);
+                    cmd.Parameters.AddWithValue("@pass", pass);
 
-                    ////devuelve el ID del usuario loggeado
-                    //try
-                    //{
-                    //    string result = (string)cmd.ExecuteScalar();
-                    //    if (result != null)
-                    //    {
-                    //        UsuarioActual.ID = result;
-                    //        //UsuarioActual.usuario = "Usuario Prueba";
-                    //    }
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    MessageBox.Show("Credenciales invalidas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //    Console.WriteLine(ex.StackTrace);
-                    //    con.Close();
-                    //    Cursor.Current = Cursors.Default;
-                    //}
-                    UsuarioActual.ID = "0501199912345";
+                    //devuelve el ID del usuario loggeado
+                    try
+                    {
+                        string result = (string)cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            UsuarioActual.ID = result;
+                            //UsuarioActual.usuario = "Usuario Prueba";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Credenciales invalidas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine(ex.StackTrace);
+                        con.Close();
+                        Cursor.Current = Cursors.Default;
+                    }
+                    //UsuarioActual.ID = "0501199912345";
                     //Si sigue aqui, el login fue correcto, ingresar al sistema
                     con.Close();
                     if (UsuarioActual.ID != null)

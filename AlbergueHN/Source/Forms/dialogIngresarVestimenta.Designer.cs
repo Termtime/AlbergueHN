@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dialogIngresarVestimenta));
             this.tablaIngreso = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,8 +52,10 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnIngresar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.tablaIngreso)).BeginInit();
             this.panelControlRopa.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // tablaIngreso
@@ -101,7 +104,7 @@
             // 
             // nuevo
             // 
-            this.nuevo.Location = new System.Drawing.Point(336, 78);
+            this.nuevo.Location = new System.Drawing.Point(336, 76);
             this.nuevo.Margin = new System.Windows.Forms.Padding(2);
             this.nuevo.Name = "nuevo";
             this.nuevo.Size = new System.Drawing.Size(112, 23);
@@ -157,6 +160,7 @@
             this.comboTalla.Size = new System.Drawing.Size(122, 21);
             this.comboTalla.TabIndex = 43;
             this.comboTalla.SelectedIndexChanged += new System.EventHandler(this.comboTalla_SelectedIndexChanged);
+            this.comboTalla.TextChanged += new System.EventHandler(this.ComboTalla_TextChanged_1);
             // 
             // label4
             // 
@@ -280,11 +284,22 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click_1);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::AlbergueHN.Properties.Resources.blouse;
+            this.pictureBox2.Location = new System.Drawing.Point(32, 20);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(67, 50);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 88;
+            this.pictureBox2.TabStop = false;
+            // 
             // dialogIngresarVestimenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1276, 690);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.listaProductos);
@@ -297,13 +312,15 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tablaIngreso);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "dialogIngresarVestimenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "dialogIngresarVestimenta";
+            this.Text = "Ingresar Vestimenta";
             this.Load += new System.EventHandler(this.dialogIngresarVestimenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tablaIngreso)).EndInit();
             this.panelControlRopa.ResumeLayout(false);
             this.panelControlRopa.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,5 +351,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
