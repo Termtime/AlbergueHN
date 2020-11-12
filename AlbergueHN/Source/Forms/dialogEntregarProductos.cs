@@ -377,5 +377,10 @@ namespace AlbergueHN.Source.Forms
                 }
             }
         }
+
+        private void listaProductos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     }

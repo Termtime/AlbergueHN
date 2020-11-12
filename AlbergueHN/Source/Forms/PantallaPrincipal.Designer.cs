@@ -60,7 +60,9 @@
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.despacharSuministrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.despacharVestimentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresarSuministrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ingresarVestimentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarPersonaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarSuministrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -374,6 +376,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // archivoToolStripMenuItem
             // 
@@ -423,7 +426,9 @@
             // 
             this.accionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.despacharSuministrosToolStripMenuItem,
+            this.despacharVestimentaToolStripMenuItem,
             this.ingresarSuministrosToolStripMenuItem,
+            this.ingresarVestimentaToolStripMenuItem,
             this.administrarPersonaToolStripMenuItem,
             this.administrarSuministrosToolStripMenuItem});
             this.accionesToolStripMenuItem.Name = "accionesToolStripMenuItem";
@@ -438,6 +443,14 @@
             this.despacharSuministrosToolStripMenuItem.Text = "Despachar productos";
             this.despacharSuministrosToolStripMenuItem.Click += new System.EventHandler(this.DespacharSuministrosToolStripMenuItem_Click);
             // 
+            // despacharVestimentaToolStripMenuItem
+            // 
+            this.despacharVestimentaToolStripMenuItem.Name = "despacharVestimentaToolStripMenuItem";
+            this.despacharVestimentaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.despacharVestimentaToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.despacharVestimentaToolStripMenuItem.Text = "Despachar Vestimenta";
+            this.despacharVestimentaToolStripMenuItem.Click += new System.EventHandler(this.despacharVestimentaToolStripMenuItem_Click);
+            // 
             // ingresarSuministrosToolStripMenuItem
             // 
             this.ingresarSuministrosToolStripMenuItem.Name = "ingresarSuministrosToolStripMenuItem";
@@ -445,6 +458,14 @@
             this.ingresarSuministrosToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.ingresarSuministrosToolStripMenuItem.Text = "Ingresar productos";
             this.ingresarSuministrosToolStripMenuItem.Click += new System.EventHandler(this.IngresarSuministrosToolStripMenuItem_Click);
+            // 
+            // ingresarVestimentaToolStripMenuItem
+            // 
+            this.ingresarVestimentaToolStripMenuItem.Name = "ingresarVestimentaToolStripMenuItem";
+            this.ingresarVestimentaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+            this.ingresarVestimentaToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.ingresarVestimentaToolStripMenuItem.Text = "Ingresar Vestimenta";
+            this.ingresarVestimentaToolStripMenuItem.Click += new System.EventHandler(this.ingresarVestimentaToolStripMenuItem_Click);
             // 
             // administrarPersonaToolStripMenuItem
             // 
@@ -473,7 +494,7 @@
             // versiónToolStripMenuItem
             // 
             this.versiónToolStripMenuItem.Name = "versiónToolStripMenuItem";
-            this.versiónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.versiónToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.versiónToolStripMenuItem.Text = "Versión";
             this.versiónToolStripMenuItem.Click += new System.EventHandler(this.VersiónToolStripMenuItem_Click);
             // 
@@ -550,6 +571,8 @@
         private System.Windows.Forms.ToolStripMenuItem refrescarListadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem versiónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem despacharVestimentaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ingresarVestimentaToolStripMenuItem;
     }
 }
 

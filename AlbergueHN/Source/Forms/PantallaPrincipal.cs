@@ -389,6 +389,23 @@ namespace AlbergueHN
         {
 
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void despacharVestimentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dialogEntregarProductoVestimenta ev = new dialogEntregarProductoVestimenta();
+            ev.ShowDialog();
+        }
+
+        private void ingresarVestimentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dialogIngresarVestimenta iv = new dialogIngresarVestimenta();
+            iv.ShowDialog();
+        }
     }
 
     public static class INFORMACION

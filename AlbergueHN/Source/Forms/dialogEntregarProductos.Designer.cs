@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.tablaDespacho = new System.Windows.Forms.DataGridView();
-            this.listaProductos = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.comboTipo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,6 +50,12 @@
             this.comboPersonas = new System.Windows.Forms.ComboBox();
             this.usuarioID = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listaProductos = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.tablaDespacho)).BeginInit();
             this.panelControlRopa.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -71,57 +71,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaDespacho.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaDespacho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaDespacho.Location = new System.Drawing.Point(542, 20);
+            this.tablaDespacho.Location = new System.Drawing.Point(544, 12);
             this.tablaDespacho.Name = "tablaDespacho";
             this.tablaDespacho.RowHeadersWidth = 40;
             this.tablaDespacho.Size = new System.Drawing.Size(722, 658);
             this.tablaDespacho.TabIndex = 0;
             this.tablaDespacho.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.tablaDespacho_CellValidating_1);
-            // 
-            // listaProductos
-            // 
-            this.listaProductos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.listaProductos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
-            this.listaProductos.FullRowSelect = true;
-            this.listaProductos.HideSelection = false;
-            this.listaProductos.Location = new System.Drawing.Point(14, 202);
-            this.listaProductos.Name = "listaProductos";
-            this.listaProductos.Size = new System.Drawing.Size(524, 419);
-            this.listaProductos.TabIndex = 2;
-            this.listaProductos.UseCompatibleStateImageBehavior = false;
-            this.listaProductos.View = System.Windows.Forms.View.Details;
-            this.listaProductos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listaProductos_KeyPress);
-            this.listaProductos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListaProductos_MouseDoubleClick);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Descripcion";
-            this.columnHeader1.Width = 257;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Existencia";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Tipo";
-            this.columnHeader3.Width = 120;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Talla";
-            this.columnHeader4.Width = 36;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Genero";
-            this.columnHeader5.Width = 47;
             // 
             // comboTipo
             // 
@@ -334,6 +289,52 @@
             this.label7.TabIndex = 74;
             this.label7.Text = "Usuario actual:";
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Descripcion";
+            this.columnHeader1.Width = 257;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Existencia";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Tipo";
+            this.columnHeader3.Width = 120;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Talla";
+            this.columnHeader4.Width = 36;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Genero";
+            this.columnHeader5.Width = 47;
+            // 
+            // listaProductos
+            // 
+            this.listaProductos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listaProductos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.listaProductos.FullRowSelect = true;
+            this.listaProductos.HideSelection = false;
+            this.listaProductos.Location = new System.Drawing.Point(14, 202);
+            this.listaProductos.Name = "listaProductos";
+            this.listaProductos.Size = new System.Drawing.Size(524, 419);
+            this.listaProductos.TabIndex = 2;
+            this.listaProductos.UseCompatibleStateImageBehavior = false;
+            this.listaProductos.View = System.Windows.Forms.View.Details;
+            this.listaProductos.SelectedIndexChanged += new System.EventHandler(this.listaProductos_SelectedIndexChanged);
+            this.listaProductos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listaProductos_KeyPress);
+            this.listaProductos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListaProductos_MouseDoubleClick);
+            // 
             // dialogEntregarProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,7 +373,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView tablaDespacho;
-        private System.Windows.Forms.ListView listaProductos;
         private System.Windows.Forms.ComboBox comboTipo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
@@ -381,11 +381,6 @@
         private System.Windows.Forms.ComboBox comboTalla;
         private System.Windows.Forms.Button btnDespachar;
         private System.Windows.Forms.Button btnLimpiar;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.RadioButton radioMasculino;
         private System.Windows.Forms.RadioButton radioFemenino;
         private System.Windows.Forms.RadioButton radioCualquiera;
@@ -399,5 +394,11 @@
         private System.Windows.Forms.ComboBox comboPersonas;
         private System.Windows.Forms.Label usuarioID;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ListView listaProductos;
     }
 }

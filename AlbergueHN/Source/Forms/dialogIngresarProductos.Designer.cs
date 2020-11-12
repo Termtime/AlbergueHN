@@ -47,7 +47,6 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tablaIngreso = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtDonante = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -56,6 +55,7 @@
             this.labelUsuario = new System.Windows.Forms.Label();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.nuevo = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.panelControlRopa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaIngreso)).BeginInit();
             this.panel1.SuspendLayout();
@@ -248,15 +248,6 @@
             this.tablaIngreso.TabIndex = 51;
             this.tablaIngreso.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.TablaIngreso_CellValidating);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 81);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
-            this.label2.TabIndex = 60;
-            this.label2.Text = "Donante:";
-            // 
             // txtDonante
             // 
             this.txtDonante.Location = new System.Drawing.Point(69, 78);
@@ -283,6 +274,7 @@
             this.label6.TabIndex = 62;
             this.label6.Text = "Ingreso de productos";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // panel1
             // 
@@ -333,6 +325,15 @@
             this.nuevo.Text = "Crear nuevo artículo";
             this.nuevo.UseVisualStyleBackColor = true;
             this.nuevo.Click += new System.EventHandler(this.nuevo_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 81);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 60;
+            this.label2.Text = "Donante:";
             // 
             // dialogIngresarProductos
             // 
@@ -392,7 +393,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.DataGridView tablaIngreso;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDonante;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -400,5 +400,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelUsuario;
         private System.Windows.Forms.Button nuevo;
+        private System.Windows.Forms.Label label2;
     }
 }

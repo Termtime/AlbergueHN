@@ -13,7 +13,7 @@ using MySql.Data.MySqlClient;
 
 namespace AlbergueHN.Source.Forms
 {
-    public partial class dialogIngresarProductos : Form
+    public partial class dialogIngresarVestimenta : Form
     {
         string[] tallasRopa = { "Todas", "XXS", "XS", "S", "M", "L", "XL", "XL", "XXL" };
         string stringConexion = (string)Properties.Settings.Default["stringConexion"];
@@ -21,12 +21,12 @@ namespace AlbergueHN.Source.Forms
         List<Suministro> suministrosIngresados = new List<Suministro>();
         List<ListViewItem> productos = new List<ListViewItem>();
 
-        public dialogIngresarProductos()
+        public dialogIngresarVestimenta()
         {
             InitializeComponent();
         }
 
-        private void dialogIngresarProducto_Load(object sender, EventArgs e)
+        private void dialogIngresarVestimenta_Load(object sender, EventArgs e)
         {
             llenarDatos();
             binding = new BindingList<Suministro>(suministrosIngresados);
@@ -51,37 +51,7 @@ namespace AlbergueHN.Source.Forms
             comboTalla.SelectedIndex = 0;
         }
 
-        private void ComboTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void TxtFiltro_TextChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void ComboTalla_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void RadioCualquiera_CheckedChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void RadioMasculino_CheckedChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void RadioFemenino_CheckedChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void ListaProductos_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void listaProductos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             agregarSuministroTabla();
         }
@@ -127,10 +97,10 @@ namespace AlbergueHN.Source.Forms
                     MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                     con.Open();
                     da.Fill(dsTipo, "Tipos");
-                    comboTipo.DisplayMember = "Descripcion";
+                   /* comboTipo.DisplayMember = "Descripcion";
                     comboTipo.ValueMember = "TipoID";
                     dsTipo.Tables["TipoDefault"].Merge(dsTipo.Tables["Tipos"]);
-                    comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
+                    comboTipo.DataSource = dsTipo.Tables["TipoDefault"];*/
                 }
 
             }
@@ -139,10 +109,11 @@ namespace AlbergueHN.Source.Forms
                 MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void filtrar()
         {
-            DataRowView row = (DataRowView)comboTipo.SelectedItem;
-            string filtroTipo = (string)row.Row.ItemArray[1];
+            //DataRowView row = (DataRowView)comboTipo.SelectedItem;
+           // string filtroTipo = (string)row.Row.ItemArray[1];
             string filtroTxt = txtFiltro.Text;
             listaProductos.Items.Clear();
             List<ListViewItem> productosFiltrados = new List<ListViewItem>();
@@ -166,7 +137,7 @@ namespace AlbergueHN.Source.Forms
                 cualquierGenero = true;
             }
 
-            if (filtroTipo == "Todos")
+            /*if (filtroTipo == "Todos")
             {
                 foreach (ListViewItem item in productos.Where(item => item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Equals(filtroTalla.ToLower()) || cualquierTalla)))
                 {
@@ -180,7 +151,9 @@ namespace AlbergueHN.Source.Forms
                     listaProductos.Items.Add(item);
                 }
 
-            }
+            }*/
+
+
         }
 
         private void TablaIngreso_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -214,10 +187,6 @@ namespace AlbergueHN.Source.Forms
             }
         }
 
-        private void DialogIngresarProducto_SizeChanged(object sender, EventArgs e)
-        {
-        }
-
         private void ComboTalla_TextChanged(object sender, EventArgs e)
         {
             filtrar();
@@ -227,6 +196,7 @@ namespace AlbergueHN.Source.Forms
         {
             binding.Clear();
         }
+
         private void agregarSuministroTabla()
         {
             ListViewItem objetoSeleccionado = listaProductos.SelectedItems[0];
@@ -323,11 +293,6 @@ namespace AlbergueHN.Source.Forms
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
-        private void dialogIngresarSuministro_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
-        }
-
         private void nuevo_Click(object sender, EventArgs e)
         {
             dialogCrearProducto p = new dialogCrearProducto();
@@ -335,12 +300,54 @@ namespace AlbergueHN.Source.Forms
             llenarDatos();
         }
 
-
-
-
-        private void label6_Click(object sender, EventArgs e)
+        private void nuevo_Click_1(object sender, EventArgs e)
         {
+            dialogCrearProducto p = new dialogCrearProducto();
+            p.ShowDialog();
+            llenarDatos();
+        }
 
+        private void btnIngresar_Click_1(object sender, EventArgs e)
+        {
+            if (tablaIngreso.RowCount == 0)
+            {
+                MessageBox.Show("Aún no ha agregado ningún suministro a la lista, seleccione un suministro y agréguelo haciendo doble clic sobre él", "Notificación - UNAH - VS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                ingresarSuministros();
+            }
+        }
+
+        private void btnLimpiar_Click_1(object sender, EventArgs e)
+        {
+            binding.Clear();
+        }
+
+        private void radioCualquiera_CheckedChanged_1(object sender, EventArgs e)
+        {
+            filtrar();
+        }
+
+        private void radioMasculino_CheckedChanged(object sender, EventArgs e)
+        {
+            filtrar();
+        }
+
+        private void radioFemenino_CheckedChanged(object sender, EventArgs e)
+        {
+            filtrar();
+        }
+
+        private void comboTalla_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filtrar();
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            filtrar();
         }
     }
 }
