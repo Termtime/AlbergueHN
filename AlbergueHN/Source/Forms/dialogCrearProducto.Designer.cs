@@ -38,12 +38,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboGen = new System.Windows.Forms.ComboBox();
             this.comboTalla = new System.Windows.Forms.ComboBox();
+            this.checkUsaTalla = new System.Windows.Forms.CheckBox();
+            this.checkUsaGenero = new System.Windows.Forms.CheckBox();
+            this.radioCualquiera = new System.Windows.Forms.RadioButton();
+            this.radioInfante = new System.Windows.Forms.RadioButton();
+            this.radioAdulto = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(385, 133);
+            this.btnCancelar.Location = new System.Drawing.Point(385, 172);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 51;
@@ -54,7 +60,7 @@
             // btnAgregar
             // 
             this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregar.Location = new System.Drawing.Point(304, 133);
+            this.btnAgregar.Location = new System.Drawing.Point(304, 172);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 50;
@@ -103,7 +109,7 @@
             // 
             this.txtArticulo.Location = new System.Drawing.Point(99, 48);
             this.txtArticulo.Margin = new System.Windows.Forms.Padding(2);
-            this.txtArticulo.MaxLength = 50;
+            this.txtArticulo.MaxLength = 39;
             this.txtArticulo.Name = "txtArticulo";
             this.txtArticulo.Size = new System.Drawing.Size(356, 20);
             this.txtArticulo.TabIndex = 1;
@@ -120,6 +126,7 @@
             // comboGen
             // 
             this.comboGen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboGen.Enabled = false;
             this.comboGen.FormattingEnabled = true;
             this.comboGen.Location = new System.Drawing.Point(99, 99);
             this.comboGen.Margin = new System.Windows.Forms.Padding(2);
@@ -129,17 +136,89 @@
             // 
             // comboTalla
             // 
+            this.comboTalla.Enabled = false;
             this.comboTalla.FormattingEnabled = true;
             this.comboTalla.Location = new System.Drawing.Point(99, 73);
             this.comboTalla.Name = "comboTalla";
             this.comboTalla.Size = new System.Drawing.Size(121, 21);
             this.comboTalla.TabIndex = 56;
             // 
+            // checkUsaTalla
+            // 
+            this.checkUsaTalla.AutoSize = true;
+            this.checkUsaTalla.Location = new System.Drawing.Point(227, 75);
+            this.checkUsaTalla.Name = "checkUsaTalla";
+            this.checkUsaTalla.Size = new System.Drawing.Size(79, 17);
+            this.checkUsaTalla.TabIndex = 57;
+            this.checkUsaTalla.Text = "¿Usa talla?";
+            this.checkUsaTalla.UseVisualStyleBackColor = true;
+            this.checkUsaTalla.CheckedChanged += new System.EventHandler(this.CheckUsaTalla_CheckedChanged);
+            // 
+            // checkUsaGenero
+            // 
+            this.checkUsaGenero.AutoSize = true;
+            this.checkUsaGenero.Location = new System.Drawing.Point(187, 101);
+            this.checkUsaGenero.Name = "checkUsaGenero";
+            this.checkUsaGenero.Size = new System.Drawing.Size(93, 17);
+            this.checkUsaGenero.TabIndex = 58;
+            this.checkUsaGenero.Text = "¿Usa genero?";
+            this.checkUsaGenero.UseVisualStyleBackColor = true;
+            this.checkUsaGenero.CheckedChanged += new System.EventHandler(this.CheckUsaGenero_CheckedChanged);
+            // 
+            // radioCualquiera
+            // 
+            this.radioCualquiera.AutoSize = true;
+            this.radioCualquiera.Checked = true;
+            this.radioCualquiera.Location = new System.Drawing.Point(99, 134);
+            this.radioCualquiera.Name = "radioCualquiera";
+            this.radioCualquiera.Size = new System.Drawing.Size(45, 17);
+            this.radioCualquiera.TabIndex = 59;
+            this.radioCualquiera.TabStop = true;
+            this.radioCualquiera.Text = "N/A";
+            this.radioCualquiera.UseVisualStyleBackColor = true;
+            // 
+            // radioInfante
+            // 
+            this.radioInfante.AutoSize = true;
+            this.radioInfante.Location = new System.Drawing.Point(150, 134);
+            this.radioInfante.Name = "radioInfante";
+            this.radioInfante.Size = new System.Drawing.Size(58, 17);
+            this.radioInfante.TabIndex = 60;
+            this.radioInfante.TabStop = true;
+            this.radioInfante.Text = "Infante";
+            this.radioInfante.UseVisualStyleBackColor = true;
+            // 
+            // radioAdulto
+            // 
+            this.radioAdulto.AutoSize = true;
+            this.radioAdulto.Location = new System.Drawing.Point(214, 134);
+            this.radioAdulto.Name = "radioAdulto";
+            this.radioAdulto.Size = new System.Drawing.Size(55, 17);
+            this.radioAdulto.TabIndex = 61;
+            this.radioAdulto.TabStop = true;
+            this.radioAdulto.Text = "Adulto";
+            this.radioAdulto.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(23, 136);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 13);
+            this.label5.TabIndex = 62;
+            this.label5.Text = "Rango Edad:";
+            // 
             // dialogCrearProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(472, 168);
+            this.ClientSize = new System.Drawing.Size(472, 207);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.radioAdulto);
+            this.Controls.Add(this.radioInfante);
+            this.Controls.Add(this.radioCualquiera);
+            this.Controls.Add(this.checkUsaGenero);
+            this.Controls.Add(this.checkUsaTalla);
             this.Controls.Add(this.comboTalla);
             this.Controls.Add(this.comboGen);
             this.Controls.Add(this.label3);
@@ -172,5 +251,11 @@
         public System.Windows.Forms.ComboBox comboTipo;
         public System.Windows.Forms.ComboBox comboGen;
         private System.Windows.Forms.ComboBox comboTalla;
+        private System.Windows.Forms.CheckBox checkUsaTalla;
+        private System.Windows.Forms.CheckBox checkUsaGenero;
+        private System.Windows.Forms.RadioButton radioCualquiera;
+        private System.Windows.Forms.RadioButton radioInfante;
+        private System.Windows.Forms.RadioButton radioAdulto;
+        private System.Windows.Forms.Label label5;
     }
 }

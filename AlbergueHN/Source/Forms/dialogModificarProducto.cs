@@ -14,8 +14,8 @@ namespace AlbergueHN.Source.Forms
     public partial class dialogModificarProducto : Form
     {
         string stringConexion = (string)Properties.Settings.Default["stringConexion"];
-        string talla = null;
-        string genero = null;
+        public string talla = null;
+        public string genero = null;
         public string tipoItem = null;
         string[] tallasRopa = { "XXS", "XS", "S", "M", "L", "XL", "XL", "XXL" };
         public int id;
@@ -26,18 +26,6 @@ namespace AlbergueHN.Source.Forms
 
         private void ComboTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboTipo.Text == "Vestimenta" || comboTipo.Text == "Zapatos")
-            {
-                comboTalla.Enabled = true;
-                comboGen.Enabled = true;
-            }
-            else
-            {
-                comboTalla.Enabled = false;
-                comboGen.Enabled = false;
-                talla = null;
-                genero = null;
-            }
         }
 
         private void BtnAgregar_Click(object sender, EventArgs e)
@@ -49,23 +37,69 @@ namespace AlbergueHN.Source.Forms
                 return;
             }
 
-            String sql = "CALL spUpdateProducto(@1, @2, @3, @4, @5)";
+            String sql = "CALL spUpdateProducto(@1, @2, @3, @4, @5, @6, @7)";
             try
             {
-                if (comboTipo.Text == "Vestimenta" || comboTipo.Text == "Zapatos")
+                if (txtArticulo.Text.Trim().Length == 0)
                 {
-                    genero = comboGen.SelectedItem.ToString();
-                    talla = comboTalla.Text.Trim();
+                    MessageBox.Show("No ha llenado el campo de Descripción de Articulo.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtArticulo.Focus();
+                    return;
                 }
+
+                string descripcion = txtArticulo.Text.Trim();
+                if (checkUsaTalla.Checked)
+                {
+                    talla = (string)(comboTalla.SelectedItem ?? comboTalla.Text);
+                }
+                else { talla = null; }
+                if (checkUsaGenero.Checked)
+                {
+                    genero = comboGen.Text;
+                }
+                else { genero = null; }
+
+                if (radioAdulto.Checked)
+                {
+                    descripcion += " - Adulto";
+                }
+                else if(radioInfante.Checked)
+                {
+                    descripcion += " - Infante";
+                }
+
+                //Quitar todas las instancias de Adulto e Infante de la descripcion
+                if (txtArticulo.Text.Trim().Contains(" - Infante"))
+                {
+                    bool aunContiene = true;
+                    while (aunContiene)
+                    {
+                        txtArticulo.Text = txtArticulo.Text.Trim().Replace(" - Infante", "");
+                        aunContiene = txtArticulo.Text.Trim().Contains(" - Infante");
+                    }
+                }
+                if (txtArticulo.Text.Trim().Contains(" - Adulto"))
+                {
+                    bool aunContiene = true;
+                    while (aunContiene)
+                    {
+                        txtArticulo.Text = txtArticulo.Text.Trim().Replace(" - Adulto", "");
+                        aunContiene = txtArticulo.Text.Trim().Contains(" - Adulto");
+                    }
+                }
+
+                
                 using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
                     using (MySqlCommand cmd = new MySqlCommand(sql, con))
                     {
                         cmd.Parameters.AddWithValue("@1", id);
                         cmd.Parameters.AddWithValue("@2", comboTipo.SelectedValue.ToString());
-                        cmd.Parameters.AddWithValue("@3", txtArticulo.Text.Trim());
+                        cmd.Parameters.AddWithValue("@3", descripcion);
                         cmd.Parameters.AddWithValue("@4", talla);
                         cmd.Parameters.AddWithValue("@5", genero);
+                        cmd.Parameters.AddWithValue("@6", checkUsaTalla.Checked);
+                        cmd.Parameters.AddWithValue("@7", checkUsaGenero.Checked);
                         cmd.Connection.Open();  //abrir conexion
                         cmd.ExecuteNonQuery();  //ejecutar comando
                     }
@@ -77,7 +111,6 @@ namespace AlbergueHN.Source.Forms
                 //ocurrio un error
                 MessageBox.Show(ex.Message, "Error actualizando informacion del producto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(ex.StackTrace);
-                
             }
         }
 
@@ -92,8 +125,55 @@ namespace AlbergueHN.Source.Forms
             comboTalla.Items.AddRange(tallasRopa);
             comboGen.Items.Add("M");
             comboGen.Items.Add("F");
-            comboGen.SelectedIndex = 0;
-            comboTalla.SelectedIndex = 0;
+            //si no se encuentra es una talla especifica numerica
+            Console.WriteLine(comboTalla.FindString(talla));
+            //quitar todas las instancias de "Infante" y de "Adulto"
+            if(txtArticulo.Text.Trim().Contains(" - Infante"))
+            {
+                bool aunContiene = true;
+                while (aunContiene)
+                {
+                    txtArticulo.Text = txtArticulo.Text.Trim().Replace(" - Infante", "");
+                    aunContiene = txtArticulo.Text.Trim().Contains(" - Infante");
+                }
+                radioInfante.Checked = true;
+            } if (txtArticulo.Text.Trim().Contains(" - Adulto"))
+            {
+                bool aunContiene = true;
+                while (aunContiene)
+                {
+                    txtArticulo.Text = txtArticulo.Text.Trim().Replace(" - Adulto", "");
+                    aunContiene = txtArticulo.Text.Trim().Contains(" - Adulto");
+                }
+                radioAdulto.Checked = true;
+            }
+
+            if (talla == null)
+            {
+                comboTalla.Text = "";
+            }
+            else
+            {
+                if (comboTalla.FindString(talla) == -1)
+                {
+                    comboTalla.Text = talla;
+                }
+                else
+                {
+                    comboTalla.SelectedIndex = comboTalla.FindString(talla);
+                }
+            }
+
+            if(genero == null)
+            {
+                comboGen.Text = "";
+            }
+            else
+            {
+                comboGen.SelectedIndex = comboGen.FindString(genero);
+            }
+
+            
         }
         public void cargarTipos()
         {
@@ -122,6 +202,48 @@ namespace AlbergueHN.Source.Forms
             {
                 MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        private void CheckUsaTalla_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkUsaTalla.Checked)
+            {
+                comboTalla.Enabled = true;
+                if (comboTalla.FindString(talla) == -1)
+                {
+                    comboTalla.Text = talla;
+                }
+                else
+                {
+                    comboTalla.SelectedIndex = comboTalla.FindString(talla);
+                }
+            }
+            else
+            {
+                comboTalla.Enabled = false;
+                comboTalla.SelectedIndex = -1;
+            }
+        }
+
+        private void CheckUsaGenero_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkUsaGenero.Checked)
+            {
+                comboGen.Enabled = true;
+                if (genero == null)
+                {
+                    comboGen.SelectedIndex = 0;
+                }
+                else
+                {
+                    comboGen.SelectedIndex = comboGen.FindString(genero);
+                }
+            }
+            else
+            {
+                comboGen.Enabled = false;
+                comboGen.SelectedIndex = -1;
             }
         }
     }

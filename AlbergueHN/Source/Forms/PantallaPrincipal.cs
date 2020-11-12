@@ -27,6 +27,11 @@ namespace AlbergueHN
         public Form1()
         {
             InitializeComponent();
+
+
+            this.ResizeBegin += (s, e) => { this.SuspendLayout(); };
+            this.ResizeEnd += (s, e) => { this.ResumeLayout(true); };
+
             tablaSuministros.DataSource = null;
             tablaPersonas.DataSource = null;
         }
@@ -46,8 +51,6 @@ namespace AlbergueHN
             comboTalla.SelectedIndex = 0;
             callCargaDatos();
             comboFiltro.SelectedIndex = 0;
-            resizearTablaPersonas();
-            resizearTablaSuministros();
         }
 
         public void callCargaDatos()
@@ -61,6 +64,7 @@ namespace AlbergueHN
 
         public void cargaDatos()
         {
+            
             estaCargandoDatos = true;
             try
             {
@@ -75,7 +79,6 @@ namespace AlbergueHN
                         dtPersonas.Clear();
                         da.Fill(dtPersonas);
                         tablaPersonas.DataSource = dtPersonas;
-                        resizearTablaPersonas();
                     }));
                 }
 
@@ -96,6 +99,7 @@ namespace AlbergueHN
                         comboTipo.DisplayMember = "Descripcion";
                         comboTipo.ValueMember = "TipoID";
                         comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
+                        configurarSizeTablaPersonas();
                     }));
                 }
 
@@ -109,7 +113,7 @@ namespace AlbergueHN
                         dtArticulos.Clear();
                         da.Fill(dtArticulos);
                         tablaSuministros.DataSource = dtArticulos;
-                        resizearTablaSuministros();
+                        configurarSizeTablaSuministros();
                     }));
                 }
                 estaCargandoDatos = false;
@@ -122,6 +126,32 @@ namespace AlbergueHN
             }
         }
         
+        private void configurarSizeTablaPersonas()
+        {
+            Invoke(new Action(() =>
+            {
+                tablaPersonas.Columns[0].Width = 15;
+                tablaPersonas.Columns[1].FillWeight = 15;
+                tablaPersonas.Columns[2].FillWeight = 25;
+                tablaPersonas.Columns[3].FillWeight = 25;
+                tablaPersonas.Columns[4].FillWeight = 7;
+                tablaPersonas.Columns[5].FillWeight = 8;
+                tablaPersonas.Columns[6].FillWeight = 20;
+            }));
+        }
+
+        private void configurarSizeTablaSuministros()
+        {
+            Invoke(new Action(() =>
+            {
+                tablaSuministros.Columns[0].FillWeight = 10;
+                tablaSuministros.Columns[1].FillWeight = 30;
+                tablaSuministros.Columns[2].FillWeight = 20;
+                tablaSuministros.Columns[3].FillWeight = 15;
+                tablaSuministros.Columns[4].FillWeight = 15;
+                tablaSuministros.Columns[5].FillWeight = 10;
+            }));
+        }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == (Keys.F5))
@@ -136,7 +166,6 @@ namespace AlbergueHN
         {
             
         }
-
         private void filtrarSuministros()
         {
             if (tablaSuministros.DataSource == null) return;
@@ -147,6 +176,10 @@ namespace AlbergueHN
             string filtroTalla = (string)(comboTalla.SelectedItem ?? comboTalla.Text);
             String buscar = txtFiltro.Text;
             bool cualquierGenero = false;
+            bool cualquierTalla = false;
+
+            if (filtroTalla == "Todas") cualquierTalla = true;
+
             if (radioMasculino.Checked)
             {
                 genero = "M";
@@ -159,40 +192,26 @@ namespace AlbergueHN
             {
                 cualquierGenero = true;
             }
-            
-            if(filtroTipo == "Todos")
+
+            if (filtroTipo == "Todos")
             {
                 try
                 {
-                    dtArticulos.DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%'";
-                }
-                catch (Exception e)
-                {
+                    dtArticulos.DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%' And (talla = '{filtroTalla}' or {cualquierTalla})  And (genero = '{genero}' or {cualquierGenero})";
+                }catch(Exception e){
                     Console.WriteLine(e.StackTrace);
                     MessageBox.Show(e.Message, "Error Filtrando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
+            else
             {
-                panelControlRopa.Visible = true;
-                bool cualquierTalla = false;
-                
-                filtroTalla = (string)(comboTalla.SelectedItem ?? comboTalla.Text);
-           
-                if (filtroTalla == "Todas") cualquierTalla = true;
-                try
-                {
-                    dtArticulos.DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%' and tipo = '{filtroTipo}' And (talla LIKE '%{filtroTalla}%' or {cualquierTalla})  And (genero = '{genero}' or {cualquierGenero})";
-                }
-                catch(Exception e)
-                {
+                try {
+                    dtArticulos.DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%' and tipo = '{filtroTipo}' And (talla = '%{filtroTalla}%' or {cualquierTalla})  And (genero = '{genero}' or {cualquierGenero})";
+                } catch(Exception e) {
                     Console.WriteLine(e.StackTrace);
                     MessageBox.Show(e.Message, "Error Filtrando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            else 
-            {
-                dtArticulos.DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%' and tipo = '{filtroTipo}'";  
+
             }
         }
         private void filtrarPersonas()
@@ -201,11 +220,11 @@ namespace AlbergueHN
             String filtrar = txtFiltro1.Text;
             if (comboFiltro.SelectedIndex == 0)
             {
-                dtPersonas.DefaultView.RowFilter = "nombres LIKE '%"+filtrar+"%'";
+                dtPersonas.DefaultView.RowFilter = "nombres + apellidos LIKE '%"+filtrar+"%'";
             }
             if (comboFiltro.SelectedIndex == 1)
             {
-                dtPersonas.DefaultView.RowFilter = "personaID LIKE '%" + filtrar + "%'";
+                dtPersonas.DefaultView.RowFilter = "[No.Identidad] LIKE '%" + filtrar + "%'";
             }
             if (comboFiltro.SelectedIndex == 2)
             {
@@ -232,17 +251,12 @@ namespace AlbergueHN
 
         private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void ComboTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             filtrarSuministros();
-            DataRowView row = (DataRowView)comboTipo.SelectedItem;
-            string filtroTipo = (string)row.Row.ItemArray[1];
-            if (filtroTipo == "Vestimenta" || filtroTipo == "Zapatos")
-            { panelControlRopa.Visible = true; labelTalla.Visible = true; comboTalla.Visible = true; }
-            else { panelControlRopa.Visible = false; }
         }
 
         private void TxtFiltro_TextChanged(object sender, EventArgs e)
@@ -272,7 +286,7 @@ namespace AlbergueHN
 
         private void IngresarSuministrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dialogIngresarSuministro form = new dialogIngresarSuministro();
+            dialogIngresarProductos form = new dialogIngresarProductos();
             form.ShowDialog();
         }
 
@@ -292,40 +306,11 @@ namespace AlbergueHN
 
         private void TabPage1_SizeChanged(object sender, EventArgs e)
         {
-            resizearTablaPersonas();
         }
 
-        private void resizearTablaPersonas()
-        {
-            try
-            {
-                tablaPersonas.Columns[0].Width = (tablaPersonas.Width-2) * 10 / 100;
-                tablaPersonas.Columns[1].Width = (tablaPersonas.Width-2) * 10 / 100;
-                tablaPersonas.Columns[2].Width = (tablaPersonas.Width-2) * 20 / 100;
-                tablaPersonas.Columns[3].Width = (tablaPersonas.Width-2) * 20 / 100;
-                tablaPersonas.Columns[4].Width = (tablaPersonas.Width-2) * 10 / 100;
-                tablaPersonas.Columns[5].Width = (tablaPersonas.Width-2) * 10 / 100;
-                tablaPersonas.Columns[6].Width = (tablaPersonas.Width-2) * 20 / 100;
-            }                                                       
-            catch (Exception ex) { }
-        }
 
-        private void resizearTablaSuministros()
-        {
-            try
-            {
-                tablaSuministros.Columns[0].Width = (tablaSuministros.Width-1) * 10 / 100;
-                tablaSuministros.Columns[1].Width = (tablaSuministros.Width-1) * 35 / 100;
-                tablaSuministros.Columns[2].Width = (tablaSuministros.Width-1) * 25 / 100;
-                tablaSuministros.Columns[3].Width = (tablaSuministros.Width-1) * 10 / 100;
-                tablaSuministros.Columns[4].Width = (tablaSuministros.Width-1) * 10 / 100;
-                tablaSuministros.Columns[5].Width = (tablaSuministros.Width-1) * 10 / 100;
-            }
-            catch (Exception ex){}
-        }
         private void TabPage2_SizeChanged(object sender, EventArgs e)
         {
-            resizearTablaSuministros();
         }
 
         private void comboFiltro_SelectedIndexChanged(object sender, EventArgs e)
@@ -368,6 +353,34 @@ namespace AlbergueHN
         private void VersiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(INFORMACION.VERSION, "Acerca de: AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        bool quiereSalir = false;
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+            if (!quiereSalir)
+            {
+                if(MessageBox.Show("¿Desea salir del programa?", "Confirmar accion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    e.Cancel = true;
+                    quiereSalir = false;
+                }
+                else
+                {
+                    quiereSalir = true;
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+                quiereSalir = true;
+            }
+        }
+
+        private void TabPage2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
