@@ -58,6 +58,10 @@
             // 
             // tablaDespacho
             // 
+            this.tablaDespacho.AllowUserToAddRows = false;
+            this.tablaDespacho.AllowUserToResizeColumns = false;
+            this.tablaDespacho.AllowUserToResizeRows = false;
+            this.tablaDespacho.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaDespacho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaDespacho.Location = new System.Drawing.Point(544, 12);
             this.tablaDespacho.Name = "tablaDespacho";

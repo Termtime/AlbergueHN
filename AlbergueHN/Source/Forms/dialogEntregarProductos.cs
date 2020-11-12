@@ -143,7 +143,7 @@ namespace AlbergueHN.Source.Forms
                 using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
                     DataTable dtSuministro = new DataTable();
-                    var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM suministro a inner join tiposuministro b on a.tipoID = b.tipoID;";
+                    var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM suministro a inner join tiposuministro b on a.tipoID = b.tipoID WHERE a.TipoID<>1 AND a.TipoID<>4;";
                     MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                     con.Open();
                     da.Fill(dtSuministro);

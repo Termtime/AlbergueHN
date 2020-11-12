@@ -75,7 +75,7 @@ namespace AlbergueHN.Source.Forms
                 using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
                     DataTable dtSuministro = new DataTable();
-                    var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM suministro a inner join tiposuministro b on a.tipoID = b.tipoID;";
+                    var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM suministro a inner join tiposuministro b on a.tipoID = b.tipoID WHERE a.TipoID=1 OR a.TipoID=4;";
                     MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                     con.Open();
                     da.Fill(dtSuministro);
@@ -139,9 +139,9 @@ namespace AlbergueHN.Source.Forms
 
         private void filtrar()
         {
-           // DataRowView row = (DataRowView)comboTipo.SelectedItem;
-          //  string filtroTipo = (string)row.Row.ItemArray[1];
-            string filtroTxt = txtFiltro.Text;
+           //DataRowView row = (DataRowView)comboTipo.SelectedItem
+           //string filtroTipo = (string)row.Row.ItemArray[1];
+           string filtroTxt = txtFiltro.Text;
             listaProductos.Items.Clear();
             List<ListViewItem> productosFiltrados = new List<ListViewItem>();
             string genero = "";
@@ -164,21 +164,16 @@ namespace AlbergueHN.Source.Forms
                 cualquierGenero = true;
             }
 
-            /*if (filtroTipo == "Todos")
-            {
+            
                 foreach (ListViewItem item in productos.Where(item => item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Equals(filtroTalla.ToLower()) || cualquierTalla)))
                 {
                     listaProductos.Items.Add(item);
                 }
-            }
-            else
-            {
-                foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Equals(filtroTalla.ToLower()) || cualquierTalla)))
-                {
-                    listaProductos.Items.Add(item);
-                }
+            
+            
+       
 
-            }*/
+            
         }
 
         private void agregarSuministroTabla()
