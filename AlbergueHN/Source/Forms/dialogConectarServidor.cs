@@ -14,6 +14,7 @@ namespace AlbergueHN.Source.Forms
     public partial class dialogConectarServidor : Form
     {
         string error;
+        public bool haCambiadoConfig = false;
         public dialogConectarServidor()
         {
             InitializeComponent();
@@ -32,6 +33,12 @@ namespace AlbergueHN.Source.Forms
             MySqlConnection con = new MySqlConnection(stringConexion);
             try
             {
+                string ipAnt = Properties.Settings.Default["serverIP"].ToString();
+                string passAnt = Properties.Settings.Default["serverPass"].ToString();
+                string usuarioAnt = Properties.Settings.Default["usuarioServer"].ToString();
+                string bdAnt = Properties.Settings.Default["bd"].ToString();
+                string conexionAnt = Properties.Settings.Default["stringConexion"].ToString();
+
                 btnDetalles.Visible = false;
                 labelEstado.Text = "Conectando...";
                 Cursor.Current = Cursors.WaitCursor;
@@ -50,6 +57,13 @@ namespace AlbergueHN.Source.Forms
                 Cursor.Current = Cursors.Default;
                 con.Close();
                 labelHelper.Visible = true;
+                if(ipAnt != txtIP.Text || passAnt != txtPass.Text || usuarioAnt != txtUsuario.Text || bdAnt != txtBD.Text || conexionAnt != stringConexion)
+                {
+                    haCambiadoConfig = true;
+                }
+                else {
+                    haCambiadoConfig = false;
+                }
             }
             catch(Exception ex)
             {
@@ -84,9 +98,14 @@ namespace AlbergueHN.Source.Forms
             txtUsuario.Text = "";
             txtPass.Text = "";
             txtBD.Text = "";
+            error = "";
 
             labelEstado.Text = "Esperando...";
             labelEstado.ForeColor = Color.Black;
+
+            labelHelper.Text = "Configuración limpiada.";
+            btnDetalles.Visible = false;
+            haCambiadoConfig = true;
         }
 
         private void DialogConectarServidor_Load(object sender, EventArgs e)

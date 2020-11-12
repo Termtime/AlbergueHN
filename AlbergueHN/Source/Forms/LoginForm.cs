@@ -85,7 +85,8 @@ namespace AlbergueHN.Source.Forms
 
         private void comprobarConexion()
         {
-            if(stringConexion.Length == 0)
+            stringConexion = (string)Properties.Settings.Default["stringConexion"];
+            if (stringConexion.Length == 0)
             {
                 labelEstado.Text = "No configurado";
                 labelEstado.ForeColor = Color.Black;
@@ -122,7 +123,7 @@ namespace AlbergueHN.Source.Forms
 
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-                Application.Exit();
+            Application.Exit();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -135,7 +136,7 @@ namespace AlbergueHN.Source.Forms
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            
+            comprobarConexion();
         }
 
         private void LoginForm_Shown(object sender, EventArgs e)

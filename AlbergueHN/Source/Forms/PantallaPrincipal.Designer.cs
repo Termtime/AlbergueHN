@@ -407,7 +407,7 @@
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
             this.cerrarSesiónToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.L)));
             this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
-            this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
+            this.cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
             this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.CerrarSesiónToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
@@ -473,7 +473,7 @@
             // versiónToolStripMenuItem
             // 
             this.versiónToolStripMenuItem.Name = "versiónToolStripMenuItem";
-            this.versiónToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.versiónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.versiónToolStripMenuItem.Text = "Versión";
             this.versiónToolStripMenuItem.Click += new System.EventHandler(this.VersiónToolStripMenuItem_Click);
             // 

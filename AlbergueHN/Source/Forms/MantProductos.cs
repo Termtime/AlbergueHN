@@ -129,7 +129,7 @@ namespace AlbergueHN.Source.Forms
             if (tablaProductos.RowCount == 0)
                 return;
             DialogResult opcion;
-            opcion = MessageBox.Show("¿Desea deshabilitar este registro?", "Desahbilitar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            opcion = MessageBox.Show("¿Desea Desactivar este registro?", "Confirmar acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             //se ha contestado que Si, entonces eliminamos
             if (opcion == DialogResult.Yes)
