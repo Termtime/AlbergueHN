@@ -72,13 +72,19 @@ namespace AlbergueHN.Source.Forms
                 return;
             }
 
+            if (comboTalla.Text.Length == 0 && checkUsaTalla.Checked)
+            {
+                MessageBox.Show("No se ha especificado la talla. Por favor escriba una o seleccione desde la lista.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             try
             {
                 string descripcion = txtArticulo.Text.Trim();
                 String sql = "CALL spCrearProducto(@1, @2, @3, @4, @5, @6)";
                 if (checkUsaTalla.Checked)
                 {
-                    talla = (string) (comboTalla.SelectedItem ?? comboTalla.Text);
+                    talla = comboTalla.Text;
                 }else { talla = null; }
                 if (checkUsaGenero.Checked)
                 {

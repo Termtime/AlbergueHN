@@ -27,8 +27,6 @@ namespace AlbergueHN
         public Form1()
         {
             InitializeComponent();
-
-
             this.ResizeBegin += (s, e) => { this.SuspendLayout(); };
             this.ResizeEnd += (s, e) => { this.ResumeLayout(true); };
 
@@ -43,7 +41,6 @@ namespace AlbergueHN
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             foreach (string item in tallasRopa)
             {
                 comboTalla.Items.Add(item);
@@ -130,13 +127,13 @@ namespace AlbergueHN
         {
             Invoke(new Action(() =>
             {
-                tablaPersonas.Columns[0].Width = 15;
+                tablaPersonas.Columns[0].FillWeight = 10;
                 tablaPersonas.Columns[1].FillWeight = 15;
                 tablaPersonas.Columns[2].FillWeight = 25;
                 tablaPersonas.Columns[3].FillWeight = 25;
                 tablaPersonas.Columns[4].FillWeight = 7;
                 tablaPersonas.Columns[5].FillWeight = 8;
-                tablaPersonas.Columns[6].FillWeight = 20;
+                tablaPersonas.Columns[6].FillWeight = 10;
             }));
         }
 
@@ -235,7 +232,13 @@ namespace AlbergueHN
         private void ConexionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dialogConectarServidor form = new dialogConectarServidor();
+            MessageBox.Show("Si se detecta un cambio, se le requerirá volver a iniciar sesión.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             form.ShowDialog();
+            if (form.haCambiadoConfig)
+            {
+                MessageBox.Show("Ya que ha cambiado la configuración de conexión, se requiere volver a iniciar sesión.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cerrarSesion();
+            }
         }
 
         private void DespacharSuministrosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -327,11 +330,15 @@ namespace AlbergueHN
         {
             if(MessageBox.Show("¿Desea cerrar sesión?","Confirmar acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes))
             {
-                this.Hide();
-                loginRef.Show();
-                UsuarioActual.ID = null;
+                cerrarSesion();
             }
-                
+        }
+
+        private void cerrarSesion()
+        {
+            this.Hide();
+            loginRef.Show();
+            UsuarioActual.ID = null;
         }
 
         private void Form1_Shown(object sender, EventArgs e)

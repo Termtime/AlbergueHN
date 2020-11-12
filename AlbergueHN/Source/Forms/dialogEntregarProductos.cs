@@ -53,7 +53,6 @@ namespace AlbergueHN.Source.Forms
             tablaDespacho.Columns[4].FillWeight = 9;
             tablaDespacho.Columns[5].FillWeight = 9;
 
-            resizearTablaDespacho(); 
             foreach (string item in tallasRopa)
             {
                 comboTalla.Items.Add(item);
@@ -124,7 +123,6 @@ namespace AlbergueHN.Source.Forms
 
         private void DialogDespacharArticulo_SizeChanged(object sender, EventArgs e)
         {
-            resizearTablaDespacho();
         }
 
         
@@ -279,6 +277,11 @@ namespace AlbergueHN.Source.Forms
         }
         private void despacharProductos()
         {
+            if (comboPersonas.SelectedItem == null) {
+                MessageBox.Show("No se ha seleccionado a nombre de quién despachar la orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             string idPersonaRecibe = ((Persona)comboPersonas.SelectedItem).identidad;
             //ejecutar el procedimiento almacenado de despachar
             List<string> inserts = new List<string>();
@@ -329,19 +332,6 @@ namespace AlbergueHN.Source.Forms
             }
         }
 
-        private void resizearTablaDespacho()
-        {
-            //try
-            //{
-            //    tablaDespacho.Columns[0].Width = (tablaDespacho.Width - 40) * 10 / 100;
-            //    tablaDespacho.Columns[1].Width = (tablaDespacho.Width - 40) * 40 / 100;
-            //    tablaDespacho.Columns[2].Width = (tablaDespacho.Width - 40) * 10 / 100;
-            //    tablaDespacho.Columns[3].Width = (tablaDespacho.Width - 40) * 20 / 100;
-            //    tablaDespacho.Columns[4].Width = (tablaDespacho.Width - 40) * 10 / 100;
-            //    tablaDespacho.Columns[5].Width = (tablaDespacho.Width - 40) * 10 / 100;
-            //}
-            //catch (Exception ex) { }
-        }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == (Keys.F5))
@@ -370,29 +360,6 @@ namespace AlbergueHN.Source.Forms
 
         }
 
-        //public void flashCellColor(DataGridViewCellValidatingEventArgs e)
-        //{
-        //    Console.WriteLine("threadstart");
-        //    DataGridViewCell celda = tablaDespacho.Rows[e.RowIndex].Cells[e.ColumnIndex];
-
-        //    DataGridViewCellStyle original = celda.Style;
-
-        //    DataGridViewCellStyle flash = new DataGridViewCellStyle();
-        //    flash.BackColor = Color.FromArgb(0, 173, 239);
-        //    flash.ForeColor = Color.Black;
-
-        //    int i = 0;
-
-        //    while(i < 4)
-        //    {
-        //        celda.Style = flash;
-        //        Thread.Sleep(100);
-        //        celda.Style = original;
-        //        i++;
-        //    }
-
-        //    Console.WriteLine("threadstop");
-        //}
         private void tablaDespacho_CellValidating_1(object sender, DataGridViewCellValidatingEventArgs e)
         {
             if (e.ColumnIndex == tablaDespacho.Columns["Cantidad"].Index)
