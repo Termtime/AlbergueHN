@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -45,12 +46,12 @@ namespace AlbergueHN.Source.Forms
             tablaDespacho.Columns[4].ReadOnly = true;
             tablaDespacho.Columns[5].ReadOnly = true;
 
-            tablaDespacho.Columns[0].Width = 40;
+            tablaDespacho.Columns[0].FillWeight = 8;
             tablaDespacho.Columns[1].FillWeight = 40;
-            tablaDespacho.Columns[2].FillWeight = 10;
+            tablaDespacho.Columns[2].FillWeight = 15;
             tablaDespacho.Columns[3].FillWeight = 30;
-            tablaDespacho.Columns[4].FillWeight = 10;
-            tablaDespacho.Columns[5].FillWeight = 10;
+            tablaDespacho.Columns[4].FillWeight = 9;
+            tablaDespacho.Columns[5].FillWeight = 9;
 
             resizearTablaDespacho(); 
             foreach (string item in tallasRopa)
@@ -348,7 +349,7 @@ namespace AlbergueHN.Source.Forms
                 llenarDatos();
                 filtrar();
                 return true;
-            }else if (keyData == (Keys.Enter))
+            }else if (keyData == (Keys.Enter) && !tablaDespacho.Focused && !tablaDespacho.IsCurrentCellInEditMode)
             {
                 agregarSuministroTabla();
             }
@@ -365,11 +366,6 @@ namespace AlbergueHN.Source.Forms
         }
 
         private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tablaDespacho_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
 
         }
@@ -408,6 +404,7 @@ namespace AlbergueHN.Source.Forms
                 if (!int.TryParse(e.FormattedValue.ToString(),
                     out newInteger) || newInteger <= 0)
                 {
+                    SystemSounds.Beep.Play();
                     e.Cancel = true;
                     tablaDespacho.Rows[e.RowIndex].ErrorText = "El valor debe ser un entero positivo distinto de 0.";
                 }

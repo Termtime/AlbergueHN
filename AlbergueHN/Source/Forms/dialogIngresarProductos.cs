@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -36,7 +37,13 @@ namespace AlbergueHN.Source.Forms
             tablaIngreso.Columns[3].ReadOnly = true;
             tablaIngreso.Columns[4].ReadOnly = true;
             tablaIngreso.Columns[5].ReadOnly = true;
-            resizearTablaSuministro();
+
+            tablaIngreso.Columns[0].FillWeight = 8;
+            tablaIngreso.Columns[1].FillWeight = 40;
+            tablaIngreso.Columns[2].FillWeight = 15;
+            tablaIngreso.Columns[3].FillWeight = 30;
+            tablaIngreso.Columns[4].FillWeight = 9;
+            tablaIngreso.Columns[5].FillWeight = 9;
             foreach (string item in tallasRopa)
             {
                 comboTalla.Items.Add(item);
@@ -187,6 +194,7 @@ namespace AlbergueHN.Source.Forms
                 if (!int.TryParse(e.FormattedValue.ToString(),
                     out newInteger) || newInteger <= 0)
                 {
+                    SystemSounds.Beep.Play();
                     e.Cancel = true;
                     tablaIngreso.Rows[e.RowIndex].ErrorText = "El valor debe ser un entero positivo distinto de 0.";
                 }
@@ -208,7 +216,6 @@ namespace AlbergueHN.Source.Forms
 
         private void DialogIngresarProducto_SizeChanged(object sender, EventArgs e)
         {
-            resizearTablaSuministro();
         }
 
         private void ComboTalla_TextChanged(object sender, EventArgs e)
@@ -296,19 +303,6 @@ namespace AlbergueHN.Source.Forms
                 }
             }
         }
-        private void resizearTablaSuministro()
-        {
-            try
-            {
-                tablaIngreso.Columns[0].Width = (tablaIngreso.Width - 40) * 10 / 100;
-                tablaIngreso.Columns[1].Width = (tablaIngreso.Width - 40) * 40 / 100;
-                tablaIngreso.Columns[2].Width = (tablaIngreso.Width - 40) * 10 / 100;
-                tablaIngreso.Columns[3].Width = (tablaIngreso.Width - 40) * 20 / 100;
-                tablaIngreso.Columns[4].Width = (tablaIngreso.Width - 40) * 10 / 100;
-                tablaIngreso.Columns[5].Width = (tablaIngreso.Width - 40) * 10 / 100;
-            }
-            catch (Exception ex) { }
-        }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -318,7 +312,7 @@ namespace AlbergueHN.Source.Forms
                 filtrar();
                 return true;
             }
-            else if (keyData == (Keys.Enter))
+            else if (keyData == (Keys.Enter) && !tablaIngreso.Focused && !tablaIngreso.IsCurrentCellInEditMode)
             {
                 agregarSuministroTabla();
             }

@@ -93,9 +93,12 @@
             this.tabPage2.Text = "Productos";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.SizeChanged += new System.EventHandler(this.TabPage2_SizeChanged);
+            this.tabPage2.Click += new System.EventHandler(this.TabPage2_Click);
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.label8);
             this.panel2.Location = new System.Drawing.Point(6, 0);
             this.panel2.Name = "panel2";
@@ -104,7 +107,8 @@
             // 
             // label8
             // 
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(0, 0);
             this.label8.Name = "label8";
@@ -126,7 +130,6 @@
             this.panelControlRopa.Name = "panelControlRopa";
             this.panelControlRopa.Size = new System.Drawing.Size(200, 56);
             this.panelControlRopa.TabIndex = 55;
-            this.panelControlRopa.Visible = false;
             // 
             // comboTalla
             // 
@@ -237,6 +240,7 @@
             this.tablaSuministros.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tablaSuministros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaSuministros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaSuministros.Location = new System.Drawing.Point(3, 108);
             this.tablaSuministros.Name = "tablaSuministros";
@@ -334,6 +338,7 @@
             this.tablaPersonas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tablaPersonas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaPersonas.Location = new System.Drawing.Point(3, 108);
             this.tablaPersonas.Name = "tablaPersonas";
