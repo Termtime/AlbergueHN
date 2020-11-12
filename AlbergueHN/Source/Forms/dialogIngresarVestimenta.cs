@@ -1,6 +1,4 @@
-﻿using AlbergueHN.Source.Objetos;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,142 +6,66 @@ using System.Drawing;
 using System.Linq;
 using System.Media;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AlbergueHN.Source.Objetos;
+using MySql.Data.MySqlClient;
 
 namespace AlbergueHN.Source.Forms
 {
-
-    public partial class dialogEntregarProductos : Form
+    public partial class dialogIngresarVestimenta : Form
     {
         string[] tallasRopa = { "Todas", "XXS", "XS", "S", "M", "L", "XL", "XL", "XXL" };
         string stringConexion = (string)Properties.Settings.Default["stringConexion"];
         BindingList<Suministro> binding;
-        BindingList<Persona> bindingComboPersonas;
         List<Suministro> suministrosIngresados = new List<Suministro>();
         List<ListViewItem> productos = new List<ListViewItem>();
-        List<Persona> personas = new List<Persona>();
-        bool estaCargando = false;
-        public dialogEntregarProductos()
+
+        public dialogIngresarVestimenta()
         {
             InitializeComponent();
         }
 
-        private void DialogDespacharProductos_Load(object sender, EventArgs e)
+        private void dialogIngresarVestimenta_Load(object sender, EventArgs e)
         {
-            usuarioID.Text = UsuarioActual.ID.ToString();
             llenarDatos();
-            
             binding = new BindingList<Suministro>(suministrosIngresados);
-            bindingComboPersonas = new BindingList<Persona>(personas);
-            tablaDespacho.DataSource = binding;
-            comboPersonas.DataSource = bindingComboPersonas;
+            tablaIngreso.DataSource = binding;
+            //hacer solo la columna de cantidad editable
+            tablaIngreso.Columns[0].ReadOnly = true;
+            tablaIngreso.Columns[1].ReadOnly = true;
+            tablaIngreso.Columns[3].ReadOnly = true;
+            tablaIngreso.Columns[4].ReadOnly = true;
+            tablaIngreso.Columns[5].ReadOnly = true;
 
-            tablaDespacho.Columns[0].ReadOnly = true;
-            tablaDespacho.Columns[1].ReadOnly = true;
-            tablaDespacho.Columns[3].ReadOnly = true;
-            tablaDespacho.Columns[4].ReadOnly = true;
-            tablaDespacho.Columns[5].ReadOnly = true;
-
-            tablaDespacho.Columns[0].FillWeight = 8;
-            tablaDespacho.Columns[1].FillWeight = 40;
-            tablaDespacho.Columns[2].FillWeight = 15;
-            tablaDespacho.Columns[3].FillWeight = 30;
-            tablaDespacho.Columns[4].FillWeight = 9;
-            tablaDespacho.Columns[5].FillWeight = 9;
-
+            tablaIngreso.Columns[0].FillWeight = 8;
+            tablaIngreso.Columns[1].FillWeight = 40;
+            tablaIngreso.Columns[2].FillWeight = 15;
+            tablaIngreso.Columns[3].FillWeight = 30;
+            tablaIngreso.Columns[4].FillWeight = 9;
+            tablaIngreso.Columns[5].FillWeight = 9;
             foreach (string item in tallasRopa)
             {
                 comboTalla.Items.Add(item);
             }
             comboTalla.SelectedIndex = 0;
-           
         }
 
-        
-
-        private void ComboTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            filtrar();
-            DataRowView row = (DataRowView)comboTipo.SelectedItem;
-            string filtroTipo = (string)row.Row.ItemArray[1];
-        }
-
-        private void TxtFiltro_TextChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void ComboTalla_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void RadioCualquiera_CheckedChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void RadioMasculino_CheckedChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-        private void RadioFemenino_CheckedChanged(object sender, EventArgs e)
-        {
-            filtrar();
-        }
-
-
-        private void ListaProductos_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void listaProductos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             agregarSuministroTabla();
         }
-        private void BtnDespachar_Click(object sender, EventArgs e)
-        {
-            
 
-            if (tablaDespacho.Rows.Count == 0)
-            {
-                MessageBox.Show("No se han agregado suministros para despachar",
-                                   "Advertencia", MessageBoxButtons.OK,
-                                   MessageBoxIcon.Warning);
-            }
-            else
-            {
-                Cursor.Current = Cursors.WaitCursor;
-                despacharProductos();
-                Cursor.Current = Cursors.Default;
-
-            }
-
-               
-        }
-
-        private void DialogDespacharArticulo_SizeChanged(object sender, EventArgs e)
-        {
-        }
-
-        
-
-        private void BtnLimpiar_Click(object sender, EventArgs e)
-        {
-            binding.Clear();
-        }
         private void llenarDatos()
         {
-            if (estaCargando) return;
             try
             {
-                estaCargando = true;
                 productos.Clear();
-                personas.Clear();
                 listaProductos.Items.Clear();
                 using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
                     DataTable dtSuministro = new DataTable();
-                    var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM suministro a inner join tiposuministro b on a.tipoID = b.tipoID WHERE a.TipoID<>1 AND a.TipoID<>4;";
+                    var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM suministro a inner join tiposuministro b on a.tipoID = b.tipoID WHERE a.TipoID=1 OR a.TipoID=4;";
                     MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                     con.Open();
                     da.Fill(dtSuministro);
@@ -166,49 +88,32 @@ namespace AlbergueHN.Source.Forms
 
                 using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
+                    var stm = "SELECT TipoID, Descripcion FROM tiposuministro";
                     DataSet dsTipo = new DataSet();
                     dsTipo.Tables.Add(new DataTable("TipoDefault"));
                     dsTipo.Tables["TipoDefault"].Columns.Add("TipoID", typeof(int));
                     dsTipo.Tables["TipoDefault"].Columns.Add("Descripcion", typeof(string));
                     dsTipo.Tables["TipoDefault"].Rows.Add(0, "Todos");
-                    var stm = "SELECT TipoID, Descripcion FROM tiposuministro";
                     MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                     con.Open();
                     da.Fill(dsTipo, "Tipos");
-                    comboTipo.DisplayMember = "Descripcion";
+                   /*comboTipo.DisplayMember = "Descripcion";
                     comboTipo.ValueMember = "TipoID";
                     dsTipo.Tables["TipoDefault"].Merge(dsTipo.Tables["Tipos"]);
-                    comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
+                    comboTipo.DataSource = dsTipo.Tables["TipoDefault"];*/
                 }
 
-                using (MySqlConnection con = new MySqlConnection(stringConexion))
-                {
-                    var stm = "SELECT PersonaID, Nombres, Apellidos FROM persona WHERE FechaSalida IS NULL ORDER BY nombres ASC";
-                    DataTable dtPersona = new DataTable();
-                    MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
-                    con.Open();
-                    da.Fill(dtPersona);
-
-                    foreach (DataRow fila in dtPersona.Rows)
-                    {
-                        Persona tmp = new Persona(fila[0].ToString(), fila[1].ToString(), fila[2].ToString());
-                        personas.Add(tmp);
-                    }
-                }
-                estaCargando = false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                estaCargando = false;
                 MessageBox.Show(ex.Message, "Error Cargando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine(ex.StackTrace);
             }
         }
 
         private void filtrar()
         {
-            DataRowView row = (DataRowView)comboTipo.SelectedItem;
-            string filtroTipo = (string)row.Row.ItemArray[1];
+            //DataRowView row = (DataRowView)comboTipo.SelectedItem;
+            //string filtroTipo = (string)row.Row.ItemArray[1];
             string filtroTxt = txtFiltro.Text;
             listaProductos.Items.Clear();
             List<ListViewItem> productosFiltrados = new List<ListViewItem>();
@@ -232,26 +137,68 @@ namespace AlbergueHN.Source.Forms
                 cualquierGenero = true;
             }
 
-            if (filtroTipo == "Todos")
-            {
+            
                 foreach (ListViewItem item in productos.Where(item => item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Equals(filtroTalla.ToLower()) || cualquierTalla)))
                 {
                     listaProductos.Items.Add(item);
                 }
+            
+            
+
+
+        }
+
+        private void TablaIngreso_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex == tablaIngreso.Columns["Cantidad"].Index)
+            {
+                tablaIngreso.Rows[e.RowIndex].ErrorText = "";
+                int newInteger;
+
+                if (tablaIngreso.Rows[e.RowIndex].IsNewRow) { return; }
+                if (!int.TryParse(e.FormattedValue.ToString(),
+                    out newInteger) || newInteger <= 0)
+                {
+                    SystemSounds.Beep.Play();
+                    e.Cancel = true;
+                    tablaIngreso.Rows[e.RowIndex].ErrorText = "El valor debe ser un entero positivo distinto de 0.";
+                }
+            }
+        }
+
+        private void BtnIngresar_Click(object sender, EventArgs e)
+        {
+            if (tablaIngreso.RowCount == 0)
+            {
+                MessageBox.Show("Aún no ha agregado ningún suministro a la lista, seleccione un suministro y agréguelo haciendo doble clic sobre él", "Notificación - UNAH - VS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
             else
             {
-                foreach (ListViewItem item in productos.Where(item => item.SubItems[2].Text == filtroTipo && item.Text.ToLower().Contains(filtroTxt.ToLower()) && (item.SubItems[4].Text.Contains(genero) || cualquierGenero) && (item.SubItems[3].Text.ToLower().Equals(filtroTalla.ToLower()) || cualquierTalla)))
-                {
-                    listaProductos.Items.Add(item);
-                }
-                
-            }                   
+                ingresarSuministros();
+            }
+        }
+
+        private void ComboTalla_TextChanged(object sender, EventArgs e)
+        {
+            filtrar();
+        }
+
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            binding.Clear();
         }
 
         private void agregarSuministroTabla()
         {
-            if (listaProductos.SelectedItems.Count == 0) return;
+            if (listaProductos.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("No se ha seleccionado un producto.",
+                                   "Advertencia", MessageBoxButtons.OK,
+                                   MessageBoxIcon.Warning);
+                return;
+            }
+
             ListViewItem objetoSeleccionado = listaProductos.SelectedItems[0];
             if (objetoSeleccionado == null)
             {
@@ -265,7 +212,9 @@ namespace AlbergueHN.Source.Forms
                                    "Advertencia", MessageBoxButtons.OK,
                                    MessageBoxIcon.Warning);
                 return;
-             }
+            }
+
+            if (binding.ToList().Where(suministro => suministro.Id == objetoSeleccionado.Tag.ToString()).Count() != 0) return;
             Suministro tmp = new Suministro();
             tmp.Id = objetoSeleccionado.Tag.ToString();
             tmp.Descripcion = objetoSeleccionado.Text;
@@ -275,15 +224,12 @@ namespace AlbergueHN.Source.Forms
 
             binding.Add(tmp);
         }
-        private void despacharProductos()
-        {
-            if (comboPersonas.SelectedItem == null) {
-                MessageBox.Show("No se ha seleccionado a nombre de quién despachar la orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
-            string idPersonaRecibe = ((Persona)comboPersonas.SelectedItem).identidad;
-            //ejecutar el procedimiento almacenado de despachar
+        private void ingresarSuministros()
+        {
+            string donante = txtDonante.Text.Trim().Length == 0 ? "Anonimo" : txtDonante.Text.Trim();
+
+            //ejecutar el stored procedure
             List<string> inserts = new List<string>();
 
             using (MySqlConnection con = new MySqlConnection(stringConexion))
@@ -308,9 +254,9 @@ namespace AlbergueHN.Source.Forms
                     MySqlCommand cmdTmp = new MySqlCommand(sqlTemp.ToString(), con);
                     cmdTmp.ExecuteNonQuery();
 
-                    var stm = "CALL spDespacharSuministros(@personaRecibe, @uid);";
+                    var stm = "CALL spIngresarSuministro(@donante, @uid);";
                     MySqlCommand cmd = new MySqlCommand(stm, con);
-                    cmd.Parameters.AddWithValue("@personaRecibe", idPersonaRecibe);
+                    cmd.Parameters.AddWithValue("@donante", donante);
                     cmd.Parameters.AddWithValue("@uid", UsuarioActual.ID);
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -320,13 +266,9 @@ namespace AlbergueHN.Source.Forms
                     MessageBox.Show("Ingresado con éxito.", "Operación Completa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     filtrar();
                 }
-                catch (MySqlException ex)
+                catch (Exception ex)
                 {
-
-                    if (ex.Message.Equals("Check constraint 'CH_UNAHAL_SUMINISTROEX' is violated."))
-                        MessageBox.Show("Existencia insuficiente en el inventario.");
-                    if (ex.Message.Equals("Check constraint 'chkCantidad' is violated."))
-                        MessageBox.Show("La cantidad no puede ser negativa.");
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     con.Close();
                 }
             }
@@ -339,48 +281,78 @@ namespace AlbergueHN.Source.Forms
                 llenarDatos();
                 filtrar();
                 return true;
-            }else if (keyData == (Keys.Enter) && !tablaDespacho.Focused && !tablaDespacho.IsCurrentCellInEditMode)
+            }
+            else if (keyData == (Keys.Enter) && !tablaIngreso.Focused && !tablaIngreso.IsCurrentCellInEditMode)
             {
                 agregarSuministroTabla();
+            }
+            else if (keyData == (Keys.Enter | Keys.Control))
+            {
+                ingresarSuministros();
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
-        private void ComboTalla_TextChanged(object sender, EventArgs e)
+        private void nuevo_Click(object sender, EventArgs e)
+        {
+            dialogCrearProducto p = new dialogCrearProducto();
+            p.ShowDialog();
+            llenarDatos();
+        }
+
+        private void nuevo_Click_1(object sender, EventArgs e)
+        {
+            dialogCrearProducto p = new dialogCrearProducto();
+            p.ShowDialog();
+            llenarDatos();
+        }
+
+        private void btnIngresar_Click_1(object sender, EventArgs e)
+        {
+            if (tablaIngreso.RowCount == 0)
+            {
+                MessageBox.Show("Aún no ha agregado ningún suministro a la lista, seleccione un suministro y agréguelo haciendo doble clic sobre él", "Notificación - UNAH - VS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                ingresarSuministros();
+            }
+        }
+
+        private void btnLimpiar_Click_1(object sender, EventArgs e)
+        {
+            binding.Clear();
+        }
+
+        private void radioCualquiera_CheckedChanged_1(object sender, EventArgs e)
         {
             filtrar();
         }
 
-        private void listaProductos_KeyPress(object sender, KeyPressEventArgs e)
+        private void radioMasculino_CheckedChanged(object sender, EventArgs e)
         {
+            filtrar();
         }
 
-        private void label7_Click(object sender, EventArgs e)
+        private void radioFemenino_CheckedChanged(object sender, EventArgs e)
         {
-
+            filtrar();
         }
 
-        private void tablaDespacho_CellValidating_1(object sender, DataGridViewCellValidatingEventArgs e)
+        private void comboTalla_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (e.ColumnIndex == tablaDespacho.Columns["Cantidad"].Index)
-            {
-                tablaDespacho.Rows[e.RowIndex].ErrorText = "";
-                int newInteger;
-
-                if (tablaDespacho.Rows[e.RowIndex].IsNewRow) { return; }
-                if (!int.TryParse(e.FormattedValue.ToString(),
-                    out newInteger) || newInteger <= 0)
-                {
-                    SystemSounds.Beep.Play();
-                    e.Cancel = true;
-                    tablaDespacho.Rows[e.RowIndex].ErrorText = "El valor debe ser un entero positivo distinto de 0.";
-                }
-            }
+            filtrar();
         }
 
-        private void listaProductos_SelectedIndexChanged(object sender, EventArgs e)
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
+            filtrar();
+        }
 
+        private void ComboTalla_TextChanged_1(object sender, EventArgs e)
+        {
+            filtrar();
         }
     }
-    }
+}

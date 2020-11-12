@@ -95,7 +95,7 @@ namespace AlbergueHN.Source.Forms
                 using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
                     DataTable dtSuministro = new DataTable();
-                    var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM suministro a inner join tiposuministro b on a.tipoID = b.tipoID;";
+                    var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM suministro a inner join tiposuministro b on a.tipoID = b.tipoID WHERE a.tipoID<>1 AND a.tipoID<>4 ;";
                     MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                     con.Open();
                     da.Fill(dtSuministro);
@@ -333,6 +333,14 @@ namespace AlbergueHN.Source.Forms
             dialogCrearProducto p = new dialogCrearProducto();
             p.ShowDialog();
             llenarDatos();
+        }
+
+
+
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

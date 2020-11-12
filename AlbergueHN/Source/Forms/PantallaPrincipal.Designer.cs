@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -59,10 +60,15 @@
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.despacharSuministrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ingresarSuministrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.administrarPersonaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.administrarSuministrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.despacharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vestimentaCalzadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ingresarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.productosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.vestimentaCalzadoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.administrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.personasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.productosToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.versiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2.SuspendLayout();
@@ -374,6 +380,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // archivoToolStripMenuItem
             // 
@@ -422,45 +429,87 @@
             // accionesToolStripMenuItem
             // 
             this.accionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.despacharSuministrosToolStripMenuItem,
-            this.ingresarSuministrosToolStripMenuItem,
-            this.administrarPersonaToolStripMenuItem,
-            this.administrarSuministrosToolStripMenuItem});
+            this.despacharToolStripMenuItem,
+            this.ingresarToolStripMenuItem,
+            this.administrarToolStripMenuItem});
             this.accionesToolStripMenuItem.Name = "accionesToolStripMenuItem";
             this.accionesToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
             this.accionesToolStripMenuItem.Text = "Acciones";
             // 
-            // despacharSuministrosToolStripMenuItem
+            // despacharToolStripMenuItem
             // 
-            this.despacharSuministrosToolStripMenuItem.Name = "despacharSuministrosToolStripMenuItem";
-            this.despacharSuministrosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.despacharSuministrosToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.despacharSuministrosToolStripMenuItem.Text = "Despachar productos";
-            this.despacharSuministrosToolStripMenuItem.Click += new System.EventHandler(this.DespacharSuministrosToolStripMenuItem_Click);
+            this.despacharToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.productosToolStripMenuItem,
+            this.vestimentaCalzadoToolStripMenuItem});
+            this.despacharToolStripMenuItem.Name = "despacharToolStripMenuItem";
+            this.despacharToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.despacharToolStripMenuItem.Text = "Despachar...";
             // 
-            // ingresarSuministrosToolStripMenuItem
+            // productosToolStripMenuItem
             // 
-            this.ingresarSuministrosToolStripMenuItem.Name = "ingresarSuministrosToolStripMenuItem";
-            this.ingresarSuministrosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.ingresarSuministrosToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.ingresarSuministrosToolStripMenuItem.Text = "Ingresar productos";
-            this.ingresarSuministrosToolStripMenuItem.Click += new System.EventHandler(this.IngresarSuministrosToolStripMenuItem_Click);
+            this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
+            this.productosToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.productosToolStripMenuItem.Text = "Productos";
+            this.productosToolStripMenuItem.Click += new System.EventHandler(this.ProductosToolStripMenuItem_Click);
             // 
-            // administrarPersonaToolStripMenuItem
+            // vestimentaCalzadoToolStripMenuItem
             // 
-            this.administrarPersonaToolStripMenuItem.Name = "administrarPersonaToolStripMenuItem";
-            this.administrarPersonaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.administrarPersonaToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.administrarPersonaToolStripMenuItem.Text = "Administrar Personas";
-            this.administrarPersonaToolStripMenuItem.Click += new System.EventHandler(this.ingresarPersonaToolStripMenuItem_Click);
+            this.vestimentaCalzadoToolStripMenuItem.Name = "vestimentaCalzadoToolStripMenuItem";
+            this.vestimentaCalzadoToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.vestimentaCalzadoToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.vestimentaCalzadoToolStripMenuItem.Text = "Vestimenta/Calzado";
+            this.vestimentaCalzadoToolStripMenuItem.Click += new System.EventHandler(this.VestimentaCalzadoToolStripMenuItem_Click);
             // 
-            // administrarSuministrosToolStripMenuItem
+            // ingresarToolStripMenuItem
             // 
-            this.administrarSuministrosToolStripMenuItem.Name = "administrarSuministrosToolStripMenuItem";
-            this.administrarSuministrosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.administrarSuministrosToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.administrarSuministrosToolStripMenuItem.Text = "Administrar Productos";
-            this.administrarSuministrosToolStripMenuItem.Click += new System.EventHandler(this.administrarSuministrosToolStripMenuItem_Click);
+            this.ingresarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.productosToolStripMenuItem1,
+            this.vestimentaCalzadoToolStripMenuItem1});
+            this.ingresarToolStripMenuItem.Name = "ingresarToolStripMenuItem";
+            this.ingresarToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.ingresarToolStripMenuItem.Text = "Ingresar...";
+            // 
+            // productosToolStripMenuItem1
+            // 
+            this.productosToolStripMenuItem1.Name = "productosToolStripMenuItem1";
+            this.productosToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.productosToolStripMenuItem1.Size = new System.Drawing.Size(198, 22);
+            this.productosToolStripMenuItem1.Text = "Productos";
+            this.productosToolStripMenuItem1.Click += new System.EventHandler(this.ProductosToolStripMenuItem1_Click);
+            // 
+            // vestimentaCalzadoToolStripMenuItem1
+            // 
+            this.vestimentaCalzadoToolStripMenuItem1.Name = "vestimentaCalzadoToolStripMenuItem1";
+            this.vestimentaCalzadoToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.vestimentaCalzadoToolStripMenuItem1.Size = new System.Drawing.Size(198, 22);
+            this.vestimentaCalzadoToolStripMenuItem1.Text = "Vestimenta/Calzado";
+            this.vestimentaCalzadoToolStripMenuItem1.Click += new System.EventHandler(this.VestimentaCalzadoToolStripMenuItem1_Click);
+            // 
+            // administrarToolStripMenuItem
+            // 
+            this.administrarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.personasToolStripMenuItem,
+            this.productosToolStripMenuItem2});
+            this.administrarToolStripMenuItem.Name = "administrarToolStripMenuItem";
+            this.administrarToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.administrarToolStripMenuItem.Text = "Administrar...";
+            // 
+            // personasToolStripMenuItem
+            // 
+            this.personasToolStripMenuItem.Name = "personasToolStripMenuItem";
+            this.personasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
+            this.personasToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.personasToolStripMenuItem.Text = "Personas";
+            this.personasToolStripMenuItem.Click += new System.EventHandler(this.PersonasToolStripMenuItem_Click);
+            // 
+            // productosToolStripMenuItem2
+            // 
+            this.productosToolStripMenuItem2.Name = "productosToolStripMenuItem2";
+            this.productosToolStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
+            this.productosToolStripMenuItem2.Size = new System.Drawing.Size(169, 22);
+            this.productosToolStripMenuItem2.Text = "Productos";
+            this.productosToolStripMenuItem2.Click += new System.EventHandler(this.ProductosToolStripMenuItem2_Click);
             // 
             // acercaDeToolStripMenuItem
             // 
@@ -473,7 +522,7 @@
             // versiónToolStripMenuItem
             // 
             this.versiónToolStripMenuItem.Name = "versiónToolStripMenuItem";
-            this.versiónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.versiónToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.versiónToolStripMenuItem.Text = "Versión";
             this.versiónToolStripMenuItem.Click += new System.EventHandler(this.VersiónToolStripMenuItem_Click);
             // 
@@ -484,6 +533,7 @@
             this.ClientSize = new System.Drawing.Size(1264, 690);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -528,9 +578,6 @@
         private System.Windows.Forms.ToolStripMenuItem conexionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem accionesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem despacharSuministrosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ingresarSuministrosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem administrarPersonaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panelControlRopa;
@@ -544,12 +591,20 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboTipo;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ToolStripMenuItem administrarSuministrosToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolStripMenuItem refrescarListadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem versiónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem despacharToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vestimentaCalzadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ingresarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem vestimentaCalzadoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem administrarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem personasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem2;
     }
 }
 

@@ -245,6 +245,7 @@ namespace AlbergueHN
         {
             dialogEntregarProductos form = new dialogEntregarProductos();
             form.ShowDialog();
+            callCargaDatos();
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -291,6 +292,7 @@ namespace AlbergueHN
         {
             dialogIngresarProductos form = new dialogIngresarProductos();
             form.ShowDialog();
+            callCargaDatos();
         }
 
         private void ingresarPersonaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -388,6 +390,67 @@ namespace AlbergueHN
         private void TabPage2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void despacharVestimentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dialogEntregarProductoVestimenta ev = new dialogEntregarProductoVestimenta();
+            ev.ShowDialog();
+            callCargaDatos();
+        }
+
+        private void ingresarVestimentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dialogIngresarVestimenta iv = new dialogIngresarVestimenta();
+            iv.ShowDialog();
+            callCargaDatos();
+        }
+
+        private void PersonasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MantPersonas personas = new MantPersonas();
+            personas.ShowDialog();
+            callCargaDatos();
+        }
+
+        private void ProductosToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            MantProductos productos = new MantProductos();
+            productos.ShowDialog();
+            callCargaDatos();
+        }
+
+        private void VestimentaCalzadoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            dialogIngresarVestimenta iv = new dialogIngresarVestimenta();
+            iv.ShowDialog();
+            callCargaDatos();
+        }
+
+        private void ProductosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            dialogIngresarProductos form = new dialogIngresarProductos();
+            form.ShowDialog();
+            callCargaDatos();
+        }
+
+        private void ProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dialogEntregarProductos form = new dialogEntregarProductos();
+            form.ShowDialog();
+            callCargaDatos();
+        }
+
+        private void VestimentaCalzadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dialogEntregarProductoVestimenta ev = new dialogEntregarProductoVestimenta();
+            ev.ShowDialog();
+            callCargaDatos();
         }
     }
 
