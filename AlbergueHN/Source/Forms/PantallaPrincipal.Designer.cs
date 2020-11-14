@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.exportar2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.panelControlRopa = new System.Windows.Forms.Panel();
@@ -45,6 +46,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tablaSuministros = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.exportar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -84,6 +86,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.exportar2);
             this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Controls.Add(this.panelControlRopa);
             this.tabPage2.Controls.Add(this.txtFiltro);
@@ -100,6 +103,18 @@
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.SizeChanged += new System.EventHandler(this.TabPage2_SizeChanged);
             this.tabPage2.Click += new System.EventHandler(this.TabPage2_Click);
+            // 
+            // exportar2
+            // 
+            this.exportar2.Image = global::AlbergueHN.Properties.Resources.Excel_2013_23480;
+            this.exportar2.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.exportar2.Location = new System.Drawing.Point(880, 54);
+            this.exportar2.Name = "exportar2";
+            this.exportar2.Size = new System.Drawing.Size(162, 42);
+            this.exportar2.TabIndex = 57;
+            this.exportar2.Text = "Exportar a Excel";
+            this.exportar2.UseVisualStyleBackColor = true;
+            this.exportar2.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // panel2
             // 
@@ -258,6 +273,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.exportar);
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label5);
@@ -273,6 +289,18 @@
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.SizeChanged += new System.EventHandler(this.TabPage1_SizeChanged);
             this.tabPage1.Click += new System.EventHandler(this.TabPage1_Click);
+            // 
+            // exportar
+            // 
+            this.exportar.Image = global::AlbergueHN.Properties.Resources.Excel_2013_23480;
+            this.exportar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.exportar.Location = new System.Drawing.Point(880, 54);
+            this.exportar.Name = "exportar";
+            this.exportar.Size = new System.Drawing.Size(162, 42);
+            this.exportar.TabIndex = 44;
+            this.exportar.Text = "Exportar a Excel";
+            this.exportar.UseVisualStyleBackColor = true;
+            this.exportar.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
@@ -605,6 +633,8 @@
         private System.Windows.Forms.ToolStripMenuItem administrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem personasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem2;
+        private System.Windows.Forms.Button exportar;
+        private System.Windows.Forms.Button exportar2;
     }
 }
 

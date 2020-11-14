@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using AlbergueHN.Source.Forms;
 using AlbergueHN.Source.Objetos;
 using MySql.Data.MySqlClient;
+using DataTableExcel = Microsoft.Office.Interop.Excel;
 
 namespace AlbergueHN
 {
@@ -451,6 +452,101 @@ namespace AlbergueHN
             dialogEntregarProductoVestimenta ev = new dialogEntregarProductoVestimenta();
             ev.ShowDialog();
             callCargaDatos();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            personasExcel(tablaPersonas);
+        }
+        public void personasExcel(DataGridView tabla)
+        {
+
+            try
+            {
+                exportar.Enabled = false;
+                //MessageBox.Show("Generando documento", "AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                excel.Application.Workbooks.Add(true);
+                int IndiceColumna = 0;
+                excel.Cells[1, 2] = "Reporte de Personas";
+                excel.Cells[2, 2] = "Fecha actual:";
+                excel.Cells[2, 3] = DateTime.Today;
+                excel.Cells[2, 5] = "Hora: ";
+                excel.Cells[2, 6] = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
+                foreach (DataGridViewColumn col in tabla.Columns) // Columnas
+                {
+                    IndiceColumna++;
+                    excel.Cells[4, IndiceColumna] = col.Name;
+                }
+
+                int IndeceFila = 3;
+                foreach (DataGridViewRow row in tabla.Rows) // Filas
+                {
+                    IndeceFila++;
+                    IndiceColumna = 0;
+                    foreach (DataGridViewColumn col in tabla.Columns)
+                    {
+                        IndiceColumna++;
+                        excel.Cells[IndeceFila + 1, IndiceColumna] = row.Cells[col.Name].Value;
+                    }
+                }
+                MessageBox.Show("Infome generado exitosamente! ", "Informacion - AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                exportar.Enabled = true;
+                excel.Visible = true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ha ocurrido un error en la creación del documento, póngase en contacto con los desarrolladores del sistema.", "Error - AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            productosExcel(tablaSuministros);
+        }
+        public void productosExcel(DataGridView tabla)
+        {
+
+            try
+            {
+                exportar2.Enabled = false;
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                excel.Application.Workbooks.Add(true);
+                int IndiceColumna = 0;
+                excel.Cells[1, 2] = "Reporte de Productos";
+                excel.Cells[2, 2] = "Fecha actual:";
+                excel.Cells[2, 3] = DateTime.Today;
+                excel.Cells[2, 5] = "Hora: ";
+                excel.Cells[2, 6] = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
+                foreach (DataGridViewColumn col in tabla.Columns) // Columnas
+                {
+                    IndiceColumna++;
+                    excel.Cells[4, IndiceColumna] = col.Name;
+                }
+
+                int IndeceFila = 3;
+                foreach (DataGridViewRow row in tabla.Rows) // Filas
+                {
+                    IndeceFila++;
+                    IndiceColumna = 0;
+                    foreach (DataGridViewColumn col in tabla.Columns)
+                    {
+                        IndiceColumna++;
+                        excel.Cells[IndeceFila + 1, IndiceColumna] = row.Cells[col.Name].Value;
+                    }
+                }
+                MessageBox.Show("Infome generado exitosamente! ", "Informacion - AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                exportar2.Enabled = true;
+                excel.Visible = true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ha ocurrido un error en la creación del documento, póngase en contacto con los desarrolladores del sistema.", "Error - AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
     }
 
