@@ -218,16 +218,16 @@
             // 
             // txtFiltro
             // 
-            this.txtFiltro.Location = new System.Drawing.Point(55, 80);
+            this.txtFiltro.Location = new System.Drawing.Point(72, 79);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(261, 20);
+            this.txtFiltro.Size = new System.Drawing.Size(225, 20);
             this.txtFiltro.TabIndex = 54;
             this.txtFiltro.TextChanged += new System.EventHandler(this.TxtFiltro_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 83);
+            this.label2.Location = new System.Drawing.Point(22, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 53;
@@ -237,16 +237,16 @@
             // 
             this.comboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipo.FormattingEnabled = true;
-            this.comboTipo.Location = new System.Drawing.Point(55, 48);
+            this.comboTipo.Location = new System.Drawing.Point(72, 53);
             this.comboTipo.Name = "comboTipo";
-            this.comboTipo.Size = new System.Drawing.Size(121, 21);
+            this.comboTipo.Size = new System.Drawing.Size(150, 21);
             this.comboTipo.TabIndex = 52;
             this.comboTipo.SelectedIndexChanged += new System.EventHandler(this.ComboTipo_SelectedIndexChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 51);
+            this.label6.Location = new System.Drawing.Point(35, 57);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 13);
             this.label6.TabIndex = 51;
@@ -326,7 +326,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 82);
+            this.label4.Location = new System.Drawing.Point(22, 82);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 41;
@@ -335,7 +335,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 58);
+            this.label5.Location = new System.Drawing.Point(3, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 13);
             this.label5.TabIndex = 40;
@@ -351,7 +351,7 @@
             "# Estudiante/Empleado"});
             this.comboFiltro.Location = new System.Drawing.Point(72, 53);
             this.comboFiltro.Name = "comboFiltro";
-            this.comboFiltro.Size = new System.Drawing.Size(202, 21);
+            this.comboFiltro.Size = new System.Drawing.Size(150, 21);
             this.comboFiltro.TabIndex = 39;
             this.comboFiltro.SelectedIndexChanged += new System.EventHandler(this.comboFiltro_SelectedIndexChanged);
             // 
@@ -359,7 +359,7 @@
             // 
             this.txtFiltro1.Location = new System.Drawing.Point(72, 79);
             this.txtFiltro1.Name = "txtFiltro1";
-            this.txtFiltro1.Size = new System.Drawing.Size(507, 20);
+            this.txtFiltro1.Size = new System.Drawing.Size(225, 20);
             this.txtFiltro1.TabIndex = 38;
             this.txtFiltro1.TextChanged += new System.EventHandler(this.txtFiltro1_TextChanged);
             // 
