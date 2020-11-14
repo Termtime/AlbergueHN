@@ -460,26 +460,24 @@ namespace AlbergueHN
         }
         public void personasExcel(DataGridView tabla)
         {
-
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
                 exportar.Enabled = false;
                 //MessageBox.Show("Generando documento", "AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-                excel.Application.Workbooks.Add(true);
+                Microsoft.Office.Interop.Excel.Workbook wb = excel.Application.Workbooks.Add();
+                Microsoft.Office.Interop.Excel.Worksheet hojaDatos = wb.ActiveSheet;
+
                 int IndiceColumna = 0;
-                excel.Cells[1, 2] = "Reporte de Personas";
-                excel.Cells[2, 2] = "Fecha actual:";
-                excel.Cells[2, 3] = DateTime.Today;
-                excel.Cells[2, 5] = "Hora: ";
-                excel.Cells[2, 6] = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
                 foreach (DataGridViewColumn col in tabla.Columns) // Columnas
                 {
                     IndiceColumna++;
-                    excel.Cells[4, IndiceColumna] = col.Name;
+                    hojaDatos.Cells[1, IndiceColumna] = col.Name;
                 }
 
-                int IndeceFila = 3;
+                int IndeceFila = 0;
+                int test;
                 foreach (DataGridViewRow row in tabla.Rows) // Filas
                 {
                     IndeceFila++;
@@ -487,15 +485,54 @@ namespace AlbergueHN
                     foreach (DataGridViewColumn col in tabla.Columns)
                     {
                         IndiceColumna++;
-                        excel.Cells[IndeceFila + 1, IndiceColumna] = row.Cells[col.Name].Value;
+                        hojaDatos.Cells[IndeceFila + 1, IndiceColumna] = "'" + row.Cells[col.Name].Value;
                     }
                 }
-                MessageBox.Show("Infome generado exitosamente! ", "Informacion - AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                int numCol = tabla.Columns.Count;
+                int numRow = tabla.Rows.Count;
+
+                Microsoft.Office.Interop.Excel.Worksheet hojaReporte = excel.Sheets.Add();
+                hojaReporte.Name = "Reporte personas";
+
+                Microsoft.Office.Interop.Excel.Range oRange = hojaDatos.UsedRange;
+                Microsoft.Office.Interop.Excel.PivotCache oPivotCache = (Microsoft.Office.Interop.Excel.PivotCache)wb.PivotCaches().Add(Microsoft.Office.Interop.Excel.XlPivotTableSourceType.xlDatabase, oRange);
+                Microsoft.Office.Interop.Excel.Range oRange2 = hojaReporte.Cells[4,1];
+                Microsoft.Office.Interop.Excel.PivotCaches pch = wb.PivotCaches();
+                pch.Add(Microsoft.Office.Interop.Excel.XlPivotTableSourceType.xlDatabase, oRange).CreatePivotTable(hojaReporte.Cells[4, 2], "reportePersonas", Type.Missing, Type.Missing);
+                Microsoft.Office.Interop.Excel.PivotTable pvt = hojaReporte.PivotTables("reportePersonas") as Microsoft.Office.Interop.Excel.PivotTable;
+                pvt.ShowDrillIndicators = false;
+
+                IndiceColumna = 0;
+                foreach (DataGridViewColumn col in tabla.Columns) // Columnas
+                {
+                    IndiceColumna++;
+                    Microsoft.Office.Interop.Excel.PivotField field = (Microsoft.Office.Interop.Excel.PivotField)pvt.PivotFields(col.Name);
+                    field.Orientation = Microsoft.Office.Interop.Excel.XlPivotFieldOrientation.xlRowField;
+                    field.Subtotals[1] = false;
+                }
+
+                hojaReporte.UsedRange.Columns.AutoFit();
+                pvt.RowGrand = false;
+                pvt.ColumnGrand = false;
+
+                hojaDatos.Delete();
+                hojaReporte.Activate();
+                hojaReporte.Cells[1, 2] = "Reporte de Personas";
+                hojaReporte.Cells[2, 2] = "Fecha:";
+                hojaReporte.Cells[2, 3] = DateTime.Today;
+                hojaReporte.Cells[2, 5] = "Hora: ";
+                hojaReporte.Cells[2, 6] = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
+                MessageBox.Show("Infome generado exitosamente.", "Informacion - AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 exportar.Enabled = true;
                 excel.Visible = true;
+                Cursor.Current = Cursors.Default;
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.StackTrace);
+                Cursor.Current = Cursors.Default;
+                exportar.Enabled = true;
                 MessageBox.Show("Ha ocurrido un error en la creación del documento, póngase en contacto con los desarrolladores del sistema.", "Error - AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
