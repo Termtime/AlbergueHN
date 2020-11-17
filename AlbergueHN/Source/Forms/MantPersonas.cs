@@ -17,6 +17,8 @@ namespace AlbergueHN.Source.Forms
         public MantPersonas()
         {
             InitializeComponent();
+            Bitmap icono = AlbergueHN.Properties.Resources.icono;
+            this.Icon = Icon.FromHandle(icono.GetHicon());
         }
         DataTable dt = new DataTable();
         string stringConexion = (string)Properties.Settings.Default["stringConexion"];

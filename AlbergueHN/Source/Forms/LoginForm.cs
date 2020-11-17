@@ -18,7 +18,8 @@ namespace AlbergueHN.Source.Forms
         public LoginForm()
         {
             InitializeComponent();
-            
+            Bitmap icono = AlbergueHN.Properties.Resources.icono;
+            this.Icon = Icon.FromHandle(icono.GetHicon());
         }
 
         private void Button2_Click(object sender, EventArgs e)

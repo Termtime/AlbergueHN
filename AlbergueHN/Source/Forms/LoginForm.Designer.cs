@@ -231,7 +231,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::AlbergueHN.Properties.Resources.logo_nuevo1;
+            this.pictureBox1.Image = global::AlbergueHN.Properties.Resources.icono;
             this.pictureBox1.Location = new System.Drawing.Point(24, 61);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(300, 259);

@@ -22,6 +22,8 @@ namespace AlbergueHN.Source.Forms
         public dialogModificarProducto()
         {
             InitializeComponent();
+            Bitmap icono = AlbergueHN.Properties.Resources.icono;
+            this.Icon = Icon.FromHandle(icono.GetHicon());
         }
 
         private void ComboTipo_SelectedIndexChanged(object sender, EventArgs e)
