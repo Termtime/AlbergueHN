@@ -1,18 +1,11 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using AlbergueHN.Source.Forms;
+﻿using AlbergueHN.Source.Forms;
 using AlbergueHN.Source.Objetos;
 using MySql.Data.MySqlClient;
+using System;
+using System.Data;
+using System.Drawing;
+using System.Threading;
+using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace AlbergueHN
@@ -456,13 +449,20 @@ namespace AlbergueHN
 
         private void button1_Click(object sender, EventArgs e)
         {
-            personasExcel(tablaPersonas);
+            string nombreHojaReporte = "Reporte personas";
+            string tituloReporte = "Reporte de Personas";
+            string celdaInicioTitulo = "C2";
+            string celdaFinTitulo = "G2";
+            int indexInicioTitulo = 3;
+            int indexFinTitulo = 7;
+            generarReporte(tablaPersonas, nombreHojaReporte, tituloReporte, celdaInicioTitulo, celdaFinTitulo, indexInicioTitulo, indexFinTitulo);
         }
-        public void personasExcel(DataGridView tabla)
+        public void generarReporte(DataGridView tabla, string nombreHojaReporte, string tituloReporte, string celdaInicioTitulo, string celdaFinTitulo, int indexInicioTitulo, int indexFinTitulo)
         {
             ////Para futura referencia, esta es una forma probable de obtener un rango de celdas basado en indices
             ////Excel.Range range = hoja.Ranges(hoja.Cells[1, 1], hoja.Cells[1, 2]);
             string columnaOrdenamiento = "Filtro";
+            
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
@@ -494,7 +494,7 @@ namespace AlbergueHN
                 }
 
                 Excel.Worksheet hojaReporte = excel.Sheets.Add();
-                hojaReporte.Name = "Reporte personas";
+                hojaReporte.Name = nombreHojaReporte;
                 hojaReporte.Activate();
 
                 Excel.Range oRange = hojaDatos.UsedRange;
@@ -530,21 +530,25 @@ namespace AlbergueHN
 
                 //hacer que las columnas tengan el tamaño adecuado
                 hojaReporte.UsedRange.Columns.AutoFit();
-                
-                hojaReporte.Range["I1"].EntireColumn.Hidden = true; //ocultando la columna de sort
-                //hojaReporte.Range["A5"].EntireRow.Hidden = true; //ocultando la fila de sort
+
+                //int startIndex = indexColumnaOrdenamiento.IndexOfAny("0123456789".ToCharArray());
+                //string indicatedColumnLetter = indexColumnaOrdenamiento.Substring(0, startIndex);
+
+                string column = obtenerNombreColExcel(tabla.Columns.Count + 2); // se agregan mas dos por la posicion inicial de la tabla y la columna de ordenamiento extra
+
+                hojaReporte.Range[column+"1"].EntireColumn.Hidden = true; //ocultando la columna de sort
 
                 //agregar el dato de encabezado
-                hojaReporte.Cells[2, 3] = "Reporte de Personas";
-                Excel.Range titulo = hojaReporte.Range["C2", "G2"];
+                hojaReporte.Cells[2, 3] = tituloReporte;
+                Excel.Range titulo = hojaReporte.Range[celdaInicioTitulo, celdaFinTitulo] ;
                 titulo.Merge();
                 titulo.Font.Bold = true;
                 titulo.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                 titulo.Borders[Excel.XlBordersIndex.xlEdgeBottom].Color = Color.Black;
-                hojaReporte.Cells[3, 3] = "Fecha:";
-                hojaReporte.Cells[3, 4] = DateTime.Today;
-                hojaReporte.Cells[3, 6] = "Hora:";
-                hojaReporte.Cells[3, 7] = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
+                hojaReporte.Cells[3, indexInicioTitulo] = "Fecha:";
+                hojaReporte.Cells[3, indexInicioTitulo + 1] = DateTime.Today;
+                hojaReporte.Cells[3, indexFinTitulo - 1] = "Hora:";
+                hojaReporte.Cells[3, indexFinTitulo] = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
 
                 //eliminar la hoja de datos
                 excel.DisplayAlerts = false; //bypass del bug que evita que se elimine la hoja
@@ -552,7 +556,7 @@ namespace AlbergueHN
                 hojaDatos.Delete();
                 hojaReporte.Activate();
                 excel.DisplayAlerts = true; //retornar la propiedad al valor original
-                MessageBox.Show("Infome generado exitosamente.", "Informacion - AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Infome generado exitosamente.", "Operación completa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 exportar.Enabled = true;
                 excel.Visible = true;
                 Cursor.Current = Cursors.Default;
@@ -567,52 +571,31 @@ namespace AlbergueHN
 
             
         }
+        private string obtenerNombreColExcel(int numCol)
+        {
+            int dividendo = numCol;
+            string columnName = String.Empty;
+            int modulo;
+
+            while (dividendo > 0)
+            {
+                modulo = (dividendo - 1) % 26;
+                columnName = Convert.ToChar(65 + modulo).ToString() + columnName;
+                dividendo = (int)((dividendo - modulo) / 26);
+            }
+
+            return columnName;
+        }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            productosExcel(tablaSuministros);
-        }
-        public void productosExcel(DataGridView tabla)
-        {
-
-            try
-            {
-                exportar2.Enabled = false;
-                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-                excel.Application.Workbooks.Add(true);
-                int IndiceColumna = 0;
-                excel.Cells[1, 2] = "Reporte de Productos";
-                excel.Cells[2, 2] = "Fecha actual:";
-                excel.Cells[2, 3] = DateTime.Today;
-                excel.Cells[2, 5] = "Hora: ";
-                excel.Cells[2, 6] = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
-                foreach (DataGridViewColumn col in tabla.Columns) // Columnas
-                {
-                    IndiceColumna++;
-                    excel.Cells[4, IndiceColumna] = col.Name;
-                }
-
-                int IndeceFila = 3;
-                foreach (DataGridViewRow row in tabla.Rows) // Filas
-                {
-                    IndeceFila++;
-                    IndiceColumna = 0;
-                    foreach (DataGridViewColumn col in tabla.Columns)
-                    {
-                        IndiceColumna++;
-                        excel.Cells[IndeceFila + 1, IndiceColumna] = row.Cells[col.Name].Value;
-                    }
-                }
-                MessageBox.Show("Infome generado exitosamente! ", "Informacion - AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                exportar2.Enabled = true;
-                excel.Visible = true;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Ha ocurrido un error en la creación del documento, póngase en contacto con los desarrolladores del sistema.", "Error - AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
+            string nombreHojaReporte = "Reporte productos";
+            string tituloReporte = "Reporte de Productos";
+            string celdaInicioTitulo = "C2";
+            string celdaFinTitulo = "F2";
+            int indexInicioTitulo = 3;
+            int indexFinTitulo = 6;
+            generarReporte(tablaSuministros, nombreHojaReporte, tituloReporte, celdaInicioTitulo, celdaFinTitulo, indexInicioTitulo, indexFinTitulo);
         }
     }
 
