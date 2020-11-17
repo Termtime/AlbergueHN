@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.exportar2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.panelControlRopa = new System.Windows.Forms.Panel();
@@ -45,6 +46,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tablaSuministros = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.exportar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -84,6 +86,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.exportar2);
             this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Controls.Add(this.panelControlRopa);
             this.tabPage2.Controls.Add(this.txtFiltro);
@@ -100,6 +103,18 @@
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.SizeChanged += new System.EventHandler(this.TabPage2_SizeChanged);
             this.tabPage2.Click += new System.EventHandler(this.TabPage2_Click);
+            // 
+            // exportar2
+            // 
+            this.exportar2.Image = global::AlbergueHN.Properties.Resources.Excel_2013_23480;
+            this.exportar2.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.exportar2.Location = new System.Drawing.Point(880, 54);
+            this.exportar2.Name = "exportar2";
+            this.exportar2.Size = new System.Drawing.Size(162, 42);
+            this.exportar2.TabIndex = 57;
+            this.exportar2.Text = "Exportar a Excel";
+            this.exportar2.UseVisualStyleBackColor = true;
+            this.exportar2.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // panel2
             // 
@@ -203,16 +218,16 @@
             // 
             // txtFiltro
             // 
-            this.txtFiltro.Location = new System.Drawing.Point(55, 80);
+            this.txtFiltro.Location = new System.Drawing.Point(72, 79);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(261, 20);
+            this.txtFiltro.Size = new System.Drawing.Size(225, 20);
             this.txtFiltro.TabIndex = 54;
             this.txtFiltro.TextChanged += new System.EventHandler(this.TxtFiltro_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 83);
+            this.label2.Location = new System.Drawing.Point(22, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 53;
@@ -222,16 +237,16 @@
             // 
             this.comboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipo.FormattingEnabled = true;
-            this.comboTipo.Location = new System.Drawing.Point(55, 48);
+            this.comboTipo.Location = new System.Drawing.Point(72, 53);
             this.comboTipo.Name = "comboTipo";
-            this.comboTipo.Size = new System.Drawing.Size(121, 21);
+            this.comboTipo.Size = new System.Drawing.Size(150, 21);
             this.comboTipo.TabIndex = 52;
             this.comboTipo.SelectedIndexChanged += new System.EventHandler(this.ComboTipo_SelectedIndexChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 51);
+            this.label6.Location = new System.Drawing.Point(35, 57);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 13);
             this.label6.TabIndex = 51;
@@ -258,6 +273,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.exportar);
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label5);
@@ -273,6 +289,18 @@
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.SizeChanged += new System.EventHandler(this.TabPage1_SizeChanged);
             this.tabPage1.Click += new System.EventHandler(this.TabPage1_Click);
+            // 
+            // exportar
+            // 
+            this.exportar.Image = global::AlbergueHN.Properties.Resources.Excel_2013_23480;
+            this.exportar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.exportar.Location = new System.Drawing.Point(880, 54);
+            this.exportar.Name = "exportar";
+            this.exportar.Size = new System.Drawing.Size(162, 42);
+            this.exportar.TabIndex = 44;
+            this.exportar.Text = "Exportar a Excel";
+            this.exportar.UseVisualStyleBackColor = true;
+            this.exportar.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
@@ -298,7 +326,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 82);
+            this.label4.Location = new System.Drawing.Point(22, 82);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 41;
@@ -307,7 +335,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 58);
+            this.label5.Location = new System.Drawing.Point(3, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 13);
             this.label5.TabIndex = 40;
@@ -323,7 +351,7 @@
             "# Estudiante/Empleado"});
             this.comboFiltro.Location = new System.Drawing.Point(72, 53);
             this.comboFiltro.Name = "comboFiltro";
-            this.comboFiltro.Size = new System.Drawing.Size(202, 21);
+            this.comboFiltro.Size = new System.Drawing.Size(150, 21);
             this.comboFiltro.TabIndex = 39;
             this.comboFiltro.SelectedIndexChanged += new System.EventHandler(this.comboFiltro_SelectedIndexChanged);
             // 
@@ -331,7 +359,7 @@
             // 
             this.txtFiltro1.Location = new System.Drawing.Point(72, 79);
             this.txtFiltro1.Name = "txtFiltro1";
-            this.txtFiltro1.Size = new System.Drawing.Size(507, 20);
+            this.txtFiltro1.Size = new System.Drawing.Size(225, 20);
             this.txtFiltro1.TabIndex = 38;
             this.txtFiltro1.TextChanged += new System.EventHandler(this.txtFiltro1_TextChanged);
             // 
@@ -605,6 +633,8 @@
         private System.Windows.Forms.ToolStripMenuItem administrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem personasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem2;
+        private System.Windows.Forms.Button exportar;
+        private System.Windows.Forms.Button exportar2;
     }
 }
 

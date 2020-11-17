@@ -1,18 +1,12 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using AlbergueHN.Source.Forms;
+﻿using AlbergueHN.Source.Forms;
 using AlbergueHN.Source.Objetos;
 using MySql.Data.MySqlClient;
+using System;
+using System.Data;
+using System.Drawing;
+using System.Threading;
+using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace AlbergueHN
 {
@@ -451,6 +445,157 @@ namespace AlbergueHN
             dialogEntregarProductoVestimenta ev = new dialogEntregarProductoVestimenta();
             ev.ShowDialog();
             callCargaDatos();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string nombreHojaReporte = "Reporte personas";
+            string tituloReporte = "Reporte de Personas";
+            string celdaInicioTitulo = "C2";
+            string celdaFinTitulo = "G2";
+            int indexInicioTitulo = 3;
+            int indexFinTitulo = 7;
+            generarReporte(tablaPersonas, nombreHojaReporte, tituloReporte, celdaInicioTitulo, celdaFinTitulo, indexInicioTitulo, indexFinTitulo);
+        }
+        public void generarReporte(DataGridView tabla, string nombreHojaReporte, string tituloReporte, string celdaInicioTitulo, string celdaFinTitulo, int indexInicioTitulo, int indexFinTitulo)
+        {
+            ////Para futura referencia, esta es una forma probable de obtener un rango de celdas basado en indices
+            ////Excel.Range range = hoja.Ranges(hoja.Cells[1, 1], hoja.Cells[1, 2]);
+            string columnaOrdenamiento = "Filtro";
+            
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                exportar.Enabled = false;
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbook wb = excel.Application.Workbooks.Add();
+                Microsoft.Office.Interop.Excel.Worksheet hojaDatos = wb.ActiveSheet;
+
+                int IndiceColumna = 0;
+                foreach (DataGridViewColumn col in tabla.Columns) // Columnas
+                {
+                    IndiceColumna++;
+                    hojaDatos.Cells[1, IndiceColumna] = col.Name;
+                }
+
+                //agregar campo de ordenamiento
+                hojaDatos.Cells[1, IndiceColumna + 1] = columnaOrdenamiento;
+                int IndiceFila = 0;
+                foreach (DataGridViewRow row in tabla.Rows) // Filas
+                {
+                    IndiceFila++;
+                    IndiceColumna = 0;
+                    foreach (DataGridViewColumn col in tabla.Columns)
+                    {
+                        IndiceColumna++;
+                        hojaDatos.Cells[IndiceFila + 1, IndiceColumna] = "'" + row.Cells[col.Name].Value;
+                    }
+                    hojaDatos.Cells[IndiceFila + 1, IndiceColumna + 1] = columnaOrdenamiento;
+                }
+
+                Excel.Worksheet hojaReporte = excel.Sheets.Add();
+                hojaReporte.Name = nombreHojaReporte;
+                hojaReporte.Activate();
+
+                Excel.Range oRange = hojaDatos.UsedRange;
+
+                Excel.PivotCache oPivotCache = wb.PivotCaches().Create(Excel.XlPivotTableSourceType.xlDatabase, oRange, Type.Missing);
+                Excel.Range oRange2 = hojaReporte.Cells[5, 2];
+                Excel.PivotCaches pch = wb.PivotCaches();
+                pch.Add(Microsoft.Office.Interop.Excel.XlPivotTableSourceType.xlDatabase, oRange).CreatePivotTable(oRange2, "reportePersonas", Type.Missing, Type.Missing);
+                Excel.PivotTable pvt = hojaReporte.PivotTables("reportePersonas") as Excel.PivotTable;
+
+                //configuracion de la tabla dinamica
+                pvt.RowGrand = false; //Ocultar los totales y subtotales de la tabla dinamica
+                pvt.ColumnGrand = false; //Ocultar los totales y subtotales de la tabla dinamica
+
+                pvt.EnableFieldList = false; //desactivar la opcion para apagar o encender campos en la tabla dinamica
+                pvt.ShowDrillIndicators = false; //quitar los simbolos de + en cada celda
+                pvt.EnableDrilldown = false; //no permitir minimizar las filas
+                pvt.InGridDropZones = false; //no permitir drag&drop de las columnas
+                pvt.ShowTableStyleRowHeaders = false; //no mostrar columna de por medio en negrita/otro color, segun el estilo de tabla
+                pvt.TableStyle2 = "PivotStyleMedium9"; //settear estilo de tabla
+
+                foreach (DataGridViewColumn col in tabla.Columns) // Columnas
+                {
+                    Excel.PivotField field = (Excel.PivotField)pvt.PivotFields(col.Name);
+                    field.Orientation = Excel.XlPivotFieldOrientation.xlRowField;
+                    field.Subtotals[1] = false;
+                }
+
+                //agregar el PivotField para el campo de ordenamiento
+                Excel.PivotField f = (Excel.PivotField)pvt.PivotFields(columnaOrdenamiento);
+                f.Orientation = Excel.XlPivotFieldOrientation.xlDataField;
+                f.Name = "No remover, ocultar solamente";
+
+                //hacer que las columnas tengan el tamaño adecuado
+                hojaReporte.UsedRange.Columns.AutoFit();
+
+                //int startIndex = indexColumnaOrdenamiento.IndexOfAny("0123456789".ToCharArray());
+                //string indicatedColumnLetter = indexColumnaOrdenamiento.Substring(0, startIndex);
+
+                string column = obtenerNombreColExcel(tabla.Columns.Count + 2); // se agregan mas dos por la posicion inicial de la tabla y la columna de ordenamiento extra
+
+                hojaReporte.Range[column+"1"].EntireColumn.Hidden = true; //ocultando la columna de sort
+
+                //agregar el dato de encabezado
+                hojaReporte.Cells[2, 3] = tituloReporte;
+                Excel.Range titulo = hojaReporte.Range[celdaInicioTitulo, celdaFinTitulo] ;
+                titulo.Merge();
+                titulo.Font.Bold = true;
+                titulo.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                titulo.Borders[Excel.XlBordersIndex.xlEdgeBottom].Color = Color.Black;
+                hojaReporte.Cells[3, indexInicioTitulo] = "Fecha:";
+                hojaReporte.Cells[3, indexInicioTitulo + 1] = DateTime.Today;
+                hojaReporte.Cells[3, indexFinTitulo - 1] = "Hora:";
+                hojaReporte.Cells[3, indexFinTitulo] = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
+
+                //eliminar la hoja de datos
+                excel.DisplayAlerts = false; //bypass del bug que evita que se elimine la hoja
+                hojaDatos.Activate();
+                hojaDatos.Delete();
+                hojaReporte.Activate();
+                excel.DisplayAlerts = true; //retornar la propiedad al valor original
+                MessageBox.Show("Infome generado exitosamente.", "Operación completa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                exportar.Enabled = true;
+                excel.Visible = true;
+                Cursor.Current = Cursors.Default;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                Cursor.Current = Cursors.Default;
+                exportar.Enabled = true;
+                MessageBox.Show("Ha ocurrido un error en la creación del documento, póngase en contacto con los desarrolladores del sistema.", "Error - AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            
+        }
+        private string obtenerNombreColExcel(int numCol)
+        {
+            int dividendo = numCol;
+            string columnName = String.Empty;
+            int modulo;
+
+            while (dividendo > 0)
+            {
+                modulo = (dividendo - 1) % 26;
+                columnName = Convert.ToChar(65 + modulo).ToString() + columnName;
+                dividendo = (int)((dividendo - modulo) / 26);
+            }
+
+            return columnName;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string nombreHojaReporte = "Reporte productos";
+            string tituloReporte = "Reporte de Productos";
+            string celdaInicioTitulo = "C2";
+            string celdaFinTitulo = "F2";
+            int indexInicioTitulo = 3;
+            int indexFinTitulo = 6;
+            generarReporte(tablaSuministros, nombreHojaReporte, tituloReporte, celdaInicioTitulo, celdaFinTitulo, indexInicioTitulo, indexFinTitulo);
         }
     }
 
