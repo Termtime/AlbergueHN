@@ -7,7 +7,7 @@
     <ProjectGuid>{ECD173A8-25E2-41BF-B773-826BE277515C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>AlbergueHN</RootNamespace>
-    <AssemblyName>AlbergueHN</AssemblyName>
+    <AssemblyName>AlbergueHNv1.1.0</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -255,6 +255,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AlbergueHN.ico" />
+    <Content Include="AlbergueHNnuevo.ico" />
     <None Include="Resources\Excel_2013_23480.png" />
   </ItemGroup>
   <ItemGroup>
