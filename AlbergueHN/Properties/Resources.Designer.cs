@@ -89,6 +89,10 @@ namespace AlbergueHN.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gradient__6_ {
             get {
                 object obj = ResourceManager.GetObject("gradient (6)", resourceCulture);
@@ -109,19 +113,9 @@ namespace AlbergueHN.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logo_nuevo1 {
+        internal static System.Drawing.Bitmap icono {
             get {
-                object obj = ResourceManager.GetObject("logo nuevo1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap noun_Gear_257641 {
-            get {
-                object obj = ResourceManager.GetObject("noun_Gear_257641", resourceCulture);
+                object obj = ResourceManager.GetObject("icono", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

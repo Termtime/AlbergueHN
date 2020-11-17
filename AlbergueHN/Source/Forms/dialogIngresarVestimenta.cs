@@ -24,6 +24,8 @@ namespace AlbergueHN.Source.Forms
         public dialogIngresarVestimenta()
         {
             InitializeComponent();
+            Bitmap icono = AlbergueHN.Properties.Resources.icono;
+            this.Icon = Icon.FromHandle(icono.GetHicon());
         }
 
         private void dialogIngresarVestimenta_Load(object sender, EventArgs e)

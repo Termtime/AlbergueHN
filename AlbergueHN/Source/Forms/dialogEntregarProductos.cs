@@ -28,6 +28,8 @@ namespace AlbergueHN.Source.Forms
         public dialogEntregarProductos()
         {
             InitializeComponent();
+            Bitmap icono = AlbergueHN.Properties.Resources.icono;
+            this.Icon = Icon.FromHandle(icono.GetHicon());
         }
 
         private void DialogDespacharProductos_Load(object sender, EventArgs e)

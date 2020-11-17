@@ -27,6 +27,8 @@ namespace AlbergueHN.Source.Forms
         public dialogEntregarProductoVestimenta()
         {
             InitializeComponent();
+            Bitmap icono = AlbergueHN.Properties.Resources.icono;
+            this.Icon = Icon.FromHandle(icono.GetHicon());
         }
 
        

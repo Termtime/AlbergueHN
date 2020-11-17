@@ -18,6 +18,8 @@ namespace AlbergueHN.Source.Forms
         public MantProductos()
         {
             InitializeComponent();
+            Bitmap icono = AlbergueHN.Properties.Resources.icono;
+            this.Icon = Icon.FromHandle(icono.GetHicon());
         }
 
         public void callCargaProductos() {

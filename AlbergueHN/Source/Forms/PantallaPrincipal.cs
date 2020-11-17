@@ -21,6 +21,8 @@ namespace AlbergueHN
         public Form1()
         {
             InitializeComponent();
+            Bitmap icono = AlbergueHN.Properties.Resources.icono;
+            this.Icon = Icon.FromHandle(icono.GetHicon());
             this.ResizeBegin += (s, e) => { this.SuspendLayout(); };
             this.ResizeEnd += (s, e) => { this.ResumeLayout(true); };
 
@@ -332,7 +334,7 @@ namespace AlbergueHN
 
         private void cerrarSesion()
         {
-            this.Hide();
+            this.Dispose();
             loginRef.Show();
             UsuarioActual.ID = null;
         }

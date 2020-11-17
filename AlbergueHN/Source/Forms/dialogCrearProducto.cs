@@ -18,6 +18,8 @@ namespace AlbergueHN.Source.Forms
         public dialogCrearProducto()
         {
             InitializeComponent();
+            Bitmap icono = AlbergueHN.Properties.Resources.icono;
+            this.Icon = Icon.FromHandle(icono.GetHicon());
         }
         string stringConexion = (string)Properties.Settings.Default["stringConexion"];
         private void dialogProducto_Load(object sender, EventArgs e)

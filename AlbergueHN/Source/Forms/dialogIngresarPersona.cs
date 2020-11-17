@@ -16,6 +16,8 @@ namespace AlbergueHN.Source.Forms
         public dialogIngresarPersona()
         {
             InitializeComponent();
+            Bitmap icono = AlbergueHN.Properties.Resources.icono;
+            this.Icon = Icon.FromHandle(icono.GetHicon());
         }
         string StringConexion = (string)Properties.Settings.Default["stringConexion"];
 

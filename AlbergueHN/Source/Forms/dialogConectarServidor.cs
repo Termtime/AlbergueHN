@@ -18,6 +18,8 @@ namespace AlbergueHN.Source.Forms
         public dialogConectarServidor()
         {
             InitializeComponent();
+            Bitmap icono = AlbergueHN.Properties.Resources.icono;
+            this.Icon = Icon.FromHandle(icono.GetHicon());
         }
 
         private void BtnConectar_Click(object sender, EventArgs e)

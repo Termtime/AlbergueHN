@@ -18,6 +18,8 @@ namespace AlbergueHN.Source.Forms
         public dialogModificarPersona()
         {
             InitializeComponent();
+            Bitmap icono = AlbergueHN.Properties.Resources.icono;
+            this.Icon = Icon.FromHandle(icono.GetHicon());
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)
