@@ -285,6 +285,23 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+    <None Include="Resources\noun_Gear_2576411.png" />
+    <None Include="Resources\noun_Gear_257641.png" />
+    <None Include="Resources\gradient %288%29.png" />
+    <None Include="Resources\gradient %287%29.png" />
+    <None Include="Resources\gradient %286%29.png" />
+    <None Include="Resources\gradient %285%29.png" />
+    <None Include="Resources\gradient %284%29.png" />
+    <None Include="Resources\gradient %283%29.png" />
+    <None Include="Resources\gradient %282%29.png" />
+    <None Include="Resources\gradient %281%29.png" />
+    <None Include="Resources\gradient.png" />
+    <None Include="Resources\logo nuevo1.png" />
+    <None Include="Resources\logo nuevo.png" />
+    <None Include="Resources\logo fondo transparente blanco1.png" />
+    <None Include="Resources\logo fondo transparente blanco.png" />
+    <None Include="Resources\logo transparente.png" />
+    <None Include="Resources\logo fondo blanco lineas azules.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
