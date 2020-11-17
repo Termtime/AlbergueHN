@@ -603,12 +603,13 @@ namespace AlbergueHN
 
     public static class INFORMACION
     {
-        public const string VERSION = "1.0.0";
+        public const string VERSION = "1.1.0";
         public static readonly string[] DEVELOPERS = {
             "MARIO FERNANDO MEJÍA INESTROZA",
             "JORGE ALEJANDRO ARITA MARTHEL ",
-            "BRÉNEDIN GOMEZ",
             "MARIA FERNANDA BARAHONA DUARTE",
+            "BRÉNEDIN GOMEZ",
+            "ANDREA NOHEMY ARCHILA CACERES",
             "CARLOS ADONAY MENJIVAR ALEMAN",
             "RAUL EDGARDO CRUZ MENDOZA"
         };
