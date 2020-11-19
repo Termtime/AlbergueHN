@@ -599,6 +599,94 @@ namespace AlbergueHN
             int indexFinTitulo = 6;
             generarReporte(tablaSuministros, nombreHojaReporte, tituloReporte, celdaInicioTitulo, celdaFinTitulo, indexInicioTitulo, indexFinTitulo);
         }
+
+        private void comboFiltro_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var combo = sender as ComboBox;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
+                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                         e.Font,
+                                         new SolidBrush(SystemColors.HighlightText),
+                                         new Point(e.Bounds.X, e.Bounds.Y));
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
+                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                              e.Font,
+                                              new SolidBrush(Color.Black),
+                                              new Point(e.Bounds.X, e.Bounds.Y));
+            }
+        }
+
+        private void comboTipo_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var combo = sender as ComboBox;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
+                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                         e.Font,
+                                         new SolidBrush(SystemColors.HighlightText),
+                                         new Point(e.Bounds.X, e.Bounds.Y));
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
+                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                              e.Font,
+                                              new SolidBrush(Color.Black),
+                                              new Point(e.Bounds.X, e.Bounds.Y));
+            }
+        }
+
+        private void comboTalla_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var combo = sender as ComboBox;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
+                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                         e.Font,
+                                         new SolidBrush(SystemColors.HighlightText),
+                                         new Point(e.Bounds.X, e.Bounds.Y));
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
+                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                              e.Font,
+                                              new SolidBrush(Color.Black),
+                                              new Point(e.Bounds.X, e.Bounds.Y));
+            }
+        }
+
+        private void comboTipo_DrawItem_1(object sender, DrawItemEventArgs e)
+        {
+            var combo = sender as ComboBox;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
+                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                         e.Font,
+                                         new SolidBrush(SystemColors.HighlightText),
+                                         new Point(e.Bounds.X, e.Bounds.Y));
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
+                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                              e.Font,
+                                              new SolidBrush(Color.Black),
+                                              new Point(e.Bounds.X, e.Bounds.Y));
+            }
+        }
     }
 
     public static class INFORMACION
