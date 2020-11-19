@@ -123,9 +123,39 @@ namespace AlbergueHN.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap noun_boxes_5440141 {
+            get {
+                object obj = ResourceManager.GetObject("noun_boxes_5440141", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap noun_Gear_2576411 {
             get {
                 object obj = ResourceManager.GetObject("noun_Gear_2576411", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noun_people_3267727 {
+            get {
+                object obj = ResourceManager.GetObject("noun_people_3267727", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noun_Search_1451786 {
+            get {
+                object obj = ResourceManager.GetObject("noun_Search_1451786", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
