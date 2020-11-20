@@ -487,7 +487,6 @@ namespace AlbergueHN.Source.Forms
 
         private void listaProductos_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
-
             e.Graphics.FillRectangle(SystemBrushes.ControlLightLight, e.Bounds);
             using (StringFormat sf = new StringFormat())
             {
