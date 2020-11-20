@@ -174,6 +174,7 @@
             // comboTalla
             // 
             this.comboTalla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.comboTalla.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboTalla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboTalla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboTalla.FormattingEnabled = true;

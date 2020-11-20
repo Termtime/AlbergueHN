@@ -80,6 +80,7 @@
             // comboPersonas
             // 
             this.comboPersonas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.comboPersonas.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboPersonas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboPersonas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboPersonas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -89,6 +90,7 @@
             this.comboPersonas.Name = "comboPersonas";
             this.comboPersonas.Size = new System.Drawing.Size(532, 28);
             this.comboPersonas.TabIndex = 76;
+            this.comboPersonas.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboPersonas_DrawItem);
             // 
             // label2
             // 
