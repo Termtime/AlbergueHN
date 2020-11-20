@@ -113,7 +113,7 @@
             this.txtFiltro.Margin = new System.Windows.Forms.Padding(4);
             this.txtFiltro.Multiline = true;
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(347, 20);
+            this.txtFiltro.Size = new System.Drawing.Size(347, 22);
             this.txtFiltro.TabIndex = 80;
             this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged_1);
             // 
@@ -218,6 +218,7 @@
             // 
             this.btnDespachar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDespachar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(154)))), ((int)(((byte)(191)))));
+            this.btnDespachar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDespachar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(154)))), ((int)(((byte)(191)))));
             this.btnDespachar.FlatAppearance.BorderSize = 0;
             this.btnDespachar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -228,7 +229,7 @@
             this.btnDespachar.Name = "btnDespachar";
             this.btnDespachar.Size = new System.Drawing.Size(257, 47);
             this.btnDespachar.TabIndex = 83;
-            this.btnDespachar.Text = "Terminar y despachar";
+            this.btnDespachar.Text = "Terminar y Despachar";
             this.btnDespachar.UseVisualStyleBackColor = false;
             this.btnDespachar.Click += new System.EventHandler(this.btnDespachar_Click);
             // 
@@ -236,6 +237,7 @@
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnLimpiar.FlatAppearance.BorderSize = 0;
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -308,12 +310,12 @@
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Talla";
+            this.columnHeader3.Text = "Tipo";
             this.columnHeader3.Width = 93;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Tipo";
+            this.columnHeader4.Text = "Talla";
             this.columnHeader4.Width = 53;
             // 
             // columnHeader5

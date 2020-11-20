@@ -150,6 +150,7 @@
             this.txtFiltro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.txtFiltro.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFiltro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtFiltro.Location = new System.Drawing.Point(34, 223);
             this.txtFiltro.Margin = new System.Windows.Forms.Padding(4);
             this.txtFiltro.Multiline = true;
@@ -192,6 +193,7 @@
             this.btnDespachar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDespachar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(154)))), ((int)(((byte)(191)))));
             this.btnDespachar.CausesValidation = false;
+            this.btnDespachar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDespachar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(154)))), ((int)(((byte)(191)))));
             this.btnDespachar.FlatAppearance.BorderSize = 0;
             this.btnDespachar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -202,7 +204,7 @@
             this.btnDespachar.Name = "btnDespachar";
             this.btnDespachar.Size = new System.Drawing.Size(257, 47);
             this.btnDespachar.TabIndex = 44;
-            this.btnDespachar.Text = "Terminar y despachar";
+            this.btnDespachar.Text = "Terminar y Despachar";
             this.btnDespachar.UseVisualStyleBackColor = false;
             this.btnDespachar.Click += new System.EventHandler(this.BtnDespachar_Click);
             // 
@@ -211,6 +213,7 @@
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnLimpiar.CausesValidation = false;
+            this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnLimpiar.FlatAppearance.BorderSize = 0;
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -311,10 +314,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::AlbergueHN.Properties.Resources.noun_boxes_5440141;
-            this.pictureBox1.Location = new System.Drawing.Point(18, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(14, 14);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(108, 86);
+            this.pictureBox1.Size = new System.Drawing.Size(118, 97);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 88;
             this.pictureBox1.TabStop = false;
