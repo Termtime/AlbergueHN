@@ -133,6 +133,16 @@ namespace AlbergueHN.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap noun_Clothes {
+            get {
+                object obj = ResourceManager.GetObject("noun_Clothes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap noun_Gear_2576411 {
             get {
                 object obj = ResourceManager.GetObject("noun_Gear_2576411", resourceCulture);

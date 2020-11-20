@@ -257,6 +257,7 @@
     <Content Include="AlbergueHN.ico" />
     <Content Include="AlbergueHNnuevo.ico" />
     <Content Include="Resources\logo nuevo1.png" />
+    <None Include="Resources\noun_Clothes.png" />
     <None Include="Resources\noun_boxes_5440141.png" />
     <None Include="Resources\noun_people_3267727.png" />
     <None Include="Resources\noun_Search_1451786.png" />

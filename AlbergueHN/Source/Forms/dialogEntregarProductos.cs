@@ -414,7 +414,7 @@ namespace AlbergueHN.Source.Forms
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
                 e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
-                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[1].ToString(),
                                          e.Font,
                                          new SolidBrush(SystemColors.HighlightText),
                                          new Point(e.Bounds.X, e.Bounds.Y));
@@ -422,7 +422,7 @@ namespace AlbergueHN.Source.Forms
             else
             {
                 e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
-                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[1].ToString(),
                                               e.Font,
                                               new SolidBrush(Color.Black),
                                               new Point(e.Bounds.X, e.Bounds.Y));
@@ -449,6 +449,108 @@ namespace AlbergueHN.Source.Forms
                                               new SolidBrush(Color.Black),
                                               new Point(e.Bounds.X, e.Bounds.Y));
             }
+        }
+
+        private void listaProductos_DrawItem(object sender, DrawListViewItemEventArgs e)
+        {
+            var list = sender as ListView;
+
+            if (list.View == View.Details) return;
+            TextFormatFlags flags = GetTextAlignment(list, 0);
+            Color itemColor = e.Item.ForeColor;
+            if (e.Item.Selected)
+            {
+                using (SolidBrush bkgrBrush = new SolidBrush(Color.FromArgb(99, 150, 187)))
+                {
+                    e.Graphics.FillRectangle(bkgrBrush, e.Bounds);
+                }
+                itemColor = SystemColors.HighlightText;
+            }
+            else
+            {
+                //e.DrawBackground();
+                using (SolidBrush bkgrBrush = new SolidBrush(Color.FromArgb(184, 207, 224)))
+                {
+                    e.Graphics.FillRectangle(bkgrBrush, e.Bounds);
+                }
+                itemColor = SystemColors.WindowText;
+            }
+            TextRenderer.DrawText(e.Graphics, e.Item.Text, e.Item.Font, e.Bounds, itemColor, flags);
+
+            if (list.View == View.Tile && e.Item.SubItems.Count > 1)
+            {
+                var subItem = e.Item.SubItems[1];
+                flags = GetTextAlignment(list, 1);
+                TextRenderer.DrawText(e.Graphics, subItem.Text, subItem.Font, e.Bounds, SystemColors.GrayText, flags);
+            }
+        }
+
+        private void listaProductos_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        {
+
+            e.Graphics.FillRectangle(SystemBrushes.ControlLightLight, e.Bounds);
+            using (StringFormat sf = new StringFormat())
+            {
+                e.DrawBackground();
+
+                using (Font headerFont =
+                            new Font("Microsoft Sans Serif", 10))
+                {
+                    e.Graphics.DrawString(e.Header.Text, headerFont,
+                        SystemBrushes.WindowText, e.Bounds, sf);
+                }
+            }
+        }
+
+        private void listaProductos_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        {
+            var list = sender as ListView;
+
+            TextFormatFlags flags = GetTextAlignment(list, e.ColumnIndex);
+            Color itemColor = e.Item.ForeColor;
+            if (e.Item.Selected)
+            {
+                if (e.ColumnIndex == 0 || list.FullRowSelect)
+                {
+                    using (SolidBrush bkgrBrush = new SolidBrush(Color.FromArgb(99, 150, 187)))
+                    {
+                        e.Graphics.FillRectangle(bkgrBrush, e.Bounds);
+                    }
+                    itemColor = SystemColors.HighlightText;
+                }
+            }
+            else
+            {
+                //e.DrawBackground();
+                using (SolidBrush bkgrBrush = new SolidBrush(Color.FromArgb(184, 207, 224)))
+                {
+                    e.Graphics.FillRectangle(bkgrBrush, e.Bounds);
+                }
+                itemColor = SystemColors.WindowText;
+            }
+            TextRenderer.DrawText(e.Graphics, e.SubItem.Text, e.SubItem.Font, e.Bounds, itemColor, flags);
+        }
+
+        private TextFormatFlags GetTextAlignment(ListView lstView, int colIndex)
+        {
+            TextFormatFlags flags = (lstView.View == View.Tile)
+                ? (colIndex == 0) ? TextFormatFlags.Default : TextFormatFlags.Bottom
+                : TextFormatFlags.VerticalCenter;
+
+            flags |= TextFormatFlags.LeftAndRightPadding | TextFormatFlags.NoPrefix;
+            switch (lstView.Columns[colIndex].TextAlign)
+            {
+                case HorizontalAlignment.Left:
+                    flags |= TextFormatFlags.Left;
+                    break;
+                case HorizontalAlignment.Right:
+                    flags |= TextFormatFlags.Right;
+                    break;
+                case HorizontalAlignment.Center:
+                    flags |= TextFormatFlags.HorizontalCenter;
+                    break;
+            }
+            return flags;
         }
     }
     }

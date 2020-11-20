@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dialogEntregarProductos));
             this.tablaDespacho = new System.Windows.Forms.DataGridView();
             this.comboTipo = new System.Windows.Forms.ComboBox();
@@ -58,6 +61,7 @@
             this.listaProductos = new System.Windows.Forms.ListView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tablaDespacho)).BeginInit();
             this.panelControlRopa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -73,18 +77,49 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaDespacho.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.tablaDespacho.BackgroundColor = System.Drawing.SystemColors.Menu;
+            this.tablaDespacho.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tablaDespacho.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.tablaDespacho.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(207)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(150)))), ((int)(((byte)(187)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaDespacho.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tablaDespacho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaDespacho.Location = new System.Drawing.Point(725, 15);
+            this.tablaDespacho.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(150)))), ((int)(((byte)(187)))));
+            this.tablaDespacho.Location = new System.Drawing.Point(727, 64);
             this.tablaDespacho.Margin = new System.Windows.Forms.Padding(4);
             this.tablaDespacho.Name = "tablaDespacho";
-            this.tablaDespacho.RowHeadersWidth = 40;
-            this.tablaDespacho.Size = new System.Drawing.Size(963, 810);
+            this.tablaDespacho.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(207)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(150)))), ((int)(((byte)(187)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaDespacho.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.tablaDespacho.RowHeadersVisible = false;
+            this.tablaDespacho.RowHeadersWidth = 62;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(207)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(150)))), ((int)(((byte)(187)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.tablaDespacho.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.tablaDespacho.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaDespacho.Size = new System.Drawing.Size(963, 759);
             this.tablaDespacho.TabIndex = 0;
             this.tablaDespacho.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.tablaDespacho_CellValidating_1);
             // 
             // comboTipo
             // 
-            this.comboTipo.BackColor = System.Drawing.SystemColors.Menu;
+            this.comboTipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.comboTipo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -112,6 +147,7 @@
             // 
             // txtFiltro
             // 
+            this.txtFiltro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.txtFiltro.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFiltro.Location = new System.Drawing.Point(34, 223);
@@ -125,6 +161,7 @@
             // labelTalla
             // 
             this.labelTalla.AutoSize = true;
+            this.labelTalla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.labelTalla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTalla.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(116)))), ((int)(((byte)(155)))));
             this.labelTalla.Location = new System.Drawing.Point(21, 13);
@@ -136,7 +173,7 @@
             // 
             // comboTalla
             // 
-            this.comboTalla.BackColor = System.Drawing.SystemColors.Menu;
+            this.comboTalla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.comboTalla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboTalla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboTalla.FormattingEnabled = true;
@@ -152,33 +189,45 @@
             // btnDespachar
             // 
             this.btnDespachar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDespachar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDespachar.Location = new System.Drawing.Point(100, 784);
+            this.btnDespachar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(154)))), ((int)(((byte)(191)))));
+            this.btnDespachar.CausesValidation = false;
+            this.btnDespachar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(154)))), ((int)(((byte)(191)))));
+            this.btnDespachar.FlatAppearance.BorderSize = 0;
+            this.btnDespachar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDespachar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDespachar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnDespachar.Location = new System.Drawing.Point(119, 787);
             this.btnDespachar.Margin = new System.Windows.Forms.Padding(4);
             this.btnDespachar.Name = "btnDespachar";
-            this.btnDespachar.Size = new System.Drawing.Size(309, 50);
+            this.btnDespachar.Size = new System.Drawing.Size(257, 47);
             this.btnDespachar.TabIndex = 44;
             this.btnDespachar.Text = "Terminar y despachar";
-            this.btnDespachar.UseVisualStyleBackColor = true;
+            this.btnDespachar.UseVisualStyleBackColor = false;
             this.btnDespachar.Click += new System.EventHandler(this.BtnDespachar_Click);
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(417, 784);
+            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnLimpiar.CausesValidation = false;
+            this.btnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(154)))), ((int)(((byte)(191)))));
+            this.btnLimpiar.FlatAppearance.BorderSize = 0;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnLimpiar.Location = new System.Drawing.Point(436, 787);
             this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(201, 50);
+            this.btnLimpiar.Size = new System.Drawing.Size(127, 47);
             this.btnLimpiar.TabIndex = 45;
             this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.UseVisualStyleBackColor = false;
             this.btnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
             // 
             // radioMasculino
             // 
             this.radioMasculino.AutoSize = true;
-            this.radioMasculino.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.radioMasculino.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.radioMasculino.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioMasculino.Location = new System.Drawing.Point(151, 51);
             this.radioMasculino.Margin = new System.Windows.Forms.Padding(4);
@@ -193,7 +242,7 @@
             // radioFemenino
             // 
             this.radioFemenino.AutoSize = true;
-            this.radioFemenino.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.radioFemenino.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.radioFemenino.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioFemenino.Location = new System.Drawing.Point(203, 51);
             this.radioFemenino.Margin = new System.Windows.Forms.Padding(4);
@@ -208,7 +257,7 @@
             // radioCualquiera
             // 
             this.radioCualquiera.AutoSize = true;
-            this.radioCualquiera.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.radioCualquiera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.radioCualquiera.Checked = true;
             this.radioCualquiera.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioCualquiera.Location = new System.Drawing.Point(85, 51);
@@ -224,7 +273,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(116)))), ((int)(((byte)(155)))));
             this.label3.Location = new System.Drawing.Point(2, 50);
@@ -242,10 +291,10 @@
             this.panelControlRopa.Controls.Add(this.radioCualquiera);
             this.panelControlRopa.Controls.Add(this.radioFemenino);
             this.panelControlRopa.Controls.Add(this.radioMasculino);
-            this.panelControlRopa.Location = new System.Drawing.Point(423, 170);
+            this.panelControlRopa.Location = new System.Drawing.Point(438, 170);
             this.panelControlRopa.Margin = new System.Windows.Forms.Padding(4);
             this.panelControlRopa.Name = "panelControlRopa";
-            this.panelControlRopa.Size = new System.Drawing.Size(292, 79);
+            this.panelControlRopa.Size = new System.Drawing.Size(281, 79);
             this.panelControlRopa.TabIndex = 50;
             // 
             // labelUsuario
@@ -303,7 +352,7 @@
             // 
             // comboPersonas
             // 
-            this.comboPersonas.BackColor = System.Drawing.SystemColors.Menu;
+            this.comboPersonas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.comboPersonas.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboPersonas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboPersonas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -319,7 +368,7 @@
             // usuarioID
             // 
             this.usuarioID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usuarioID.Location = new System.Drawing.Point(551, 58);
+            this.usuarioID.Location = new System.Drawing.Point(557, 58);
             this.usuarioID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.usuarioID.Name = "usuarioID";
             this.usuarioID.Size = new System.Drawing.Size(168, 25);
@@ -330,7 +379,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(116)))), ((int)(((byte)(155)))));
-            this.label7.Location = new System.Drawing.Point(548, 32);
+            this.label7.Location = new System.Drawing.Point(554, 32);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(122, 20);
@@ -345,17 +394,17 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Existencia";
-            this.columnHeader2.Width = 73;
+            this.columnHeader2.Width = 89;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Tipo";
-            this.columnHeader3.Width = 92;
+            this.columnHeader3.Width = 93;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Talla";
-            this.columnHeader4.Width = 68;
+            this.columnHeader4.Width = 53;
             // 
             // columnHeader5
             // 
@@ -374,16 +423,20 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
-            this.listaProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listaProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listaProductos.FullRowSelect = true;
             this.listaProductos.HideSelection = false;
             this.listaProductos.Location = new System.Drawing.Point(19, 264);
             this.listaProductos.Margin = new System.Windows.Forms.Padding(4);
             this.listaProductos.Name = "listaProductos";
+            this.listaProductos.OwnerDraw = true;
             this.listaProductos.Size = new System.Drawing.Size(697, 515);
             this.listaProductos.TabIndex = 2;
             this.listaProductos.UseCompatibleStateImageBehavior = false;
             this.listaProductos.View = System.Windows.Forms.View.Details;
+            this.listaProductos.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.listaProductos_DrawColumnHeader);
+            this.listaProductos.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.listaProductos_DrawItem);
+            this.listaProductos.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listaProductos_DrawSubItem);
             this.listaProductos.SelectedIndexChanged += new System.EventHandler(this.listaProductos_SelectedIndexChanged);
             this.listaProductos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listaProductos_KeyPress);
             this.listaProductos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListaProductos_MouseDoubleClick);
@@ -408,12 +461,25 @@
             this.pictureBox2.TabIndex = 90;
             this.pictureBox2.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(922, 21);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(610, 25);
+            this.label1.TabIndex = 91;
+            this.label1.Text = "Para eliminar un producto de la tabla presione la tecla suprimir/delete.";
+            // 
             // dialogEntregarProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.ClientSize = new System.Drawing.Size(1701, 849);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -480,5 +546,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label1;
     }
 }

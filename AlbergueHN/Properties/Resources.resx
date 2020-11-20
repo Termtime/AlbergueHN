@@ -121,6 +121,9 @@
   <data name="noun_status" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\noun_status.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="noun_Gear_2576411" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun_Gear_2576411.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="guardar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\guardar.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -130,11 +133,8 @@
   <data name="blouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\blouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="box" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\box.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="noun_people_3267727" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\noun_people_3267727.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="noun_boxes_5440141" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun_boxes_5440141.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icono" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo nuevo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,10 +145,13 @@
   <data name="noun_Search_1451786" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\noun_Search_1451786.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="noun_Gear_2576411" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\noun_Gear_2576411.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="box" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\box.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="noun_boxes_5440141" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\noun_boxes_5440141.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="noun_people_3267727" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun_people_3267727.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="noun_Clothes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun_Clothes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

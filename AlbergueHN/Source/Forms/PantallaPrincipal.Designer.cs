@@ -100,19 +100,19 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.tabPage2.Controls.Add(this.pictureBox3);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.panelControlRopa);
             this.tabPage2.Controls.Add(this.tablaSuministros);
             this.tabPage2.Controls.Add(this.exportar2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(1677, 772);
+            this.tabPage2.Size = new System.Drawing.Size(1677, 768);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Productos";
-            this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.SizeChanged += new System.EventHandler(this.TabPage2_SizeChanged);
             this.tabPage2.Click += new System.EventHandler(this.TabPage2_Click);
             // 
@@ -173,7 +173,7 @@
             // 
             // comboTipo
             // 
-            this.comboTipo.BackColor = System.Drawing.SystemColors.Menu;
+            this.comboTipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.comboTipo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -221,7 +221,7 @@
             // 
             // comboTalla
             // 
-            this.comboTalla.BackColor = System.Drawing.SystemColors.Menu;
+            this.comboTalla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.comboTalla.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboTalla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboTalla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -248,6 +248,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(116)))), ((int)(((byte)(155)))));
             this.label1.Location = new System.Drawing.Point(771, 27);
@@ -259,6 +260,7 @@
             // 
             // txtFiltro
             // 
+            this.txtFiltro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.txtFiltro.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFiltro.Location = new System.Drawing.Point(215, 47);
@@ -272,6 +274,7 @@
             // labelTalla
             // 
             this.labelTalla.AutoSize = true;
+            this.labelTalla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.labelTalla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTalla.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(116)))), ((int)(((byte)(155)))));
             this.labelTalla.Location = new System.Drawing.Point(617, 27);
@@ -284,6 +287,7 @@
             // radioCualquiera
             // 
             this.radioCualquiera.AutoSize = true;
+            this.radioCualquiera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.radioCualquiera.Checked = true;
             this.radioCualquiera.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioCualquiera.Location = new System.Drawing.Point(775, 50);
@@ -293,12 +297,13 @@
             this.radioCualquiera.TabIndex = 48;
             this.radioCualquiera.TabStop = true;
             this.radioCualquiera.Text = "N/A";
-            this.radioCualquiera.UseVisualStyleBackColor = true;
+            this.radioCualquiera.UseVisualStyleBackColor = false;
             this.radioCualquiera.CheckedChanged += new System.EventHandler(this.RadioCualquiera_CheckedChanged);
             // 
             // radioFemenino
             // 
             this.radioFemenino.AutoSize = true;
+            this.radioFemenino.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.radioFemenino.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioFemenino.Location = new System.Drawing.Point(893, 50);
             this.radioFemenino.Margin = new System.Windows.Forms.Padding(4);
@@ -306,12 +311,13 @@
             this.radioFemenino.Size = new System.Drawing.Size(40, 24);
             this.radioFemenino.TabIndex = 47;
             this.radioFemenino.Text = "F";
-            this.radioFemenino.UseVisualStyleBackColor = true;
+            this.radioFemenino.UseVisualStyleBackColor = false;
             this.radioFemenino.CheckedChanged += new System.EventHandler(this.RadioFemenino_CheckedChanged);
             // 
             // radioMasculino
             // 
             this.radioMasculino.AutoSize = true;
+            this.radioMasculino.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.radioMasculino.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioMasculino.Location = new System.Drawing.Point(841, 50);
             this.radioMasculino.Margin = new System.Windows.Forms.Padding(4);
@@ -319,7 +325,7 @@
             this.radioMasculino.Size = new System.Drawing.Size(44, 24);
             this.radioMasculino.TabIndex = 46;
             this.radioMasculino.Text = "M";
-            this.radioMasculino.UseVisualStyleBackColor = true;
+            this.radioMasculino.UseVisualStyleBackColor = false;
             this.radioMasculino.CheckedChanged += new System.EventHandler(this.RadioMasculino_CheckedChanged);
             // 
             // tablaSuministros
@@ -334,11 +340,11 @@
             this.tablaSuministros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaSuministros.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.tablaSuministros.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tablaSuministros.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.tablaSuministros.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tablaSuministros.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(207)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(150)))), ((int)(((byte)(187)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -353,7 +359,7 @@
             this.tablaSuministros.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(207)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(150)))), ((int)(((byte)(187)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -370,7 +376,7 @@
             this.tablaSuministros.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.tablaSuministros.RowTemplate.Height = 27;
             this.tablaSuministros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaSuministros.Size = new System.Drawing.Size(1656, 620);
+            this.tablaSuministros.Size = new System.Drawing.Size(1656, 616);
             this.tablaSuministros.TabIndex = 32;
             // 
             // exportar2
@@ -397,6 +403,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.tabPage1.Controls.Add(this.pictureBox4);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.exportar);
@@ -410,7 +417,6 @@
             this.tabPage1.Size = new System.Drawing.Size(1677, 772);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Personas";
-            this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.SizeChanged += new System.EventHandler(this.TabPage1_SizeChanged);
             this.tabPage1.Click += new System.EventHandler(this.TabPage1_Click);
             // 
@@ -430,7 +436,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 34.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(167, 46);
+            this.label2.Location = new System.Drawing.Point(145, 36);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(293, 59);
@@ -472,7 +478,7 @@
             this.tablaPersonas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaPersonas.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.tablaPersonas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tablaPersonas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.tablaPersonas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tablaPersonas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(207)))), ((int)(((byte)(224)))));
@@ -529,7 +535,7 @@
             // 
             // comboFiltro
             // 
-            this.comboFiltro.BackColor = System.Drawing.SystemColors.Menu;
+            this.comboFiltro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.comboFiltro.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -549,7 +555,7 @@
             // 
             // txtFiltro1
             // 
-            this.txtFiltro1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtFiltro1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.txtFiltro1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFiltro1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFiltro1.Location = new System.Drawing.Point(276, 33);
@@ -583,6 +589,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(116)))), ((int)(((byte)(155)))));
             this.label5.Location = new System.Drawing.Point(5, 10);
@@ -599,6 +606,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(0, 33);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
