@@ -189,11 +189,11 @@ namespace AlbergueHN.Source.Forms
         private void comboTipo_DrawItem(object sender, DrawItemEventArgs e)
         {
             var combo = sender as ComboBox;
-
+            if (e.Index == -1) return;
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
                 e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
-                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[1].ToString(),
+                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[0].ToString(),
                                          e.Font,
                                          new SolidBrush(SystemColors.HighlightText),
                                          new Point(e.Bounds.X, e.Bounds.Y));
@@ -201,7 +201,7 @@ namespace AlbergueHN.Source.Forms
             else
             {
                 e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
-                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[1].ToString(),
+                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[0].ToString(),
                                               e.Font,
                                               new SolidBrush(Color.Black),
                                               new Point(e.Bounds.X, e.Bounds.Y));

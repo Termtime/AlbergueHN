@@ -374,6 +374,10 @@ namespace AlbergueHN.Source.Forms
                 using (Font headerFont =
                             new Font("Microsoft Sans Serif", 10))
                 {
+                    using (SolidBrush bkgrBrush = new SolidBrush(Color.FromArgb(99, 150, 187))) //CAMBIAR COLOR AQUI
+                    {
+                        e.Graphics.FillRectangle(bkgrBrush, e.Bounds);
+                    }
                     e.Graphics.DrawString(e.Header.Text, headerFont,
                         SystemBrushes.WindowText, e.Bounds, sf);
                 }

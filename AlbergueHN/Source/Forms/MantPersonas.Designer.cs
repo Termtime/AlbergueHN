@@ -40,13 +40,13 @@
             this.comboFiltro = new System.Windows.Forms.ComboBox();
             this.txtFiltro1 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tablaPersonas = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaPersonas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaPersonas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,13 +54,13 @@
             // 
             this.btnModificar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnModificar.FlatAppearance.BorderSize = 0;
             this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(1520, 414);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModificar.Location = new System.Drawing.Point(1140, 336);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(154, 71);
+            this.btnModificar.Size = new System.Drawing.Size(116, 58);
             this.btnModificar.TabIndex = 9;
             this.btnModificar.Text = "Modificar Persona";
             this.btnModificar.UseVisualStyleBackColor = false;
@@ -70,13 +70,13 @@
             // 
             this.btnDarDeAlta.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnDarDeAlta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDarDeAlta.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDarDeAlta.FlatAppearance.BorderSize = 0;
             this.btnDarDeAlta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDarDeAlta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDarDeAlta.Location = new System.Drawing.Point(1520, 513);
-            this.btnDarDeAlta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDarDeAlta.Location = new System.Drawing.Point(1140, 417);
             this.btnDarDeAlta.Name = "btnDarDeAlta";
-            this.btnDarDeAlta.Size = new System.Drawing.Size(154, 71);
+            this.btnDarDeAlta.Size = new System.Drawing.Size(116, 58);
             this.btnDarDeAlta.TabIndex = 7;
             this.btnDarDeAlta.Text = "Dar de alta";
             this.btnDarDeAlta.UseVisualStyleBackColor = false;
@@ -86,14 +86,14 @@
             // 
             this.btnIngresar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIngresar.FlatAppearance.BorderSize = 0;
             this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngresar.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnIngresar.Location = new System.Drawing.Point(1520, 315);
-            this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnIngresar.Location = new System.Drawing.Point(1140, 256);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(154, 71);
+            this.btnIngresar.Size = new System.Drawing.Size(116, 58);
             this.btnIngresar.TabIndex = 12;
             this.btnIngresar.Text = "Crear Persona";
             this.btnIngresar.UseVisualStyleBackColor = false;
@@ -103,10 +103,9 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(208, 41);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(156, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(567, 59);
+            this.label1.Size = new System.Drawing.Size(425, 48);
             this.label1.TabIndex = 49;
             this.label1.Text = "Administrar Personas";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -119,10 +118,9 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(803, 56);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(602, 46);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(696, 68);
+            this.panel1.Size = new System.Drawing.Size(522, 55);
             this.panel1.TabIndex = 51;
             // 
             // comboFiltro
@@ -137,33 +135,44 @@
             "Nombre",
             "Identidad",
             "# Estudiante/Empleado"});
-            this.comboFiltro.Location = new System.Drawing.Point(4, 33);
-            this.comboFiltro.Margin = new System.Windows.Forms.Padding(4);
+            this.comboFiltro.Location = new System.Drawing.Point(3, 27);
             this.comboFiltro.Name = "comboFiltro";
-            this.comboFiltro.Size = new System.Drawing.Size(244, 28);
+            this.comboFiltro.Size = new System.Drawing.Size(184, 24);
             this.comboFiltro.TabIndex = 39;
             this.comboFiltro.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboFiltro_DrawItem);
+            this.comboFiltro.SelectedIndexChanged += new System.EventHandler(this.ComboFiltro_SelectedIndexChanged);
             // 
             // txtFiltro1
             // 
             this.txtFiltro1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.txtFiltro1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFiltro1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFiltro1.Location = new System.Drawing.Point(276, 33);
-            this.txtFiltro1.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFiltro1.Location = new System.Drawing.Point(207, 27);
             this.txtFiltro1.Multiline = true;
             this.txtFiltro1.Name = "txtFiltro1";
-            this.txtFiltro1.Size = new System.Drawing.Size(339, 28);
+            this.txtFiltro1.Size = new System.Drawing.Size(254, 23);
             this.txtFiltro1.TabIndex = 38;
+            this.txtFiltro1.TextChanged += new System.EventHandler(this.TxtFiltro1_TextChanged);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(116)))), ((int)(((byte)(155)))));
-            this.panel3.Location = new System.Drawing.Point(269, 62);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(202, 50);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(383, 2);
+            this.panel3.Size = new System.Drawing.Size(287, 2);
             this.panel3.TabIndex = 45;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::AlbergueHN.Properties.Resources.noun_Search_1451786;
+            this.pictureBox1.Location = new System.Drawing.Point(467, 22);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(22, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 46;
+            this.pictureBox1.TabStop = false;
             // 
             // label5
             // 
@@ -171,10 +180,9 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(116)))), ((int)(((byte)(155)))));
-            this.label5.Location = new System.Drawing.Point(5, 10);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(4, 8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 20);
+            this.label5.Size = new System.Drawing.Size(81, 17);
             this.label5.TabIndex = 40;
             this.label5.Text = "Buscar por:";
             // 
@@ -200,9 +208,8 @@
             this.tablaPersonas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tablaPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaPersonas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(150)))), ((int)(((byte)(187)))));
-            this.tablaPersonas.Location = new System.Drawing.Point(13, 132);
-            this.tablaPersonas.Margin = new System.Windows.Forms.Padding(4);
-            this.tablaPersonas.MinimumSize = new System.Drawing.Size(5, 0);
+            this.tablaPersonas.Location = new System.Drawing.Point(10, 107);
+            this.tablaPersonas.MinimumSize = new System.Drawing.Size(4, 0);
             this.tablaPersonas.Name = "tablaPersonas";
             this.tablaPersonas.ReadOnly = true;
             this.tablaPersonas.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -226,39 +233,28 @@
             this.tablaPersonas.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.tablaPersonas.RowTemplate.Height = 27;
             this.tablaPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaPersonas.Size = new System.Drawing.Size(1497, 707);
+            this.tablaPersonas.Size = new System.Drawing.Size(1123, 574);
             this.tablaPersonas.TabIndex = 52;
             this.tablaPersonas.SelectionChanged += new System.EventHandler(this.tablaPersonas_SelectionChanged);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::AlbergueHN.Properties.Resources.noun_Search_1451786;
-            this.pictureBox1.Location = new System.Drawing.Point(623, 27);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(29, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 46;
-            this.pictureBox1.TabStop = false;
             // 
             // pictureBox4
             // 
             this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox4.Image = global::AlbergueHN.Properties.Resources.noun_people_mant1;
-            this.pictureBox4.Location = new System.Drawing.Point(35, 11);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Location = new System.Drawing.Point(26, 9);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(191, 115);
+            this.pictureBox4.Size = new System.Drawing.Size(143, 93);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 50;
             this.pictureBox4.TabStop = false;
             // 
             // MantPersonas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(1685, 849);
+            this.ClientSize = new System.Drawing.Size(1264, 690);
             this.Controls.Add(this.tablaPersonas);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox4);
@@ -267,7 +263,6 @@
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnDarDeAlta);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MantPersonas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrar personas";
@@ -275,8 +270,8 @@
             this.SizeChanged += new System.EventHandler(this.MantPersonas_SizeChanged);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaPersonas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaPersonas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 

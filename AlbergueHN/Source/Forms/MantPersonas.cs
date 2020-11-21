@@ -19,6 +19,7 @@ namespace AlbergueHN.Source.Forms
             InitializeComponent();
             Bitmap icono = AlbergueHN.Properties.Resources.icono;
             this.Icon = Icon.FromHandle(icono.GetHicon());
+            comboFiltro.SelectedIndex = 0;
         }
         DataTable dt = new DataTable();
         string stringConexion = (string)Properties.Settings.Default["stringConexion"];
@@ -189,26 +190,60 @@ namespace AlbergueHN.Source.Forms
             }
         }
 
+        private void filtrarPersonas()
+        {
+            if (tablaPersonas.DataSource == null) return;
+            String filtrar = txtFiltro1.Text;
+            if (comboFiltro.SelectedIndex == 0)
+            {
+                (tablaPersonas.DataSource as DataTable).DefaultView.RowFilter = "nombres + apellidos LIKE '%" + filtrar + "%'";
+            }
+            if (comboFiltro.SelectedIndex == 1)
+            {
+                (tablaPersonas.DataSource as DataTable).DefaultView.RowFilter = "[Identidad] LIKE '%" + filtrar + "%'";
+            }
+            if (comboFiltro.SelectedIndex == 2)
+            {
+                (tablaPersonas.DataSource as DataTable).DefaultView.RowFilter = "[No. Empleado/Estudiante] LIKE '%" + filtrar + "%'";
+            }
+        }
+
         private void comboFiltro_DrawItem(object sender, DrawItemEventArgs e)
         {
             var combo = sender as ComboBox;
 
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
-                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
-                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
-                                         e.Font,
-                                         new SolidBrush(SystemColors.HighlightText),
-                                         new Point(e.Bounds.X, e.Bounds.Y));
+                if(e.Index != -1)
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
+                    e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                             e.Font,
+                                             new SolidBrush(SystemColors.HighlightText),
+                                             new Point(e.Bounds.X, e.Bounds.Y));
+                }
             }
             else
             {
-                e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
-                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
-                                              e.Font,
-                                              new SolidBrush(Color.Black),
-                                              new Point(e.Bounds.X, e.Bounds.Y));
+                if(e.Index != -1)
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
+                    e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                                  e.Font,
+                                                  new SolidBrush(Color.Black),
+                                                  new Point(e.Bounds.X, e.Bounds.Y));
+                }
             }
+        }
+
+        private void ComboFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filtrarPersonas();
+        }
+
+        private void TxtFiltro1_TextChanged(object sender, EventArgs e)
+        {
+            filtrarPersonas();
         }
     }
 }

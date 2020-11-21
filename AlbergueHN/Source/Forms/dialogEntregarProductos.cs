@@ -180,6 +180,7 @@ namespace AlbergueHN.Source.Forms
                     comboTipo.DisplayMember = "Descripcion";
                     comboTipo.ValueMember = "TipoID";
                     dsTipo.Tables["TipoDefault"].Merge(dsTipo.Tables["Tipos"]);
+                    dsTipo.Tables["TipoDefault"].DefaultView.RowFilter = "Descripcion <> 'Vestimenta' and Descripcion <> 'Zapatos' ";
                     comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
                 }
 
@@ -210,6 +211,7 @@ namespace AlbergueHN.Source.Forms
         private void filtrar()
         {
             DataRowView row = (DataRowView)comboTipo.SelectedItem;
+            if (row == null) return;
             string filtroTipo = (string)row.Row.ItemArray[1];
             string filtroTxt = txtFiltro.Text;
             listaProductos.Items.Clear();
@@ -495,6 +497,10 @@ namespace AlbergueHN.Source.Forms
                 using (Font headerFont =
                             new Font("Microsoft Sans Serif", 10))
                 {
+                    using (SolidBrush bkgrBrush = new SolidBrush(Color.FromArgb(99, 150, 187))) //CAMBIAR COLOR AQUI
+                    {
+                        e.Graphics.FillRectangle(bkgrBrush, e.Bounds);
+                    }
                     e.Graphics.DrawString(e.Header.Text, headerFont,
                         SystemBrushes.WindowText, e.Bounds, sf);
                 }
