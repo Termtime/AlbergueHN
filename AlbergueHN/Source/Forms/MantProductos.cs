@@ -186,11 +186,11 @@ namespace AlbergueHN.Source.Forms
             }
         }
 
-        private void TablaProductos_SelectionChanged(object sender, EventArgs e)
+        private void tablaProductos_SelectionChanged(object sender, EventArgs e)
         {
             try
             {
-                if(tablaProductos.SelectedRows[0] != null)
+                if (tablaProductos.SelectedRows[0] != null)
                 {
                     btnModificarProducto.Enabled = true;
                     if (tablaProductos.SelectedRows[0].Cells["¿Está Activo?"].Value.ToString() == "Si")
@@ -208,9 +208,32 @@ namespace AlbergueHN.Source.Forms
                 {
                     btnModificarProducto.Enabled = false;
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        private void comboFiltro_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var combo = sender as ComboBox;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
+                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[1].ToString(),
+                                         e.Font,
+                                         new SolidBrush(SystemColors.HighlightText),
+                                         new Point(e.Bounds.X, e.Bounds.Y));
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
+                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[1].ToString(),
+                                              e.Font,
+                                              new SolidBrush(Color.Black),
+                                              new Point(e.Bounds.X, e.Bounds.Y));
             }
         }
     }

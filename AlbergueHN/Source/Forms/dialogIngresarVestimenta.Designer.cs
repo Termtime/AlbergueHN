@@ -281,7 +281,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Existencia";
-            this.columnHeader2.Width = 89;
+            this.columnHeader2.Width = 76;
             // 
             // columnHeader3
             // 
@@ -296,7 +296,7 @@
             // columnHeader5
             // 
             this.columnHeader5.Text = "Genero";
-            this.columnHeader5.Width = 70;
+            this.columnHeader5.Width = 66;
             // 
             // btnIngresar
             // 
@@ -381,6 +381,7 @@
             // nuevo
             // 
             this.nuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(154)))), ((int)(((byte)(191)))));
+            this.nuevo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.nuevo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(154)))), ((int)(((byte)(191)))));
             this.nuevo.FlatAppearance.BorderSize = 0;
             this.nuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

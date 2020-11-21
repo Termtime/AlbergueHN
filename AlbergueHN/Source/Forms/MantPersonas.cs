@@ -160,11 +160,11 @@ namespace AlbergueHN.Source.Forms
             cargarPersonas();
         }
 
-        private void TablaPersonas_SelectionChanged(object sender, EventArgs e)
+        private void tablaPersonas_SelectionChanged(object sender, EventArgs e)
         {
             try
             {
-                if(tablaPersonas.SelectedRows[0] != null)
+                if (tablaPersonas.SelectedRows[0] != null)
                 {
                     btnModificar.Enabled = true;
                     if (tablaPersonas.SelectedRows[0].Cells["Fecha de Salida"].Value.ToString().Trim().Length > 0)
@@ -182,9 +182,32 @@ namespace AlbergueHN.Source.Forms
                 {
                     btnModificar.Enabled = false;
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        private void comboFiltro_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var combo = sender as ComboBox;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
+                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                         e.Font,
+                                         new SolidBrush(SystemColors.HighlightText),
+                                         new Point(e.Bounds.X, e.Bounds.Y));
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
+                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                              e.Font,
+                                              new SolidBrush(Color.Black),
+                                              new Point(e.Bounds.X, e.Bounds.Y));
             }
         }
     }

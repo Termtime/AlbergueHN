@@ -63,26 +63,6 @@ namespace AlbergueHN.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap blouse {
-            get {
-                object obj = ResourceManager.GetObject("blouse", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap box {
-            get {
-                object obj = ResourceManager.GetObject("box", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Excel_2013_23480 {
             get {
                 object obj = ResourceManager.GetObject("Excel_2013_23480", resourceCulture);
@@ -133,6 +113,26 @@ namespace AlbergueHN.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap noun_boxes_editar {
+            get {
+                object obj = ResourceManager.GetObject("noun_boxes_editar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noun_boxes_mant {
+            get {
+                object obj = ResourceManager.GetObject("noun_boxes_mant", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap noun_Clothes {
             get {
                 object obj = ResourceManager.GetObject("noun_Clothes", resourceCulture);
@@ -156,6 +156,26 @@ namespace AlbergueHN.Properties {
         internal static System.Drawing.Bitmap noun_people_3267727 {
             get {
                 object obj = ResourceManager.GetObject("noun_people_3267727", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noun_people_editar {
+            get {
+                object obj = ResourceManager.GetObject("noun_people_editar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noun_people_mant1 {
+            get {
+                object obj = ResourceManager.GetObject("noun_people_mant1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
