@@ -257,7 +257,7 @@ namespace AlbergueHN.Source.Forms
         private void comboTipo_DrawItem(object sender, DrawItemEventArgs e)
         {
             var combo = sender as ComboBox;
-
+            if (e.Index == -1) return;
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
                 e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
@@ -279,7 +279,7 @@ namespace AlbergueHN.Source.Forms
         private void comboTalla_DrawItem(object sender, DrawItemEventArgs e)
         {
             var combo = sender as ComboBox;
-
+            if (e.Index == -1) return;
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
                 e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
@@ -301,7 +301,7 @@ namespace AlbergueHN.Source.Forms
         private void comboGen_DrawItem(object sender, DrawItemEventArgs e)
         {
             var combo = sender as ComboBox;
-
+            if (e.Index == -1) return;
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
                 e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);

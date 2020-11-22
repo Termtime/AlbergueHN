@@ -77,7 +77,7 @@ namespace AlbergueHN.Source.Forms
                 using (MySqlConnection con = new MySqlConnection(stringConexion))
                 {
                     DataTable dtSuministro = new DataTable();
-                    var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM suministro a inner join tiposuministro b on a.tipoID = b.tipoID WHERE a.TipoID=1 OR a.TipoID=4;";
+                    var stm = "SELECT SuministroID, a.Descripcion, Existencia, b.Descripcion as Tipo, Talla, Genero FROM suministro a inner join tiposuministro b on a.tipoID = b.tipoID WHERE (a.TipoID=1 OR a.TipoID=4) AND a.EstaActivo = 1;";
                     MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                     con.Open();
                     da.Fill(dtSuministro);
@@ -466,7 +466,7 @@ namespace AlbergueHN.Source.Forms
         private void comboTalla_DrawItem(object sender, DrawItemEventArgs e)
         {
             var combo = sender as ComboBox;
-
+            if (e.Index == -1) return;
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
                 e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
@@ -488,7 +488,7 @@ namespace AlbergueHN.Source.Forms
         private void comboPersonas_DrawItem(object sender, DrawItemEventArgs e)
         {
             var combo = sender as ComboBox;
-
+            if (e.Index == -1) return;
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
                 e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
