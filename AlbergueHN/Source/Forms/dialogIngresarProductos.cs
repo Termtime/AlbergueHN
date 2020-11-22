@@ -133,6 +133,7 @@ namespace AlbergueHN.Source.Forms
                     comboTipo.ValueMember = "TipoID";
                     dsTipo.Tables["TipoDefault"].Merge(dsTipo.Tables["Tipos"]);
                     comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
+                    dsTipo.Tables["TipoDefault"].DefaultView.RowFilter = "Descripcion <> 'Vestimenta' and Descripcion <> 'Zapatos' ";
                 }
 
             }
@@ -205,7 +206,19 @@ namespace AlbergueHN.Source.Forms
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            ingresarSuministros();
+            if (tablaIngreso.Rows.Count == 0)
+            {
+                MessageBox.Show("No se han agregado productos para ingresar",
+                                   "Advertencia", MessageBoxButtons.OK,
+                                   MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                ingresarSuministros();
+                Cursor.Current = Cursors.Default;
+
+            }
         }
 
         private void DialogIngresarProducto_SizeChanged(object sender, EventArgs e)

@@ -311,14 +311,18 @@ namespace AlbergueHN.Source.Forms
 
         private void btnIngresar_Click_1(object sender, EventArgs e)
         {
-            if (tablaIngreso.RowCount == 0)
+            if (tablaIngreso.Rows.Count == 0)
             {
-                MessageBox.Show("Aún no ha agregado ningún suministro a la lista, seleccione un suministro y agréguelo haciendo doble clic sobre él", "Notificación - UNAH - VS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                MessageBox.Show("No se han agregado suministros para despachar",
+                                   "Advertencia", MessageBoxButtons.OK,
+                                   MessageBoxIcon.Warning);
             }
             else
             {
+                Cursor.Current = Cursors.WaitCursor;
                 ingresarSuministros();
+                Cursor.Current = Cursors.Default;
+
             }
         }
 
