@@ -428,7 +428,7 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
-            this.listaProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listaProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listaProductos.FullRowSelect = true;
             this.listaProductos.HideSelection = false;
             this.listaProductos.Location = new System.Drawing.Point(19, 264);

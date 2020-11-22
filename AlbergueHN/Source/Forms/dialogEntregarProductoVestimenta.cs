@@ -343,12 +343,13 @@ namespace AlbergueHN.Source.Forms
             e.Graphics.FillRectangle(SystemBrushes.ControlLightLight, e.Bounds);
             using (StringFormat sf = new StringFormat())
             {
+                sf.LineAlignment = StringAlignment.Center;
                 e.DrawBackground();
 
                 using (Font headerFont =
                             new Font("Microsoft Sans Serif", 10))
                 {
-                    using (SolidBrush bkgrBrush = new SolidBrush(Color.FromArgb(99, 150, 187))) //CAMBIAR COLOR AQUI
+                    using (SolidBrush bkgrBrush = new SolidBrush(Color.FromArgb(138, 176, 204))) //CAMBIAR COLOR AQUI
                     {
                         e.Graphics.FillRectangle(bkgrBrush, e.Bounds);
                     }
@@ -377,7 +378,7 @@ namespace AlbergueHN.Source.Forms
             else
             {
                 //e.DrawBackground();
-                using (SolidBrush bkgrBrush = new SolidBrush(Color.FromArgb(184, 207, 224)))
+                using (SolidBrush bkgrBrush = new SolidBrush(Color.FromArgb(219, 231, 239)))
                 {
                     e.Graphics.FillRectangle(bkgrBrush, e.Bounds);
                 }
@@ -413,7 +414,7 @@ namespace AlbergueHN.Source.Forms
             else
             {
                 //e.DrawBackground();
-                using (SolidBrush bkgrBrush = new SolidBrush(Color.FromArgb(184, 207, 224)))
+                using (SolidBrush bkgrBrush = new SolidBrush(Color.FromArgb(219, 231, 239)))
                 {
                     e.Graphics.FillRectangle(bkgrBrush, e.Bounds);
                 }
