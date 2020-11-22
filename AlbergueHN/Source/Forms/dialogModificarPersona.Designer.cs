@@ -549,7 +549,9 @@
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "dialogModificarPersona";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar Persona";
