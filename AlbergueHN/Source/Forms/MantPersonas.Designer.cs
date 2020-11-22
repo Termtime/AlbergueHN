@@ -58,9 +58,10 @@
             this.btnModificar.FlatAppearance.BorderSize = 0;
             this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(1140, 336);
+            this.btnModificar.Location = new System.Drawing.Point(1520, 414);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(116, 58);
+            this.btnModificar.Size = new System.Drawing.Size(155, 71);
             this.btnModificar.TabIndex = 9;
             this.btnModificar.Text = "Modificar Persona";
             this.btnModificar.UseVisualStyleBackColor = false;
@@ -74,9 +75,10 @@
             this.btnDarDeAlta.FlatAppearance.BorderSize = 0;
             this.btnDarDeAlta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDarDeAlta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDarDeAlta.Location = new System.Drawing.Point(1140, 417);
+            this.btnDarDeAlta.Location = new System.Drawing.Point(1520, 513);
+            this.btnDarDeAlta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDarDeAlta.Name = "btnDarDeAlta";
-            this.btnDarDeAlta.Size = new System.Drawing.Size(116, 58);
+            this.btnDarDeAlta.Size = new System.Drawing.Size(155, 71);
             this.btnDarDeAlta.TabIndex = 7;
             this.btnDarDeAlta.Text = "Dar de alta";
             this.btnDarDeAlta.UseVisualStyleBackColor = false;
@@ -91,9 +93,10 @@
             this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngresar.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnIngresar.Location = new System.Drawing.Point(1140, 256);
+            this.btnIngresar.Location = new System.Drawing.Point(1520, 315);
+            this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(116, 58);
+            this.btnIngresar.Size = new System.Drawing.Size(155, 71);
             this.btnIngresar.TabIndex = 12;
             this.btnIngresar.Text = "Crear Persona";
             this.btnIngresar.UseVisualStyleBackColor = false;
@@ -103,9 +106,10 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(156, 33);
+            this.label1.Location = new System.Drawing.Point(208, 41);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(425, 48);
+            this.label1.Size = new System.Drawing.Size(567, 59);
             this.label1.TabIndex = 49;
             this.label1.Text = "Administrar Personas";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -118,9 +122,10 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(602, 46);
+            this.panel1.Location = new System.Drawing.Point(803, 57);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(522, 55);
+            this.panel1.Size = new System.Drawing.Size(696, 68);
             this.panel1.TabIndex = 51;
             // 
             // comboFiltro
@@ -135,9 +140,10 @@
             "Nombre",
             "Identidad",
             "# Estudiante/Empleado"});
-            this.comboFiltro.Location = new System.Drawing.Point(3, 27);
+            this.comboFiltro.Location = new System.Drawing.Point(4, 33);
+            this.comboFiltro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboFiltro.Name = "comboFiltro";
-            this.comboFiltro.Size = new System.Drawing.Size(184, 24);
+            this.comboFiltro.Size = new System.Drawing.Size(244, 28);
             this.comboFiltro.TabIndex = 39;
             this.comboFiltro.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboFiltro_DrawItem);
             this.comboFiltro.SelectedIndexChanged += new System.EventHandler(this.ComboFiltro_SelectedIndexChanged);
@@ -147,29 +153,30 @@
             this.txtFiltro1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.txtFiltro1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFiltro1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFiltro1.Location = new System.Drawing.Point(207, 27);
+            this.txtFiltro1.Location = new System.Drawing.Point(276, 33);
+            this.txtFiltro1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFiltro1.Multiline = true;
             this.txtFiltro1.Name = "txtFiltro1";
-            this.txtFiltro1.Size = new System.Drawing.Size(254, 23);
+            this.txtFiltro1.Size = new System.Drawing.Size(339, 28);
             this.txtFiltro1.TabIndex = 38;
             this.txtFiltro1.TextChanged += new System.EventHandler(this.TxtFiltro1_TextChanged);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(116)))), ((int)(((byte)(155)))));
-            this.panel3.Location = new System.Drawing.Point(202, 50);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Location = new System.Drawing.Point(269, 62);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(287, 2);
+            this.panel3.Size = new System.Drawing.Size(383, 2);
             this.panel3.TabIndex = 45;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::AlbergueHN.Properties.Resources.noun_Search_1451786;
-            this.pictureBox1.Location = new System.Drawing.Point(467, 22);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(623, 27);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(22, 26);
+            this.pictureBox1.Size = new System.Drawing.Size(29, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 46;
             this.pictureBox1.TabStop = false;
@@ -180,9 +187,10 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(116)))), ((int)(((byte)(155)))));
-            this.label5.Location = new System.Drawing.Point(4, 8);
+            this.label5.Location = new System.Drawing.Point(5, 10);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 17);
+            this.label5.Size = new System.Drawing.Size(97, 20);
             this.label5.TabIndex = 40;
             this.label5.Text = "Buscar por:";
             // 
@@ -199,17 +207,19 @@
             this.tablaPersonas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tablaPersonas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(207)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(203)))), ((int)(((byte)(221)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(150)))), ((int)(((byte)(187)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.tablaPersonas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tablaPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaPersonas.EnableHeadersVisualStyles = false;
             this.tablaPersonas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(150)))), ((int)(((byte)(187)))));
-            this.tablaPersonas.Location = new System.Drawing.Point(10, 107);
-            this.tablaPersonas.MinimumSize = new System.Drawing.Size(4, 0);
+            this.tablaPersonas.Location = new System.Drawing.Point(13, 132);
+            this.tablaPersonas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tablaPersonas.MinimumSize = new System.Drawing.Size(5, 0);
             this.tablaPersonas.Name = "tablaPersonas";
             this.tablaPersonas.ReadOnly = true;
             this.tablaPersonas.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -224,8 +234,8 @@
             this.tablaPersonas.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaPersonas.RowHeadersVisible = false;
             this.tablaPersonas.RowHeadersWidth = 62;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(207)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(231)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(150)))), ((int)(((byte)(187)))));
@@ -233,7 +243,7 @@
             this.tablaPersonas.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.tablaPersonas.RowTemplate.Height = 27;
             this.tablaPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaPersonas.Size = new System.Drawing.Size(1123, 574);
+            this.tablaPersonas.Size = new System.Drawing.Size(1497, 706);
             this.tablaPersonas.TabIndex = 52;
             this.tablaPersonas.SelectionChanged += new System.EventHandler(this.tablaPersonas_SelectionChanged);
             // 
@@ -241,20 +251,20 @@
             // 
             this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox4.Image = global::AlbergueHN.Properties.Resources.noun_people_mant1;
-            this.pictureBox4.Location = new System.Drawing.Point(26, 9);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox4.Location = new System.Drawing.Point(35, 11);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(143, 93);
+            this.pictureBox4.Size = new System.Drawing.Size(191, 114);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 50;
             this.pictureBox4.TabStop = false;
             // 
             // MantPersonas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(1264, 690);
+            this.ClientSize = new System.Drawing.Size(1685, 849);
             this.Controls.Add(this.tablaPersonas);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox4);
@@ -263,6 +273,7 @@
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnDarDeAlta);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MantPersonas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrar personas";
