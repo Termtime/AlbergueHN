@@ -183,7 +183,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.txtUsuario);
             this.panel2.Location = new System.Drawing.Point(300, 43);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(203, 179);
             this.panel2.TabIndex = 11;
@@ -193,7 +193,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(116)))), ((int)(((byte)(155)))));
             this.panel4.Location = new System.Drawing.Point(2, 109);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(196, 2);
             this.panel4.TabIndex = 13;
@@ -202,7 +202,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(116)))), ((int)(((byte)(155)))));
             this.panel3.Location = new System.Drawing.Point(2, 46);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(196, 2);
             this.panel3.TabIndex = 12;
@@ -215,7 +215,7 @@
             this.panel5.Controls.Add(this.button1);
             this.panel5.Controls.Add(this.btnComprobar);
             this.panel5.Location = new System.Drawing.Point(263, 278);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(274, 93);
             this.panel5.TabIndex = 12;
@@ -246,7 +246,7 @@
             this.panel6.Controls.Add(this.pictureBox1);
             this.panel6.Controls.Add(this.label1);
             this.panel6.Location = new System.Drawing.Point(-1, -1);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(260, 384);
             this.panel6.TabIndex = 13;
@@ -255,7 +255,7 @@
             // 
             this.pictureBox1.Image = global::AlbergueHN.Properties.Resources.icono;
             this.pictureBox1.Location = new System.Drawing.Point(18, 50);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(225, 210);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -287,7 +287,7 @@
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimizeBox = false;
+            this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AlbergueHN";
