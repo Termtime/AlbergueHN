@@ -361,7 +361,7 @@ namespace AlbergueHN
 
         private void VersiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(INFORMACION.VERSION, "Acerca de: AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Version: " + INFORMACION.VERSION, "Acerca de: AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         bool quiereSalir = false;
@@ -661,7 +661,7 @@ namespace AlbergueHN
 
     public static class INFORMACION
     {
-        public const string VERSION = "1.1.0";
+        public const string VERSION = "1.2.0";
         public static readonly string[] DEVELOPERS = {
             "MARIO FERNANDO MEJÍA INESTROZA",
             "JORGE ALEJANDRO ARITA MARTHEL ",

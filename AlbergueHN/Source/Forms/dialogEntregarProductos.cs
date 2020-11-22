@@ -321,7 +321,7 @@ namespace AlbergueHN.Source.Forms
 
                     llenarDatos();
                     binding.Clear();
-                    MessageBox.Show("Ingresado con éxito.", "Operación Completa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Despachado con éxito.", "Operación Completa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     filtrar();
                 }
                 catch (MySqlException ex)

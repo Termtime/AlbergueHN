@@ -71,6 +71,7 @@ namespace AlbergueHN.Source.Forms
                         txtUsuario.Text = "";
                         Cursor.Current = Cursors.Default;
                     }
+                    con.Close();
                 }
                 catch(Exception ex)
                 {
@@ -104,6 +105,7 @@ namespace AlbergueHN.Source.Forms
                     Cursor.Current = Cursors.Default;
                     labelEstado.ForeColor = Color.Green;
                     btnLogin.Enabled = true;
+                    con.Close();
                 }
                 catch (Exception ex)
                 {
