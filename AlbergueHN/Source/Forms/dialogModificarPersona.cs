@@ -186,5 +186,27 @@ namespace AlbergueHN.Source.Forms
                 txtTelefono.Select(0, 0);
             });
         }
+
+        private void comboMunicipio_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var combo = sender as ComboBox;
+            if (e.Index == -1) return;
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
+                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[0].ToString(),
+                                         e.Font,
+                                         new SolidBrush(SystemColors.HighlightText),
+                                         new Point(e.Bounds.X, e.Bounds.Y));
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
+                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[0].ToString(),
+                                              e.Font,
+                                              new SolidBrush(Color.Black),
+                                              new Point(e.Bounds.X, e.Bounds.Y));
+            }
+        }
     }
 }

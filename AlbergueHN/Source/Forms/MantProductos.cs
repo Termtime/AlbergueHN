@@ -15,6 +15,7 @@ namespace AlbergueHN.Source.Forms
     public partial class MantProductos : Form
     {
         bool estaCargando = false;
+        string[] tallasRopa = { "Todas", "XXS", "XS", "S", "M", "L", "XL", "XL", "XXL" };
         public MantProductos()
         {
             InitializeComponent();
@@ -22,11 +23,11 @@ namespace AlbergueHN.Source.Forms
             this.Icon = Icon.FromHandle(icono.GetHicon());
         }
 
-        public void callCargaProductos() {
+        public void callCargaDatos() {
 
             if (estaCargando) return;
 
-            Thread t = new Thread(new ThreadStart(cargaProductos));
+            Thread t = new Thread(new ThreadStart(cargaDatos));
             t.Name = "CargaProductos";
             t.IsBackground = true;
             t.Start();
@@ -40,21 +41,27 @@ namespace AlbergueHN.Source.Forms
             dialogCrearProducto p = new dialogCrearProducto();
             p.ShowDialog();
 
-            callCargaProductos();
+            callCargaDatos();
         }
 
         private void MantProductos_Load(object sender, EventArgs e)
         {
-            callCargaProductos();
+            callCargaDatos();
             MantProductos_SizeChanged(sender, e);
+            foreach (string item in tallasRopa)
+            {
+                comboTalla.Items.Add(item);
+            }
+            comboTalla.SelectedIndex = 0;
+            callCargaDatos();
         }
 
-        public void cargaProductos()
+        public void cargaDatos()
         {
             estaCargando = true;
-            var stm = "select * from vistaMantProductos";
             using (MySqlConnection con = new MySqlConnection(StringConexion))
             {
+                var stm = "select * from vistaMantProductos";
                 MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
                 con.Open();
                 Invoke(new Action(() =>
@@ -67,6 +74,29 @@ namespace AlbergueHN.Source.Forms
                     resizearTabla();
 
                 }));
+                con.Close();
+            }
+
+            using (MySqlConnection con = new MySqlConnection(StringConexion))
+            {
+                DataSet dsTipo = new DataSet();
+                dsTipo.Tables.Add(new DataTable("TipoDefault"));
+                dsTipo.Tables["TipoDefault"].Columns.Add("TipoID", typeof(int));
+                dsTipo.Tables["TipoDefault"].Columns.Add("Descripcion", typeof(string));
+                dsTipo.Tables["TipoDefault"].Rows.Add(0, "Todos");
+                var stm = "SELECT TipoID, Descripcion FROM tiposuministro";
+                MySqlDataAdapter da = new MySqlDataAdapter(stm, con);
+                con.Open();
+                da.Fill(dsTipo, "Tipos");
+                dsTipo.Tables["TipoDefault"].Merge(dsTipo.Tables["Tipos"]);
+                Invoke(new Action(() =>
+                {
+                    comboTipo.DisplayMember = "Descripcion";
+                    comboTipo.ValueMember = "TipoID";
+                    comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
+                    
+                }));
+                con.Close();
             }
             estaCargando = false;
         }
@@ -83,10 +113,7 @@ namespace AlbergueHN.Source.Forms
                 tablaProductos.Columns[5].Width = tablaProductos.Width * 13 / 100;
                 tablaProductos.Columns[6].Width = tablaProductos.Width * 9 / 100;
             }
-            catch (Exception ex)
-            {
-
-            }
+            catch (Exception ex){}
         }
         private void MantProductos_SizeChanged(object sender, EventArgs e)
         {
@@ -96,7 +123,7 @@ namespace AlbergueHN.Source.Forms
         {
             if (keyData == (Keys.F5))
             {
-                callCargaProductos();
+                callCargaDatos();
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
@@ -123,7 +150,7 @@ namespace AlbergueHN.Source.Forms
             p.id = id;
             p.ShowDialog();
 
-            callCargaProductos();
+            callCargaDatos();
         }
 
         private void btnEliminarProducto_Click(object sender, EventArgs e)
@@ -147,8 +174,9 @@ namespace AlbergueHN.Source.Forms
                             cmd.Connection.Open();
                             cmd.ExecuteNonQuery();
                             //refrescar el grid, si llego hasta aqui
-                            callCargaProductos();
+                            callCargaDatos();
                         }
+                        con.Close();
                     }
                 }
                 catch (Exception ex)
@@ -175,8 +203,9 @@ namespace AlbergueHN.Source.Forms
                         cmd.Connection.Open();
                         cmd.ExecuteNonQuery();
                         //refrescar el grid, si llego hasta aqui
-                        callCargaProductos();
+                        callCargaDatos();
                     }
+                    con.Close();
                 }
             }
             catch (Exception ex)
@@ -186,11 +215,11 @@ namespace AlbergueHN.Source.Forms
             }
         }
 
-        private void TablaProductos_SelectionChanged(object sender, EventArgs e)
+        private void tablaProductos_SelectionChanged(object sender, EventArgs e)
         {
             try
             {
-                if(tablaProductos.SelectedRows[0] != null)
+                if (tablaProductos.SelectedRows[0] != null)
                 {
                     btnModificarProducto.Enabled = true;
                     if (tablaProductos.SelectedRows[0].Cells["¿Está Activo?"].Value.ToString() == "Si")
@@ -208,9 +237,160 @@ namespace AlbergueHN.Source.Forms
                 {
                     btnModificarProducto.Enabled = false;
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        private void comboFiltro_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var combo = sender as ComboBox;
+            if (e.Index == -1) return;
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
+                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[1].ToString(),
+                                         e.Font,
+                                         new SolidBrush(SystemColors.HighlightText),
+                                         new Point(e.Bounds.X, e.Bounds.Y));
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
+                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[1].ToString(),
+                                              e.Font,
+                                              new SolidBrush(Color.Black),
+                                              new Point(e.Bounds.X, e.Bounds.Y));
+            }
+        }
+
+        private void filtrarSuministros()
+        {
+            if (tablaProductos.DataSource == null) return;
+            DataRowView row = (DataRowView)comboTipo.SelectedItem;
+            string filtroTipo = (string)row.Row.ItemArray[1];
+            string filtroTxt = txtFiltro.Text;
+            string genero = "";
+            string filtroTalla = (string)(comboTalla.SelectedItem ?? comboTalla.Text);
+            String buscar = txtFiltro.Text;
+            bool cualquierGenero = false;
+            bool cualquierTalla = false;
+
+            if (filtroTalla == "Todas") cualquierTalla = true;
+
+            if (radioMasculino.Checked)
+            {
+                genero = "M";
+            }
+            else if (radioFemenino.Checked)
+            {
+                genero = "F";
+            }
+            else if (radioCualquiera.Checked)
+            {
+                cualquierGenero = true;
+            }
+
+            if (filtroTipo == "Todos")
+            {
+                try
+                {
+                    (tablaProductos.DataSource as DataTable).DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%' And (talla = '{filtroTalla}' or {cualquierTalla})  And (genero = '{genero}' or {cualquierGenero})";
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.StackTrace);
+                    MessageBox.Show(e.Message, "Error Filtrando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                try
+                {
+                    (tablaProductos.DataSource as DataTable).DefaultView.RowFilter = $"descripcion LIKE '%{buscar}%' and tipo = '{filtroTipo}' And (talla = '%{filtroTalla}%' or {cualquierTalla})  And (genero = '{genero}' or {cualquierGenero})";
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.StackTrace);
+                    MessageBox.Show(e.Message, "Error Filtrando datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        private void ComboTipo_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var combo = sender as ComboBox;
+            if (e.Index == -1) return;
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
+                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[1].ToString(),
+                                         e.Font,
+                                         new SolidBrush(SystemColors.HighlightText),
+                                         new Point(e.Bounds.X, e.Bounds.Y));
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
+                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[1].ToString(),
+                                              e.Font,
+                                              new SolidBrush(Color.Black),
+                                              new Point(e.Bounds.X, e.Bounds.Y));
+            }
+        }
+
+        private void ComboTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filtrarSuministros();
+        }
+
+        private void TxtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            filtrarSuministros();
+        }
+
+        private void ComboTalla_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filtrarSuministros();
+        }
+
+        private void RadioCualquiera_CheckedChanged(object sender, EventArgs e)
+        {
+            filtrarSuministros();
+        }
+
+        private void RadioMasculino_CheckedChanged(object sender, EventArgs e)
+        {
+            filtrarSuministros();
+        }
+
+        private void RadioFemenino_CheckedChanged(object sender, EventArgs e)
+        {
+            filtrarSuministros();
+        }
+
+        private void ComboTalla_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var combo = sender as ComboBox;
+            if (e.Index == -1) return;
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
+                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                         e.Font,
+                                         new SolidBrush(SystemColors.HighlightText),
+                                         new Point(e.Bounds.X, e.Bounds.Y));
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
+                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                              e.Font,
+                                              new SolidBrush(Color.Black),
+                                              new Point(e.Bounds.X, e.Bounds.Y));
             }
         }
     }

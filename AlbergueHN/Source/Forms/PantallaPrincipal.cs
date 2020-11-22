@@ -73,6 +73,8 @@ namespace AlbergueHN
                         da.Fill(dtPersonas);
                         tablaPersonas.DataSource = dtPersonas;
                     }));
+
+                    con.Close();
                 }
 
                 using (MySqlConnection con = new MySqlConnection(stringConexion))
@@ -94,6 +96,7 @@ namespace AlbergueHN
                         comboTipo.DataSource = dsTipo.Tables["TipoDefault"];
                         configurarSizeTablaPersonas();
                     }));
+                    con.Close();
                 }
 
                 using (MySqlConnection con = new MySqlConnection(stringConexion))
@@ -108,6 +111,7 @@ namespace AlbergueHN
                         tablaSuministros.DataSource = dtArticulos;
                         configurarSizeTablaSuministros();
                     }));
+                    con.Close();
                 }
                 estaCargandoDatos = false;
             }
@@ -357,7 +361,7 @@ namespace AlbergueHN
 
         private void VersiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(INFORMACION.VERSION, "Acerca de: AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Version: " + INFORMACION.VERSION, "Acerca de: AlbergueHN", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         bool quiereSalir = false;
@@ -599,11 +603,65 @@ namespace AlbergueHN
             int indexFinTitulo = 6;
             generarReporte(tablaSuministros, nombreHojaReporte, tituloReporte, celdaInicioTitulo, celdaFinTitulo, indexInicioTitulo, indexFinTitulo);
         }
+
+        private void comboFiltro_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var combo = sender as ComboBox;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
+                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                         e.Font,
+                                         new SolidBrush(SystemColors.HighlightText),
+                                         new Point(e.Bounds.X, e.Bounds.Y));
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
+                e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                              e.Font,
+                                              new SolidBrush(Color.Black),
+                                              new Point(e.Bounds.X, e.Bounds.Y));
+            }
+        }
+
+        private void comboTipo_DrawItem(object sender, DrawItemEventArgs e)
+        {
+
+        }
+
+        private void comboTalla_DrawItem(object sender, DrawItemEventArgs e)
+        {
+
+        }
+
+        private void comboTipo_DrawItem_1(object sender, DrawItemEventArgs e)
+        {
+            var combo = sender as ComboBox;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 150, 187)), e.Bounds);
+                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[1].ToString(),
+                                         e.Font,
+                                         new SolidBrush(SystemColors.HighlightText),
+                                         new Point(e.Bounds.X, e.Bounds.Y));
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(SystemColors.Menu), e.Bounds);
+                e.Graphics.DrawString(((DataRowView)combo.Items[e.Index]).Row.ItemArray[1].ToString(),
+                                              e.Font,
+                                              new SolidBrush(Color.Black),
+                                              new Point(e.Bounds.X, e.Bounds.Y));
+            }
+        }
     }
 
     public static class INFORMACION
     {
-        public const string VERSION = "1.1.0";
+        public const string VERSION = "1.2.0";
         public static readonly string[] DEVELOPERS = {
             "MARIO FERNANDO MEJÍA INESTROZA",
             "JORGE ALEJANDRO ARITA MARTHEL ",
