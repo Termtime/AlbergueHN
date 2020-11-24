@@ -194,7 +194,7 @@
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::AlbergueHN.Properties.Resources.noun_boxes_mant;
             this.pictureBox4.Location = new System.Drawing.Point(26, 9);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(113, 93);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -203,7 +203,6 @@
             // 
             // panelControlRopa
             // 
-            this.panelControlRopa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControlRopa.Controls.Add(this.panel2);
             this.panelControlRopa.Controls.Add(this.comboTipo);
             this.panelControlRopa.Controls.Add(this.pictureBox2);
@@ -226,7 +225,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(116)))), ((int)(((byte)(155)))));
             this.panel2.Location = new System.Drawing.Point(457, 21);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1, 52);
             this.panel2.TabIndex = 60;
@@ -250,7 +249,7 @@
             // 
             this.pictureBox2.Image = global::AlbergueHN.Properties.Resources.noun_Search_1451786;
             this.pictureBox2.Location = new System.Drawing.Point(422, 32);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(23, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -261,7 +260,7 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(116)))), ((int)(((byte)(155)))));
             this.panel5.Location = new System.Drawing.Point(569, 21);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1, 52);
             this.panel5.TabIndex = 59;
@@ -291,12 +290,14 @@
             this.comboTalla.TabIndex = 43;
             this.comboTalla.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboTalla_DrawItem);
             this.comboTalla.SelectedIndexChanged += new System.EventHandler(this.ComboTalla_SelectedIndexChanged);
+            this.comboTalla.TextChanged += new System.EventHandler(this.ComboTalla_TextChanged);
+            this.comboTalla.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ComboTalla_KeyPress);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(116)))), ((int)(((byte)(155)))));
             this.panel4.Location = new System.Drawing.Point(161, 59);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(288, 2);
             this.panel4.TabIndex = 58;
@@ -324,6 +325,7 @@
             this.txtFiltro.Size = new System.Drawing.Size(255, 23);
             this.txtFiltro.TabIndex = 54;
             this.txtFiltro.TextChanged += new System.EventHandler(this.TxtFiltro_TextChanged);
+            this.txtFiltro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFiltro_KeyPress);
             // 
             // labelTalla
             // 
@@ -380,8 +382,8 @@
             // 
             // MantProductos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.ClientSize = new System.Drawing.Size(1264, 690);
             this.Controls.Add(this.panelControlRopa);

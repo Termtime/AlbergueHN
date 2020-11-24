@@ -193,7 +193,7 @@ namespace AlbergueHN.Source.Forms
         private void filtrarPersonas()
         {
             if (tablaPersonas.DataSource == null) return;
-            String filtrar = txtFiltro1.Text;
+            String filtrar = txtFiltro1.Text.Replace("'", "''");
             if (comboFiltro.SelectedIndex == 0)
             {
                 (tablaPersonas.DataSource as DataTable).DefaultView.RowFilter = "nombres + apellidos LIKE '%" + filtrar + "%'";
@@ -244,6 +244,32 @@ namespace AlbergueHN.Source.Forms
         private void TxtFiltro1_TextChanged(object sender, EventArgs e)
         {
             filtrarPersonas();
+        }
+
+        private void TxtFiltro1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case '#':
+                    e.Handled = true;
+                    break;
+                case '[':
+                    e.Handled = true;
+                    break;
+                case ']':
+                    e.Handled = true;
+                    break;
+
+                case '*':
+                    e.Handled = true;
+                    break;
+                case '%':
+                    e.Handled = true;
+                    break;
+                default:
+                    e.Handled = false;
+                    break;
+            }
         }
     }
 }
