@@ -271,10 +271,9 @@ namespace AlbergueHN.Source.Forms
             if (tablaProductos.DataSource == null) return;
             DataRowView row = (DataRowView)comboTipo.SelectedItem;
             string filtroTipo = (string)row.Row.ItemArray[1];
-            string filtroTxt = txtFiltro.Text;
             string genero = "";
-            string filtroTalla = (string)(comboTalla.SelectedItem ?? comboTalla.Text);
-            String buscar = txtFiltro.Text;
+            string filtroTalla = (string)(comboTalla.SelectedItem ?? comboTalla.Text.Replace("'", "''"));
+            String buscar = txtFiltro.Text.Replace("'", "''");
             bool cualquierGenero = false;
             bool cualquierTalla = false;
 
@@ -392,6 +391,63 @@ namespace AlbergueHN.Source.Forms
                                               new SolidBrush(Color.Black),
                                               new Point(e.Bounds.X, e.Bounds.Y));
             }
+        }
+
+        private void TxtFiltro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case '#':
+                    e.Handled = true;
+                    break;
+                case '[':
+                    e.Handled = true;
+                    break;
+                case ']':
+                    e.Handled = true;
+                    break;
+
+                case '*':
+                    e.Handled = true;
+                    break;
+                case '%':
+                    e.Handled = true;
+                    break;
+                default:
+                    e.Handled = false;
+                    break;
+            }
+        }
+
+        private void ComboTalla_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case '#':
+                    e.Handled = true;
+                    break;
+                case '[':
+                    e.Handled = true;
+                    break;
+                case ']':
+                    e.Handled = true;
+                    break;
+
+                case '*':
+                    e.Handled = true;
+                    break;
+                case '%':
+                    e.Handled = true;
+                    break;
+                default:
+                    e.Handled = false;
+                    break;
+            }
+        }
+
+        private void ComboTalla_TextChanged(object sender, EventArgs e)
+        {
+            filtrarSuministros();
         }
     }
 }

@@ -168,10 +168,10 @@ namespace AlbergueHN
             if (tablaSuministros.DataSource == null) return;
             DataRowView row = (DataRowView)comboTipo.SelectedItem;
             string filtroTipo = (string)row.Row.ItemArray[1];
-            string filtroTxt = txtFiltro.Text;
+            string filtroTxt = txtFiltro.Text.Replace("'", "''");
             string genero = "";
-            string filtroTalla = (string)(comboTalla.SelectedItem ?? comboTalla.Text);
-            String buscar = txtFiltro.Text;
+            string filtroTalla = (string)(comboTalla.SelectedItem ?? comboTalla.Text.Replace("'", "''"));
+            String buscar = txtFiltro.Text.Replace("'", "''");
             bool cualquierGenero = false;
             bool cualquierTalla = false;
 
@@ -214,18 +214,18 @@ namespace AlbergueHN
         private void filtrarPersonas()
         {
             if (tablaPersonas.DataSource == null) return;
-            String filtrar = txtFiltro1.Text;
+            string buscar = txtFiltro1.Text.Replace("'", "''");
             if (comboFiltro.SelectedIndex == 0)
             {
-                dtPersonas.DefaultView.RowFilter = "nombres + apellidos LIKE '%"+filtrar+"%'";
+                dtPersonas.DefaultView.RowFilter = "nombres + apellidos LIKE '%"+buscar+"%'";
             }
             if (comboFiltro.SelectedIndex == 1)
             {
-                dtPersonas.DefaultView.RowFilter = "[No.Identidad] LIKE '%" + filtrar + "%'";
+                dtPersonas.DefaultView.RowFilter = "[No.Identidad] LIKE '%" + buscar + "%'";
             }
             if (comboFiltro.SelectedIndex == 2)
             {
-                dtPersonas.DefaultView.RowFilter = "[No.Empleado/Estudiante] LIKE '%" + filtrar + "%'";
+                dtPersonas.DefaultView.RowFilter = "[No.Empleado/Estudiante] LIKE '%" + buscar + "%'";
             }
         }
 
@@ -657,11 +657,89 @@ namespace AlbergueHN
                                               new Point(e.Bounds.X, e.Bounds.Y));
             }
         }
+
+        private void TxtFiltro1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case '#':
+                    e.Handled = true;
+                break;
+                case '[':
+                    e.Handled = true;
+                break;
+                case ']':
+                    e.Handled = true;
+                break;
+
+                case '*':
+                    e.Handled = true;
+                break;
+                case '%':
+                    e.Handled = true;
+                break;
+                default:
+                    e.Handled = false;
+                break;
+            }
+        }
+
+        private void TxtFiltro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case '#':
+                    e.Handled = true;
+                    break;
+                case '[':
+                    e.Handled = true;
+                    break;
+                case ']':
+                    e.Handled = true;
+                    break;
+
+                case '*':
+                    e.Handled = true;
+                    break;
+                case '%':
+                    e.Handled = true;
+                    break;
+                default:
+                    e.Handled = false;
+                    break;
+            }
+        }
+
+        private void ComboTalla_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case '#':
+                    e.Handled = true;
+                    break;
+                case '[':
+                    e.Handled = true;
+                    break;
+                case ']':
+                    e.Handled = true;
+                    break;
+
+                case '*':
+                    e.Handled = true;
+                    break;
+                case '%':
+                    e.Handled = true;
+                    break;
+                default:
+                    e.Handled = false;
+                    break;
+            }
+        }
     }
 
     public static class INFORMACION
     {
-        public const string VERSION = "1.2.0";
+        public const string VERSION = "1.2.1";
         public static readonly string[] DEVELOPERS = {
             "MARIO FERNANDO MEJÍA INESTROZA",
             "JORGE ALEJANDRO ARITA MARTHEL ",

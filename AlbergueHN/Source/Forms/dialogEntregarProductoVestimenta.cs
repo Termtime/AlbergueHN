@@ -143,13 +143,13 @@ namespace AlbergueHN.Source.Forms
         {
            //DataRowView row = (DataRowView)comboTipo.SelectedItem
            //string filtroTipo = (string)row.Row.ItemArray[1];
-           string filtroTxt = txtFiltro.Text;
+           string filtroTxt = txtFiltro.Text.Replace("'", "''");
             listaProductos.Items.Clear();
             List<ListViewItem> productosFiltrados = new List<ListViewItem>();
             string genero = "";
             bool cualquierGenero = false;
             bool cualquierTalla = false;
-            string filtroTalla = ((string)comboTalla.SelectedItem) ?? comboTalla.Text;
+            string filtroTalla = ((string)comboTalla.SelectedItem) ?? comboTalla.Text.Replace("'", "''");
             filtroTalla = filtroTalla.ToString();
             if (filtroTalla == "Todas") cualquierTalla = true;
 
@@ -505,6 +505,16 @@ namespace AlbergueHN.Source.Forms
                                               new SolidBrush(Color.Black),
                                               new Point(e.Bounds.X, e.Bounds.Y));
             }
+        }
+
+        private void TxtFiltro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void ComboTalla_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }
