@@ -1,5 +1,5 @@
 # AlbergueHN
-Aplicación de escritorio para llevar inventario y datos de personas de un Albergue, desarrollado en voluntariado por estudiantes de la carrera de Ingeniería en Sistemas de UNAH-VS como respuesta a los huracanes ETA e IOTA del 2020
+Aplicación de escritorio para llevar inventario y datos de personas de un Albergue, desarrollado en voluntariado por estudiantes de la carrera de Ingeniería en Sistemas de UNAH-VS junto al apoyo del Ingeniero Norman Alberto Cubilla como respuesta a los huracanes ETA e IOTA del 2020
 
 # Equipo de desarrollo
 
