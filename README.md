@@ -24,13 +24,17 @@ Aplicación de escritorio para llevar inventario y datos de personas de un Alber
 # Imagenes
 
 * Pantalla de Login
+
 ![loginPage](https://i.imgur.com/7jCBLJS.jpg)
 
 * Configuracion de conexion
+
 ![configConexionPage](https://i.imgur.com/yxwHSYR.jpg)
 
 * Pantalla principal
+
 ![mainPage](https://i.imgur.com/5ySuUYA.jpg)
 
 * Despacho de productos
+
 ![despachoProductosPage](https://i.imgur.com/ty1JkSu.jpg)
