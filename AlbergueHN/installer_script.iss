@@ -2,9 +2,9 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "AlbergueHN"
-#define MyAppVersion "1.1.0"
+#define MyAppVersion "1.2.1"
 #define MyAppPublisher "AEIS-VS"
-#define MyAppExeName "AlbergueHNv"+ MyAppVersion + ".exe"
+#define MyAppExeName "AlbergueHN"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -17,12 +17,12 @@ AppPublisher={#MyAppPublisher}
 DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-LicenseFile=C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\LICENSE.txt
+LicenseFile=LICENSE.txt
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=C:\Users\Mario Mejia\Documents\InnoSetup\AlbergueHN\Output
+OutputDir=InnoSetup\AlbergueHN\Output
 OutputBaseFilename=AlbergueHN
-SetupIconFile=C:\Users\Mario Mejia\Documents\InnoSetup\AlbergueHN\AlbergueHN.ico
+SetupIconFile=AlbergueHN.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -35,37 +35,7 @@ Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\AlbergueHNv{#MyAppVersion}.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\AlbergueHNv{#MyAppVersion}.exe.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\AlbergueHNv{#MyAppVersion}.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\BouncyCastle.Crypto.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\Google.Protobuf.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\Google.Protobuf.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\Google.Protobuf.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\K4os.Compression.LZ4.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\K4os.Compression.LZ4.Streams.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\K4os.Compression.LZ4.Streams.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\K4os.Compression.LZ4.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\K4os.Hash.xxHash.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\K4os.Hash.xxHash.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\MySql.Data.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\MySql.Data.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\MySqlConnector.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\MySqlConnector.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\Renci.SshNet.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\Renci.SshNet.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\System.Buffers.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\System.Buffers.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\System.Memory.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\System.Memory.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\System.Numerics.Vectors.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\System.Numerics.Vectors.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\System.Runtime.CompilerServices.Unsafe.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\System.Runtime.CompilerServices.Unsafe.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\System.Threading.Tasks.Extensions.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\System.Threading.Tasks.Extensions.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\Ubiety.Dns.Core.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Mario Mejia\source\repos\AlbergueHN\AlbergueHN\bin\Release\Zstandard.Net.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\AlbergueHN.exe"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
