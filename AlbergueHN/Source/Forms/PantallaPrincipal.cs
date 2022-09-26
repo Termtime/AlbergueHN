@@ -739,7 +739,7 @@ namespace AlbergueHN
 
     public static class INFORMACION
     {
-        public const string VERSION = "1.2.1";
+        public const string VERSION = "1.2.2";
         public static readonly string[] DEVELOPERS = {
             "MARIO FERNANDO MEJÍA INESTROZA",
             "JORGE ALEJANDRO ARITA MARTHEL ",
