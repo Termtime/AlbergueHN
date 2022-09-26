@@ -2,7 +2,7 @@
 Aplicación de escritorio para llevar inventario y datos de personas de un Albergue, desarrollado en voluntariado por estudiantes de la carrera de Ingeniería en Sistemas de UNAH-VS junto al apoyo del Ingeniero Norman Alberto Cubilla como respuesta a los huracanes ETA e IOTA del 2020.
 
 # Instalación
-En la sección de lanzamientos en GitHub, puede encontrar la lista de versiones de la aplicación. [Descargar aquí]()
+En la sección de lanzamientos en GitHub, puede encontrar la lista de versiones de la aplicación. [Descargar aquí](https://github.com/Termtime/AlbergueHN/releases/tag/v1.2.2)
 
 ## Instalar la base de datos y crear nuestro usuario SQL
 AlbergueHN está basado en una base de datos MySQL, puedes descargar MySQL para Windows desde [aqui](https://dev.mysql.com/downloads/installer/)
