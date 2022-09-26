@@ -62,7 +62,7 @@ Para empaquetar una nueva versión de AlbergueHN:
 - En la pestaña `Compilar` (`Build` en inglés) seleccióna la opción de `Compilar Solución`
 - Abre InnoSetup
 - Carga el script de creación de instalador
-- Presiona la tecla en la barra superior que dice "Compile", esto debería crear un instalador en la ubicación de tu proyecto
+- Presiona la tecla en la barra superior que dice "Compile", esto debería crear un instalador en la ubicación `InnoSetup\AlbergueHN\Output` de tu proyecto
 - Distribuye!
 
 # Equipo de desarrollo
